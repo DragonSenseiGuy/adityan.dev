@@ -728,7 +728,7 @@
                     if (emailStatus) emailStatus.textContent = "Please fill out all fields.";
                     return;
                 }
-                var endpoint = window.CONTACT_ENDPOINT || ""; // set this later
+                var endpoint = window.CONTACT_ENDPOINT || "/api/send-email"; // Vercel serverless endpoint
                 if (!endpoint) {
                     if (emailStatus) emailStatus.textContent = "Sending is not configured yet.";
                     return;
