@@ -21,19 +21,6 @@
     font-style: normal;
 }
 
-.intro-div {
-    border: solid;
-    border-width: thin;
-    border-radius: 16px;
-    padding: 10px;
-    width: 500px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #6879ce;
-}
-
 body {
     background-image: url(../../static/images/wallpaper.png);
     background-size: cover;
@@ -53,7 +40,7 @@ body {
     border-radius: 100px;
     padding: 8px 16px;
     box-sizing: border-box;
-    z-index: 1000;
+    z-index: 100;
     background: #0e6ba8;
     background: linear-gradient(
         90deg,
@@ -62,7 +49,8 @@ body {
         rgba(154, 213, 202, 1) 100%
     );
 }
-#welcomeheader, #blogheader {
+/* Unified window header styles for all apps */
+#welcomeheader, #blogheader, #tutorialheader, #aboutheader {
     border-radius: 25px;
     background-color: white;
     padding: 12px 12px;
@@ -74,14 +62,7 @@ body {
     gap: 8px;
 }
 
-#welcomeclose, #blogclose {
-    width: 12px;
-    height: 12px;
-    cursor: pointer;
-    background-color: #ec6b5e;
-    border-radius: 16px;
-    border: solid 1px rgba(0, 0, 0, 0.25);
-}
+/* Removed per-window close button styles; using generic .win-btn styling */
 
 #timeElement {
     border-radius: 25px;
@@ -95,28 +76,11 @@ body {
     padding: 15px;
 }
 
-#welcomeclose {
-    width: 12px;
-    height: 12px;
-    cursor: pointer;
-    background-color: #fa812f;
-    border-radius: 16px;
-    border: solid 1px rgba(0, 0, 0, 0.25);
-}
+/* Removed duplicate #welcomeclose styling; unified by .win-btn classes */
 
-#welcomeheader {
-    border-radius: 25px;
-    background-color: white;
-    padding: 15px;
-}
+/* Duplicate #welcomeheader block removed; unified header styles are defined above */
 
-#welcomeheader {
-    border-radius: 25px;
-    background-color: white;
-    padding: 15px;
-    user-select: none;
-    cursor: grab;
-}
+/* Duplicate #welcomeheader block removed; unified header styles are defined above */
 
 .selected {
     border-style: dashed;
@@ -128,11 +92,19 @@ html, body {
     overflow: hidden; /* prevent page/body scroll; windows will scroll internally */
 }
 .intro-div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
     overflow: hidden; /* keep content inside window; internal panes will scroll */
     box-sizing: border-box;
     min-height: 0; /* allow children to shrink and scroll */
+    background: #fff; /* window panel background */
+    border-radius: 16px; /* consistent rounded panel */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12); /* subtle elevation */
+    z-index: 900; /* start above desktop icons, below top-bar */
 }
 
 /* Blog window layout and default size */
@@ -151,7 +123,6 @@ html, body {
 
 /* Space between header and content, and robust flex sizing */
 #blogApp {
-    margin-top: 12px; /* spacing from the blog header */
     display: flex;
     gap: 12px;
     min-width: 0; /* prevent overflow from flex children */
@@ -195,8 +166,11 @@ html, body {
 }
 
 /* Add spacing immediately after any window header */
+/* Uniform spacing after any window header */
 #welcomeheader + *,
-#blogheader + * {
+#blogheader + *,
+#tutorialheader + *,
+#aboutheader + * {
     margin-top: 8px;
 }
 
@@ -205,6 +179,7 @@ html, body {
     display: inline-flex;
     align-items: center;
     gap: 8px;
+    padding: 6px 8px;
 }
 .win-btn {
     width: 12px;
@@ -245,6 +220,32 @@ html, body {
     /* Tutorial app icon position (adjustable) */
     --tutorial-app-top: 130px;
     --tutorial-app-left: 6px;
+
+    /* About app icon position (adjustable) */
+    --about-app-top: 240px;
+    --about-app-left: 10px;
+
+    /* Default About window size (when not fullscreen) */
+    --about-default-width: min(720px, 80vw);
+    --about-default-height: min(520px, calc(100vh - 160px));
+
+    /* About-specific fullscreen offsets (override as needed) */
+    --about-window-top-offset: var(--window-top-offset);
+    --about-window-side-margin: var(--window-side-margin);
+    --about-window-bottom-margin: var(--window-bottom-margin);
+
+    /* Email app icon position (adjustable) */
+    --email-app-top: 360px;
+    --email-app-left: 8px;
+
+    /* Default Email window size (when not fullscreen) */
+    --email-default-width: min(1200px, 90vw);
+    --email-default-height: min(580px, calc(100vh - 120px));
+
+    /* Email-specific fullscreen offsets (override as needed) */
+    --email-window-top-offset: var(--window-top-offset);
+    --email-window-side-margin: var(--window-side-margin);
+    --email-window-bottom-margin: var(--window-bottom-margin);
 }
 
 /* Fullscreen and minimized window states */
@@ -271,6 +272,14 @@ html, body {
     top: var(--tutorial-window-top-offset);
     left: var(--tutorial-window-side-margin);
 }
+#about.window-fullscreen {
+    top: var(--about-window-top-offset);
+    left: var(--about-window-side-margin);
+}
+#email.window-fullscreen {
+    top: var(--email-window-top-offset);
+    left: var(--email-window-side-margin);
+}
 .window-minimized {
     display: none !important;
 }
@@ -282,4 +291,22 @@ html, body {
     border-radius: 12px;
     padding: 16px;
     min-width: 0;
+}
+
+/* Tutorial content wrapping to avoid horizontal scroll */
+#tutorialContent {
+    overflow-x: hidden;
+}
+
+#tutorialArticle {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+#tutorialArticle pre,
+#tutorialArticle code {
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    overflow: visible;
 }

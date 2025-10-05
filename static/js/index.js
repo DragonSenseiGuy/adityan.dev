@@ -26,12 +26,19 @@
 
   // Stacking: single global z-index counter shared across all scripts
   // Start at 10 to leave room for other UI elements
-  if (typeof window._zCounter !== "number") {
-    window._zCounter = 10;
+  if (typeof window._zCounter !== "number" || window._zCounter < 900) {
+    window._zCounter = 900; // baseline above desktop icons, below top bar (1000)
   }
 
   function bringToFront(el) {
     if (!el) return;
+    // Ensure baseline and keep under the top bar (z-index 1000)
+    if (typeof window._zCounter !== "number" || window._zCounter < 900) {
+      window._zCounter = 900;
+    }
+    if (window._zCounter >= 999) {
+      window._zCounter = 900;
+    }
     window._zCounter += 1;
     el.style.zIndex = String(window._zCounter);
   }
@@ -116,7 +123,10 @@
     // If minimized, clear the minimized state so CSS/display can show it again
     winEl.classList.remove("window-minimized");
 
-    // Window should go to front immediately on open
+    // Ensure z-index baseline and bring to front immediately on open
+    if (typeof window._zCounter !== "number" || window._zCounter < 900) {
+      window._zCounter = 900;
+    }
     bringToFront(winEl);
 
     // Remove inline display so the stylesheet governs layout (avoid forcing flex/block)
@@ -146,6 +156,38 @@
     if (!winEl) return;
     winEl.style.display = "none";
   }
+
+  // Resizable helper (global)
+  function wireResizable(win) {
+    if (!win) return;
+    var handle = win.querySelector(".resize-handle");
+    if (!handle || handle.dataset.wired === "true") return;
+    handle.dataset.wired = "true";
+    handle.addEventListener("mousedown", function (e) {
+      e.preventDefault();
+      bringToFront(win);
+      var startX = e.clientX, startY = e.clientY;
+      var startW = win.offsetWidth, startH = win.offsetHeight;
+      var minW = 260, minH = 160;
+      function onMove(ev) {
+        var dx = ev.clientX - startX;
+        var dy = ev.clientY - startY;
+        win.style.width = Math.max(minW, startW + dx) + "px";
+        win.style.height = Math.max(minH, startH + dy) + "px";
+      }
+      function onUp() {
+        document.removeEventListener("mousemove", onMove);
+        document.removeEventListener("mouseup", onUp);
+      }
+      document.addEventListener("mousemove", onMove);
+      document.addEventListener("mouseup", onUp);
+    });
+  }
+  // Expose window helpers globally for inline scripts to call immediately
+  window.openWindow = openWindow;
+  window.closeWindow = closeWindow;
+  window.bringToFront = bringToFront;
+  window.wireResizable = wireResizable;
 
   // Attach basic window behaviors to any element with .intro-div class
   function wireWindow(winEl) {
@@ -191,11 +233,56 @@
     }
   }
 
-  // Wire all windows present on the page
-  $$(".intro-div").forEach(wireWindow);
+  // Wire all windows after DOM is ready and when new ones are added dynamically
+  function wireAllWindows() {
+    $$(".intro-div").forEach(wireWindow);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", wireAllWindows);
+    window.addEventListener("load", wireAllWindows);
+  } else {
+    wireAllWindows();
+  }
+
+  // Bring any clicked window to front (event delegation; works for dynamically added windows too)
+  document.addEventListener(
+    "mousedown",
+    function (e) {
+      var win = e.target && e.target.closest && e.target.closest(".intro-div");
+      if (win) bringToFront(win);
+    },
+    true
+  );
+
+  // Observe DOM for windows added later (e.g., Email app markup added after scripts)
+  var winObserver = new MutationObserver(function (mutations) {
+    mutations.forEach(function (m) {
+      if (!m.addedNodes) return;
+      Array.prototype.forEach.call(m.addedNodes, function (node) {
+        if (node.nodeType !== 1) return;
+        if (node.classList && node.classList.contains("intro-div")) {
+          wireWindow(node);
+        }
+        if (node.querySelectorAll) {
+          var nested = node.querySelectorAll(".intro-div");
+          if (nested && nested.length) {
+            nested.forEach(wireWindow);
+          }
+        }
+      });
+    });
+  });
+  if (document.body) {
+    winObserver.observe(document.body, { childList: true, subtree: true });
+  } else {
+    window.addEventListener("load", function () {
+      winObserver.observe(document.body, { childList: true, subtree: true });
+    });
+  }
 
   // Wire known windows by naming convention
-  ["welcome", "blog"].forEach(wireOpenClose);
+  ["welcome", "blog", "tutorial", "about", "email"].forEach(wireOpenClose);
 
   // Observe fullscreen toggles and adjust window bounds below the menu bar
   initFullscreenObserver();
@@ -226,21 +313,28 @@
         var root = window.getComputedStyle(document.documentElement);
         var isBlog = win.id === "blog";
         var isTutorial = win.id === "tutorial";
+        var isAbout = win.id === "about";
         var topOffsetVar = isBlog
           ? (root.getPropertyValue('--blog-window-top-offset').trim() || root.getPropertyValue('--window-top-offset').trim() || '100px')
           : isTutorial
             ? (root.getPropertyValue('--tutorial-window-top-offset').trim() || root.getPropertyValue('--window-top-offset').trim() || '100px')
-            : (root.getPropertyValue('--window-top-offset').trim() || '100px');
+            : isAbout
+              ? (root.getPropertyValue('--about-window-top-offset').trim() || root.getPropertyValue('--window-top-offset').trim() || '100px')
+              : (root.getPropertyValue('--window-top-offset').trim() || '100px');
         var sideMarginVar = isBlog
           ? (root.getPropertyValue('--blog-window-side-margin').trim() || root.getPropertyValue('--window-side-margin').trim() || '16px')
           : isTutorial
             ? (root.getPropertyValue('--tutorial-window-side-margin').trim() || root.getPropertyValue('--window-side-margin').trim() || '16px')
-            : (root.getPropertyValue('--window-side-margin').trim() || '16px');
+            : isAbout
+              ? (root.getPropertyValue('--about-window-side-margin').trim() || root.getPropertyValue('--window-side-margin').trim() || '16px')
+              : (root.getPropertyValue('--window-side-margin').trim() || '16px');
         var bottomMarginVar = isBlog
           ? (root.getPropertyValue('--blog-window-bottom-margin').trim() || root.getPropertyValue('--window-bottom-margin').trim() || '16px')
           : isTutorial
             ? (root.getPropertyValue('--tutorial-window-bottom-margin').trim() || root.getPropertyValue('--window-bottom-margin').trim() || '16px')
-            : (root.getPropertyValue('--window-bottom-margin').trim() || '16px');
+            : isAbout
+              ? (root.getPropertyValue('--about-window-bottom-margin').trim() || root.getPropertyValue('--window-bottom-margin').trim() || '16px')
+              : (root.getPropertyValue('--window-bottom-margin').trim() || '16px');
         win.style.position = "fixed";
         win.style.top = topOffsetVar;
         win.style.left = sideMarginVar;
@@ -258,6 +352,11 @@
           var initH = Math.max(160, vh - (topPx + bottomPx));
           win.style.width = initW + "px";
           win.style.height = initH + "px";
+          // Expose window helpers for inline scripts and other modules
+          window.openWindow = openWindow;
+          window.closeWindow = closeWindow;
+          window.bringToFront = bringToFront;
+          window.wireResizable = wireResizable;
         })();
         win.style.transform = "none";
         bringToFront(win);

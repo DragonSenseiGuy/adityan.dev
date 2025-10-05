@@ -50,6 +50,12 @@
           #blogArticle .task-list-item input[type="checkbox"] { margin-right: .5em; }
           /* Resize handle for windows */
           .resize-handle { position: absolute; width: 14px; height: 14px; right: 6px; bottom: 6px; cursor: se-resize; background: linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.06) 100%); border-radius: 3px; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08); }
+
+          /* Email default size via CSS variables */
+          #email {
+            width: var(--email-default-width, min(900px, 90vw));
+            height: var(--email-default-height, min(680px, calc(100vh - 120px)));
+          }
         </style>
     </head>
     <body>
@@ -86,11 +92,27 @@
                 </div>
                 <div style="text-align: center; position: absolute; top: var(--tutorial-app-top, 200px); left: var(--tutorial-app-left, 140px);">
                     <img id="tutorialopen"
-                        src="static/images/BlogIcon.png"
+                        src="static/images/tutorialIcon.png"
                         alt="Tutorial Icon"
                         style="width: 64px; height: 64px; border-radius: 16px; cursor: pointer"
                     />
                     <p style="margin: 5px; color: #fff">Tutorial.md</p>
+                </div>
+                <div style="text-align: center; position: absolute; top: var(--about-app-top, 280px); left: var(--about-app-left, 35px);">
+                    <img id="aboutopen"
+                        src="static/images/AboutIcon.svg"
+                        alt="About Me Icon"
+                        style="width: 64px; height: 64px; border-radius: 16px; cursor: pointer; background: #ffffffbb; padding: 6px;"
+                    />
+                    <p style="margin: 5px; color: #fff">About Me</p>
+                </div>
+                <div style="text-align: center; position: absolute; top: var(--email-app-top); left: var(--email-app-left);">
+                    <img id="emailopen"
+                        src="static/images/email.svg"
+                        alt="Email App Icon"
+                        style="width: 64px; height: 64px; border-radius: 16px; cursor: pointer; background: #ffffffbb; padding: 6px;"
+                    />
+                    <p style="margin: 5px; color: #fff">Email</p>
                 </div>
             </div>
         </div>
@@ -148,6 +170,39 @@
             </main>
             <div class="resize-handle" title="Resize"></div>
         </div>
+
+        <div class="intro-div" id="about" style="display: none; overflow: hidden; width: var(--about-default-width, min(720px, 80vw)); height: var(--about-default-height, min(520px, calc(100vh - 160px))); ">
+            <div id="aboutheader">
+                <div class="win-controls">
+                    <div id="aboutminimize" class="win-btn minimize" title="Minimize"></div>
+                    <div id="aboutfullscreen" class="win-btn fullscreen" title="Fullscreen"></div>
+                    <div id="aboutclose" class="win-btn close" title="Close"></div>
+                </div>
+            </div>
+            <main id="aboutContent" tabindex="0" style="flex: 1; overflow: auto; background: #fff; border-radius: 12px; padding: 16px; min-width: 0;">
+                <h1 class="roboto" style="margin-top: 0;">About Me</h1>
+                <p class="suse-mono">
+                    Hi, I’m Dragon — a developer who enjoys building useful stuff and tinkering with systems.
+                    I’m passionate about open-source and shipping useful tools.
+                </p>
+                <p class="suse-mono">
+                    When I’m not coding, I’m probably reading, experimenting with new tech, or helping others with their projects.
+                </p>
+                <h2 class="roboto">Socials</h2>
+                <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+                    <a href="https://github.com/dragonsenseiguy" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none; color: inherit; border: 1px solid rgba(0,0,0,0.1); padding: 8px 10px; border-radius: 10px;">
+                        <img src="static/images/github.svg" alt="GitHub" style="width: 20px; height: 20px;" />
+                        <span class="suse-mono">GitHub</span>
+                    </a>
+                    <a href="https://discord.com/users/1374119550467051542" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none; color: inherit; border: 1px solid rgba(0,0,0,0.1); padding: 8px 10px; border-radius: 10px;">
+                        <img src="static/images/discord.svg" alt="Discord" style="width: 20px; height: 20px;" />
+                        <span class="suse-mono">Discord</span>
+                    </a>
+                </div>
+            </main>
+            <div class="resize-handle" title="Resize"></div>
+        </div>
+
         <script src="static/js/index.js"></script>
         <script>
             (function () {
@@ -157,6 +212,9 @@
                 var tutorial = document.querySelector("#tutorial");
                 var tutorialOpen = document.querySelector("#tutorialopen");
                 var tutorialClose = document.querySelector("#tutorialclose");
+                var about = document.querySelector("#about");
+                var aboutOpen = document.querySelector("#aboutopen");
+                var aboutClose = document.querySelector("#aboutclose");
 
                 // z-index management (shared counter on window to coordinate stacking)
                 window._zCounter = window._zCounter || 10;
@@ -241,6 +299,8 @@
                 var blogFull = document.getElementById("blogfullscreen");
                 var tutorialMin = document.getElementById("tutorialminimize");
                 var tutorialFull = document.getElementById("tutorialfullscreen");
+                var aboutMin = document.getElementById("aboutminimize");
+                var aboutFull = document.getElementById("aboutfullscreen");
 
                 if (welcomeMin) welcomeMin.addEventListener("click", function () {
                     var w = document.getElementById("welcome");
@@ -266,6 +326,10 @@
                 if (blogMin) blogMin.addEventListener("click", function () {
                     var b = document.getElementById("blog");
                     if (b) b.classList.add("window-minimized");
+                });
+                if (aboutMin) aboutMin.addEventListener("click", function () {
+                    var a = document.getElementById("about");
+                    if (a) a.classList.add("window-minimized");
                 });
                 if (tutorialMin) tutorialMin.addEventListener("click", function () {
                     var t = document.getElementById("tutorial");
@@ -299,6 +363,21 @@
                         }
                         t.classList.toggle("window-fullscreen");
                         bringToFront(t);
+                    }
+                });
+                if (aboutFull) aboutFull.addEventListener("click", function () {
+                    var a = document.getElementById("about");
+                    if (a) {
+                        if (!a.classList.contains("window-fullscreen")) {
+                            a.style.removeProperty("top");
+                            a.style.removeProperty("left");
+                            a.style.removeProperty("right");
+                            a.style.removeProperty("bottom");
+                            a.style.removeProperty("position");
+                            a.style.removeProperty("transform");
+                        }
+                        a.classList.toggle("window-fullscreen");
+                        bringToFront(a);
                     }
                 });
 
@@ -361,6 +440,13 @@
                         });
                 });
                 if (tutorialClose) tutorialClose.addEventListener("click", function () { closeWindow(tutorial); });
+                if (aboutOpen) aboutOpen.addEventListener("click", function () {
+                    openWindow(about);
+                    // Focus for keyboard scroll
+                    var ac = document.getElementById("aboutContent");
+                    if (ac && ac.focus) setTimeout(function () { ac.focus(); }, 0);
+                });
+                if (aboutClose) aboutClose.addEventListener("click", function () { closeWindow(about); });
 
                 // Blog markdown rendering using Marked + DOMPurify
                 // Configure marked for comprehensive GFM support and code highlighting
@@ -528,7 +614,146 @@
                 wireResizable(document.getElementById("welcome"));
                 wireResizable(document.getElementById("blog"));
                 wireResizable(document.getElementById("tutorial"));
+                wireResizable(document.getElementById("about"));
             })();
         </script>
+
+        <!-- Email App Window -->
+        <div class="intro-div" id="email" style="display: none; overflow: hidden;">
+            <div id="emailheader">
+                <div class="win-controls">
+                    <div id="emailminimize" class="win-btn minimize" title="Minimize"></div>
+                    <div id="emailfullscreen" class="win-btn fullscreen" title="Fullscreen"></div>
+                    <div id="emailclose" class="win-btn close" title="Close"></div>
+                </div>
+            </div>
+            <div id="emailApp" style="display: flex; gap: 12px; height: calc(100% - 0px); padding: 8px; box-sizing: border-box;">
+                <aside id="emailSidebar" style="width: 220px; background: #fff; border-radius: 12px; border: 1px solid rgba(0,0,0,0.1); padding: 8px; overflow: auto;">
+                    <button type="button" id="composeBtn" style="width: 100%; padding: 10px; border-radius: 10px; border: 1px solid rgba(0,0,0,0.15); background: #f8fafc; cursor: pointer;">Compose</button>
+                    <nav style="margin-top: 12px; display: flex; flex-direction: column; gap: 6px;">
+                        <button type="button" style="text-align: left; padding: 6px 8px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.08); background: #fff; cursor: pointer;">Inbox</button>
+                        <button type="button" style="text-align: left; padding: 6px 8px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.08); background: #fff; cursor: pointer;">Sent</button>
+                        <button type="button" style="text-align: left; padding: 6px 8px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.08); background: #fff; cursor: pointer;">Drafts</button>
+                    </nav>
+                </aside>
+                <section id="emailList" style="width: 260px; background: #fff; border-radius: 12px; border: 1px solid rgba(0,0,0,0.1); padding: 8px; overflow: auto;">
+                    <h3 class="roboto" style="margin: 4px 0 8px;">Messages</h3>
+                    <div style="display: flex; flex-direction: column; gap: 6px;">
+                        <div style="border: 1px solid rgba(0,0,0,0.08); border-radius: 8px; padding: 8px;">
+                            <div class="roboto" style="font-weight: 600;">Welcome</div>
+                            <div class="suse-mono" style="font-size: 12px; color: #555;">This is a placeholder message.</div>
+                        </div>
+                        <div style="border: 1px solid rgba(0,0,0,0.08); border-radius: 8px; padding: 8px;">
+                            <div class="roboto" style="font-weight: 600;">Contact</div>
+                            <div class="suse-mono" style="font-size: 12px; color: #555;">Use the form to reach out.</div>
+                        </div>
+                    </div>
+                </section>
+                <main id="emailContent" tabindex="0" style="flex: 1; overflow: auto; background: #fff; border-radius: 12px; padding: 16px; min-width: 0;">
+                    <h2 class="roboto" style="margin-top: 0;">Contact Me</h2>
+                    <p class="suse-mono" style="margin-top: -6px; color: #444;">Send me a message using the form below. I’ll get back to you soon.</p>
+                    <form id="emailForm" onsubmit="return false;" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start;">
+                        <label class="suse-mono" style="display: flex; flex-direction: column; gap: 6px;">
+                            <span>Name</span>
+                            <input type="text" id="contactName" required style="padding: 10px; border-radius: 10px; border: 1px solid rgba(0,0,0,0.15);" />
+                        </label>
+                        <label class="suse-mono" style="display: flex; flex-direction: column; gap: 6px;">
+                            <span>Your Email</span>
+                            <input type="email" id="contactEmail" required style="padding: 10px; border-radius: 10px; border: 1px solid rgba(0,0,0,0.15);" />
+                        </label>
+                        <label class="suse-mono" style="grid-column: 1 / -1; display: flex; flex-direction: column; gap: 6px;">
+                            <span>Subject</span>
+                            <input type="text" id="contactSubject" required style="padding: 10px; border-radius: 10px; border: 1px solid rgba(0,0,0,0.15);" />
+                        </label>
+                        <label class="suse-mono" style="grid-column: 1 / -1; display: flex; flex-direction: column; gap: 6px;">
+                            <span>Message</span>
+                            <textarea id="contactMessage" rows="8" required style="padding: 10px; border-radius: 10px; border: 1px solid rgba(0,0,0,0.15); resize: vertical;"></textarea>
+                        </label>
+                        <div style="grid-column: 1 / -1; display: flex; gap: 8px; align-items: center;">
+                            <button id="sendBtn" type="submit" class="roboto" style="padding: 10px 14px; border-radius: 10px; border: 1px solid rgba(0,0,0,0.15); background: #0e6ba8; color: #fff; cursor: pointer;">Send</button>
+                            <span id="emailStatus" class="suse-mono" style="font-size: 12px; color: #555;"></span>
+                        </div>
+                    </form>
+                </main>
+            </div>
+            <div class="resize-handle" title="Resize"></div>
+        </div>
+
+        <script>
+        (function () {
+            var email = document.getElementById("email");
+            var emailOpen = document.getElementById("emailopen");
+            var emailClose = document.getElementById("emailclose");
+            var emailMin = document.getElementById("emailminimize");
+            var emailFull = document.getElementById("emailfullscreen");
+            var emailForm = document.getElementById("emailForm");
+            var emailStatus = document.getElementById("emailStatus");
+            var contactName = document.getElementById("contactName");
+            var contactEmail = document.getElementById("contactEmail");
+            var contactSubject = document.getElementById("contactSubject");
+            var contactMessage = document.getElementById("contactMessage");
+
+            if (emailOpen) emailOpen.addEventListener("click", function () {
+                if (typeof openWindow === "function") { openWindow(email); }
+            });
+            if (emailClose) emailClose.addEventListener("click", function () {
+                if (typeof closeWindow === "function") { closeWindow(email); }
+            });
+            if (emailMin) emailMin.addEventListener("click", function () {
+                if (email) email.classList.add("window-minimized");
+            });
+            if (emailFull) emailFull.addEventListener("click", function () {
+                if (!email) return;
+                if (!email.classList.contains("window-fullscreen")) {
+                    email.style.removeProperty("top");
+                    email.style.removeProperty("left");
+                    email.style.removeProperty("right");
+                    email.style.removeProperty("bottom");
+                    email.style.removeProperty("position");
+                    email.style.removeProperty("transform");
+                }
+                email.classList.toggle("window-fullscreen");
+                if (typeof bringToFront === "function") { bringToFront(email); }
+            });
+
+            // Send handler (email address never shown; replace CONTACT_ENDPOINT when available)
+            if (emailForm) emailForm.addEventListener("submit", function () {
+                var payload = {
+                    name: (contactName && contactName.value || "").trim(),
+                    from: (contactEmail && contactEmail.value || "").trim(),
+                    subject: (contactSubject && contactSubject.value || "").trim(),
+                    message: (contactMessage && contactMessage.value || "").trim()
+                };
+                if (!payload.name || !payload.from || !payload.subject || !payload.message) {
+                    if (emailStatus) emailStatus.textContent = "Please fill out all fields.";
+                    return;
+                }
+                var endpoint = window.CONTACT_ENDPOINT || ""; // set this later
+                if (!endpoint) {
+                    if (emailStatus) emailStatus.textContent = "Sending is not configured yet.";
+                    return;
+                }
+                if (emailStatus) emailStatus.textContent = "Sending...";
+                fetch(endpoint, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload)
+                }).then(function (res) {
+                    if (!res.ok) throw new Error("Request failed");
+                    return res.json().catch(function(){ return {}; });
+                }).then(function () {
+                    if (emailStatus) emailStatus.textContent = "Message sent!";
+                    if (emailForm) emailForm.reset();
+                }).catch(function (err) {
+                    if (emailStatus) emailStatus.textContent = "Failed to send. Please try again later.";
+                    console.error(err);
+                });
+            });
+
+            // Make resizable if helper exists
+            if (typeof wireResizable === "function") { wireResizable(email); }
+        })();
+        </script>
+
     </body>
 </html>
