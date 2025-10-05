@@ -21,6 +21,13 @@
         <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.6/dist/purify.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/highlight.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/theme/material-darker.css">
+        <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/python/python.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/addon/edit/closebrackets.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"></script>
         <script>if (window.hljs) { window.hljs.configure({ ignoreUnescapedHTML: true }); }</script>
         <style>
           /* Markdown content styles */
@@ -50,6 +57,19 @@
           #blogArticle .task-list-item input[type="checkbox"] { margin-right: .5em; }
           /* Resize handle for windows */
           .resize-handle { position: absolute; width: 14px; height: 14px; right: 6px; bottom: 6px; cursor: se-resize; background: linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.06) 100%); border-radius: 3px; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08); }
+          /* Python IDE styles */
+          #pyideEditor { height: 300px; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden; }
+          #pyideConsole { height: 180px; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px; padding: 10px; background: #0b1021; color: #e6e6e6; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; overflow: auto; white-space: pre-wrap; }
+          #pyideToolbar { display: flex; gap: 8px; margin-bottom: 10px; }
+          .cm-s-material-darker.CodeMirror { height: 100%; }
+          /* Keep gutter fixed; indent only code text */
+          .cm-s-material-darker .CodeMirror-lines { padding: 0; }
+          .cm-s-material-darker .CodeMirror-code > pre { padding-left: 16px !important; }
+
+          /* Make cursor and selection clearly visible */
+          .cm-s-material-darker .CodeMirror-cursor { border-left: 2px solid #ffcc00; }
+          .cm-s-material-darker .CodeMirror-selected { background: rgba(255,255,255,0.20) !important; }
+          .cm-s-material-darker .CodeMirror-focused .CodeMirror-selected { background: rgba(80,180,255,0.25) !important; }
 
           /* Email default size via CSS variables */
           #email {
@@ -123,6 +143,14 @@
                     <p style="margin: 5px; color: #fff">Feedback</p>
                 </div>
             </div>
+        </div>
+        <div style="text-align: center; position: absolute; top: var(--pyide-app-top, 175px); left: var(--pyide-app-left, 180px);">
+            <img id="pyideopen"
+                src="static/images/python.svg"
+                alt="Python IDE Icon"
+                style="width: 64px; height: 64px; border-radius: 16px; cursor: pointer; background: #ffffffbb; padding: 3px;"
+            />
+            <p style="margin: 5px; color: #fff">Python IDE</p>
         </div>
         <div class="intro-div" id="welcome">
             <div id="welcomeheader">
@@ -853,5 +881,123 @@
     })();
     </script>
 
+    <!-- Python IDE App Window -->
+    <div class="intro-div" id="pyide" style="display: none; overflow: hidden;">
+        <div id="pyideheader">
+            <div class="win-controls">
+                <div id="pyideminimize" class="win-btn minimize" title="Minimize"></div>
+                <div id="pyidefullscreen" class="win-btn fullscreen" title="Fullscreen"></div>
+                <div id="pyideclose" class="win-btn close" title="Close"></div>
+            </div>
+        </div>
+        <main id="pyideContent" tabindex="0" class="window-main">
+            <h2 class="roboto" style="margin-top: 0;">Python IDE</h2>
+            <p class="suse-mono" style="margin-top: -6px; color: #444;">Write Python code below and run it in your browser. Output appears in the console.</p>
+            <div id="pyideToolbar">
+                <button id="pyiderun" class="roboto" style="padding: 8px 12px; border-radius: 10px; border: 1px solid rgba(0,0,0,0.15); background: #0e6ba8; color: #fff; cursor: pointer;">Run ▶</button>
+                <button id="pyideclear" class="roboto" style="padding: 8px 12px; border-radius: 10px; border: 1px solid rgba(0,0,0,0.15); background: #f8fafc; cursor: pointer;">Clear Console</button>
+            </div>
+            <div id="pyideEditor">
+                <textarea id="pyeditor">print("Hello from Skulpt!")</textarea>
+            </div>
+            <h3 class="roboto" style="margin: 12px 0 6px;">Console</h3>
+            <div id="pyideConsole"></div>
+        </main>
+        <div class="resize-handle" title="Resize"></div>
+    </div>
+    <script>
+    (function () {
+        var pyWin = document.getElementById("pyide");
+        var pyOpen = document.getElementById("pyideopen");
+        var pyClose = document.getElementById("pyideclose");
+        var pyMin = document.getElementById("pyideminimize");
+        var pyFull = document.getElementById("pyidefullscreen");
+        var runBtn = document.getElementById("pyiderun");
+        var clearBtn = document.getElementById("pyideclear");
+        var consoleEl = document.getElementById("pyideConsole");
+        var editorArea = document.getElementById("pyeditor");
+        var pyContent = document.getElementById("pyideContent");
+        var cm;
+
+        function initEditor() {
+            if (window.CodeMirror && editorArea && !cm) {
+                cm = CodeMirror.fromTextArea(editorArea, {
+                    lineNumbers: true,
+                    mode: "python",
+                    theme: "material-darker",
+                    autoCloseBrackets: true,
+                    indentUnit: 4,
+                    tabSize: 4,
+                    indentWithTabs: false
+                });
+                cm.setSize("100%", "100%");
+            }
+        }
+
+        function outf(text) {
+            consoleEl.textContent += text;
+        }
+        function builtinRead(x) {
+            if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined) {
+                throw "File not found: '" + x + "'";
+            }
+            return Sk.builtinFiles["files"][x];
+        }
+        function runCode() {
+            if (!cm) initEditor();
+            var prog = cm ? cm.getValue() : (editorArea ? editorArea.value : "");
+            consoleEl.textContent = "";
+            Sk.configure({ output: outf, read: builtinRead });
+            Sk.misceval.asyncToPromise(function () {
+                return Sk.importMainWithBody("<stdin>", false, prog, true);
+            }).catch(function (err) {
+                consoleEl.textContent += "\\n" + err.toString();
+            });
+        }
+
+        if (pyOpen) pyOpen.addEventListener("click", function () {
+            if (typeof openWindow === "function") { openWindow(pyWin); }
+            setTimeout(function () {
+                initEditor();
+                if (cm) { cm.refresh(); cm.focus(); }
+            }, 0);
+        });
+        if (pyClose) pyClose.addEventListener("click", function () {
+            if (typeof closeWindow === "function") { closeWindow(pyWin); }
+        });
+        if (pyMin) pyMin.addEventListener("click", function () {
+            if (pyWin) pyWin.classList.add("window-minimized");
+        });
+        if (pyFull) pyFull.addEventListener("click", function () {
+            if (!pyWin) return;
+            if (!pyWin.classList.contains("window-fullscreen")) {
+                pyWin.style.removeProperty("top");
+                pyWin.style.removeProperty("left");
+                pyWin.style.removeProperty("right");
+                pyWin.style.removeProperty("bottom");
+                pyWin.style.removeProperty("position");
+                pyWin.style.removeProperty("transform");
+            }
+            pyWin.classList.toggle("window-fullscreen");
+            if (typeof bringToFront === "function") { bringToFront(pyWin); }
+            setTimeout(function () {
+                initEditor();
+                if (cm) { cm.refresh(); cm.focus(); }
+            }, 0);
+        });
+        if (runBtn) runBtn.addEventListener("click", runCode);
+        if (clearBtn) clearBtn.addEventListener("click", function () { consoleEl.textContent = ""; });
+        /* Refresh editor on window resize to keep cursor/highlight correct */
+        window.addEventListener("resize", function () {
+            if (pyWin && !pyWin.classList.contains("window-minimized")) {
+                if (cm) { cm.refresh(); }
+            }
+        });
+
+        if (typeof wireResizable === "function") { wireResizable(pyWin); }
+        // Initialize editor once DOM is ready in case window is already open
+        document.addEventListener("DOMContentLoaded", initEditor);
+    })();
+    </script>
     </body>
 </html>
