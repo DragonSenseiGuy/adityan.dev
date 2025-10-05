@@ -80,6 +80,9 @@ app.get('/api/health', (_req, res) => {
 app.options('/api/send-email', (req, res) => {
   res.status(204).send();
 });
+app.options('/api/send-feedback', (req, res) => {
+  res.status(204).send();
+});
 
 // Email endpoint
 app.post('/api/send-email', async (req, res) => {
@@ -170,6 +173,85 @@ app.post('/api/send-email', async (req, res) => {
 
 // Optionally serve your static site for local preview.
 // Adjust this if your index.html lives elsewhere.
+// Feedback endpoint
+app.post('/api/send-feedback', async (req, res) => {
+  try {
+    const toAddress = process.env.EMAIL_ADDRESS;
+    const appPassword = process.env.GMAIL_APP_PASSWORD;
+
+    if (!toAddress || !appPassword) {
+      return res
+        .status(500)
+        .json({ ok: false, error: 'Server email configuration is missing' });
+    }
+
+    const body = req.body || {};
+    const name = String(body.name || '').trim();
+    const from = String(body.from || '').trim();
+    const subjectInput = String(body.subject || 'Website Feedback').trim();
+    const message = String(body.message || '').trim();
+
+    if (!name) {
+      return res.status(400).json({ ok: false, error: 'Name is required' });
+    }
+    if (!from || !EMAIL_RE.test(from)) {
+      return res
+        .status(400)
+        .json({ ok: false, error: 'A valid email is required' });
+    }
+    if (!message) {
+      return res
+        .status(400)
+        .json({ ok: false, error: 'Feedback message is required' });
+    }
+
+    const safeName = name.slice(0, 200);
+    const safeSubject = subjectInput.slice(0, 200);
+    const safeMessage = message.slice(0, 10000);
+
+    const transporter = nodemailer.createTransport({
+      host: 'smtp.gmail.com',
+      port: 465,
+      secure: true,
+      auth: {
+        user: toAddress,
+        pass: appPassword,
+      },
+    });
+
+    const textBody = [
+      `Feedback from: ${safeName} <${from}>`,
+      `Subject: ${safeSubject}`,
+      '',
+      safeMessage,
+    ].join('\n');
+
+    const htmlBody = `
+      <div style="font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #111;">
+        <p><strong>Feedback from:</strong> ${escapeHtml(safeName)} &lt;${escapeHtml(from)}&gt;</p>
+        <p><strong>Subject:</strong> ${escapeHtml(safeSubject)}</p>
+        <hr style="border:none;border-top:1px solid #e5e7eb;margin:12px 0;" />
+        <pre style="white-space:pre-wrap;word-break:break-word;margin:0;">${escapeHtml(safeMessage)}</pre>
+      </div>
+    `;
+
+    await transporter.sendMail({
+      from: `"${safeName}" <${toAddress}>`,
+      to: toAddress,
+      replyTo: from,
+      subject: `[Website Feedback] ${safeSubject}`,
+      text: textBody,
+      html: htmlBody,
+    });
+
+    return res.status(200).json({ ok: true });
+  } catch (err) {
+    // eslint-disable-next-line no-console
+    console.error('Feedback send failed:', err && err.message);
+    return res.status(500).json({ ok: false, error: 'Failed to send feedback' });
+  }
+});
+
 app.use(express.static(path.join(__dirname)));
 
 // Fallback to index.html (optional; good for SPAs)

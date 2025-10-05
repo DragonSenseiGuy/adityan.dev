@@ -22,7 +22,6 @@ The frontend Email app posts to `/api/send-email`. In production, this is handle
 - `Personal Website/api/send-email.js` — Vercel Serverless Function for sending emails
 - `Personal Website/package.json` — dependencies for the serverless function (e.g., nodemailer)
 - `Personal Website/server.js` — local Express server for email testing (not used on Vercel)
-- `Personal Website/.nojekyll` — irrelevant to Vercel but harmless
 
 ---
 

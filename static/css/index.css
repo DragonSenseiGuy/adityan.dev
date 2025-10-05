@@ -239,7 +239,7 @@ html, body {
     --email-app-left: 8px;
 
     /* Default Email window size (when not fullscreen) */
-    --email-default-width: min(1200px, 90vw);
+    --email-default-width: min(580px, 90vw);
     --email-default-height: min(580px, calc(100vh - 120px));
 
     /* Email-specific fullscreen offsets (override as needed) */

@@ -114,6 +114,14 @@
                     />
                     <p style="margin: 5px; color: #fff">Email</p>
                 </div>
+                <div style="text-align: center; position: absolute; top: var(--feedback-app-top, 480px); left: var(--feedback-app-left, 10px);">
+                    <img id="feedbackopen"
+                        src="static/images/feedback.svg"
+                        alt="Feedback Icon"
+                        style="width: 64px; height: 64px; border-radius: 16px; cursor: pointer; background: #ffffffbb; padding: 6px;"
+                    />
+                    <p style="margin: 5px; color: #fff">Feedback</p>
+                </div>
             </div>
         </div>
         <div class="intro-div" id="welcome">
@@ -628,27 +636,8 @@
                 </div>
             </div>
             <div id="emailApp" style="display: flex; gap: 12px; height: calc(100% - 0px); padding: 8px; box-sizing: border-box;">
-                <aside id="emailSidebar" style="width: 220px; background: #fff; border-radius: 12px; border: 1px solid rgba(0,0,0,0.1); padding: 8px; overflow: auto;">
-                    <button type="button" id="composeBtn" style="width: 100%; padding: 10px; border-radius: 10px; border: 1px solid rgba(0,0,0,0.15); background: #f8fafc; cursor: pointer;">Compose</button>
-                    <nav style="margin-top: 12px; display: flex; flex-direction: column; gap: 6px;">
-                        <button type="button" style="text-align: left; padding: 6px 8px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.08); background: #fff; cursor: pointer;">Inbox</button>
-                        <button type="button" style="text-align: left; padding: 6px 8px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.08); background: #fff; cursor: pointer;">Sent</button>
-                        <button type="button" style="text-align: left; padding: 6px 8px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.08); background: #fff; cursor: pointer;">Drafts</button>
-                    </nav>
-                </aside>
-                <section id="emailList" style="width: 260px; background: #fff; border-radius: 12px; border: 1px solid rgba(0,0,0,0.1); padding: 8px; overflow: auto;">
-                    <h3 class="roboto" style="margin: 4px 0 8px;">Messages</h3>
-                    <div style="display: flex; flex-direction: column; gap: 6px;">
-                        <div style="border: 1px solid rgba(0,0,0,0.08); border-radius: 8px; padding: 8px;">
-                            <div class="roboto" style="font-weight: 600;">Welcome</div>
-                            <div class="suse-mono" style="font-size: 12px; color: #555;">This is a placeholder message.</div>
-                        </div>
-                        <div style="border: 1px solid rgba(0,0,0,0.08); border-radius: 8px; padding: 8px;">
-                            <div class="roboto" style="font-weight: 600;">Contact</div>
-                            <div class="suse-mono" style="font-size: 12px; color: #555;">Use the form to reach out.</div>
-                        </div>
-                    </div>
-                </section>
+
+
                 <main id="emailContent" tabindex="0" style="flex: 1; overflow: auto; background: #fff; border-radius: 12px; padding: 16px; min-width: 0;">
                     <h2 class="roboto" style="margin-top: 0;">Contact Me</h2>
                     <p class="suse-mono" style="margin-top: -6px; color: #444;">Send me a message using the form below. I’ll get back to you soon.</p>
@@ -754,6 +743,115 @@
             if (typeof wireResizable === "function") { wireResizable(email); }
         })();
         </script>
+
+    <!-- Feedback App Window -->
+    <div class="intro-div" id="feedback" style="display: none; overflow: hidden;">
+        <div id="feedbackheader">
+            <div class="win-controls">
+                <div id="feedbackminimize" class="win-btn minimize" title="Minimize"></div>
+                <div id="feedbackfullscreen" class="win-btn fullscreen" title="Fullscreen"></div>
+                <div id="feedbackclose" class="win-btn close" title="Close"></div>
+            </div>
+        </div>
+        <main id="feedbackContent" tabindex="0" class="window-main">
+            <h2 class="roboto" style="margin-top: 0;">Send Feedback</h2>
+            <p class="suse-mono" style="margin-top: -6px; color: #444;">I value your feedback. Share your thoughts below. Please do not Spam.</p>
+            <form id="feedbackForm" onsubmit="return false;" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start;">
+                <label class="suse-mono" style="display: flex; flex-direction: column; gap: 6px;">
+                    <span>Name</span>
+                    <input type="text" id="fbName" required style="padding: 10px; border-radius: 10px; border: 1px solid rgba(0,0,0,0.15);" />
+                </label>
+                <label class="suse-mono" style="display: flex; flex-direction: column; gap: 6px;">
+                    <span>Your Email</span>
+                    <input type="email" id="fbEmail" required style="padding: 10px; border-radius: 10px; border: 1px solid rgba(0,0,0,0.15);" />
+                </label>
+                <label class="suse-mono" style="grid-column: 1 / -1; display: flex; flex-direction: column; gap: 6px;">
+                    <span>Feedback</span>
+                    <textarea id="fbMessage" rows="8" required style="padding: 10px; border-radius: 10px; border: 1px solid rgba(0,0,0,0.15); resize: vertical;"></textarea>
+                </label>
+                <div style="grid-column: 1 / -1; display: flex; gap: 8px; align-items: center;">
+                    <button id="fbSend" type="submit" class="roboto" style="padding: 10px 14px; border-radius: 10px; border: 1px solid rgba(0,0,0,0.15); background: #0e6ba8; color: #fff; cursor: pointer;">Send Feedback</button>
+                    <span id="fbStatus" class="suse-mono" style="font-size: 12px; color: #555;"></span>
+                </div>
+            </form>
+        </main>
+        <div class="resize-handle" title="Resize"></div>
+    </div>
+
+    <script>
+    (function () {
+        var fb = document.getElementById("feedback");
+        var fbOpen = document.getElementById("feedbackopen");
+        var fbClose = document.getElementById("feedbackclose");
+        var fbMin = document.getElementById("feedbackminimize");
+        var fbFull = document.getElementById("feedbackfullscreen");
+        var fbForm = document.getElementById("feedbackForm");
+        var fbStatus = document.getElementById("fbStatus");
+        var fbName = document.getElementById("fbName");
+        var fbEmail = document.getElementById("fbEmail");
+        var fbMessage = document.getElementById("fbMessage");
+        var fbContent = document.getElementById("feedbackContent");
+
+        if (fbOpen) fbOpen.addEventListener("click", function () {
+            if (typeof openWindow === "function") { openWindow(fb); }
+            if (fbContent && fbContent.focus) setTimeout(function () { fbContent.focus(); }, 0);
+        });
+        if (fbClose) fbClose.addEventListener("click", function () {
+            if (typeof closeWindow === "function") { closeWindow(fb); }
+        });
+        if (fbMin) fbMin.addEventListener("click", function () {
+            if (fb) fb.classList.add("window-minimized");
+        });
+        if (fbFull) fbFull.addEventListener("click", function () {
+            if (!fb) return;
+            if (!fb.classList.contains("window-fullscreen")) {
+                fb.style.removeProperty("top");
+                fb.style.removeProperty("left");
+                fb.style.removeProperty("right");
+                fb.style.removeProperty("bottom");
+                fb.style.removeProperty("position");
+                fb.style.removeProperty("transform");
+            }
+            fb.classList.toggle("window-fullscreen");
+            if (typeof bringToFront === "function") { bringToFront(fb); }
+        });
+
+        if (fbForm) fbForm.addEventListener("submit", function () {
+            var payload = {
+                name: (fbName && fbName.value || "").trim(),
+                from: (fbEmail && fbEmail.value || "").trim(),
+                subject: "Website Feedback",
+                message: (fbMessage && fbMessage.value || "").trim()
+            };
+            if (!payload.name || !payload.from || !payload.message) {
+                if (fbStatus) fbStatus.textContent = "Please complete all fields.";
+                return;
+            }
+            var endpoint = window.FEEDBACK_ENDPOINT || "/api/send-feedback";
+            if (!endpoint) {
+                if (fbStatus) fbStatus.textContent = "Feedback endpoint not configured.";
+                return;
+            }
+            if (fbStatus) fbStatus.textContent = "Sending...";
+            fetch(endpoint, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
+            }).then(function (res) {
+                if (!res.ok) throw new Error("Request failed");
+                return res.json().catch(function () { return {}; });
+            }).then(function () {
+                if (fbStatus) fbStatus.textContent = "Feedback sent!";
+                if (fbForm) fbForm.reset();
+            }).catch(function (err) {
+                if (fbStatus) fbStatus.textContent = "Failed to send feedback.";
+                console.error(err);
+            });
+        });
+
+        if (typeof wireResizable === "function") { wireResizable(fb); }
+    })();
+    </script>
 
     </body>
 </html>
