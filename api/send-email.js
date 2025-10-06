@@ -98,6 +98,14 @@ module.exports = async (req, res) => {
   // Simple rate limiting per IP
   const clientIp = getClientIp(req);
   if (!allowRequest(clientIp)) {
+    const entry = rateLimiter.get(clientIp) || {};
+    // Structured log for declined requests (rate limit)
+    console.warn('[send-email] Declined: rate_limit', {
+      ip: clientIp,
+      ua: req.headers['user-agent'] || '',
+      count: entry.count,
+      reset: entry.reset
+    });
     return json(
       res,
       429,
@@ -120,6 +128,11 @@ module.exports = async (req, res) => {
 
   // Honeypot field: if filled, likely a bot. Pretend success.
   if (website && String(website).trim() !== '') {
+    console.warn('[send-email] Declined: honeypot', {
+      ip: clientIp,
+      ua: req.headers['user-agent'] || '',
+      from
+    });
     return json(
       res,
       200,
@@ -132,6 +145,14 @@ module.exports = async (req, res) => {
   const nowTs = Date.now();
   const tsNum = Number(ts);
   if (!Number.isFinite(tsNum) || tsNum > nowTs + 300000 || (nowTs - tsNum) < 2000) {
+    const delta = Number.isFinite(tsNum) ? (nowTs - tsNum) : null;
+    console.warn('[send-email] Declined: fast_submit', {
+      ip: clientIp,
+      ua: req.headers['user-agent'] || '',
+      from,
+      ts: tsNum,
+      delta
+    });
     return json(
       res,
       200,

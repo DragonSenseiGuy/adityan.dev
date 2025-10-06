@@ -124,6 +124,14 @@ app.post('/api/send-email', async (req, res) => {
     // Simple rate limiting per IP
     const clientIp = getClientIp(req);
     if (!allowRequest(clientIp)) {
+      const entry = rateLimiter.get(clientIp) || {};
+      console.warn('[local] Declined: rate_limit', {
+        route: '/api/send-email',
+        ip: clientIp,
+        ua: req.headers['user-agent'] || '',
+        count: entry.count,
+        reset: entry.reset
+      });
       return res.status(429).json({ ok: false, error: 'Too many requests' });
     }
     const body = req.body || {};
@@ -136,10 +144,25 @@ app.post('/api/send-email', async (req, res) => {
 
     // Honeypot and dwell-time checks (pretend success to avoid helping bots)
     if (website) {
+      console.warn('[local] Declined: honeypot', {
+        route: '/api/send-email',
+        ip: clientIp,
+        ua: req.headers['user-agent'] || '',
+        from
+      });
       return res.status(200).json({ ok: true });
     }
     const nowTs = Date.now();
     if (!Number.isFinite(ts) || ts > nowTs + 300000 || (nowTs - ts) < 2000) {
+      const delta = Number.isFinite(ts) ? (nowTs - ts) : null;
+      console.warn('[local] Declined: fast_submit', {
+        route: '/api/send-email',
+        ip: clientIp,
+        ua: req.headers['user-agent'] || '',
+        from,
+        ts,
+        delta
+      });
       return res.status(200).json({ ok: true });
     }
 
@@ -229,6 +252,14 @@ app.post('/api/send-feedback', async (req, res) => {
     // Simple rate limiting per IP
     const clientIp = getClientIp(req);
     if (!allowRequest(clientIp)) {
+      const entry = rateLimiter.get(clientIp) || {};
+      console.warn('[local] Declined: rate_limit', {
+        route: '/api/send-feedback',
+        ip: clientIp,
+        ua: req.headers['user-agent'] || '',
+        count: entry.count,
+        reset: entry.reset
+      });
       return res.status(429).json({ ok: false, error: 'Too many requests' });
     }
     const body = req.body || {};
@@ -241,10 +272,25 @@ app.post('/api/send-feedback', async (req, res) => {
 
     // Honeypot and dwell-time checks (pretend success)
     if (website) {
+      console.warn('[local] Declined: honeypot', {
+        route: '/api/send-feedback',
+        ip: clientIp,
+        ua: req.headers['user-agent'] || '',
+        from
+      });
       return res.status(200).json({ ok: true });
     }
     const nowTs = Date.now();
     if (!Number.isFinite(ts) || ts > nowTs + 300000 || (nowTs - ts) < 2000) {
+      const delta = Number.isFinite(ts) ? (nowTs - ts) : null;
+      console.warn('[local] Declined: fast_submit', {
+        route: '/api/send-feedback',
+        ip: clientIp,
+        ua: req.headers['user-agent'] || '',
+        from,
+        ts,
+        delta
+      });
       return res.status(200).json({ ok: true });
     }
 
