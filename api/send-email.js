@@ -19,6 +19,31 @@
 
 const nodemailer = require('nodemailer');
 
+// Simple in-memory rate limiter per IP (best-effort in serverless)
+// Limits: 3 requests per 60 seconds per IP
+const RATE_LIMIT_WINDOW_MS = 60 * 1000;
+const RATE_LIMIT_MAX = 3;
+const rateLimiter = new Map();
+
+function getClientIp(req) {
+  const xf = req.headers['x-forwarded-for'];
+  if (typeof xf === 'string' && xf.length) return xf.split(',')[0].trim();
+  if (Array.isArray(xf) && xf.length) return String(xf[0]).split(',')[0].trim();
+  return (req.socket && req.socket.remoteAddress) || '';
+}
+
+function allowRequest(ip) {
+  const now = Date.now();
+  const entry = rateLimiter.get(ip) || { count: 0, reset: now + RATE_LIMIT_WINDOW_MS };
+  if (now > entry.reset) {
+    entry.count = 0;
+    entry.reset = now + RATE_LIMIT_WINDOW_MS;
+  }
+  entry.count += 1;
+  rateLimiter.set(ip, entry);
+  return entry.count <= RATE_LIMIT_MAX;
+}
+
 // Basic email check (not exhaustive, but avoids obviously bad input)
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/i;
 
@@ -70,6 +95,17 @@ module.exports = async (req, res) => {
     );
   }
 
+  // Simple rate limiting per IP
+  const clientIp = getClientIp(req);
+  if (!allowRequest(clientIp)) {
+    return json(
+      res,
+      429,
+      { ok: false, error: 'Too many requests' },
+      { 'Access-Control-Allow-Origin': ALLOWED_ORIGIN }
+    );
+  }
+
   // Parse body safely
   let body = req.body;
   if (typeof body === 'string') {
@@ -80,7 +116,29 @@ module.exports = async (req, res) => {
     }
   }
 
-  const { name, from, subject, message } = (body && typeof body === 'object') ? body : {};
+  const { name, from, subject, message, website, ts } = (body && typeof body === 'object') ? body : {};
+
+  // Honeypot field: if filled, likely a bot. Pretend success.
+  if (website && String(website).trim() !== '') {
+    return json(
+      res,
+      200,
+      { ok: true },
+      { 'Access-Control-Allow-Origin': ALLOWED_ORIGIN }
+    );
+  }
+
+  // Basic timestamp check: require minimal dwell time to deter bots. Pretend success if suspicious.
+  const nowTs = Date.now();
+  const tsNum = Number(ts);
+  if (!Number.isFinite(tsNum) || tsNum > nowTs + 300000 || (nowTs - tsNum) < 2000) {
+    return json(
+      res,
+      200,
+      { ok: true },
+      { 'Access-Control-Allow-Origin': ALLOWED_ORIGIN }
+    );
+  }
 
   // Validate fields
   if (!name || typeof name !== 'string' || name.trim().length < 1) {
@@ -120,8 +178,8 @@ module.exports = async (req, res) => {
   }
 
   // Optional: truncate very large input
-  const safeSubject = subject.trim().slice(0, 200);
-  const safeName = name.trim().slice(0, 200);
+  const safeSubject = subject.trim().slice(0, 200).replace(/[\r\n]+/g, ' ');
+  const safeName = name.trim().slice(0, 200).replace(/[\r\n]+/g, ' ');
   const safeMessage = message.trim().slice(0, 10000);
 
   // Create SMTP transporter for Gmail

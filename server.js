@@ -36,6 +36,31 @@ const cors = require('cors');
 const nodemailer = require('nodemailer');
 require('dotenv').config({ path: path.join(__dirname, '.env') });
 
+// Simple in-memory rate limiter per IP (best-effort)
+// Limits: 3 requests per 60 seconds per IP
+const RATE_LIMIT_WINDOW_MS = 60 * 1000;
+const RATE_LIMIT_MAX = 3;
+const rateLimiter = new Map();
+
+function getClientIp(req) {
+  const xf = req.headers['x-forwarded-for'];
+  if (typeof xf === 'string' && xf.length) return xf.split(',')[0].trim();
+  if (Array.isArray(xf) && xf.length) return String(xf[0]).split(',')[0].trim();
+  return (req.socket && req.socket.remoteAddress) || '';
+}
+
+function allowRequest(ip) {
+  const now = Date.now();
+  const entry = rateLimiter.get(ip) || { count: 0, reset: now + RATE_LIMIT_WINDOW_MS };
+  if (now > entry.reset) {
+    entry.count = 0;
+    entry.reset = now + RATE_LIMIT_WINDOW_MS;
+  }
+  entry.count += 1;
+  rateLimiter.set(ip, entry);
+  return entry.count <= RATE_LIMIT_MAX;
+}
+
 // Basic email format check (not exhaustive)
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/i;
 
@@ -96,11 +121,27 @@ app.post('/api/send-email', async (req, res) => {
         .json({ ok: false, error: 'Server email configuration is missing' });
     }
 
+    // Simple rate limiting per IP
+    const clientIp = getClientIp(req);
+    if (!allowRequest(clientIp)) {
+      return res.status(429).json({ ok: false, error: 'Too many requests' });
+    }
     const body = req.body || {};
     const name = String(body.name || '').trim();
     const from = String(body.from || '').trim();
     const subject = String(body.subject || '').trim();
     const message = String(body.message || '').trim();
+    const website = String(body.website || '').trim();
+    const ts = Number(body.ts);
+
+    // Honeypot and dwell-time checks (pretend success to avoid helping bots)
+    if (website) {
+      return res.status(200).json({ ok: true });
+    }
+    const nowTs = Date.now();
+    if (!Number.isFinite(ts) || ts > nowTs + 300000 || (nowTs - ts) < 2000) {
+      return res.status(200).json({ ok: true });
+    }
 
     if (!name) {
       return res.status(400).json({ ok: false, error: 'Name is required' });
@@ -118,8 +159,8 @@ app.post('/api/send-email', async (req, res) => {
     }
 
     // Sanitize/limit sizes server-side
-    const safeName = name.slice(0, 200);
-    const safeSubject = subject.slice(0, 200);
+    const safeName = name.slice(0, 200).replace(/[\r\n]+/g, ' ');
+    const safeSubject = subject.slice(0, 200).replace(/[\r\n]+/g, ' ');
     const safeMessage = message.slice(0, 10000);
 
     // Create SMTP transporter for Gmail
@@ -185,11 +226,27 @@ app.post('/api/send-feedback', async (req, res) => {
         .json({ ok: false, error: 'Server email configuration is missing' });
     }
 
+    // Simple rate limiting per IP
+    const clientIp = getClientIp(req);
+    if (!allowRequest(clientIp)) {
+      return res.status(429).json({ ok: false, error: 'Too many requests' });
+    }
     const body = req.body || {};
     const name = String(body.name || '').trim();
     const from = String(body.from || '').trim();
     const subjectInput = String(body.subject || 'Website Feedback').trim();
     const message = String(body.message || '').trim();
+    const website = String(body.website || '').trim();
+    const ts = Number(body.ts);
+
+    // Honeypot and dwell-time checks (pretend success)
+    if (website) {
+      return res.status(200).json({ ok: true });
+    }
+    const nowTs = Date.now();
+    if (!Number.isFinite(ts) || ts > nowTs + 300000 || (nowTs - ts) < 2000) {
+      return res.status(200).json({ ok: true });
+    }
 
     if (!name) {
       return res.status(400).json({ ok: false, error: 'Name is required' });
@@ -205,8 +262,8 @@ app.post('/api/send-feedback', async (req, res) => {
         .json({ ok: false, error: 'Feedback message is required' });
     }
 
-    const safeName = name.slice(0, 200);
-    const safeSubject = subjectInput.slice(0, 200);
+    const safeName = name.slice(0, 200).replace(/[\r\n]+/g, ' ');
+    const safeSubject = subjectInput.slice(0, 200).replace(/[\r\n]+/g, ' ');
     const safeMessage = message.slice(0, 10000);
 
     const transporter = nodemailer.createTransport({

@@ -51,7 +51,7 @@ The frontend Email app posts to `/api/send-email`. In production, this is handle
 - Add the following for each environment (Preview/Production):
   - `EMAIL_ADDRESS` — your Gmail address that will receive messages
   - `GMAIL_APP_PASSWORD` — the Gmail App Password (NOT your normal password)
-  - (Optional) `ALLOWED_ORIGIN` — set if the site will call the API from a different origin. If the frontend and API are on the same Vercel domain, this is not necessary.
+  - `ALLOWED_ORIGIN` — set to your site origin (avoid `*`) to reduce abuse and prevent cross-origin errors.
 
 4) Deploy
 - Click “Deploy.” Vercel will upload your static site and configure the serverless function at `/api/send-email`.
@@ -130,7 +130,7 @@ curl -X POST https://<your-vercel-deployment>/api/send-email \
 
 - Do not expose your email in client-side code.
 - Use Gmail App Passwords and 2FA; never use a regular Gmail password for SMTP.
-- Consider rate limiting, spam traps/honeypots, or captcha for production contact forms.
+- Anti-spam: enable honeypot fields and basic rate limiting on the API, and consider CAPTCHA for high-abuse environments. Set `ALLOWED_ORIGIN` to your site origin (avoid `*`).
 
 ---
 
@@ -141,7 +141,7 @@ curl -X POST https://<your-vercel-deployment>/api/send-email \
 - [ ] Framework Preset `Other`
 - [ ] Build Command: (empty), Output Directory: `.`
 - [ ] `EMAIL_ADDRESS` and `GMAIL_APP_PASSWORD` set in Vercel env
-- [ ] (Optional) `ALLOWED_ORIGIN` set if needed
+- [ ] `ALLOWED_ORIGIN` set to your site origin (avoid `*`)
 - [ ] Deployed successfully
 - [ ] `/api/send-email` returns 200 OK via UI or curl test
 
