@@ -48,25 +48,42 @@ function allowRequest(ip) {
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/i;
 
 function json(res, status, payload, extraHeaders = {}) {
+  const allowOrigin =
+    (typeof res.getHeader === 'function' && res.getHeader('Access-Control-Allow-Origin')) ||
+    (extraHeaders && extraHeaders['Access-Control-Allow-Origin']);
+
   const headers = {
     'Content-Type': 'application/json; charset=utf-8',
     'Cache-Control': 'no-store',
     ...extraHeaders,
+    ...(allowOrigin ? { 'Access-Control-Allow-Origin': allowOrigin } : {}),
   };
+  if (headers['Access-Control-Allow-Origin']) {
+    headers['Vary'] = 'Origin';
+  }
   res.writeHead(status, headers);
   res.end(JSON.stringify(payload));
 }
 
 module.exports = async (req, res) => {
+  try { console.log('[send-feedback] Entry', { method: req.method, origin: req.headers['origin'] || '', ip: getClientIp(req) }); } catch (_) {}
   // CORS
   const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || '*';
+  const ORIGIN = req.headers['origin'] || ALLOWED_ORIGIN;
+  const SPAM_PROTECTION = String(process.env.SPAM_PROTECTION || 'on').toLowerCase() !== 'off';
+  const ENABLE_SPAM = SPAM_PROTECTION && process.env.NODE_ENV === 'production';
+  try {
+    res.setHeader('Access-Control-Allow-Origin', ORIGIN);
+    res.setHeader('Vary', 'Origin');
+  } catch (_) {}
   if (req.method === 'OPTIONS') {
     return json(
       res,
       204,
       {},
       {
-        'Access-Control-Allow-Origin': ALLOWED_ORIGIN,
+        'Access-Control-Allow-Origin': ORIGIN,
+        'Vary': 'Origin',
         'Access-Control-Allow-Methods': 'POST, OPTIONS',
         'Access-Control-Allow-Headers': 'Content-Type',
         'Access-Control-Max-Age': '86400',
@@ -79,7 +96,7 @@ module.exports = async (req, res) => {
       res,
       405,
       { ok: false, error: 'Method Not Allowed' },
-      { 'Access-Control-Allow-Origin': ALLOWED_ORIGIN }
+      { 'Access-Control-Allow-Origin': ORIGIN }
     );
   }
 
@@ -91,13 +108,13 @@ module.exports = async (req, res) => {
       res,
       500,
       { ok: false, error: 'Server email configuration is missing' },
-      { 'Access-Control-Allow-Origin': ALLOWED_ORIGIN }
+      { 'Access-Control-Allow-Origin': ORIGIN }
     );
   }
 
   // Simple rate limiting per IP
     const clientIp = getClientIp(req);
-    if (!allowRequest(clientIp)) {
+    if (ENABLE_SPAM && !allowRequest(clientIp)) {
       const entry = rateLimiter.get(clientIp) || {};
       console.warn('[send-feedback] Declined: rate_limit', {
         ip: clientIp,
@@ -109,7 +126,7 @@ module.exports = async (req, res) => {
         res,
         429,
         { ok: false, error: 'Too many requests' },
-        { 'Access-Control-Allow-Origin': ALLOWED_ORIGIN }
+        { 'Access-Control-Allow-Origin': ORIGIN }
       );
     }
 
@@ -128,7 +145,7 @@ module.exports = async (req, res) => {
   const subject = (body && typeof body === 'object' && body.subject) ? String(body.subject) : 'Website Feedback';
 
   // Honeypot: if hidden field is filled, likely a bot. Pretend success.
-  if (website && String(website).trim() !== '') {
+  if (ENABLE_SPAM && website && String(website).trim() !== '') {
     console.warn('[send-feedback] Declined: honeypot', {
       ip: clientIp,
       ua: req.headers['user-agent'] || '',
@@ -138,14 +155,14 @@ module.exports = async (req, res) => {
       res,
       200,
       { ok: true },
-      { 'Access-Control-Allow-Origin': ALLOWED_ORIGIN }
+      { 'Access-Control-Allow-Origin': ORIGIN }
     );
   }
 
   // Timestamp check: require minimal dwell time; also guard against future timestamps.
   const nowTs = Date.now();
   const tsNum = Number(ts);
-  if (!Number.isFinite(tsNum) || tsNum > nowTs + 300000 || (nowTs - tsNum) < 2000) {
+  if (ENABLE_SPAM && Number.isFinite(tsNum) && (tsNum > nowTs + 300000 || (nowTs - tsNum) < 2000)) {
     const delta = Number.isFinite(tsNum) ? (nowTs - tsNum) : null;
     console.warn('[send-feedback] Declined: fast_submit', {
       ip: clientIp,
@@ -158,7 +175,7 @@ module.exports = async (req, res) => {
       res,
       200,
       { ok: true },
-      { 'Access-Control-Allow-Origin': ALLOWED_ORIGIN }
+      { 'Access-Control-Allow-Origin': ORIGIN }
     );
   }
 
@@ -168,7 +185,7 @@ module.exports = async (req, res) => {
       res,
       400,
       { ok: false, error: 'Name is required' },
-      { 'Access-Control-Allow-Origin': ALLOWED_ORIGIN }
+      { 'Access-Control-Allow-Origin': ORIGIN }
     );
   }
 
@@ -177,7 +194,7 @@ module.exports = async (req, res) => {
       res,
       400,
       { ok: false, error: 'A valid email is required' },
-      { 'Access-Control-Allow-Origin': ALLOWED_ORIGIN }
+      { 'Access-Control-Allow-Origin': ORIGIN }
     );
   }
 
@@ -186,7 +203,7 @@ module.exports = async (req, res) => {
       res,
       400,
       { ok: false, error: 'Feedback message is required' },
-      { 'Access-Control-Allow-Origin': ALLOWED_ORIGIN }
+      { 'Access-Control-Allow-Origin': ORIGIN }
     );
   }
 
@@ -204,6 +221,12 @@ module.exports = async (req, res) => {
       user: toAddress,
       pass: appPassword,
     },
+  });
+  console.log('[send-feedback] Success', {
+    ip: clientIp,
+    ua: req.headers['user-agent'] || '',
+    from,
+    subject: `[Website Feedback] ${safeSubject}`
   });
 
   const textBody = [
@@ -236,14 +259,14 @@ module.exports = async (req, res) => {
       res,
       200,
       { ok: true },
-      { 'Access-Control-Allow-Origin': ALLOWED_ORIGIN }
+      { 'Access-Control-Allow-Origin': ORIGIN }
     );
   } catch (err) {
     return json(
       res,
       500,
       { ok: false, error: 'Failed to send feedback' },
-      { 'Access-Control-Allow-Origin': ALLOWED_ORIGIN }
+      { 'Access-Control-Allow-Origin': ORIGIN }
     );
   }
 };

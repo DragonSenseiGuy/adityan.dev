@@ -63,6 +63,8 @@ function allowRequest(ip) {
 
 // Basic email format check (not exhaustive)
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/i;
+const SPAM_PROTECTION = String(process.env.SPAM_PROTECTION || 'on').toLowerCase() !== 'off';
+const ENABLE_SPAM = SPAM_PROTECTION && process.env.NODE_ENV === 'production';
 
 const app = express();
 const PORT = Number(process.env.PORT || 3000);
@@ -123,7 +125,8 @@ app.post('/api/send-email', async (req, res) => {
 
     // Simple rate limiting per IP
     const clientIp = getClientIp(req);
-    if (!allowRequest(clientIp)) {
+    console.log('[local] Entry', { route: '/api/send-email', ip: clientIp, ua: req.headers['user-agent'] || '' });
+    if (ENABLE_SPAM && !allowRequest(clientIp)) {
       const entry = rateLimiter.get(clientIp) || {};
       console.warn('[local] Declined: rate_limit', {
         route: '/api/send-email',
@@ -143,7 +146,7 @@ app.post('/api/send-email', async (req, res) => {
     const ts = Number(body.ts);
 
     // Honeypot and dwell-time checks (pretend success to avoid helping bots)
-    if (website) {
+    if (ENABLE_SPAM && website) {
       console.warn('[local] Declined: honeypot', {
         route: '/api/send-email',
         ip: clientIp,
@@ -153,8 +156,8 @@ app.post('/api/send-email', async (req, res) => {
       return res.status(200).json({ ok: true });
     }
     const nowTs = Date.now();
-    if (!Number.isFinite(ts) || ts > nowTs + 300000 || (nowTs - ts) < 2000) {
-      const delta = Number.isFinite(ts) ? (nowTs - ts) : null;
+    if (ENABLE_SPAM && Number.isFinite(ts) && (ts > nowTs + 300000 || (nowTs - ts) < 2000)) {
+      const delta = nowTs - ts;
       console.warn('[local] Declined: fast_submit', {
         route: '/api/send-email',
         ip: clientIp,
@@ -226,7 +229,13 @@ app.post('/api/send-email', async (req, res) => {
       text: textBody,
       html: htmlBody,
     });
-
+    console.log('[local] Success', {
+      route: '/api/send-email',
+      ip: clientIp,
+      ua: req.headers['user-agent'] || '',
+      from,
+      subject: `[Website Contact] ${safeSubject}`
+    });
     return res.status(200).json({ ok: true });
   } catch (err) {
     // eslint-disable-next-line no-console
@@ -251,7 +260,8 @@ app.post('/api/send-feedback', async (req, res) => {
 
     // Simple rate limiting per IP
     const clientIp = getClientIp(req);
-    if (!allowRequest(clientIp)) {
+    console.log('[local] Entry', { route: '/api/send-feedback', ip: clientIp, ua: req.headers['user-agent'] || '' });
+    if (ENABLE_SPAM && !allowRequest(clientIp)) {
       const entry = rateLimiter.get(clientIp) || {};
       console.warn('[local] Declined: rate_limit', {
         route: '/api/send-feedback',
@@ -271,7 +281,7 @@ app.post('/api/send-feedback', async (req, res) => {
     const ts = Number(body.ts);
 
     // Honeypot and dwell-time checks (pretend success)
-    if (website) {
+    if (ENABLE_SPAM && website) {
       console.warn('[local] Declined: honeypot', {
         route: '/api/send-feedback',
         ip: clientIp,
@@ -281,8 +291,8 @@ app.post('/api/send-feedback', async (req, res) => {
       return res.status(200).json({ ok: true });
     }
     const nowTs = Date.now();
-    if (!Number.isFinite(ts) || ts > nowTs + 300000 || (nowTs - ts) < 2000) {
-      const delta = Number.isFinite(ts) ? (nowTs - ts) : null;
+    if (ENABLE_SPAM && Number.isFinite(ts) && (ts > nowTs + 300000 || (nowTs - ts) < 2000)) {
+      const delta = nowTs - ts;
       console.warn('[local] Declined: fast_submit', {
         route: '/api/send-feedback',
         ip: clientIp,
@@ -346,7 +356,13 @@ app.post('/api/send-feedback', async (req, res) => {
       text: textBody,
       html: htmlBody,
     });
-
+    console.log('[local] Success', {
+      route: '/api/send-feedback',
+      ip: clientIp,
+      ua: req.headers['user-agent'] || '',
+      from,
+      subject: `[Website Feedback] ${safeSubject}`
+    });
     return res.status(200).json({ ok: true });
   } catch (err) {
     // eslint-disable-next-line no-console
