@@ -122,7 +122,7 @@ Key points:
 - Set environment variables in Vercel:
   - `EMAIL_ADDRESS`
   - `GMAIL_APP_PASSWORD`
-  - (optional) `ALLOWED_ORIGIN` if calling API cross-origin
+  - `ALLOWED_ORIGIN` — set to your site origin in production (avoid `*`) to reduce abuse
 - The frontend posts to `/api/send-email` and `/api/send-feedback` (no changes required)
 
 ---
@@ -222,8 +222,8 @@ Notes:
   - Enable 2FA on your Google account, generate an App Password, and store it in env vars
   - Never hardcode secrets in client-side code
 - The Blog renderer sanitizes HTML via DOMPurify
-- Consider adding honeypot fields or captcha if spam becomes an issue
-- CORS: set `ALLOWED_ORIGIN` if you serve the frontend and API from different origins
+- Anti-spam: Honeypot fields and timestamp checks are implemented on the client; server-side rate limiting and honeypot handling are enabled. Consider adding CAPTCHA for high-abuse environments.
+- CORS: In production, set `ALLOWED_ORIGIN` to your site origin (avoid `*`), especially for the email/feedback endpoints
 
 ---
 

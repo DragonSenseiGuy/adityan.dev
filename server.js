@@ -36,8 +36,35 @@ const cors = require('cors');
 const nodemailer = require('nodemailer');
 require('dotenv').config({ path: path.join(__dirname, '.env') });
 
+// Simple in-memory rate limiter per IP (best-effort)
+// Limits: 3 requests per 60 seconds per IP
+const RATE_LIMIT_WINDOW_MS = 60 * 1000;
+const RATE_LIMIT_MAX = 3;
+const rateLimiter = new Map();
+
+function getClientIp(req) {
+  const xf = req.headers['x-forwarded-for'];
+  if (typeof xf === 'string' && xf.length) return xf.split(',')[0].trim();
+  if (Array.isArray(xf) && xf.length) return String(xf[0]).split(',')[0].trim();
+  return (req.socket && req.socket.remoteAddress) || '';
+}
+
+function allowRequest(ip) {
+  const now = Date.now();
+  const entry = rateLimiter.get(ip) || { count: 0, reset: now + RATE_LIMIT_WINDOW_MS };
+  if (now > entry.reset) {
+    entry.count = 0;
+    entry.reset = now + RATE_LIMIT_WINDOW_MS;
+  }
+  entry.count += 1;
+  rateLimiter.set(ip, entry);
+  return entry.count <= RATE_LIMIT_MAX;
+}
+
 // Basic email format check (not exhaustive)
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/i;
+const SPAM_PROTECTION = String(process.env.SPAM_PROTECTION || 'on').toLowerCase() !== 'off';
+const ENABLE_SPAM = SPAM_PROTECTION && process.env.NODE_ENV === 'production';
 
 const app = express();
 const PORT = Number(process.env.PORT || 3000);
@@ -96,11 +123,51 @@ app.post('/api/send-email', async (req, res) => {
         .json({ ok: false, error: 'Server email configuration is missing' });
     }
 
+    // Simple rate limiting per IP
+    const clientIp = getClientIp(req);
+    console.log('[local] Entry', { route: '/api/send-email', ip: clientIp, ua: req.headers['user-agent'] || '' });
+    if (ENABLE_SPAM && !allowRequest(clientIp)) {
+      const entry = rateLimiter.get(clientIp) || {};
+      console.warn('[local] Declined: rate_limit', {
+        route: '/api/send-email',
+        ip: clientIp,
+        ua: req.headers['user-agent'] || '',
+        count: entry.count,
+        reset: entry.reset
+      });
+      return res.status(429).json({ ok: false, error: 'Too many requests' });
+    }
     const body = req.body || {};
     const name = String(body.name || '').trim();
     const from = String(body.from || '').trim();
     const subject = String(body.subject || '').trim();
     const message = String(body.message || '').trim();
+    const website = String(body.website || '').trim();
+    const ts = Number(body.ts);
+
+    // Honeypot and dwell-time checks (pretend success to avoid helping bots)
+    if (ENABLE_SPAM && website) {
+      console.warn('[local] Declined: honeypot', {
+        route: '/api/send-email',
+        ip: clientIp,
+        ua: req.headers['user-agent'] || '',
+        from
+      });
+      return res.status(200).json({ ok: true });
+    }
+    const nowTs = Date.now();
+    if (ENABLE_SPAM && Number.isFinite(ts) && (ts > nowTs + 300000 || (nowTs - ts) < 2000)) {
+      const delta = nowTs - ts;
+      console.warn('[local] Declined: fast_submit', {
+        route: '/api/send-email',
+        ip: clientIp,
+        ua: req.headers['user-agent'] || '',
+        from,
+        ts,
+        delta
+      });
+      return res.status(200).json({ ok: true });
+    }
 
     if (!name) {
       return res.status(400).json({ ok: false, error: 'Name is required' });
@@ -118,8 +185,8 @@ app.post('/api/send-email', async (req, res) => {
     }
 
     // Sanitize/limit sizes server-side
-    const safeName = name.slice(0, 200);
-    const safeSubject = subject.slice(0, 200);
+    const safeName = name.slice(0, 200).replace(/[\r\n]+/g, ' ');
+    const safeSubject = subject.slice(0, 200).replace(/[\r\n]+/g, ' ');
     const safeMessage = message.slice(0, 10000);
 
     // Create SMTP transporter for Gmail
@@ -162,7 +229,13 @@ app.post('/api/send-email', async (req, res) => {
       text: textBody,
       html: htmlBody,
     });
-
+    console.log('[local] Success', {
+      route: '/api/send-email',
+      ip: clientIp,
+      ua: req.headers['user-agent'] || '',
+      from,
+      subject: `[Website Contact] ${safeSubject}`
+    });
     return res.status(200).json({ ok: true });
   } catch (err) {
     // eslint-disable-next-line no-console
@@ -185,11 +258,51 @@ app.post('/api/send-feedback', async (req, res) => {
         .json({ ok: false, error: 'Server email configuration is missing' });
     }
 
+    // Simple rate limiting per IP
+    const clientIp = getClientIp(req);
+    console.log('[local] Entry', { route: '/api/send-feedback', ip: clientIp, ua: req.headers['user-agent'] || '' });
+    if (ENABLE_SPAM && !allowRequest(clientIp)) {
+      const entry = rateLimiter.get(clientIp) || {};
+      console.warn('[local] Declined: rate_limit', {
+        route: '/api/send-feedback',
+        ip: clientIp,
+        ua: req.headers['user-agent'] || '',
+        count: entry.count,
+        reset: entry.reset
+      });
+      return res.status(429).json({ ok: false, error: 'Too many requests' });
+    }
     const body = req.body || {};
     const name = String(body.name || '').trim();
     const from = String(body.from || '').trim();
     const subjectInput = String(body.subject || 'Website Feedback').trim();
     const message = String(body.message || '').trim();
+    const website = String(body.website || '').trim();
+    const ts = Number(body.ts);
+
+    // Honeypot and dwell-time checks (pretend success)
+    if (ENABLE_SPAM && website) {
+      console.warn('[local] Declined: honeypot', {
+        route: '/api/send-feedback',
+        ip: clientIp,
+        ua: req.headers['user-agent'] || '',
+        from
+      });
+      return res.status(200).json({ ok: true });
+    }
+    const nowTs = Date.now();
+    if (ENABLE_SPAM && Number.isFinite(ts) && (ts > nowTs + 300000 || (nowTs - ts) < 2000)) {
+      const delta = nowTs - ts;
+      console.warn('[local] Declined: fast_submit', {
+        route: '/api/send-feedback',
+        ip: clientIp,
+        ua: req.headers['user-agent'] || '',
+        from,
+        ts,
+        delta
+      });
+      return res.status(200).json({ ok: true });
+    }
 
     if (!name) {
       return res.status(400).json({ ok: false, error: 'Name is required' });
@@ -205,8 +318,8 @@ app.post('/api/send-feedback', async (req, res) => {
         .json({ ok: false, error: 'Feedback message is required' });
     }
 
-    const safeName = name.slice(0, 200);
-    const safeSubject = subjectInput.slice(0, 200);
+    const safeName = name.slice(0, 200).replace(/[\r\n]+/g, ' ');
+    const safeSubject = subjectInput.slice(0, 200).replace(/[\r\n]+/g, ' ');
     const safeMessage = message.slice(0, 10000);
 
     const transporter = nodemailer.createTransport({
@@ -243,7 +356,13 @@ app.post('/api/send-feedback', async (req, res) => {
       text: textBody,
       html: htmlBody,
     });
-
+    console.log('[local] Success', {
+      route: '/api/send-feedback',
+      ip: clientIp,
+      ua: req.headers['user-agent'] || '',
+      from,
+      subject: `[Website Feedback] ${safeSubject}`
+    });
     return res.status(200).json({ ok: true });
   } catch (err) {
     // eslint-disable-next-line no-console

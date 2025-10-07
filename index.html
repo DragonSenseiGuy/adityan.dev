@@ -673,6 +673,8 @@
                     <h2 class="roboto" style="margin-top: 0;">Contact Me</h2>
                     <p class="suse-mono" style="margin-top: -6px; color: #444;">Send me a message using the form below. I’ll get back to you soon.</p>
                     <form id="emailForm" onsubmit="return false;" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start;">
+                        <input type="text" id="emailWebsite" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position: absolute; left: -9999px; opacity: 0; height: 0; width: 0;" />
+                        <input type="hidden" id="emailTs" name="ts" />
                         <label class="suse-mono" style="display: flex; flex-direction: column; gap: 6px;">
                             <span>Name</span>
                             <input type="text" id="contactName" required style="padding: 10px; border-radius: 10px; border: 1px solid rgba(0,0,0,0.15);" />
@@ -753,6 +755,14 @@
                     if (emailStatus) emailStatus.textContent = "Sending is not configured yet.";
                     return;
                 }
+                // Augment payload with honeypot and timestamp
+                (function () {
+                    var hp = document.getElementById("emailWebsite");
+                    var ts = document.getElementById("emailTs");
+                    if (ts && !ts.value) { ts.value = String(Date.now()); }
+                    payload.website = ((hp && hp.value) || "").trim();
+                    payload.ts = ((ts && ts.value) || "").trim();
+                })();
                 if (emailStatus) emailStatus.textContent = "Sending...";
                 fetch(endpoint, {
                     method: "POST",
@@ -788,6 +798,8 @@
             <h2 class="roboto" style="margin-top: 0;">Send Feedback</h2>
             <p class="suse-mono" style="margin-top: -6px; color: #444;">I value your feedback. Share your thoughts below. Please do not Spam.</p>
             <form id="feedbackForm" onsubmit="return false;" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start;">
+                <input type="text" id="fbWebsite" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position: absolute; left: -9999px; opacity: 0; height: 0; width: 0;" />
+                <input type="hidden" id="fbTs" name="ts" />
                 <label class="suse-mono" style="display: flex; flex-direction: column; gap: 6px;">
                     <span>Name</span>
                     <input type="text" id="fbName" required style="padding: 10px; border-radius: 10px; border: 1px solid rgba(0,0,0,0.15);" />
@@ -863,6 +875,14 @@
                 if (fbStatus) fbStatus.textContent = "Feedback endpoint not configured.";
                 return;
             }
+            // Augment payload with honeypot and timestamp
+            (function () {
+                var hp = document.getElementById("fbWebsite");
+                var ts = document.getElementById("fbTs");
+                if (ts && !ts.value) { ts.value = String(Date.now()); }
+                payload.website = ((hp && hp.value) || "").trim();
+                payload.ts = ((ts && ts.value) || "").trim();
+            })();
             if (fbStatus) fbStatus.textContent = "Sending...";
             fetch(endpoint, {
                 method: "POST",
