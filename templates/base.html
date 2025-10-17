@@ -1,0 +1,87 @@
+<!DOCTYPE html>{% load static %}
+<html lang="en-gb">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{% block rel_canonical %}<link rel="canonical" href="https://simonwillison.net{{ request.path }}">{% endblock %}
+<title>{% block title %}{% endblock %}</title>
+<script defer data-domain="simonwillison.net" src="https://plausible.io/js/plausible.js"></script>
+<link rel="alternate" type="application/atom+xml" title="Atom" href="/atom/everything/">
+<link rel="stylesheet" type="text/css" href="{% static "css/all.css" %}">
+<link rel="webmention" href="https://webmention.io/simonwillison.net/webmention">
+<link rel="pingback" href="https://webmention.io/simonwillison.net/xmlrpc">
+<meta name="author" content="Simon Willison">
+<meta property="og:site_name" content="Simon Willison’s Weblog">
+{% block extrahead %}{% endblock %}
+
+</head>
+<body{% block body_class %}{% endblock %}>
+{% block body %}{% endblock %}
+
+{% block footer %}
+<div id="ft">
+    <ul>
+      <li><a href="/about/#about-site">Colophon</a></li>
+      <li>&copy;</li>{% for year in years_with_content %}
+      <li><a href="/{{ year|date:"Y" }}/">{{ year|date:"Y" }}</a></li>{% endfor %}
+    </ul>
+</div>
+{% endblock %}
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('h2[id],h3[id],h4[id],h5[id],h6[id]').forEach(el => {
+    const id = el.getAttribute('id');
+    const permalinkContext = el.closest('[data-permalink-context]');
+    if (permalinkContext) {
+      const url = permalinkContext.getAttribute('data-permalink-context');
+      const hashLink = document.createElement('a');
+      hashLink.style.borderBottom = 'none';
+      hashLink.style.color = '#666';
+      hashLink.style.fontSize = '1em';
+      hashLink.style.opacity = 0.8;
+      hashLink.setAttribute('href', url + '#' + id);
+      hashLink.innerText = '#';
+      el.appendChild(document.createTextNode('\u00A0'));
+      el.appendChild(hashLink);
+    }
+  });
+});
+</script>
+<script type="module">
+  const config = [
+    {"tag": "lite-youtube", "js": "/static/lite-yt-embed.js", "css": "/static/lite-yt-embed.css"}
+  ];
+  for (const {tag, js, css} of config) {
+    if (document.querySelector(tag)) {
+      if (css) {
+        document.head.appendChild(
+          Object.assign(document.createElement('link'), {
+            rel: 'stylesheet',
+            href: css
+          })
+        );
+      }
+      if (js) {
+        await import(js);
+      }
+  }
+}
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (window.localStorage.getItem('ADMIN')) {
+      document.querySelectorAll('.edit-page-link').forEach(el => {
+        const url = el.getAttribute('data-admin-url');
+        if (url) {
+          const a = document.createElement('a');
+          a.href = url;
+          a.innerText = 'Edit this page';
+          el.appendChild(a);
+          el.style.display = 'block';
+        }
+      });
+    }
+  });
+</script>
+</body>
+</html>
