@@ -34,7 +34,7 @@
 
 {% block secondary %}
 <div class="metabox">
-<p class="this-is">This is <strong>{{ entry.title|typography }}</strong> by Simon Willison, posted on <a href="/{{ entry.created|date:"Y/M/j/" }}">{{ entry.created|date:"jS F Y" }}</a>.</p>
+<p class="this-is">This is <strong>{{ entry.title|typography }}</strong> by DragonSenseiGuy, posted on <a href="/{{ entry.created|date:"Y/M/j/" }}">{{ entry.created|date:"jS F Y" }}</a>.</p>
 {% if entry.series %}{% with entry.series_info as series_info %}
 <div class="series-info">
   <p>Part of series <strong><a href="/series/{{ entry.series.slug }}/">{{ entry.series.title }}</a></strong></p>

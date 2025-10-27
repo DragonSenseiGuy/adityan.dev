@@ -8,7 +8,7 @@ from blog.models import Entry, Blogmark, Quotation, Note
 class Base(Feed):
     feed_type = Atom1Feed
     link = "/"
-    author_name = "Simon Willison"
+    author_name = "DragonSenseiGuy"
 
     def __call__(self, request, *args, **kwargs):
         response = super(Base, self).__call__(request, *args, **kwargs)
@@ -44,7 +44,7 @@ class Base(Feed):
 
 
 class Entries(Base):
-    title = "Simon Willison's Weblog: Entries"
+    title = "DragonSenseiGuy's Weblog: Entries"
     ga_source = "entries"
 
     def items(self):
@@ -67,7 +67,7 @@ class Entries(Base):
 
 
 class Blogmarks(Base):
-    title = "Simon Willison's Weblog: Blogmarks"
+    title = "DragonSenseiGuy's Weblog: Blogmarks"
     description_template = "feeds/blogmark.html"
     ga_source = "blogmarks"
 
@@ -83,7 +83,7 @@ class Blogmarks(Base):
 
 
 class Everything(Base):
-    title = "Simon Willison's Weblog"
+    title = "DragonSenseiGuy's Weblog"
     description_template = "feeds/everything.html"
     ga_source = "everything"
 
@@ -136,7 +136,7 @@ class SeriesFeed(Everything):
     ga_source = "series"
 
     def __init__(self, series):
-        self.title = "Simon Willison's Weblog: {}".format(series.title)
+        self.title = "DragonSenseiGuy's Weblog: {}".format(series.title)
         self.series = series
 
     def items(self):
@@ -147,7 +147,7 @@ class EverythingTagged(Everything):
     ga_source = "tag"
 
     def __init__(self, title, items):
-        self.title = "Simon Willison's Weblog: {}".format(title)
+        self.title = "DragonSenseiGuy's Weblog: {}".format(title)
         self._items = items
 
     def items(self):
