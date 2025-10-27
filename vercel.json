@@ -1,5 +1,22 @@
 {
-
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "installCommand": "python3 -m pip install -r requirements.txt",
+        "buildCommand": "python3 manage.py collectstatic --noinput && python3 manage.py migrate"
+      }
+    },
+    {
+      "src": "config/wsgi.py",
+      "use": "@vercel/python",
+      "config": {
+        "runtime": "python3.13"
+      }
+    }
+  ],
   "routes": [
     {
       "src": "/static/(.*)",
