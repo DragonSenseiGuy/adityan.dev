@@ -2,3 +2,4 @@
 *.pyc
 staticfiles
 old-import-xml/blog_comment.xml
+logs_result.csv
