@@ -3,11 +3,7 @@
   "builds": [
     {
       "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "installCommand": "python3 -m pip install -r requirements.txt",
-        "buildCommand": "python3 manage.py collectstatic --noinput && python3 manage.py migrate"
-      }
+      "use": "@vercel/static-build"
     },
     {
       "src": "config/wsgi.py",
