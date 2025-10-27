@@ -65,6 +65,7 @@ MIDDLEWARE = [
     "django_hosts.middleware.HostsRequestMiddleware",
     "redirects.middleware.redirect_middleware",
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django_http_debug.middleware.DebugMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -84,7 +85,7 @@ if DEBUG:
     except ImportError:
         pass
 
-MIDDLEWARE += ["whitenoise.middleware.WhiteNoiseMiddleware"]
+
 
 
 # Sentry
@@ -180,7 +181,7 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, "static/"),)
 
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 
 
 # urls.W002
