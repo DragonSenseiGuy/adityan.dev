@@ -4,6 +4,49 @@
 
 The code that runs my weblog, https://simonwillison.net/
 
+## Local Development
+
+1.  **Create and activate a virtual environment:**
+    ```bash
+    python3 -m venv .venv
+    source .venv/bin/activate
+    ```
+
+2.  **Install dependencies:**
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+3.  **Set up the database:**
+    For local development, it's easiest to use a SQLite database. You can configure this by setting the `DATABASE_URL` environment variable. It's recommended to add this to a `.env` file in the root of your project:
+
+    ```
+    DATABASE_URL=sqlite:///db.sqlite3
+    ```
+
+    You will also need to install `python-dotenv` to load this file:
+    ```bash
+    pip install python-dotenv
+    ```
+
+4.  **Run database migrations:**
+    ```bash
+    python3 manage.py migrate
+    ```
+
+5.  **Create a superuser:**
+    To access the Django admin, you'll need a superuser account:
+    ```bash
+    python3 manage.py createsuperuser
+    ```
+
+6.  **Start the development server:**
+    ```bash
+    python3 manage.py runserver
+    ```
+
+The site will be available at `http://127.0.0.1:8000/` and the admin interface at `http://127.0.0.1:8000/admin`.
+
 ## Search Engine
 
 This blog includes a built-in search engine. Here's how it works:
