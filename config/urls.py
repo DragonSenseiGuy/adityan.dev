@@ -87,7 +87,7 @@ User-agent: *
 Disallow: /admin/
 Disallow: /search/
 
-Sitemap: https://simonwillison.net/sitemap.xml
+Sitemap: https://dragonsensei.is-a.dev/sitemap.xml
 """
 
 

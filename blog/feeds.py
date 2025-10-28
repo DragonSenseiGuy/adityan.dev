@@ -23,7 +23,7 @@ class Base(Feed):
 
     def item_link(self, item):
         return (
-            "https://simonwillison.net"
+            "https://dragonsensei.is-a.dev"
             + item.get_absolute_url()
             + "#atom-%s" % self.ga_source
         )
@@ -60,8 +60,8 @@ class Entries(Base):
     def item_description(self, item):
         note = (
             "<p><em>You are only seeing the long-form articles from my blog. "
-            'Subscribe to <a href="https://simonwillison.net/atom/everything/">/atom/everything/</a> '
-            'to get all of my posts, or take a look at my <a href="https://simonwillison.net/about/#subscribe">other subscription options</a>.</em></p>'
+            'Subscribe to <a href="https://dragonsensei.is-a.dev/atom/everything/">/atom/everything/</a> '
+            'to get all of my posts, or take a look at my <a href="https://dragonsensei.is-a.dev/about/#subscribe">other subscription options</a>.</em></p>'
         )
         return item.body + note
 
@@ -162,7 +162,7 @@ def sitemap(request):
     for klass in (Entry, Blogmark, Quotation, Note):
         for obj in klass.objects.exclude(is_draft=True).only("slug", "created"):
             xml.append(
-                "<url><loc>https://simonwillison.net%s</loc></url>"
+                "<url><loc>https://dragonsensei.is-a.dev%s</loc></url>"
                 % obj.get_absolute_url()
             )
     xml.append("</urlset>")

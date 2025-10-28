@@ -836,7 +836,7 @@ def screenshot_card(request, path):
         raise Http404("SCREENSHOT_SECRET is not set")
     screenshot_url = generate_screenshot_url(
         "https://screenshot-worker.simonw.workers.dev/",
-        "https://simonwillison.net/" + path,
+        "https://dragonsensei.is-a.dev/" + path,
         hashlib.sha256(html_bytes).hexdigest(),
         secret=settings.SCREENSHOT_SECRET,
         width="700",

@@ -45,7 +45,7 @@ def actually_fix_them(Entry):
                 entry.created.day,
                 entry.slug,
             )
-            print("Updated https://simonwillison.net{}".format(path))
+            print("Updated https://dragonsensei.is-a.dev{}".format(path))
 
 
 class Migration(migrations.Migration):

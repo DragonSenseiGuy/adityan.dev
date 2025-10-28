@@ -5,5 +5,5 @@
     <p><small></small>Via <a href="{{ obj.via_url }}">{{ obj.via_title }}</a></small></p>
 {% endif %}
 {% if obj.tags.count %}
-    <p>Tags: {% for tag in obj.tags.all %}<a href="https://simonwillison.net/tags/{{ tag.tag }}">{{ tag.tag }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+    <p>Tags: {% for tag in obj.tags.all %}<a href="https://dragonsensei.is-a.dev/tags/{{ tag.tag }}">{{ tag.tag }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</p>
 {% endif %}
