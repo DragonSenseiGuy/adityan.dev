@@ -86,8 +86,8 @@ a:link {
 }
 
 a:visited {
-  color: #636;
-  border-color: #636;
+  color: #E8AF6E;
+  border-color: #E8AF6E;
 }
 
 a:link:focus,
@@ -160,9 +160,9 @@ div#sidead {
 div#ft {
   background: linear-gradient(
     to bottom,
-    rgb(154, 103, 175) 0%,
-    rgb(96, 72, 129) 49%,
-    rgb(100, 67, 130) 100%
+    rgb(232, 175, 110) 0%,
+    rgb(229, 161, 116) 49%,
+    rgb(232, 157, 125) 100%
   );
   text-align: center;
   margin: 15px 0 0.4em 0;
@@ -404,7 +404,7 @@ div.entry iframe {
 div.entry div.entryFooter {
   font-size: 0.9em;
   margin-top: 1em;
-  border-top: 1px solid #8a55a8;
+  border-top: 1px solid #E8AF6E;
   padding-top: 0.5em;
 }
 div.entry p.mobile-date {
@@ -431,9 +431,9 @@ div#bigheadcontainer {
 div#band {
   background: linear-gradient(
     to bottom,
-    rgb(154, 103, 175) 0%,
-    rgb(96, 72, 129) 49%,
-    rgb(100, 67, 130) 100%
+    rgb(232, 175, 110) 0%,
+    rgb(229, 161, 116) 49%,
+    rgb(232, 157, 125) 100%
   );
   color: white;
   margin-bottom: -1.55em;
@@ -451,7 +451,7 @@ div#searchbox {
   left: 485px;
 }
 div#searchbox input.text {
-  border: 1px solid purple;
+  border: 1px solid orange;
   vertical-align: middle;
   width: 150px;
   padding: 1px 1px 2px 1px;
@@ -486,9 +486,9 @@ div#smallhead {
   text-align: left;
   background: linear-gradient(
     to bottom,
-    rgb(154, 103, 175) 0%,
-    rgb(96, 72, 129) 49%,
-    rgb(100, 67, 130) 100%
+    rgb(232, 175, 110) 0%,
+    rgb(229, 161, 116) 49%,
+    rgb(232, 157, 125) 100%
   );
   color: white;
 }
@@ -554,8 +554,8 @@ h2.band {
 }
 p#commentwarning {
   padding: 0.4em;
-  border: 1px dotted rgb(129, 72, 163);
-  background-color: rgb(221, 163, 255);
+  border: 1px dotted rgb(232, 175, 110);
+  background-color: rgb(232, 157, 125);
 }
 div#comment-wrapper {
   width: 940px;
@@ -665,20 +665,20 @@ div#addcomment p.formrow label {
   width: 70px;
 }
 div#addcomment input.text {
-  border: 1px solid purple;
+  border: 1px solid orange;
   font-size: 1.05em;
   float: left;
   width: 206px;
 }
 div#addcomment textarea {
-  border: 1px solid purple;
+  border: 1px solid orange;
   padding: 3px;
   width: 270px;
 }
 body form.commentpreview ul.errorlist li {
   list-style-type: none;
   margin: 0;
-  background-color: rgb(129, 72, 163);
+  background-color: rgb(232, 157, 125);
   color: white;
   padding: 3px 3px 1px 3px;
 }
@@ -879,7 +879,7 @@ div.paginator {
   padding: 2px 4px;
   border: 1px solid #ddd;
   font-weight: bold;
-  background-color: rgb(129, 72, 163);
+  background-color: rgb(232, 157, 125);
   color: white;
 }
 p#tagcloud {
@@ -934,7 +934,7 @@ div.help p {
 
 .search-input,
 .search-submit {
-  border: 1px solid #733b96;
+  border: 1px solid #E8AF6E;
   padding: 4px;
   box-sizing: border-box;
   font-size: 16px;
@@ -943,7 +943,7 @@ div.help p {
   width: 80%;
 }
 .search-submit {
-  background-color: #733b96;
+  background-color: #E8AF6E;
   color: white;
   cursor: pointer;
 }
@@ -955,7 +955,7 @@ a.selected-tag {
   border: 1px solid #666;
   text-decoration: none;
   padding: 2px 5px;
-  background-color: rgba(115, 60, 150, 0.28);
+  background-color: rgba(232, 157, 125, 0.28);
   color: black;
 }
 div p.search-selections .filters {
