@@ -146,7 +146,7 @@ urlpatterns = [
     re_path(r"^projects/?$", projects_redirect),
     re_path(r"^versions/$", versions),
     re_path(r"^robots\.txt$", robots_txt),
-    re_path(r"^favicon\.png$", favicon_ico),
+    re_path(r"^favicon\.ico$", favicon_ico),
     re_path(r"^search/$", search_views.search),
     re_path(r"^about/$", blog_views.about),
     path("top-tags/", blog_views.top_tags),

@@ -202,7 +202,7 @@ div#primary blockquote,
 .item-link blockquote,
 div#primary .quote blockquote blockquote {
   margin: 1em 0;
-  border-left: 0.75em solid #9e6bb52e;
+  border-left: 0.75em solid #E89D7D;
   padding-left: 0.75em;
 }
 div#primary blockquote blockquote,
@@ -1236,7 +1236,7 @@ a.item-tag {
   margin-bottom: 0.5em;
 }
 a.item-tag:hover {
-  background-color: #dabaea;
+  background-color: #E89D7D;
 }
 #bighead a.item-tag {
   padding: 0px 8px;
