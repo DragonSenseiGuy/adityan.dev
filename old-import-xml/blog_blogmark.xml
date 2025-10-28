@@ -29643,7 +29643,7 @@ Pastor jailed for murderous text messages</field>
 		<field name="slug">subwiki</field>
 		<field name="link_url">http://subwiki.tigris.org/</field>
 		<field name="link_title">SubWiki</field>
-		<field name="via_url">http://simonwillison.net/2006/Dec/16/code/</field>
+		<field name="via_url">http://dragonsensei.is-a.dev/2006/Dec/16/code/</field>
 		<field name="via_title">Google Code gets wikis and file downloads</field>
 		<field name="commentary">A wiki that uses Subversion for its data repository, implemented as a Python CGI.</field>
 		<field name="created">2006-12-16 19:19:51</field>
@@ -29943,7 +29943,7 @@ Pastor jailed for murderous text messages</field>
 		<field name="slug">charset</field>
 		<field name="link_url">http://jerakeen.org/test/unicode/</field>
 		<field name="link_title">Javascript character set screw-ups</field>
-		<field name="via_url">http://simonwillison.net/2006/Dec/20/json/#c34920</field>
+		<field name="via_url">http://dragonsensei.is-a.dev/2006/Dec/20/json/#c34920</field>
 		<field name="via_title">Tom Insam</field>
 		<field name="commentary">Some browsers treat JavaScript files as having the same content-type as the page from which they are linked. This could cause problems with UTF-8 encoded JSON; the workaround is serving up ASCII with unicode escape sequences.</field>
 		<field name="created">2006-12-21 15:20:51</field>
@@ -31237,7 +31237,7 @@ Pastor jailed for murderous text messages</field>
 	<row>
 		<field name="id">2601</field>
 		<field name="slug">lenny</field>
-		<field name="link_url">http://simonwillison.net/2007/Jan/26/generator/#c35330</field>
+		<field name="link_url">http://dragonsensei.is-a.dev/2007/Jan/26/generator/#c35330</field>
 		<field name="link_title">Web 2.0 domain name generating shell script</field>
 		<field name="via_url"></field>
 		<field name="via_title"></field>
@@ -34309,7 +34309,7 @@ Pastor jailed for murderous text messages</field>
 	<row>
 		<field name="id">2858</field>
 		<field name="slug">html5</field>
-		<field name="link_url">http://simonwillison.net/2007/talks/oxford-html5/</field>
+		<field name="link_url">http://dragonsensei.is-a.dev/2007/talks/oxford-html5/</field>
 		<field name="link_title">What the heck is HTML 5?</field>
 		<field name="via_url"></field>
 		<field name="via_title"></field>
@@ -35053,7 +35053,7 @@ Pastor jailed for murderous text messages</field>
 	<row>
 		<field name="id">2920</field>
 		<field name="slug">xul</field>
-		<field name="link_url">http://simonwillison.net/2003/Oct/24/microsoftsXUL/</field>
+		<field name="link_url">http://dragonsensei.is-a.dev/2003/Oct/24/microsoftsXUL/</field>
 		<field name="link_title">Microsoft's XUL</field>
 		<field name="via_url"></field>
 		<field name="via_title"></field>
@@ -40551,7 +40551,7 @@ Pastor jailed for murderous text messages</field>
 		<field name="slug">osm</field>
 		<field name="link_url">http://www.informationfreeway.org/</field>
 		<field name="link_title">Information Freeway</field>
-		<field name="via_url">http://simonwillison.net/2007/Oct/12/latlon/#c37500</field>
+		<field name="via_url">http://dragonsensei.is-a.dev/2007/Oct/12/latlon/#c37500</field>
 		<field name="via_title">Andy Allan</field>
 		<field name="commentary">Really lovely interface to Open Street Map, sadly suffering from a horribly vague name and almost no publicity at all.</field>
 		<field name="created">2007-10-14 23:58:09</field>
@@ -44548,7 +44548,7 @@ an-hour-to-kill writing and condensing it into its shorter form points.&quot; Lo
 		<field name="slug">windows</field>
 		<field name="link_url">http://msdn2.microsoft.com/en-us/library/bb463989.aspx</field>
 		<field name="link_title">Windows Live Contacts API</field>
-		<field name="via_url">http://simonwillison.net/2008/Mar/6/contacts/#c38346</field>
+		<field name="via_url">http://dragonsensei.is-a.dev/2008/Mar/6/contacts/#c38346</field>
 		<field name="via_title">Ewout</field>
 		<field name="commentary">I didn't realise Microsoft already have a contacts API for Live (which presumably covers hotmail as well).</field>
 		<field name="created">2008-03-07 17:57:03</field>
@@ -46010,7 +46010,7 @@ an-hour-to-kill writing and condensing it into its shorter form points.&quot; Lo
 	<row>
 		<field name="id">3835</field>
 		<field name="slug">unobtrusive</field>
-		<field name="link_url">http://simonwillison.net/static/2008/xtech/</field>
+		<field name="link_url">http://dragonsensei.is-a.dev/static/2008/xtech/</field>
 		<field name="link_title">Unobtrusive JavaScript with jQuery</field>
 		<field name="via_url"></field>
 		<field name="via_title"></field>
@@ -46840,7 +46840,7 @@ an-hour-to-kill writing and condensing it into its shorter form points.&quot; Lo
 		<field name="slug">os</field>
 		<field name="link_url">http://openspace.ordnancesurvey.co.uk/openspace/</field>
 		<field name="link_title">OS OpenSpace from Ordnance Survey</field>
-		<field name="via_url">http://simonwillison.net/2008/Mar/22/wikinear/#c39334</field>
+		<field name="via_url">http://dragonsensei.is-a.dev/2008/Mar/22/wikinear/#c39334</field>
 		<field name="via_title">Phil Wilson</field>
 		<field name="commentary">Ordinance Survey now provide a free JavaScript mapping API for &quot;non-commercial purposes&quot; by &quot;private individuals&quot;. The maps look incredibly detailed, although I can't find any live API demos on the site (the documentation is illustrated with screenshots).</field>
 		<field name="created">2008-06-09 08:30:13</field>
@@ -46864,7 +46864,7 @@ an-hour-to-kill writing and condensing it into its shorter form points.&quot; Lo
 		<field name="slug">ordnance</field>
 		<field name="link_url">http://www.niallkennedy.com/code/maps/openspace.html</field>
 		<field name="link_title">Ordnance Survey OpenSpace Demo</field>
-		<field name="via_url">http://simonwillison.net/2008/Jun/9/os/#c39338</field>
+		<field name="via_url">http://dragonsensei.is-a.dev/2008/Jun/9/os/#c39338</field>
 		<field name="via_title">Niall Kennedy</field>
 		<field name="commentary">Niall Kennedy threw a demo up on his site - the map seems to load a lot faster than Google Maps and the level of detail once you zoom down to street level is really impressive.</field>
 		<field name="created">2008-06-09 10:59:40</field>
@@ -49442,7 +49442,7 @@ an-hour-to-kill writing and condensing it into its shorter form points.&quot; Lo
 	<row>
 		<field name="id">4122</field>
 		<field name="slug">favicons</field>
-		<field name="link_url">http://www.google.com/s2/favicons?domain=simonwillison.net</field>
+		<field name="link_url">http://www.google.com/s2/favicons?domain=dragonsensei.is-a.dev</field>
 		<field name="link_title">Google's undocumented favicon to png convertor</field>
 		<field name="via_url">http://www.reddit.com/r/programming/comments/6ytnt/googles_free_favicon_png_online_converter/</field>
 		<field name="via_title">reddit.com</field>
@@ -49816,7 +49816,7 @@ an-hour-to-kill writing and condensing it into its shorter form points.&quot; Lo
 		<field name="slug">zeppelins</field>
 		<field name="link_url">http://www.slideshare.net/simon/i-love-zeppelins-and-you-should-too-presentation/</field>
 		<field name="link_title">I love Zeppelins, and you should too</field>
-		<field name="via_url">http://simonwillison.net/2008/talks/pyconuk-zeppelins/</field>
+		<field name="via_url">http://dragonsensei.is-a.dev/2008/talks/pyconuk-zeppelins/</field>
 		<field name="via_title">My talks page</field>
 		<field name="commentary">Slides from my PyCon UK lightning talk on Zeppelins. I've annotated them using SlideShare comments.</field>
 		<field name="created">2008-09-13 18:38:49</field>
@@ -50006,7 +50006,7 @@ an-hour-to-kill writing and condensing it into its shorter form points.&quot; Lo
 	<row>
 		<field name="id">4169</field>
 		<field name="slug">when</field>
-		<field name="link_url">http://simonwillison.net/2008/talks/amajax-security/</field>
+		<field name="link_url">http://dragonsensei.is-a.dev/2008/talks/amajax-security/</field>
 		<field name="link_title">When Ajax Attacks! Web application security fundamentals</field>
 		<field name="via_url"></field>
 		<field name="via_title"></field>
@@ -50078,7 +50078,7 @@ an-hour-to-kill writing and condensing it into its shorter form points.&quot; Lo
 	<row>
 		<field name="id">4175</field>
 		<field name="slug">backup</field>
-		<field name="link_url">http://simonwillison.net/static/2008/backup_to_s3.py.txt</field>
+		<field name="link_url">http://dragonsensei.is-a.dev/static/2008/backup_to_s3.py.txt</field>
 		<field name="link_title">backup_to_s3.py</field>
 		<field name="via_url"></field>
 		<field name="via_title"></field>
@@ -50186,7 +50186,7 @@ an-hour-to-kill writing and condensing it into its shorter form points.&quot; Lo
 	<row>
 		<field name="id">4184</field>
 		<field name="slug">csrfprotect</field>
-		<field name="link_url">http://simonwillison.net/static/2008/csrf_protect.php.txt</field>
+		<field name="link_url">http://dragonsensei.is-a.dev/static/2008/csrf_protect.php.txt</field>
 		<field name="link_title">csrf_protect.php</field>
 		<field name="via_url"></field>
 		<field name="via_title"></field>
@@ -50536,7 +50536,7 @@ an-hour-to-kill writing and condensing it into its shorter form points.&quot; Lo
 		<field name="slug">hackademixnet</field>
 		<field name="link_url">http://hackademix.net/2008/09/27/clickjacking-and-noscript/</field>
 		<field name="link_title">Clickjacking and NoScript</field>
-		<field name="via_url">http://simonwillison.net/2008/Oct/7/clickjacking/#c41340</field>
+		<field name="via_url">http://dragonsensei.is-a.dev/2008/Oct/7/clickjacking/#c41340</field>
 		<field name="via_title">CiaranG</field>
 		<field name="commentary">NoScript CAN protect against clickjacking, but only if you enable the &quot;Plugins|Forbid IFRAME&quot; option.</field>
 		<field name="created">2008-10-07 11:05:33</field>
@@ -51026,7 +51026,7 @@ an-hour-to-kill writing and condensing it into its shorter form points.&quot; Lo
 	<row>
 		<field name="id">4255</field>
 		<field name="slug">horror</field>
-		<field name="link_url">http://simonwillison.net/2008/talks/head-horror/</field>
+		<field name="link_url">http://dragonsensei.is-a.dev/2008/talks/head-horror/</field>
 		<field name="link_title">Web Security Horror Stories: The Director's Cut</field>
 		<field name="via_url"></field>
 		<field name="via_title"></field>
@@ -51098,7 +51098,7 @@ an-hour-to-kill writing and condensing it into its shorter form points.&quot; Lo
 	<row>
 		<field name="id">4261</field>
 		<field name="slug">zeppelin</field>
-		<field name="link_url">http://simonwillison.net/2008/talks/onspeed-zeppelins/</field>
+		<field name="link_url">http://dragonsensei.is-a.dev/2008/talks/onspeed-zeppelins/</field>
 		<field name="link_title">Zeppelin 101 in 5 mins</field>
 		<field name="via_url">http://skillswap-brighton.org/2008/10/29/skillswap-on-speed/</field>
 		<field name="via_title">SkillSwap Brighton</field>
@@ -52276,7 +52276,7 @@ an-hour-to-kill writing and condensing it into its shorter form points.&quot; Lo
 		<field name="slug">twply</field>
 		<field name="link_url">http://marketplace.sitepoint.com/auctions/54573</field>
 		<field name="link_title">Update on the &quot;antipatterns for sale&quot; Twply auction</field>
-		<field name="via_url">http://simonwillison.net/2009/Jan/2/adactio/#c42978</field>
+		<field name="via_url">http://dragonsensei.is-a.dev/2009/Jan/2/adactio/#c42978</field>
 		<field name="via_title">Phil Wilson</field>
 		<field name="commentary">The collected username and password database is NOT included in the auction.</field>
 		<field name="created">2009-01-06 09:41:22</field>
@@ -52286,7 +52286,7 @@ an-hour-to-kill writing and condensing it into its shorter form points.&quot; Lo
 	<row>
 		<field name="id">4361</field>
 		<field name="slug">twitterhack</field>
-		<field name="link_url">http://simonwillison.net/2009/Jan/2/adactio/#c43001</field>
+		<field name="link_url">http://dragonsensei.is-a.dev/2009/Jan/2/adactio/#c43001</field>
 		<field name="link_title">The Twitter administrator hack was a dictionary attack</field>
 		<field name="via_url"></field>
 		<field name="via_title"></field>
@@ -52612,7 +52612,7 @@ an-hour-to-kill writing and condensing it into its shorter form points.&quot; Lo
 		<field name="slug">prawn</field>
 		<field name="link_url">http://prawn.majesticseacreature.com/</field>
 		<field name="link_title">Prawn</field>
-		<field name="via_url">http://simonwillison.net/2009/Jan/16/dopplr/#c43144</field>
+		<field name="via_url">http://dragonsensei.is-a.dev/2009/Jan/16/dopplr/#c43144</field>
 		<field name="via_title">Matt Biddulph</field>
 		<field name="commentary">Really nice PDF generation library for Ruby, used to generate Dopplr's beautiful end of year reports.</field>
 		<field name="created">2009-01-16 16:04:22</field>
@@ -54592,7 +54592,7 @@ an-hour-to-kill writing and condensing it into its shorter form points.&quot; Lo
 		<field name="slug">amazon</field>
 		<field name="link_url">http://www.pcworld.com/businesscenter/article/163042/amazon_says_listing_problem_was_an_error_not_a_hack.html</field>
 		<field name="link_title">Amazon Says Listing Problem Was an Error, Not a Hack</field>
-		<field name="via_url">http://simonwillison.net/2009/Apr/13/amazonfail/#c44124</field>
+		<field name="via_url">http://dragonsensei.is-a.dev/2009/Apr/13/amazonfail/#c44124</field>
 		<field name="via_title">Chris Shiflett</field>
 		<field name="commentary">&quot;A friend within the company told him that someone working on Amazon's French site mistagged a number of keyword categories, including the 'Gay and Lesbian' category, as pornographic, using what's known internally as the Browse Nodes tool. Soon the mistake affected Amazon sites worldwide.&quot;</field>
 		<field name="created">2009-04-14 08:32:40</field>
@@ -55648,7 +55648,7 @@ an-hour-to-kill writing and condensing it into its shorter form points.&quot; Lo
 		<field name="slug">perl6</field>
 		<field name="link_url">http://perlgeek.de/blog-en/perl-5-to-6/14-main-sub.html</field>
 		<field name="link_title">Perl 6: The MAIN sub</field>
-		<field name="via_url">http://simonwillison.net/2009/May/28/optfunc/#c45364</field>
+		<field name="via_url">http://dragonsensei.is-a.dev/2009/May/28/optfunc/#c45364</field>
 		<field name="via_title">Keith Devens</field>
 		<field name="commentary">&quot;Calling subs and running a typical Unix program from the command line is visually very similar: you can have positional, optional and named arguments.&quot; - that's exactly what I was thinking when I came up with optfunc.</field>
 		<field name="created">2009-05-28 21:32:24</field>
@@ -56884,7 +56884,7 @@ an-hour-to-kill writing and condensing it into its shorter form points.&quot; Lo
 		<field name="slug">toychest</field>
 		<field name="link_url">http://wiki.english.ucsb.edu/index.php/Toy_Chest_(Online_or_Downloadable_Tools_for_Building_Projects)</field>
 		<field name="link_title">Toy Chest: Online or Downloadable Tools for Building Projects</field>
-		<field name="via_url">http://simonwillison.net/2009/Jul/28/tools/#c48445</field>
+		<field name="via_url">http://dragonsensei.is-a.dev/2009/Jul/28/tools/#c48445</field>
 		<field name="via_title">Britta G</field>
 		<field name="commentary">&quot;Toy Chest collects online or downloadable software tools/thinking toys that humanities students and others without programming skills (but with basic computer and Internet literacy) can use to create interesting projects&quot; - a fantastic list compiled by the English Department at UCSB.</field>
 		<field name="created">2009-07-29 12:12:36</field>
@@ -58526,9 +58526,9 @@ an-hour-to-kill writing and condensing it into its shorter form points.&quot; Lo
 	<row>
 		<field name="id">4882</field>
 		<field name="slug">exploring</field>
-		<field name="link_url">http://simonwillison.net/static/2009/devdays-amsterdam.html</field>
+		<field name="link_url">http://dragonsensei.is-a.dev/static/2009/devdays-amsterdam.html</field>
 		<field name="link_title">Exploring Python</field>
-		<field name="via_url">http://simonwillison.net/2009/talks/devdays-python/</field>
+		<field name="via_url">http://dragonsensei.is-a.dev/2009/talks/devdays-python/</field>
 		<field name="via_title">Talks</field>
 		<field name="commentary">Notes from the introduction to Python presentation I gave today at Stack Overflow DevDays Amsterdam.</field>
 		<field name="created">2009-11-02 15:35:28</field>
@@ -59282,7 +59282,7 @@ an-hour-to-kill writing and condensing it into its shorter form points.&quot; Lo
 	<row>
 		<field name="id">4945</field>
 		<field name="slug">django</field>
-		<field name="link_url">http://simonwillison.net/static/2009/djugl-december.html</field>
+		<field name="link_url">http://dragonsensei.is-a.dev/static/2009/djugl-december.html</field>
 		<field name="link_title">What's coming in Django 1.2 (presentation notes)</field>
 		<field name="via_url"></field>
 		<field name="via_title"></field>

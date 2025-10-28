@@ -25,7 +25,7 @@ handler404 = "blog.views.custom_404"
 
 def wellknown_webfinger(request):
     remote_url = (
-        "https://fedi.simonwillison.net/.well-known/webfinger?"
+        "https://fedi.dragonsensei.is-a.dev/.well-known/webfinger?"
         + request.META["QUERY_STRING"]
     )
     return proxy_view(request, remote_url)
@@ -33,7 +33,7 @@ def wellknown_webfinger(request):
 
 def wellknown_hostmeta(request):
     remote_url = (
-        "https://fedi.simonwillison.net/.well-known/host-meta?"
+        "https://fedi.dragonsensei.is-a.dev/.well-known/host-meta?"
         + request.META["QUERY_STRING"]
     )
     return proxy_view(request, remote_url)
@@ -63,7 +63,7 @@ FAVICON = open(os.path.join(settings.BASE_DIR, "static/favicon.ico"), "rb").read
 
 def static_redirect(request):
     return HttpResponsePermanentRedirect(
-        "http://static.simonwillison.net%s" % request.get_full_path()
+        "http://static.dragonsensei.is-a.dev%s" % request.get_full_path()
     )
 
 

@@ -11330,7 +11330,7 @@ $mono-&amp;gt;scratch();
 		<field name="id">843</field>
 		<field name="title">getElementsBySelector()</field>
 		<field name="slug">getElementsBySelector</field>
-		<field name="body">&lt;p&gt;Inspired by &lt;a href=&quot;http://blog.mooncalf.me.uk/archive/2003/03/25#RefinedClassFetching&quot; title=&quot;document.getElementsByClassName&quot;&gt;Andy&lt;/a&gt;, I decided to have a crack at something I've been thinking about trying for a long time. &lt;a href=&quot;http://simonwillison.net/static/2003/getElementsBySelector.js&quot; title=&quot;getElementsBySelector.js&quot;&gt;&lt;code&gt;document.getElementsBySelector&lt;/code&gt;&lt;/a&gt; is a javascript function which takes a standard &lt;acronym title=&quot;Cascading Style Sheets&quot;&gt;CSS&lt;/acronym&gt; style selector and returns an array of elements objects from the document that match that selector. For example:&lt;/p&gt;
+		<field name="body">&lt;p&gt;Inspired by &lt;a href=&quot;http://blog.mooncalf.me.uk/archive/2003/03/25#RefinedClassFetching&quot; title=&quot;document.getElementsByClassName&quot;&gt;Andy&lt;/a&gt;, I decided to have a crack at something I've been thinking about trying for a long time. &lt;a href=&quot;http://dragonsensei.is-a.dev/static/2003/getElementsBySelector.js&quot; title=&quot;getElementsBySelector.js&quot;&gt;&lt;code&gt;document.getElementsBySelector&lt;/code&gt;&lt;/a&gt; is a javascript function which takes a standard &lt;acronym title=&quot;Cascading Style Sheets&quot;&gt;CSS&lt;/acronym&gt; style selector and returns an array of elements objects from the document that match that selector. For example:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;document.getElementsBySelector('div#main p a.external')
 &lt;/code&gt;&lt;/pre&gt;
@@ -11339,7 +11339,7 @@ $mono-&amp;gt;scratch();
 
 &lt;p&gt;So far I've only tested it on Phoenix but it seems to work as intended for the small number of test cases I've tried. If you spot any bugs please let me know. I'm about to fire up a Windows &lt;acronym title=&quot;Personal Computer&quot;&gt;PC&lt;/acronym&gt; and see how much it breaks in &lt;acronym title=&quot;Internet Explorer&quot;&gt;IE&lt;/acronym&gt;...&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; I've put together a &lt;a href=&quot;http://simonwillison.net/static/2003/getElementsBySelector.html&quot; title=&quot;document.getElementsBySelector Demo&quot;&gt;demo page&lt;/a&gt; showing the function in action. It works fine in &lt;acronym title=&quot;Internet Explorer&quot;&gt;IE&lt;/acronym&gt; 6.&lt;/p&gt;</field>
+&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; I've put together a &lt;a href=&quot;http://dragonsensei.is-a.dev/static/2003/getElementsBySelector.html&quot; title=&quot;document.getElementsBySelector Demo&quot;&gt;demo page&lt;/a&gt; showing the function in action. It works fine in &lt;acronym title=&quot;Internet Explorer&quot;&gt;IE&lt;/acronym&gt; 6.&lt;/p&gt;</field>
 		<field name="created">2003-03-25 23:38:24</field>
 		<field name="comments_open">0</field>
 	</row>
@@ -22459,7 +22459,7 @@ better&lt;/a&gt;, and &lt;a href=&quot;http://www.talklikeapirate.com/&quot; tit
 
 &lt;p id=&quot;p-2&quot;&gt;Here's where things get really interesting: changes at the Journal-World have kick-started the Django job market. Rob Curley, formally in charge of the World Company's web activities, recently &lt;a href=&quot;http://www.digitaledge.org/DigArtPage.cfm?AID=7083&quot;&gt;took up a new position&lt;/a&gt; at the &lt;a href=&quot;http://www.naplesnews.com/&quot;&gt;Naples Daily News&lt;/a&gt; in Florida. Rob &lt;a href=&quot;http://eric.themoritzfamily.com/?p=48&quot;&gt;just hired Eric Moritz&lt;/a&gt;, a regular on the #django IRC channel, to work on Django-powered projects there.&lt;/p&gt;
 
-&lt;p id=&quot;p-3&quot;&gt;Meanwhile, Adrian Holovaty has &lt;a href=&quot;http://www.poynter.org/column.asp?id=31&amp;amp;aid=86489&quot;&gt;taken a new job&lt;/a&gt; at the &lt;a href=&quot;http://www.washingtonpost.com/&quot;&gt;Washington Post&lt;/a&gt; as &quot;Editor, Editorial Innovations&quot; - a role that is sure to involve some very innovative use of Django (Adrian built &lt;a href=&quot;http://chicagocrime.org/&quot;&gt;chicagocrime.org&lt;/a&gt;). Adrian's departure means that the Journal-World are &lt;a href=&quot;http://www.holovaty.com/blog/archive/2005/08/03/0202&quot;&gt;looking for a new developer&lt;/a&gt; - here's &lt;a href=&quot;http://simonwillison.net/2004/Jun/29/job/&quot; title=&quot;Fancy a job?&quot;&gt;why you should apply&lt;/a&gt;.&lt;/p&gt;
+&lt;p id=&quot;p-3&quot;&gt;Meanwhile, Adrian Holovaty has &lt;a href=&quot;http://www.poynter.org/column.asp?id=31&amp;amp;aid=86489&quot;&gt;taken a new job&lt;/a&gt; at the &lt;a href=&quot;http://www.washingtonpost.com/&quot;&gt;Washington Post&lt;/a&gt; as &quot;Editor, Editorial Innovations&quot; - a role that is sure to involve some very innovative use of Django (Adrian built &lt;a href=&quot;http://chicagocrime.org/&quot;&gt;chicagocrime.org&lt;/a&gt;). Adrian's departure means that the Journal-World are &lt;a href=&quot;http://www.holovaty.com/blog/archive/2005/08/03/0202&quot;&gt;looking for a new developer&lt;/a&gt; - here's &lt;a href=&quot;http://dragonsensei.is-a.dev/2004/Jun/29/job/&quot; title=&quot;Fancy a job?&quot;&gt;why you should apply&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p id=&quot;p-4&quot;&gt;One thing's for certain: we're going to see some very exciting Django-powered sites in the next few months.&lt;/p&gt;</field>
 		<field name="created">2005-08-03 16:56:34</field>
@@ -23605,15 +23605,15 @@ organization as a reference implementation of ECMAScript Edition 4.&lt;/p&gt;
 		<field name="slug">upgrade</field>
 		<field name="body">&lt;p&gt;It's been way too long, but I've finally replaced the ball of PHP duct tape that has run this site for the past four years with a shiny new blog engine powered by &lt;a href=&quot;http://www.djangoproject.com/&quot;&gt;Django&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;I've moved to my own domain (simonwillison.net) on a virtual server hosted by &lt;a href=&quot;http://www.bytemark.co.uk/&quot;&gt;Bytemark&lt;/a&gt;. I'd like to extend a big thanks to &lt;a href=&quot;http://www.incutio.com/&quot;&gt;Incutio&lt;/a&gt; for hosting me for the past four years. Moving a site that's been around for this long is going to be pretty painful; if you've linked to me in the past I'd appreciate it if you could update the link. I'll be adding redirects from the old site once I've seen how well the new system copes with proper traffic.&lt;/p&gt;
+&lt;p&gt;I've moved to my own domain (dragonsensei.is-a.dev) on a virtual server hosted by &lt;a href=&quot;http://www.bytemark.co.uk/&quot;&gt;Bytemark&lt;/a&gt;. I'd like to extend a big thanks to &lt;a href=&quot;http://www.incutio.com/&quot;&gt;Incutio&lt;/a&gt; for hosting me for the past four years. Moving a site that's been around for this long is going to be pretty painful; if you've linked to me in the past I'd appreciate it if you could update the link. I'll be adding redirects from the old site once I've seen how well the new system copes with proper traffic.&lt;/p&gt;
 
-&lt;p&gt;I've also redesigned (feed readers, &lt;a href=&quot;http://simonwillison.net/&quot;&gt;click here now!&lt;/a&gt;). One of the biggest problems with my old design was that it emphasized my entries which were posted only a few times a month at the expense of links, updated several times a day. The new front page emphasizes both, with a much clearer indication of when new content has been added.&lt;/p&gt;
+&lt;p&gt;I've also redesigned (feed readers, &lt;a href=&quot;http://dragonsensei.is-a.dev/&quot;&gt;click here now!&lt;/a&gt;). One of the biggest problems with my old design was that it emphasized my entries which were posted only a few times a month at the expense of links, updated several times a day. The new front page emphasizes both, with a much clearer indication of when new content has been added.&lt;/p&gt;
 
-&lt;p&gt;Unfortunately this means my feeds are moving. I'm serving the new ones through FeedBurner, but I've shelled out for a vanity subdomain so at least they stay within my domain space. You can subscribe to &lt;a href=&quot;http://feeds.simonwillison.net/swn-everything&quot;&gt;everything&lt;/a&gt; (links and entries), &lt;a href=&quot;http://feeds.simonwillison.net/swn-entries&quot;&gt;just the entries&lt;/a&gt; or &lt;a href=&quot;http://feeds.simonwillison.net/swn-links&quot;&gt;just the links&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Unfortunately this means my feeds are moving. I'm serving the new ones through FeedBurner, but I've shelled out for a vanity subdomain so at least they stay within my domain space. You can subscribe to &lt;a href=&quot;http://feeds.dragonsensei.is-a.dev/swn-everything&quot;&gt;everything&lt;/a&gt; (links and entries), &lt;a href=&quot;http://feeds.dragonsensei.is-a.dev/swn-entries&quot;&gt;just the entries&lt;/a&gt; or &lt;a href=&quot;http://feeds.dragonsensei.is-a.dev/swn-links&quot;&gt;just the links&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;I've opened comments on links and expanded the format to directly display my commentary rather than hiding it in a tooltip. I've always liked the way &lt;a href=&quot;http://photomatt.net/&quot;&gt;Matt Mullenweg&lt;/a&gt; and &lt;a href=&quot;http://daringfireball.net/linked/&quot;&gt;John Gruber&lt;/a&gt; write short-form entries around their links and hope to start doing something similar here.&lt;/p&gt;
 
-&lt;p&gt;Finally, I've imported my photos and sets from Flickr. I haven't posted anything there in a little while, but you can see an example of the integration on the archive page for &lt;a href=&quot;http://simonwillison.net/2005/Jan/6/&quot;&gt;6th January 2005&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Finally, I've imported my photos and sets from Flickr. I haven't posted anything there in a little while, but you can see an example of the integration on the archive page for &lt;a href=&quot;http://dragonsensei.is-a.dev/2005/Jan/6/&quot;&gt;6th January 2005&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;I'm still taking the bubble wrap off things, so please tell me if you spot any bugs.&lt;/p&gt;</field>
 		<field name="created">2006-12-15 14:11:06</field>
@@ -23628,7 +23628,7 @@ organization as a reference implementation of ECMAScript Edition 4.&lt;/p&gt;
 
 &lt;p&gt;The good news is, you can! &lt;a href=&quot;http://openid.net/&quot;&gt;OpenID&lt;/a&gt; is a decentralised authentication system invented by LiveJournal but now being developed as an open standard under the &lt;a href=&quot;http://incubator.apache.org/projects/heraldry.html&quot; title=&quot;The Heraldry Project&quot;&gt;careful mentorship&lt;/a&gt; of the Apache Software Foundation. Anyone can create an OpenID, and the number of sites which let you log in with one is growing by the day.&lt;/p&gt;
 
-&lt;p&gt;An OpenID is simply a URL. My OpenID is &lt;a href=&quot;http://simonwillison.net/&quot;&gt;simonwillison.net&lt;/a&gt;, the address of my weblog. I can use it to sign in to any site that supports OpenID, and because I'm the only person with control over my weblog's homepage I'm the only person who can use that identity.&lt;/p&gt;
+&lt;p&gt;An OpenID is simply a URL. My OpenID is &lt;a href=&quot;http://dragonsensei.is-a.dev/&quot;&gt;dragonsensei.is-a.dev&lt;/a&gt;, the address of my weblog. I can use it to sign in to any site that supports OpenID, and because I'm the only person with control over my weblog's homepage I'm the only person who can use that identity.&lt;/p&gt;
 
 &lt;p&gt;If you want your own OpenID (and you should), here's how to get one.&lt;/p&gt;
 
@@ -23687,15 +23687,15 @@ organization as a reference implementation of ECMAScript Edition 4.&lt;/p&gt;
 
 &lt;p&gt;I've been collecting a list of sites that allow you to log in using OpenID under the &lt;a href=&quot;http://del.icio.us/tag/openidconsumer&quot;&gt;openidconsumer tag&lt;/a&gt;; sites you may have heard of include &lt;a href=&quot;http://ma.gnolia.com/signin&quot;&gt;Ma.gnolia&lt;/a&gt;, &lt;a href=&quot;http://beta.zooomr.com/login&quot;&gt;Zooomr&lt;/a&gt; and &lt;a href=&quot;http://wikitravel.org/en/Special:OpenIDLogin&quot;&gt;Wikitravel&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h4&gt;OpenID on simonwillison.net&lt;/h4&gt;
+&lt;h4&gt;OpenID on dragonsensei.is-a.dev&lt;/h4&gt;
 
-&lt;p&gt;This whole entry is a round-about way of announcing the addition of OpenID support to my weblog engine. You can sign in &lt;a href=&quot;http://simonwillison.net/openid/&quot;&gt;here&lt;/a&gt;; once signed in you'll be able to leave comments with a pretty OpenID logo (proving that they came from you) and track recent comments that you've posted on the &lt;a href=&quot;http://simonwillison.net/comments/yours/&quot;&gt;Your Comments&lt;/a&gt; page. I'm working on adding other functionality for logged-in users such as the ability to edit your own comments or for trusted users to flag comment spam.&lt;/p&gt;
+&lt;p&gt;This whole entry is a round-about way of announcing the addition of OpenID support to my weblog engine. You can sign in &lt;a href=&quot;http://dragonsensei.is-a.dev/openid/&quot;&gt;here&lt;/a&gt;; once signed in you'll be able to leave comments with a pretty OpenID logo (proving that they came from you) and track recent comments that you've posted on the &lt;a href=&quot;http://dragonsensei.is-a.dev/comments/yours/&quot;&gt;Your Comments&lt;/a&gt; page. I'm working on adding other functionality for logged-in users such as the ability to edit your own comments or for trusted users to flag comment spam.&lt;/p&gt;
 
 &lt;p&gt;This kind of light-weight account mechanism is one of the things that makes OpenID so interesting. I doubt I could convince anyone to create a new account just to access a few features on my weblog, but if they already have an OpenID the overhead of logging in is small enough that I'm hopeful at least a few people will give it a go.&lt;/p&gt;
 
 &lt;p&gt;As always, report any bugs in the comments.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; I've created a screencast showing &lt;a href=&quot;http://simonwillison.net/2006/openid-screencast/&quot;&gt;how to use OpenID&lt;/a&gt;.&lt;/p&gt;</field>
+&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; I've created a screencast showing &lt;a href=&quot;http://dragonsensei.is-a.dev/2006/openid-screencast/&quot;&gt;how to use OpenID&lt;/a&gt;.&lt;/p&gt;</field>
 		<field name="created">2006-12-19 11:37:12</field>
 		<field name="comments_open">0</field>
 	</row>
@@ -23719,7 +23719,7 @@ organization as a reference implementation of ECMAScript Edition 4.&lt;/p&gt;
   &quot;age&quot;: 25,
   &quot;height&quot;: 1.68,
   &quot;urls&quot;: [
-    &quot;http://simonwillison.net/&quot;,
+    &quot;http://dragonsensei.is-a.dev/&quot;,
     &quot;http://www.flickr.com/photos/simon/&quot;,
     &quot;http://simon.incutio.com/&quot;
   ]
@@ -23734,7 +23734,7 @@ organization as a reference implementation of ECMAScript Edition 4.&lt;/p&gt;
   &amp;lt;age&amp;gt;25&amp;lt;/age&amp;gt;
   &amp;lt;height&amp;gt;1.68&amp;lt;/height&amp;gt;
   &amp;lt;urls&amp;gt;
-    &amp;lt;url&amp;gt;http://simonwillison.net/&amp;lt;/url&amp;gt;
+    &amp;lt;url&amp;gt;http://dragonsensei.is-a.dev/&amp;lt;/url&amp;gt;
     ...
   &amp;lt;/urls&amp;gt;
 &amp;lt;/person&amp;gt;&lt;/code&gt;&lt;/pre&gt;
@@ -23774,13 +23774,13 @@ organization as a reference implementation of ECMAScript Edition 4.&lt;/p&gt;
 
 &lt;p&gt;To that end, I've put together a screencast:&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://simonwillison.net/2006/openid-screencast/&quot;&gt;How to use OpenID&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://dragonsensei.is-a.dev/2006/openid-screencast/&quot;&gt;How to use OpenID&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;It's 5 minutes 46 seconds long and demonstrates creating an OpenID (using &lt;a href=&quot;http://www.myopenid.com&quot;&gt;MyOpenID&lt;/a&gt;) and logging in to a number of websites with it, then explains how other providers can be used to avoid having a single point of failure. It also touches on delegation; I decided not to cover that in detail for fear of giving people too much information up-front.&lt;/p&gt;
 
 &lt;p&gt;It's the first screencast I've done, and I can confirm what everyone else has said: those things take ages! It took around seven hours to edit together less than six minutes of footage. If anyone's interested I can write up some of the things I learnt in the process. Mark Pilgrim's &lt;a href=&quot;http://howto.diveintomark.org/about/&quot; title=&quot;howto.diveintomark.org: About&quot;&gt;notes&lt;/a&gt; proved invaluable.&lt;/p&gt;
 
-&lt;p&gt;I'm hoping to get the screencast in front of as many people as possible, so please link to it if you find it useful. Link directly to &lt;a href=&quot;http://simonwillison.net/2006/openid-screencast/&quot;&gt;the screencast page&lt;/a&gt; and not to this entry; the screencast page is being served statically by &lt;a href=&quot;http://nginx.net/&quot;&gt;nginx&lt;/a&gt; which should hopefully help avoid a repeat of the meltdown I had &lt;a href=&quot;http://simonwillison.net/2006/Dec/19/&quot;&gt;on Tuesday&lt;/a&gt;.&lt;/p&gt;</field>
+&lt;p&gt;I'm hoping to get the screencast in front of as many people as possible, so please link to it if you find it useful. Link directly to &lt;a href=&quot;http://dragonsensei.is-a.dev/2006/openid-screencast/&quot;&gt;the screencast page&lt;/a&gt; and not to this entry; the screencast page is being served statically by &lt;a href=&quot;http://nginx.net/&quot;&gt;nginx&lt;/a&gt; which should hopefully help avoid a repeat of the meltdown I had &lt;a href=&quot;http://dragonsensei.is-a.dev/2006/Dec/19/&quot;&gt;on Tuesday&lt;/a&gt;.&lt;/p&gt;</field>
 		<field name="created">2006-12-22 21:29:42</field>
 		<field name="comments_open">0</field>
 	</row>
@@ -23793,7 +23793,7 @@ organization as a reference implementation of ECMAScript Edition 4.&lt;/p&gt;
 
 &lt;h4&gt;Comments watchlist&lt;/h4&gt;
 
-&lt;p&gt;A long-running problem with weblogs is that if you post a comment somewhere it's easy to lose track of that thread and miss any replies that other people might post. If you log in to this site with an OpenID you now have access to &lt;a href=&quot;http://simonwillison.net/comments/watchlist/&quot;&gt;a watchlist&lt;/a&gt;. You can add any post on the site to your watchlist and follow new comments on one page. More importantly, you can subscribe to an atom feed of comments posted to items on your watchlist.&lt;/p&gt;
+&lt;p&gt;A long-running problem with weblogs is that if you post a comment somewhere it's easy to lose track of that thread and miss any replies that other people might post. If you log in to this site with an OpenID you now have access to &lt;a href=&quot;http://dragonsensei.is-a.dev/comments/watchlist/&quot;&gt;a watchlist&lt;/a&gt;. You can add any post on the site to your watchlist and follow new comments on one page. More importantly, you can subscribe to an atom feed of comments posted to items on your watchlist.&lt;/p&gt;
 
 &lt;p&gt;When you post a comment, the item you are commenting on is automatically added to your watchlist. This means you can subscribe to your watchlist feed and automatically follow threads that you have contributed to.&lt;/p&gt;
 
@@ -23801,7 +23801,7 @@ organization as a reference implementation of ECMAScript Edition 4.&lt;/p&gt;
 
 &lt;h4&gt;New talks section&lt;/h4&gt;
 
-&lt;p&gt;I've done quite a lot of public speaking over the past 18 months, and I've put together &lt;a href=&quot;http://simonwillison.net/talks/&quot;&gt;a new section&lt;/a&gt; with details of talks I've given and links to supporting material. The material is a bit thin at the moment but I hope to add more over the next few weeks.&lt;/p&gt;
+&lt;p&gt;I've done quite a lot of public speaking over the past 18 months, and I've put together &lt;a href=&quot;http://dragonsensei.is-a.dev/talks/&quot;&gt;a new section&lt;/a&gt; with details of talks I've given and links to supporting material. The material is a bit thin at the moment but I hope to add more over the next few weeks.&lt;/p&gt;
 
 &lt;h4&gt;Style changes&lt;/h4&gt;
 
@@ -23809,7 +23809,7 @@ organization as a reference implementation of ECMAScript Edition 4.&lt;/p&gt;
 
 &lt;h4&gt;Colophon enhancements&lt;/h4&gt;
 
-&lt;p&gt;I always enjoy reading the colophon in O'Reilly books, which is hidden away at the back and describes the typefaces and processes used to publish the book (and the characteristics of the animal on the front). I added a colophon to &lt;a href=&quot;http://simonwillison.net/about/&quot;&gt;my about page&lt;/a&gt; a few weeks ago; I've updated it and added a feed of the last few changelog messages checked in to Bazaar.&lt;/p&gt;
+&lt;p&gt;I always enjoy reading the colophon in O'Reilly books, which is hidden away at the back and describes the typefaces and processes used to publish the book (and the characteristics of the animal on the front). I added a colophon to &lt;a href=&quot;http://dragonsensei.is-a.dev/about/&quot;&gt;my about page&lt;/a&gt; a few weeks ago; I've updated it and added a feed of the last few changelog messages checked in to Bazaar.&lt;/p&gt;
 
 &lt;p&gt;Bazaar is written in Python, so I can pull data from it using the bzrlib module directly in my Django view:&lt;/p&gt;
 
@@ -23922,9 +23922,9 @@ To log in, please navigate to &lt;strong&gt;login.example.com&lt;/strong&gt;. Th
 
 &lt;p&gt;This proposal certainly isn't 100% fool-proof, but I doubt that any solution to phishing ever could be (someone can always invent a better fool). The effectiveness of the approach could be dramatically increased by disciplined usability testing of the instruction page itself.&lt;/p&gt;
 
-&lt;p&gt;I don't know of any identity providers that currently do this, but &lt;a href=&quot;http://simonwillison.net/2006/Dec/19/openid/&quot; title=&quot;How to turn your blog in to an OpenID&quot;&gt;delegation&lt;/a&gt; makes switching providers trivial and security is likely to emerge as a key way for them to compete. There's plenty of scope for innovation here.&lt;/p&gt;
+&lt;p&gt;I don't know of any identity providers that currently do this, but &lt;a href=&quot;http://dragonsensei.is-a.dev/2006/Dec/19/openid/&quot; title=&quot;How to turn your blog in to an OpenID&quot;&gt;delegation&lt;/a&gt; makes switching providers trivial and security is likely to emerge as a key way for them to compete. There's plenty of scope for innovation here.&lt;/p&gt;
 
-&lt;p&gt;If there are any holes in my thinking I'd love to hear about them in the comments. &lt;strong&gt;Update:&lt;/strong&gt; Tons of &lt;a href=&quot;http://simonwillison.net/2007/Jan/19/phishing/#comments&quot;&gt;smart comments&lt;/a&gt; on this one.&lt;/p&gt;</field>
+&lt;p&gt;If there are any holes in my thinking I'd love to hear about them in the comments. &lt;strong&gt;Update:&lt;/strong&gt; Tons of &lt;a href=&quot;http://dragonsensei.is-a.dev/2007/Jan/19/phishing/#comments&quot;&gt;smart comments&lt;/a&gt; on this one.&lt;/p&gt;</field>
 		<field name="created">2007-01-19 14:39:02</field>
 		<field name="comments_open">0</field>
 	</row>
@@ -23939,11 +23939,11 @@ To log in, please navigate to &lt;strong&gt;login.example.com&lt;/strong&gt;. Th
 
 &lt;p id=&quot;p-2&quot;&gt;This weblog has a comment spam detection system  based on simple heuristics. Comments are assigned a score; if the score exceeds a certain level the comment is placed in a queue for moderation. As of today, one of the heuristics is &quot;does the comment author have an OpenID that is on the whitelist&quot;. I've populated my whitelist with the OpenIDs of people who have posted two or more useful comments  and do not appear to be using an &lt;a href=&quot;http://www.jkg.in/openid/&quot;&gt;anonymous provider&lt;/a&gt;. I'll be adding to it regularly in the future.&lt;/p&gt;
 
-&lt;p id=&quot;p-3&quot;&gt;Here comes the social part: I'm &lt;a href=&quot;http://simonwillison.net/comments/whitelist/&quot;&gt;sharing my whitelist&lt;/a&gt;. If you run your own OpenID-enabled weblog you are welcome to include my whitelist in your comment spam heuristics. If you publish your own whitelist, I will happily do the same.&lt;/p&gt;
+&lt;p id=&quot;p-3&quot;&gt;Here comes the social part: I'm &lt;a href=&quot;http://dragonsensei.is-a.dev/comments/whitelist/&quot;&gt;sharing my whitelist&lt;/a&gt;. If you run your own OpenID-enabled weblog you are welcome to include my whitelist in your comment spam heuristics. If you publish your own whitelist, I will happily do the same.&lt;/p&gt;
 
 &lt;p id=&quot;p-4&quot;&gt;Social whitelisting benefits from being de-centralised, just like OpenID. If I find that you have whitelisted a spammer, I can unsubscribe from your whitelist. There's no central authority or point of failure.&lt;/p&gt;
 
-&lt;p id=&quot;p-5&quot;&gt;Long-time readers may be feeling a strong sense of deja-vu. Way back in September 2003, &lt;a href=&quot;http://simonwillison.net/2003/Sep/2/blacklisting/&quot;&gt;I proposed shared comment blacklists&lt;/a&gt; as a solution to weblog comment spam. The idea was simple: every time you delete a spam comment, you add the link it was advertising to a public blacklist. Other blogs could then subscribe to your blacklist and block any new comments advertising the same site.&lt;/p&gt;
+&lt;p id=&quot;p-5&quot;&gt;Long-time readers may be feeling a strong sense of deja-vu. Way back in September 2003, &lt;a href=&quot;http://dragonsensei.is-a.dev/2003/Sep/2/blacklisting/&quot;&gt;I proposed shared comment blacklists&lt;/a&gt; as a solution to weblog comment spam. The idea was simple: every time you delete a spam comment, you add the link it was advertising to a public blacklist. Other blogs could then subscribe to your blacklist and block any new comments advertising the same site.&lt;/p&gt;
 
 &lt;p id=&quot;p-6&quot;&gt;The blacklisting idea was flawed from the very start. It was a classic example of Marcus J. Ranum's &lt;a href=&quot;http://www.ranum.com/security/computer_security/editorials/dumb/&quot; title=&quot;The Six Dumbest Ideas in Computer Security&quot;&gt;number one dumbest idea in computer security&lt;/a&gt;: Default Permit. Spam blacklists assume that if we don't know a link is bad, it's good. Spammers can create new bad links far faster than we can blacklist them.&lt;/p&gt;
 
@@ -24033,7 +24033,7 @@ To log in, please navigate to &lt;strong&gt;login.example.com&lt;/strong&gt;. Th
 
 &lt;p&gt;Disambiguating your URLs isn't particularly difficult. The &lt;a href=&quot;http://no-www.org/&quot;&gt;no-www site&lt;/a&gt; offers tips on having one domain name redirect to the other, and there are &lt;a href=&quot;http://rewrite.drbacchus.com/&quot; title=&quot;mod_rewrite cookbook&quot;&gt;various mod_rewrite techniques&lt;/a&gt; for achieving the desired effect as well. If mod_rewrite makes your hair stand on end, remember that if you are using a server-side scripting language such as PHP you can implement rewriting logic in your application code by examining the &lt;code&gt;$_ENV['PATH_INFO']&lt;/code&gt; variable or your platform's equivalent.&lt;/p&gt;
 
-&lt;p&gt;Django sites get this behaviour for free, thanks to some default settings and Django's &lt;a href=&quot;http://www.djangoproject.com/documentation/middleware/#django-middleware-common-commonmiddleware&quot;&gt;CommonMiddleware&lt;/a&gt;. You can that in action on this weblog: try &lt;a href=&quot;http://simonwillison.net/2007/Feb/4/&quot;&gt;here&lt;/a&gt;, &lt;a href=&quot;http://www.simonwillison.net/2007/Feb/4&quot;&gt;here&lt;/a&gt; and &lt;a href=&quot;http://simonwillison.net/2007/Feb/4&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;</field>
+&lt;p&gt;Django sites get this behaviour for free, thanks to some default settings and Django's &lt;a href=&quot;http://www.djangoproject.com/documentation/middleware/#django-middleware-common-commonmiddleware&quot;&gt;CommonMiddleware&lt;/a&gt;. You can that in action on this weblog: try &lt;a href=&quot;http://dragonsensei.is-a.dev/2007/Feb/4/&quot;&gt;here&lt;/a&gt;, &lt;a href=&quot;http://www.dragonsensei.is-a.dev/2007/Feb/4&quot;&gt;here&lt;/a&gt; and &lt;a href=&quot;http://dragonsensei.is-a.dev/2007/Feb/4&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;</field>
 		<field name="created">2007-02-04 13:57:24</field>
 		<field name="comments_open">0</field>
 	</row>
@@ -24042,7 +24042,7 @@ To log in, please navigate to &lt;strong&gt;login.example.com&lt;/strong&gt;. Th
 		<field name="id">1567</field>
 		<field name="title">jQuery for JavaScript programmers</field>
 		<field name="slug">jquery</field>
-		<field name="body">&lt;p&gt;When &lt;a href=&quot;http://jquery.com/&quot;&gt;jQuery&lt;/a&gt; came out back in January 2006, my first impression was that it was a cute hack. Basing everything around CSS selectors was a neat idea (see &lt;a href=&quot;http://simonwillison.net/2003/Mar/25/getElementsBySelector/&quot;&gt;getElementsBySelector&lt;/a&gt;) but the chaining stuff looked like a bit of a gimmick and the library as a whole didn't look like it would cover all of the bases. I wrote jQuery off as a passing fad.&lt;/p&gt;
+		<field name="body">&lt;p&gt;When &lt;a href=&quot;http://jquery.com/&quot;&gt;jQuery&lt;/a&gt; came out back in January 2006, my first impression was that it was a cute hack. Basing everything around CSS selectors was a neat idea (see &lt;a href=&quot;http://dragonsensei.is-a.dev/2003/Mar/25/getElementsBySelector/&quot;&gt;getElementsBySelector&lt;/a&gt;) but the chaining stuff looked like a bit of a gimmick and the library as a whole didn't look like it would cover all of the bases. I wrote jQuery off as a passing fad.&lt;/p&gt;
 
 &lt;p&gt;Over the past few months it's become clear to me exactly how wrong I was. jQuery is an exceptionally clever piece of engineering. It neatly encapsulates an extraordinary range of common functionality, and provides a clever plugin API for any functionality not included by default. It takes a core abstraction - that of a selection of DOM elements - and extracts as much mileage out of it as possible. Most importantly, it does so in a way that obeys best practices and plays well with other JavaScript code.&lt;/p&gt;
 
@@ -24303,7 +24303,7 @@ jQuery.getScript('/script.js'); // GET and eval() /script.js
 		<field name="slug">future</field>
 		<field name="body">&lt;p&gt;Just a quick update to say that I'll be speaking at the &lt;a href=&quot;http://www.futureofwebapps.com/&quot;&gt;Future of Web Apps&lt;/a&gt; conference in London on February the 21st, talking about OpenID. I really enjoyed last year's event and feel honored to be included in such an exciting schedule.&lt;/p&gt;
 
-&lt;p&gt;I gave a &lt;a href=&quot;http://simonwillison.net/2007/talks/oxford-openid/&quot;&gt;15 minute introductory talk&lt;/a&gt; on OpenID at the first &lt;a href=&quot;http://oxford.geeknights.net/2007/february-7th/&quot;&gt;Oxford Geek Night&lt;/a&gt; last Wednesday. The event was an enormous success (attracting over 100 people) and there should be another one in the not too distant future. Recommended.&lt;/p&gt;</field>
+&lt;p&gt;I gave a &lt;a href=&quot;http://dragonsensei.is-a.dev/2007/talks/oxford-openid/&quot;&gt;15 minute introductory talk&lt;/a&gt; on OpenID at the first &lt;a href=&quot;http://oxford.geeknights.net/2007/february-7th/&quot;&gt;Oxford Geek Night&lt;/a&gt; last Wednesday. The event was an enormous success (attracting over 100 people) and there should be another one in the not too distant future. Recommended.&lt;/p&gt;</field>
 		<field name="created">2007-02-10 23:45:54</field>
 		<field name="comments_open">0</field>
 	</row>
@@ -24322,7 +24322,7 @@ The Future of Web Apps, day two&quot;&gt;really&lt;/a&gt; &lt;a href=&quot;http:
 		<field name="id">1556</field>
 		<field name="title">Six cool things you can build with OpenID</field>
 		<field name="slug">six</field>
-		<field name="body">&lt;p&gt;I've &lt;a href=&quot;http://simonwillison.net/2007/talks/future-openid/&quot; title=&quot;The Future of OpenID&quot;&gt;posted the slides&lt;/a&gt; from my Future of Web Apps talk on OpenID, minus the demo videos. I'm planning to put together a video that combines the slides, demos and audio once the official podcasts have been published.&lt;/p&gt;
+		<field name="body">&lt;p&gt;I've &lt;a href=&quot;http://dragonsensei.is-a.dev/2007/talks/future-openid/&quot; title=&quot;The Future of OpenID&quot;&gt;posted the slides&lt;/a&gt; from my Future of Web Apps talk on OpenID, minus the demo videos. I'm planning to put together a video that combines the slides, demos and audio once the official podcasts have been published.&lt;/p&gt;
 
 &lt;p&gt;Apart from explaining what OpenID is and how it works, the key point I was trying to get across in the talk was that OpenID is a simple piece of infrastructure on which smart applications can be built - applications that may not have been possible prior to the adoption of OpenID. This is due to two important characteristics of OpenID. The first is that OpenID significantly lowers the effort needed in creating an account, to the point that people might sign up for accounts with services that they otherwise would not have used. The second is that OpenID provides a globally unique identifier that can be used to correlate information across multiple services.&lt;/p&gt;
 
@@ -24362,7 +24362,7 @@ The Future of Web Apps, day two&quot;&gt;really&lt;/a&gt; &lt;a href=&quot;http:
 
 &lt;h4&gt;Social whitelists&lt;/h4&gt;
 
-&lt;p&gt;I've &lt;a href=&quot;http://simonwillison.net/2007/Jan/22/whitelisting/&quot;&gt;talked about these previously&lt;/a&gt;; Tom Coates has &lt;a href=&quot;http://www.plasticbag.org/archives/2007/01/social_whitelisting_w/&quot; title=&quot;Social Whitelisting with OpenID&quot;&gt;further thoughts&lt;/a&gt;. By sharing whitelists we can use OpenID to build a simple trust network.&lt;/p&gt;
+&lt;p&gt;I've &lt;a href=&quot;http://dragonsensei.is-a.dev/2007/Jan/22/whitelisting/&quot;&gt;talked about these previously&lt;/a&gt;; Tom Coates has &lt;a href=&quot;http://www.plasticbag.org/archives/2007/01/social_whitelisting_w/&quot; title=&quot;Social Whitelisting with OpenID&quot;&gt;further thoughts&lt;/a&gt;. By sharing whitelists we can use OpenID to build a simple trust network.&lt;/p&gt;
 
 &lt;p&gt;A similar concept is that of publishing groups. &lt;a href=&quot;http://www.jyte.com/&quot;&gt;Jyte&lt;/a&gt; offers a &lt;a href=&quot;http://jyte.com/site/api&quot;&gt;simple API&lt;/a&gt; to export the members of a Jyte group. Not only does this make groups portable to other services, it also lets you build an authentication mechanism for a site that only allows members of a specific published group to log in to a service.&lt;/p&gt;
 
@@ -24379,7 +24379,7 @@ The Future of Web Apps, day two&quot;&gt;really&lt;/a&gt; &lt;a href=&quot;http:
 		<field name="id">1557</field>
 		<field name="title">My Future of Web Apps talk as a slidecast</field>
 		<field name="slug">slidecast</field>
-		<field name="body">&lt;p&gt;The team at Carson Systems have a pretty quick turnaround on their podcasts; they've had full recordings of every speaker up &lt;a href=&quot;http://www.futureofwebapps.com/&quot; title=&quot;The Future of Web Apps&quot;&gt;for a few days now&lt;/a&gt;. I spent a bunch of time over the weekend splicing the recording of my talk together with my slides, and the result is now available at &lt;a href=&quot;http://simonwillison.net/2007/openid-fowa/&quot;&gt;The Future of OpenID (a slidecast)&lt;/a&gt;.&lt;/p&gt;
+		<field name="body">&lt;p&gt;The team at Carson Systems have a pretty quick turnaround on their podcasts; they've had full recordings of every speaker up &lt;a href=&quot;http://www.futureofwebapps.com/&quot; title=&quot;The Future of Web Apps&quot;&gt;for a few days now&lt;/a&gt;. I spent a bunch of time over the weekend splicing the recording of my talk together with my slides, and the result is now available at &lt;a href=&quot;http://dragonsensei.is-a.dev/2007/openid-fowa/&quot;&gt;The Future of OpenID (a slidecast)&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;I managed to crunch it down to a 41.2 MB H.264 MPEG file; there is also a Flash video version are available on &lt;a href=&quot;http://www.archive.org/details/thefutureofopenid&quot; title=&quot;Internet Archive: Details: The Future of OpenID&quot;&gt;the Internet Archive&lt;/a&gt;.&lt;/p&gt;
 
@@ -24479,7 +24479,7 @@ def example_view(request):
 
 &lt;object type=&quot;application/x-shockwave-flash&quot; data=&quot;https://s3.amazonaws.com:443/slideshare/ssplayer.swf?id=50336&amp;amp;doc=javascript-libraries-the-big-picture-20285&quot; width=&quot;425&quot; height=&quot;348&quot;&gt;&lt;param name=&quot;movie&quot; value=&quot;https://s3.amazonaws.com:443/slideshare/ssplayer.swf?id=50336&amp;amp;doc=javascript-libraries-the-big-picture-20285&quot; /&gt;&lt;/object&gt;
 
-&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; Some important corrections have been posted &lt;a href=&quot;http://simonwillison.net/2007/May/16/libraries/#comments&quot;&gt;in the comments&lt;/a&gt;.&lt;/p&gt;</field>
+&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; Some important corrections have been posted &lt;a href=&quot;http://dragonsensei.is-a.dev/2007/May/16/libraries/#comments&quot;&gt;in the comments&lt;/a&gt;.&lt;/p&gt;</field>
 		<field name="created">2007-05-16 17:26:44</field>
 		<field name="comments_open">0</field>
 	</row>
@@ -24520,7 +24520,7 @@ def example_view(request):
 		<field name="slug">dreamhost</field>
 		<field name="body">&lt;p&gt;On &lt;a href=&quot;http://mezzoblue.com/archives/2007/06/05/unsettling/&quot;&gt;mezzoblue&lt;/a&gt;, Dave Shea reports that someone had modified every index.php and index.html file on his site to include spam links at the bottom of the page, hidden inside a &lt;code&gt;&amp;lt;u style=&quot;display: none;&quot;&amp;gt;&lt;/code&gt;. Dozens of other people in his comments reported the same thing happening to their sites.&lt;/p&gt;
 
-&lt;p&gt;At first, it looked like the common thread was WordPress hosted on Dreamhost. Initial commenters were all running WordPress (Dave has it installed for other domains on his hosting account even though he doesn't use it for mezzoblue itself) and there was &lt;a href=&quot;http://wordpress.org/development/2007/01/wordpress-207/&quot;&gt;a vulnerability in WordPress 2.0.7&lt;/a&gt; which was fixed back in January but would still affect people who hadn't yet upgraded. I &lt;a href=&quot;http://simonwillison.net/2007/Jun/5/mezzoblue/#comments&quot;&gt;posted a link&lt;/a&gt; suggesting that WordPress users in particular should check their sites.&lt;/p&gt;
+&lt;p&gt;At first, it looked like the common thread was WordPress hosted on Dreamhost. Initial commenters were all running WordPress (Dave has it installed for other domains on his hosting account even though he doesn't use it for mezzoblue itself) and there was &lt;a href=&quot;http://wordpress.org/development/2007/01/wordpress-207/&quot;&gt;a vulnerability in WordPress 2.0.7&lt;/a&gt; which was fixed back in January but would still affect people who hadn't yet upgraded. I &lt;a href=&quot;http://dragonsensei.is-a.dev/2007/Jun/5/mezzoblue/#comments&quot;&gt;posted a link&lt;/a&gt; suggesting that WordPress users in particular should check their sites.&lt;/p&gt;
 
 &lt;p&gt;I apologise to the WordPress team for even suggesting that their product had something to do with this. Here's an e-mail Dreamhost sent out to some of their customers last night:&lt;/p&gt;
 
@@ -24675,7 +24675,7 @@ any changes made to them. Most accounts were untouched.&lt;/p&gt;
 
 &lt;p&gt;Of the other speakers my favourite was Brent Hoberman of &lt;a href=&quot;http://www.lastminute.com/&quot;&gt;lastminute.com&lt;/a&gt; and more recently &lt;a href=&quot;http://www.mydeco.com/&quot;&gt;mydeco.com&lt;/a&gt;. He presented without slides, choosing instead to simply blasting through dozens of lessons he learnt working on lastminute.com, both when it was a plucky startup and once it had morphed in to a large public company. Thankfully Jeremy &lt;a href=&quot;http://adactio.com/journal/1351/&quot; title=&quot;Microsoft in London&quot;&gt;took copious notes&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;I was lucky enough to get the opportunity to throw a question at Steve. I considered asking how he planned to lure open source developers (used to &lt;a href=&quot;http://simonwillison.net/2005/Nov/1/destiny/&quot;&gt;controlling their entire stack&lt;/a&gt;) back to Microsoft tools, but another question had touched on patents so instead I asked the following (paraphrased):&lt;/p&gt;
+&lt;p&gt;I was lucky enough to get the opportunity to throw a question at Steve. I considered asking how he planned to lure open source developers (used to &lt;a href=&quot;http://dragonsensei.is-a.dev/2005/Nov/1/destiny/&quot;&gt;controlling their entire stack&lt;/a&gt;) back to Microsoft tools, but another question had touched on patents so instead I asked the following (paraphrased):&lt;/p&gt;
 
 &lt;blockquote&gt;&lt;p&gt;This event is all about encouraging startups - but one of the biggest problems a startup faces is that it's almost impossible to invent anything without violating someone's patent. Big companies can use their patent portfolios to defend themselves, but small companies have no way to fight back. It's kind of like the Cold War.&lt;/p&gt;&lt;/blockquote&gt;
 
@@ -24811,7 +24811,7 @@ Hey there! You have stopped by a bit sooner than we had expected. This feature i
 
 &lt;p&gt;It looks like Yahoo! will only be supporting OpenID 2 and won't provide a fallback for OpenID 1.x consumers. This means you won't be able to use your Flickr OpenID on many existing consumer sites (including this blog), at least until they get around to updating their libraries. I expect Yahoo!'s implementation to be a major influence in encouraging OpenID 2 adoption.&lt;/p&gt;
 
-&lt;p&gt;It's three weeks short of a year since I &lt;a href=&quot;http://simonwillison.net/2007/Jan/27/idproxy/&quot;&gt;launched idproxy.net&lt;/a&gt;, which provides Yahoo! account holders with a third-party OpenID via the BBAuth API. I couldn't be happier to see Yahoo! taking steps towards cutting out the middle man.&lt;/p&gt;</field>
+&lt;p&gt;It's three weeks short of a year since I &lt;a href=&quot;http://dragonsensei.is-a.dev/2007/Jan/27/idproxy/&quot;&gt;launched idproxy.net&lt;/a&gt;, which provides Yahoo! account holders with a third-party OpenID via the BBAuth API. I couldn't be happier to see Yahoo! taking steps towards cutting out the middle man.&lt;/p&gt;</field>
 		<field name="created">2008-01-07 23:33:39</field>
 		<field name="comments_open">0</field>
 	</row>
@@ -24845,7 +24845,7 @@ Hey there! You have stopped by a bit sooner than we had expected. This feature i
     &lt;li&gt;When &lt;a href=&quot;http://djangopeople.net/signup/&quot;&gt;signing up for a new account&lt;/a&gt;, you now have the option to start by signing in with an OpenID. If you do this, you'll be able to complete the signup form without having to pick a password. If your OpenID provider supports simple registration the name, e-mail address and username fields will be filled in for you.&lt;/li&gt;
     &lt;li&gt;If you already have an existing account, you can &lt;a href=&quot;http://djangopeople.net/openid/associations/&quot;&gt;associate one or more OpenIDs&lt;/a&gt; with that account. You'll then be able to use any of them to sign in to the account. Why multiple OpenIDs instead of just one? Two reasons: firstly, it opens the potential for doing interesting things with multiple OpenIDs from different providers in the future; secondly, it gives you a fallback for if one of your OpenID providers becomes unavailable.&lt;/li&gt;
     &lt;li&gt;You can freely add and remove OpenIDs from your associations, with one exception: the site won't let you delete your last OpenID if your account doesn't also have a password associated with it, to prevent you from locking yourself out.&lt;/li&gt;
-    &lt;li&gt;While I decided that I didn't want Django People to become &lt;em&gt;yet another&lt;/em&gt; OpenID provider, I do want to give people the ability to use their profile page on the site as an OpenID - so that they can prove that they own it (see my &lt;a href=&quot;http://simonwillison.net/2008/Jan/7/projection/&quot; title=&quot;Yahoo!, Flickr, OpenID and Identity Projection&quot;&gt;recent post on identity projection&lt;/a&gt;). To that end, the new account settings page lets advanced OpenID users set up an &lt;code&gt;openid.server&lt;/code&gt; and &lt;code&gt;openid.delegate&lt;/code&gt; for their profile page, as described in &lt;a href=&quot;http://simonwillison.net/2006/Dec/19/openid/&quot; title=&quot;How to turn your blog in to an OpenID&quot;&gt;my blog entry&lt;/a&gt; from just over a year ago.&lt;/li&gt;
+    &lt;li&gt;While I decided that I didn't want Django People to become &lt;em&gt;yet another&lt;/em&gt; OpenID provider, I do want to give people the ability to use their profile page on the site as an OpenID - so that they can prove that they own it (see my &lt;a href=&quot;http://dragonsensei.is-a.dev/2008/Jan/7/projection/&quot; title=&quot;Yahoo!, Flickr, OpenID and Identity Projection&quot;&gt;recent post on identity projection&lt;/a&gt;). To that end, the new account settings page lets advanced OpenID users set up an &lt;code&gt;openid.server&lt;/code&gt; and &lt;code&gt;openid.delegate&lt;/code&gt; for their profile page, as described in &lt;a href=&quot;http://dragonsensei.is-a.dev/2006/Dec/19/openid/&quot; title=&quot;How to turn your blog in to an OpenID&quot;&gt;my blog entry&lt;/a&gt; from just over a year ago.&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;One caveat: the site only supports OpenID 1.1, at least for the moment. I had originally planned to go for OpenID 2.0, but demand was such that I decided to get what I had up and running rather than digging in to the OpenID 2.0 libraries.&lt;/p&gt;
@@ -25250,7 +25250,7 @@ Content-Type: text/html; charset=utf-8
 
 &lt;p&gt;I have a very simple rule of thumb for whether or not a site should consider whitelisting OpenID providers: does the site offer a &quot;forgotten password&quot; feature that e-mails the user a login token? If it does, then the owners have already made the decision to outsource the security of their users to whoever they picked as an e-mail provider. If they don't (banks are a good example here) they should continue that policy decision and consider using an OpenID provider whitelist.&lt;/p&gt;
 
-&lt;p&gt;I've been using the example of banks potentially accepting OpenID only from security audited providers in my &lt;a href=&quot;http://simonwillison.net/talks/openid/&quot;&gt;talks on OpenID&lt;/a&gt; for at least the past year. Now I can finally provide a real-world example.&lt;/p&gt;</field>
+&lt;p&gt;I've been using the example of banks potentially accepting OpenID only from security audited providers in my &lt;a href=&quot;http://dragonsensei.is-a.dev/talks/openid/&quot;&gt;talks on OpenID&lt;/a&gt; for at least the past year. Now I can finally provide a real-world example.&lt;/p&gt;</field>
 		<field name="created">2008-06-24 08:12:23</field>
 		<field name="comments_open">0</field>
 	</row>
@@ -25304,13 +25304,13 @@ Content-Type: text/html; charset=utf-8
 		<field name="id">1581</field>
 		<field name="title">DjangoCon and PyCon UK</field>
 		<field name="slug">conferences</field>
-		<field name="body">&lt;p&gt;September is a big month for conferences. &lt;a href=&quot;http://djangocon.org/&quot;&gt;DjangoCon&lt;/a&gt; was a weekend ago in Mountain View (forcing me to miss both &lt;a href=&quot;http://2008.dconstruct.org/&quot;&gt;d.Construct&lt;/a&gt; and &lt;a href=&quot;http://barcamp.org/BarCampBrighton3&quot;&gt;BarCamp Brighton&lt;/a&gt;), &lt;a href=&quot;http://pyconuk.org/&quot;&gt;PyCon UK&lt;/a&gt; was this weekend in Birmingham, I'm writing this from &lt;a href=&quot;http://vivabit.com/atmediaAjax/&quot;&gt;@media Ajax&lt;/a&gt; and &lt;a href=&quot;http://barcamp.org/BarCampLondon5&quot;&gt;BarCamp London 5&lt;/a&gt; is coming up over another weekend at the end of this month. As always, I've been posting details of upcoming talks and notes and materials from previous ones on &lt;a href=&quot;http://simonwillison.net/2008/talks/&quot;&gt;my talks page&lt;/a&gt;.&lt;/p&gt;
+		<field name="body">&lt;p&gt;September is a big month for conferences. &lt;a href=&quot;http://djangocon.org/&quot;&gt;DjangoCon&lt;/a&gt; was a weekend ago in Mountain View (forcing me to miss both &lt;a href=&quot;http://2008.dconstruct.org/&quot;&gt;d.Construct&lt;/a&gt; and &lt;a href=&quot;http://barcamp.org/BarCampBrighton3&quot;&gt;BarCamp Brighton&lt;/a&gt;), &lt;a href=&quot;http://pyconuk.org/&quot;&gt;PyCon UK&lt;/a&gt; was this weekend in Birmingham, I'm writing this from &lt;a href=&quot;http://vivabit.com/atmediaAjax/&quot;&gt;@media Ajax&lt;/a&gt; and &lt;a href=&quot;http://barcamp.org/BarCampLondon5&quot;&gt;BarCamp London 5&lt;/a&gt; is coming up over another weekend at the end of this month. As always, I've been posting details of upcoming talks and notes and materials from previous ones on &lt;a href=&quot;http://dragonsensei.is-a.dev/2008/talks/&quot;&gt;my talks page&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;DjangoCon went really, really well. Huge thanks to conference chair &lt;a href=&quot;http://www.siudesign.co.uk/&quot;&gt;Robert Lofthouse&lt;/a&gt; for pulling it all together in just two months and &lt;a href=&quot;http://www.hawthornlandings.org/&quot;&gt;Leslie Hawthorne&lt;/a&gt; for making it all happen from Google's end. Google's facitilies were superb: the AV team were the best I've ever worked with and an army of Google volunteers made sure everything went smoothly. It's hard to see how it could have gone better; the principle complaint we got was that at only two days it was hard to justify the travel, something which future DjangoCons will definitely address.&lt;/p&gt;
 
 &lt;p&gt;Every session was recorded and the videos &lt;del&gt;should be going up on YouTube shortly&lt;/del&gt; &lt;a href=&quot;http://www.youtube.com/view_play_list?p=D415FAF806EC47A1&quot;&gt;are now up on YouTube&lt;/a&gt;. For the impatient, you can subscribe to an &lt;a href=&quot;http://gdata.youtube.com/feeds/api/videos?vq=DjangoCon&quot;&gt;Atom feed of a YouTube search for &quot;DjangoCon&quot;&lt;/a&gt;. I recommend starting with Cal Henderson's keynote &lt;a href=&quot;http://www.youtube.com/watch?v=i6Fr65PFqfk&quot;&gt;&quot;Why I hate Django&quot;&lt;/a&gt; which was both funny and insightful in equal parts. Malcolm's talk on &lt;a href=&quot;http://www.youtube.com/watch?v=zlhyp5Ve2qk&quot;&gt;ORM internals&lt;/a&gt; was another personal favourite.&lt;/p&gt;
 
-&lt;p&gt;PyCon UK was the second I've attended, but last year I only stayed for the first day. This time I stuck around and was enormously impressed by the grassroots feel of the conference and the enthusiastic atmosphere. I presented &lt;a href=&quot;http://simonwillison.net/2008/talks/pyconuk-admin/&quot;&gt;a tutorial on extending the Django admin&lt;/a&gt; and &lt;a href=&quot;http://simonwillison.net/2008/talks/pyconuk-zeppelins/&quot;&gt;a lightning talk on Zeppelins&lt;/a&gt;, prepared two hours in advance after Jacob mentioned that the lightning talks were tending too much towards the technical side. It went down very well; I'm tempted to extend it to a half hour session for BarCamp London.&lt;/p&gt;
+&lt;p&gt;PyCon UK was the second I've attended, but last year I only stayed for the first day. This time I stuck around and was enormously impressed by the grassroots feel of the conference and the enthusiastic atmosphere. I presented &lt;a href=&quot;http://dragonsensei.is-a.dev/2008/talks/pyconuk-admin/&quot;&gt;a tutorial on extending the Django admin&lt;/a&gt; and &lt;a href=&quot;http://dragonsensei.is-a.dev/2008/talks/pyconuk-zeppelins/&quot;&gt;a lightning talk on Zeppelins&lt;/a&gt;, prepared two hours in advance after Jacob mentioned that the lightning talks were tending too much towards the technical side. It went down very well; I'm tempted to extend it to a half hour session for BarCamp London.&lt;/p&gt;
 
 &lt;p&gt;Unlike most conferences I attend, PyCon tickets included a sit-down dinner for all attendees complete with a &quot;dramatic lecture&quot; on &lt;a href=&quot;http://en.wikipedia.org/wiki/Lunar_Society&quot;&gt;the Lunar Society&lt;/a&gt; presented by &lt;a href=&quot;http://www.odyssey.dial.pipex.com/&quot;&gt;Andrew Lound&lt;/a&gt;. This was a great fit for the conference, both for the Birmingham connection and the many analogies to the modern open source community - loose collaboration, patent concerns and what you might call an 18th century equivalent of the modern hacker ethic.&lt;/p&gt;
 
@@ -25512,7 +25512,7 @@ def login(request):
 		<field name="id">1586</field>
 		<field name="title">rev=canonical bookmarklet and designing shorter URLs</field>
 		<field name="slug">revcanonical</field>
-		<field name="body">&lt;p&gt;I've watched the proliferation of URL shortening services over the past year with a certain amount of dismay. I care about the health of the web and try to ensure that URLs I am responsible will last for as long as possible, and I think it's very unlikely that all of these new services will still be around in twenty years time. Last month &lt;a href=&quot;http://simonwillison.net/2009/Mar/8/twitter/&quot;&gt;I suggested&lt;/a&gt; that the Internet Archive start mirroring redirect databases, and last week I was &lt;a href=&quot;http://simonwillison.net/2009/Apr/3/tinyurl/&quot;&gt;pleased to hear&lt;/a&gt; that Archiveteam, a different organisation, had &lt;a href=&quot;http://archiveteam.org/index.php?title=TinyURL&quot;&gt;already started crawling&lt;/a&gt;.&lt;/p&gt;
+		<field name="body">&lt;p&gt;I've watched the proliferation of URL shortening services over the past year with a certain amount of dismay. I care about the health of the web and try to ensure that URLs I am responsible will last for as long as possible, and I think it's very unlikely that all of these new services will still be around in twenty years time. Last month &lt;a href=&quot;http://dragonsensei.is-a.dev/2009/Mar/8/twitter/&quot;&gt;I suggested&lt;/a&gt; that the Internet Archive start mirroring redirect databases, and last week I was &lt;a href=&quot;http://dragonsensei.is-a.dev/2009/Apr/3/tinyurl/&quot;&gt;pleased to hear&lt;/a&gt; that Archiveteam, a different organisation, had &lt;a href=&quot;http://archiveteam.org/index.php?title=TinyURL&quot;&gt;already started crawling&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;The most recent discussion was kicked off by &lt;a href=&quot;http://joshua.schachter.org/2009/04/on-url-shorteners.html&quot;&gt;Joshua Schachter&lt;/a&gt; and &lt;a href=&quot;http://www.scripting.com/stories/2009/03/07/solvingTheTinyurlCentraliz.html&quot;&gt;Dave Winer&lt;/a&gt;, and &lt;a href=&quot;http://laughingmeme.org/2009/04/03/url-shortening-hinting/&quot; title=&quot;URL Shortening Hinting&quot;&gt;a solution has emerged&lt;/a&gt; driven by some lightning fast hacking by Kellan Elliott-McCrea. The idea is simple: sites get to chose their preferred source of shortened URLs (including self-hosted solutions) and specify it from individual pages using &lt;code&gt;&amp;lt;link rev=&quot;canonical&quot; href=&quot;... shorter URL here ...&quot;&amp;gt;&lt;/code&gt;.&lt;/p&gt;
 
@@ -25522,7 +25522,7 @@ def login(request):
 
 &lt;h4&gt;A URL shortening bookmarklet&lt;/h4&gt;
 
-&lt;p&gt;Kellan's &lt;a href=&quot;http://revcanonical.appspot.com/&quot;&gt;rev=canonical service&lt;/a&gt; exposes rev=canonical links using a server-side script running on App Engine. An obvious next step is to distil that logic in to a bookmarklet. I decided to combine the rev=canonical logic with my &lt;a href=&quot;http://simonwillison.net/2008/Aug/27/jsontinyurl/&quot;&gt;json-tinyurl&lt;/a&gt; web service (also on App Engine), which allows browsers to lookup or create TinyURLs using a cross-domain JSONP request. The resulting bookmarklet will display the site's rev=canonical link if it exists, or create and display a TinyURL link otherwise:&lt;/p&gt;
+&lt;p&gt;Kellan's &lt;a href=&quot;http://revcanonical.appspot.com/&quot;&gt;rev=canonical service&lt;/a&gt; exposes rev=canonical links using a server-side script running on App Engine. An obvious next step is to distil that logic in to a bookmarklet. I decided to combine the rev=canonical logic with my &lt;a href=&quot;http://dragonsensei.is-a.dev/2008/Aug/27/jsontinyurl/&quot;&gt;json-tinyurl&lt;/a&gt; web service (also on App Engine), which allows browsers to lookup or create TinyURLs using a cross-domain JSONP request. The resulting bookmarklet will display the site's rev=canonical link if it exists, or create and display a TinyURL link otherwise:&lt;/p&gt;
 
 &lt;p&gt;Bookmarklet: &lt;a href=&quot;javascript:(function(){var url=document.location;var links=document.getElementsByTagName('link');var found=0;for(var i = 0, l; l = links[i]; i++){if(l.getAttribute('rev')=='canonical'||(/alternateshort/).exec(l.getAttribute('rel'))) {found=l.getAttribute('href');break;}}if (!found) {for (var i = 0; l = document.links[i]; i++) {if (l.getAttribute('rev') == 'canonical') {found = l.getAttribute('href');break;}}}if (found) {prompt('URL:', found);} else {window.onTinyUrlGot = function(r) {if (r.ok) {prompt('URL:', r.tinyurl);} else {alert('Could not shorten with tinyurl');}};var s = document.createElement('script');s.type='text/javascript';s.src='http://json-tinyurl.appspot.com/?callback=onTinyUrlGot&amp;amp;url=' +document.location;document.getElementsByTagName('head')[0].appendChild(s);}})();&quot;&gt;Shorten&lt;/a&gt; (drag to your browser toolbar)&lt;/p&gt;
 
@@ -25530,7 +25530,7 @@ def login(request):
 
 &lt;h4&gt;Designing short URLs&lt;/h4&gt;
 
-&lt;p&gt;I've also implemented rev=canonical on this site. I ended up buying a new domain for this, since simonwillison.net is both difficult to spell and 17 characters long. I ended up going with swtiny.eu - 9 characters, and keeping tiny in the domain helps people guess the nature of the site from just the URLs it generates. Be warned: the DNS doesn't appear to have finished resolving yet.&lt;/p&gt;
+&lt;p&gt;I've also implemented rev=canonical on this site. I ended up buying a new domain for this, since dragonsensei.is-a.dev is both difficult to spell and 17 characters long. I ended up going with swtiny.eu - 9 characters, and keeping tiny in the domain helps people guess the nature of the site from just the URLs it generates. Be warned: the DNS doesn't appear to have finished resolving yet.&lt;/p&gt;
 
 &lt;p&gt;For the path component, I turned to a variant of base 62 encoding. Decimal integers are represented using 10 digits (0-9), but base 62 uses those digits plus the letters of the alphabet in both lower and upper case. A 13 character integer such as 7250397214971 compresses down to just 8 characters (CDeIPpOD) using base62. My &lt;a href=&quot;http://www.djangosnippets.org/snippets/1431/&quot;&gt;baseconv.py module&lt;/a&gt; implements base62, among others. I considered using base 57 by excluding o, O, 0, 1 and l as being too easily confused but decided against it.&lt;/p&gt;
 
@@ -25552,23 +25552,23 @@ def login(request):
 
 &lt;p&gt;I run all of my Django sites using Apache and &lt;a href=&quot;http://code.google.com/p/modwsgi/&quot;&gt;mod_wsgi&lt;/a&gt;, proxied behind &lt;a href=&quot;http://nginx.net/&quot;&gt;nginx&lt;/a&gt;. Each site gets an Apache running on a high port, and nginx deals with virtual host configuration (proxying each domain to a different Apache backend) and static file serving. I didn't want to set up a full Django site just to run swtiny.eu, especially since my existing blog engine was required in order to resolve the shortened URLs.&lt;/p&gt;
 
-&lt;p&gt;Instead, I implemented the shortened URL direction as just another view within my existing site: &lt;samp&gt;http://simonwillison.net/shorter/EZ8&lt;/samp&gt;. I then configured nginx to invisibly requests to &lt;samp&gt;swtiny.eu&lt;/samp&gt; through to that URL. The correct incantation took a while to figure out, so here's the relevant section of my nginx.conf:&lt;/p&gt;
+&lt;p&gt;Instead, I implemented the shortened URL direction as just another view within my existing site: &lt;samp&gt;http://dragonsensei.is-a.dev/shorter/EZ8&lt;/samp&gt;. I then configured nginx to invisibly requests to &lt;samp&gt;swtiny.eu&lt;/samp&gt; through to that URL. The correct incantation took a while to figure out, so here's the relevant section of my nginx.conf:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;nginx-conf&quot;&gt;server {
     listen 80;
     server_name www.swtiny.eu swtiny.eu;
     location / {
         rewrite (.*) /shorter$1 break;
-        proxy_pass http://simonwillison.net;
+        proxy_pass http://dragonsensei.is-a.dev;
         proxy_redirect off;
     }
 }&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;code&gt;proxy_redirect off&lt;/code&gt; is needed to prevent nginx from replacing &lt;samp&gt;simonwillison.net&lt;/samp&gt; in the resulting location header with &lt;samp&gt;swtiny.eu&lt;/samp&gt;. My Django view code is relatively shonky, but if you're interested you can &lt;a href=&quot;http://www.djangosnippets.org/snippets/1430/&quot;&gt;find it here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;proxy_redirect off&lt;/code&gt; is needed to prevent nginx from replacing &lt;samp&gt;dragonsensei.is-a.dev&lt;/samp&gt; in the resulting location header with &lt;samp&gt;swtiny.eu&lt;/samp&gt;. My Django view code is relatively shonky, but if you're interested you can &lt;a href=&quot;http://www.djangosnippets.org/snippets/1430/&quot;&gt;find it here&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;The nice thing about this approach is that it makes it trivial to add custom URL shortening domains to other projects - a quick view function and a few lines of nginx configuration are all that is needed.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; The bookmarklet now supports the rev attribute on A elements as well - &lt;a href=&quot;http://simonwillison.net/2009/Apr/11/revcanonical/#c44088&quot;&gt;thanks for the suggestion&lt;/a&gt;, Jeremy.&lt;/p&gt;</field>
+&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; The bookmarklet now supports the rev attribute on A elements as well - &lt;a href=&quot;http://dragonsensei.is-a.dev/2009/Apr/11/revcanonical/#c44088&quot;&gt;thanks for the suggestion&lt;/a&gt;, Jeremy.&lt;/p&gt;</field>
 		<field name="created">2009-04-11 17:37:55</field>
 		<field name="comments_open">0</field>
 	</row>
@@ -25579,7 +25579,7 @@ def login(request):
 		<field name="slug">djng</field>
 		<field name="body">&lt;p&gt;&lt;a href=&quot;http://github.com/simonw/djng&quot;&gt;djng&lt;/a&gt; is nearly two weeks old now, so it's about time I wrote a bit about the project.&lt;/p&gt;
 
-&lt;p&gt;I presented a keynote at EuroDjangoCon in Prague earlier this month entitled &lt;a href=&quot;http://simonwillison.net/2009/talks/eurodjangocon-heresies/&quot;&gt;Django Heresies&lt;/a&gt;. The talk followed the noble DjangoCon tradition (established last year with the help of Mark Ramm and Cal Henderson) of pointing a spotlight at Django's flaws. In my case, it was a chance to apply the benefit of hindsight to some of the design decisions I helped make back at the Lawrence Journal-World in 2004.&lt;/p&gt;
+&lt;p&gt;I presented a keynote at EuroDjangoCon in Prague earlier this month entitled &lt;a href=&quot;http://dragonsensei.is-a.dev/2009/talks/eurodjangocon-heresies/&quot;&gt;Django Heresies&lt;/a&gt;. The talk followed the noble DjangoCon tradition (established last year with the help of Mark Ramm and Cal Henderson) of pointing a spotlight at Django's flaws. In my case, it was a chance to apply the benefit of hindsight to some of the design decisions I helped make back at the Lawrence Journal-World in 2004.&lt;/p&gt;
 
 &lt;p&gt;I took a few cheap shots at things like the &lt;code class=&quot;django&quot;&gt;{% endifequal %}&lt;/code&gt; tag and error silencing in the template system, but the three substantial topics in my talk were class-based generic views (I'm a fan), my hatred of settings.py and my interest in &lt;a href=&quot;http://en.wikipedia.org/wiki/Turtles_all_the_way_down&quot;&gt;turtles all the way down&lt;/a&gt;.&lt;/p&gt;
 
@@ -25700,7 +25700,7 @@ if __name__ == '__main__':
 		<field name="slug">thefacebookdebacle</field>
 		<field name="body">&lt;p&gt;Today's launch of &lt;a href=&quot;http://search.twitter.com/search?q=%23fufacebook&quot;&gt;Facebook Usernames&lt;/a&gt; provides an obvious and exciting opportunity for Facebook to become an OpenID provider. Facebook have clearly demonstrated their interest in becoming the key online identity for their users, and the new usernames feature is their acknowledgement that URL-based identities are an important component of that, no doubt driven in part by Twitter making usernames trendy again.&lt;/p&gt;
 
-&lt;p&gt;It's interesting to consider Facebook's history with regards to OpenID and single sign on in general. When I started publicly advocating for OpenID &lt;a href=&quot;http://simonwillison.net/2007/talks/&quot;&gt;back in 2007&lt;/a&gt;, my primary worry was that someone would solve the SSO problem in a proprietary way, irreparably damaging the decentralised nature of the Web - just as Microsoft had attempted a few years earlier with Passport.&lt;/p&gt;
+&lt;p&gt;It's interesting to consider Facebook's history with regards to OpenID and single sign on in general. When I started publicly advocating for OpenID &lt;a href=&quot;http://dragonsensei.is-a.dev/2007/talks/&quot;&gt;back in 2007&lt;/a&gt;, my primary worry was that someone would solve the SSO problem in a proprietary way, irreparably damaging the decentralised nature of the Web - just as Microsoft had attempted a few years earlier with Passport.&lt;/p&gt;
 
 &lt;p&gt;When Facebook Connect was announced &lt;a href=&quot;http://blog.facebook.com/blog.php?post=24577977130&quot;&gt;a year ago&lt;/a&gt; it seemed like my worst fears had become realised. Facebook Connect's user experience was a huge improvement over OpenID - with only one provider, the sign in UI could be reduced to a single button. Their use of a popup window for the sign in flow was inspired - various usability studies have since shown that users are much more likely to complete a SSO flow if they can see the site they are signing in to in a background window.&lt;/p&gt;
 
@@ -26041,7 +26041,7 @@ u'Value 1'&lt;/code&gt;&lt;/pre&gt;
 		<field name="id">1594</field>
 		<field name="title">Node.js is genuinely exciting</field>
 		<field name="slug">node</field>
-		<field name="body">&lt;p&gt;I gave a talk on Friday at &lt;a href=&quot;http://2009.full-frontal.org/&quot;&gt;Full Frontal&lt;/a&gt;, a new one day JavaScript conference in my home town of Brighton. I ended up throwing away my intended topic (JSONP, APIs and cross-domain security) three days before the event in favour of a technology which first crossed my radar &lt;a href=&quot;http://simonwillison.net/2009/Nov/9/node/&quot;&gt;less than two weeks ago&lt;/a&gt;.&lt;/p&gt;
+		<field name="body">&lt;p&gt;I gave a talk on Friday at &lt;a href=&quot;http://2009.full-frontal.org/&quot;&gt;Full Frontal&lt;/a&gt;, a new one day JavaScript conference in my home town of Brighton. I ended up throwing away my intended topic (JSONP, APIs and cross-domain security) three days before the event in favour of a technology which first crossed my radar &lt;a href=&quot;http://dragonsensei.is-a.dev/2009/Nov/9/node/&quot;&gt;less than two weeks ago&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;That technology is Ryan Dahl's &lt;a href=&quot;http://nodejs.org/&quot;&gt;Node&lt;/a&gt;. It's the most exciting new project I've come across in quite a while.&lt;/p&gt;
 
@@ -26323,7 +26323,7 @@ function addMessage(msg, callback) {
 		<field name="slug">wildlifenearyou</field>
 		<field name="body">&lt;p&gt;Back in October 2008, myself and 11 others set out on the first &lt;a href=&quot;http://devfort.com/&quot;&gt;/dev/fort&lt;/a&gt; expedition. The idea was simple: gather a dozen geeks, rent a fort, take food and laptops and see what we could build in a week.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/nataliedowne/4269421697/in/set-72157623197922000/&quot;&gt;&lt;img src=&quot;http://simonwillison.net/static/2010/fort-clonque.jpg&quot; width=&quot;450&quot; height=&quot;186&quot; alt=&quot;Fort Clonque&quot; title=&quot;Fort Clonque, by Natalie Downe&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/nataliedowne/4269421697/in/set-72157623197922000/&quot;&gt;&lt;img src=&quot;http://dragonsensei.is-a.dev/static/2010/fort-clonque.jpg&quot; width=&quot;450&quot; height=&quot;186&quot; alt=&quot;Fort Clonque&quot; title=&quot;Fort Clonque, by Natalie Downe&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;The fort was &lt;a href=&quot;http://www.anotherurl.com/travel/fort_clonque/handbook.htm&quot;&gt;Fort Clonque&lt;/a&gt; on &lt;a href=&quot;http://en.wikipedia.org/wiki/Alderney&quot;&gt;Alderney&lt;/a&gt; in the Channel Islands, managed by the &lt;a href=&quot;http://www.landmarktrust.org.uk/&quot;&gt;Landmark Trust&lt;/a&gt;. We spent an incredibly entertaining week there exploring Nazi bunkers, cooking, eating and coding up a storm. It ended up taking &lt;em&gt;slightly&lt;/em&gt; longer than a week to finish, but 14 months later the result of our combined efforts can finally be revealed: &lt;a href=&quot;http://www.wildlifenearyou.com/&quot;&gt;WildlifeNearYou.com&lt;/a&gt;!&lt;/p&gt;
 
@@ -26343,7 +26343,7 @@ function addMessage(msg, callback) {
 
 &lt;p&gt;WildlifeNearYou is by far the most fun website I've ever worked on. To all twelve of my &lt;a href=&quot;http://www.wildlifenearyou.com/about/#team_avatars&quot;&gt;intrepid fort companions&lt;/a&gt;: congratulations - we made a thing!&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/cindyli/3072532829/in/set-72157610369683426/&quot;&gt;&lt;img src=&quot;http://simonwillison.net/static/2010/devfort-group.jpg&quot; width=&quot;450&quot; height=&quot;300&quot; alt=&quot;Group photo at the Fort&quot; title=&quot;Group photo at the fort, by Cindy Li&quot; /&gt;&lt;/a&gt;&lt;/p&gt;</field>
+&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/cindyli/3072532829/in/set-72157610369683426/&quot;&gt;&lt;img src=&quot;http://dragonsensei.is-a.dev/static/2010/devfort-group.jpg&quot; width=&quot;450&quot; height=&quot;300&quot; alt=&quot;Group photo at the Fort&quot; title=&quot;Group photo at the fort, by Cindy Li&quot; /&gt;&lt;/a&gt;&lt;/p&gt;</field>
 		<field name="created">2010-01-12 22:53:20</field>
 		<field name="comments_open">1</field>
 	</row>
@@ -26361,7 +26361,7 @@ function addMessage(msg, callback) {
 &lt;li&gt;Is anyone calling for the HTML Working Group to be &quot;rechartered&quot;? If so, what does that involve?&lt;/li&gt;
 &lt;li&gt;If there are concerns about the inclusion of Canvas 2D in the specification, why were these not resolved earlier?&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;Some &lt;a href=&quot;http://simonwillison.net/tags/html5%2Badobe/&quot;&gt;background reading&lt;/a&gt;. I was planning to fill in answers as they arrive, but I screwed up the moderation of the comments and got flooded with detailed responses - I strongly recommend &lt;a href=&quot;http://simonwillison.net/2010/Feb/16/html5/#comments&quot;&gt;reading the comments&lt;/a&gt;.&lt;/p&gt;</field>
+&lt;p&gt;Some &lt;a href=&quot;http://dragonsensei.is-a.dev/tags/html5%2Badobe/&quot;&gt;background reading&lt;/a&gt;. I was planning to fill in answers as they arrive, but I screwed up the moderation of the comments and got flooded with detailed responses - I strongly recommend &lt;a href=&quot;http://dragonsensei.is-a.dev/2010/Feb/16/html5/#comments&quot;&gt;reading the comments&lt;/a&gt;.&lt;/p&gt;</field>
 		<field name="created">2010-02-16 09:11:21</field>
 		<field name="comments_open">1</field>
 	</row>
@@ -26370,13 +26370,13 @@ function addMessage(msg, callback) {
 		<field name="id">1598</field>
 		<field name="title">WildlifeNearYou talk at £5 app, and being Wired (not Tired)</field>
 		<field name="slug">wired</field>
-		<field name="body">&lt;p&gt;Two quick updates about &lt;a href=&quot;http://www.wildlifenearyou.com/&quot;&gt;WildlifeNearYou&lt;/a&gt;. First up, I gave a talk about the site at &lt;a href=&quot;http://fivepoundapp.com/&quot;&gt;£5 app&lt;/a&gt;, my favourite Brighton evening event which celebrates side projects and the joy of Making Stuff. I talked about the site's &lt;a href=&quot;http://simonwillison.net/2010/Jan/12/wildlifenearyou/&quot;&gt;genesis on a fort&lt;/a&gt;, &lt;a href=&quot;http://www.wildlifenearyou.com/best/&quot;&gt;crowdsourcing photo ratings&lt;/a&gt;, how we use &lt;a href=&quot;http://www.freebase.com/&quot;&gt;Freebase&lt;/a&gt; and &lt;a href=&quot;http://dbpedia.org/&quot;&gt;DBpedia&lt;/a&gt; and how integrating with Flickr's machine tags gave us &lt;a href=&quot;http://code.flickr.com/blog/2010/02/10/5-questions-for-simon-willison/&quot;&gt;a powerful location API for free&lt;/a&gt;. Here's the video of the talk, courtesy of &lt;a href=&quot;http://ianozsvald.com/2010/03/31/22nd-5-app-write-up-for-wildlife-plaques-robots-go-and-golf-gadgets/&quot; title=&quot;22nd £5 App Write-up for WildLife, Plaques, Robots, Go and Golf Gadgets&quot;&gt;Ian Oszvald&lt;/a&gt;:&lt;/p&gt;
+		<field name="body">&lt;p&gt;Two quick updates about &lt;a href=&quot;http://www.wildlifenearyou.com/&quot;&gt;WildlifeNearYou&lt;/a&gt;. First up, I gave a talk about the site at &lt;a href=&quot;http://fivepoundapp.com/&quot;&gt;£5 app&lt;/a&gt;, my favourite Brighton evening event which celebrates side projects and the joy of Making Stuff. I talked about the site's &lt;a href=&quot;http://dragonsensei.is-a.dev/2010/Jan/12/wildlifenearyou/&quot;&gt;genesis on a fort&lt;/a&gt;, &lt;a href=&quot;http://www.wildlifenearyou.com/best/&quot;&gt;crowdsourcing photo ratings&lt;/a&gt;, how we use &lt;a href=&quot;http://www.freebase.com/&quot;&gt;Freebase&lt;/a&gt; and &lt;a href=&quot;http://dbpedia.org/&quot;&gt;DBpedia&lt;/a&gt; and how integrating with Flickr's machine tags gave us &lt;a href=&quot;http://code.flickr.com/blog/2010/02/10/5-questions-for-simon-willison/&quot;&gt;a powerful location API for free&lt;/a&gt;. Here's the video of the talk, courtesy of &lt;a href=&quot;http://ianozsvald.com/2010/03/31/22nd-5-app-write-up-for-wildlife-plaques-robots-go-and-golf-gadgets/&quot; title=&quot;22nd £5 App Write-up for WildLife, Plaques, Robots, Go and Golf Gadgets&quot;&gt;Ian Oszvald&lt;/a&gt;:&lt;/p&gt;
 
 &lt;object width=&quot;450&quot; height=&quot;255&quot;&gt;&lt;param name=&quot;allowfullscreen&quot; value=&quot;true&quot; /&gt;&lt;param name=&quot;allowscriptaccess&quot; value=&quot;always&quot; /&gt;&lt;param name=&quot;movie&quot; value=&quot;http://vimeo.com/moogaloop.swf?clip_id=10578232&amp;amp;server=vimeo.com&amp;amp;show_title=1&amp;amp;show_byline=1&amp;amp;show_portrait=0&amp;amp;color=00ADEF&amp;amp;fullscreen=1&quot; /&gt;&lt;embed src=&quot;http://vimeo.com/moogaloop.swf?clip_id=10578232&amp;amp;server=vimeo.com&amp;amp;show_title=1&amp;amp;show_byline=1&amp;amp;show_portrait=0&amp;amp;color=00ADEF&amp;amp;fullscreen=1&quot; type=&quot;application/x-shockwave-flash&quot; allowfullscreen=&quot;true&quot; allowscriptaccess=&quot;always&quot; width=&quot;450&quot; height=&quot;255&quot;&gt;&lt;/embed&gt;&lt;/object&gt;&lt;p&gt;&lt;a href=&quot;http://vimeo.com/10578232&quot;&gt;£5 App #22 WildLifeNearYou by DragonSenseiGuy and Natalie Downe&lt;/a&gt; from &lt;a href=&quot;http://vimeo.com/user707645&quot;&gt;IanProCastsCoUk&lt;/a&gt; on &lt;a href=&quot;http://vimeo.com&quot;&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Secondly, I'm excited to note that WildlifeNearYou spin-off &lt;a href=&quot;http://owlsnearyou.com/&quot;&gt;OwlsNearYou.com&lt;/a&gt; is featured in UK Wired magazine's Wired / Tired / Expired column... and we're Wired!&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/simon/4511451405/&quot;&gt;&lt;img src=&quot;http://simonwillison.net/static/2010/wired-owls-small.jpg&quot; alt=&quot;Wired / Tired / Expired column from May 2010 Wired UK&quot; width=&quot;450&quot; height=&quot;176&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/simon/4511451405/&quot;&gt;&lt;img src=&quot;http://dragonsensei.is-a.dev/static/2010/wired-owls-small.jpg&quot; alt=&quot;Wired / Tired / Expired column from May 2010 Wired UK&quot; width=&quot;450&quot; height=&quot;176&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 </field>
 		<field name="created">2010-04-11 20:42:11</field>
 		<field name="comments_open">1</field>
@@ -26388,11 +26388,11 @@ function addMessage(msg, callback) {
 		<field name="slug">redis</field>
 		<field name="body">&lt;p&gt;Last week I presented two talks at the inaugural &lt;a href=&quot;http://nosqleu.com/&quot;&gt;NoSQL Europe&lt;/a&gt; conference in London. The first was presented with Matthew Wall and covered the ways in which we have been exploring &lt;a href=&quot;http://www.slideshare.net/matwall/nosql-presentation&quot;&gt;NoSQL at the Guardian&lt;/a&gt;. The second was a three hour workshop on Redis, my favourite piece of software to have the NoSQL label applied to it.&lt;/p&gt;
 
-&lt;p&gt;I've &lt;a href=&quot;http://simonwillison.net/2009/Oct/22/redis/&quot;&gt;written about Redis&lt;/a&gt; here before, and it has since earned a place next to MySQL/PostgreSQL and memcached as part of my default web application stack. Redis makes write-heavy features such as real-time statistics feasible for small applications, while effortlessly scaling up to handle larger projects as well. If you haven't tried it out yet, you're sorely missing out.&lt;/p&gt;
+&lt;p&gt;I've &lt;a href=&quot;http://dragonsensei.is-a.dev/2009/Oct/22/redis/&quot;&gt;written about Redis&lt;/a&gt; here before, and it has since earned a place next to MySQL/PostgreSQL and memcached as part of my default web application stack. Redis makes write-heavy features such as real-time statistics feasible for small applications, while effortlessly scaling up to handle larger projects as well. If you haven't tried it out yet, you're sorely missing out.&lt;/p&gt;
 
 &lt;p&gt;For the workshop, I tried to give an overview of each individual Redis feature along with detailed examples of real-world problems that the feature can help solve. I spent the past day annotating each slide with detailed notes, and I think the result makes a pretty good stand-alone tutorial. Here's the end result:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;http://simonwillison.net/static/2010/redis-tutorial/&quot;&gt;Redis tutorial slides and notes&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://dragonsensei.is-a.dev/static/2010/redis-tutorial/&quot;&gt;Redis tutorial slides and notes&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;In unrelated news, Nat and I both completed the first ever &lt;a href=&quot;http://brightonmarathon.co.uk/&quot;&gt;Brighton Marathon&lt;/a&gt; last weekend, in my case &lt;a href=&quot;http://www.sportsystems.co.uk/ss/results.htm?entId=WILLI-DJVYM-SIMNV&quot;&gt;taking 4 hours, 55 minutes and 17 seconds&lt;/a&gt;. Sincere thanks to everyone who came out to support us - until the race I had never appreciated how important the support of the spectators is to keep going to the end. We &lt;a href=&quot;http://www.justgiving.com/natalie-simon-marathon-2010&quot;&gt;raised £757&lt;/a&gt; for the &lt;a href=&quot;http://www.heart.co.uk/have-a-heart/&quot;&gt;Have a Heart&lt;/a&gt; children's charity. Thanks in particular to &lt;a href=&quot;http://clearleft.com/&quot;&gt;Clearleft&lt;/a&gt; who kindly offered to match every donation.&lt;/p&gt;</field>
 		<field name="created">2010-04-25 22:36:16</field>

@@ -360,7 +360,7 @@ quickest way possible
 		<field name="slug">subdomains</field>
 		<field name="quotation">There's an unfortunate side-effect to altogether eliminating the sub-domain name from your site URLs [...] Every cookie you may want to set for that site will automatically &quot;bleed&quot; down to *all* sub-domain-based websites you might want to add later.</field>
 		<field name="source">Már Örlygsson</field>
-		<field name="source_url">http://simonwillison.net/2007/Feb/4/urls/#c35427</field>
+		<field name="source_url">http://dragonsensei.is-a.dev/2007/Feb/4/urls/#c35427</field>
 		<field name="created">2007-02-06 00:01:59</field>
 		<field name="comments_open">0</field>
 	</row>
@@ -2471,7 +2471,7 @@ to the fulfillment of their goal, or click the Back button on their Web browser.
 		<field name="slug">jorgen</field>
 		<field name="quotation">In the final Production release we will be adding the ability to sign in to the Live ID OpenID Provider using any of the credential types that can be used with regular Live ID sign-in's -- including CardSpace, SmartCard, eID, etc.</field>
 		<field name="source">Jorgen Thelin</field>
-		<field name="source_url">http://simonwillison.net/2008/Oct/27/windows/#c42074</field>
+		<field name="source_url">http://dragonsensei.is-a.dev/2008/Oct/27/windows/#c42074</field>
 		<field name="created">2008-10-30 17:09:58</field>
 		<field name="comments_open">0</field>
 	</row>
@@ -2631,7 +2631,7 @@ to the fulfillment of their goal, or click the Back button on their Web browser.
 		<field name="slug">antipatterns</field>
 		<field name="quotation">The username/password key's major disadvantage is that it open all the doors to the house. The OAuth key only opens a couple doors; the scope of the credentials is limited. That's a benefit, to be sure, but in Twitter's case, a malicious application that registered for OAuth with both read and write privileges can do most evil things a user might be worried about.</field>
 		<field name="source">Alex Payne</field>
-		<field name="source_url">http://simonwillison.net/2009/Jan/2/adactio/#c42956</field>
+		<field name="source_url">http://dragonsensei.is-a.dev/2009/Jan/2/adactio/#c42956</field>
 		<field name="created">2009-01-05 10:47:41</field>
 		<field name="comments_open">0</field>
 	</row>
@@ -2641,7 +2641,7 @@ to the fulfillment of their goal, or click the Back button on their Web browser.
 		<field name="slug">blaine</field>
 		<field name="quotation">As more details become available, it seems what happened is that a Twitter administrator (i.e., employee) gave their password to a 3rd party site because their API requires it, which was then used to compromise Twitter's admin interface.</field>
 		<field name="source">Blaine Cook</field>
-		<field name="source_url">http://simonwillison.net/2009/Jan/2/adactio/#c42975</field>
+		<field name="source_url">http://dragonsensei.is-a.dev/2009/Jan/2/adactio/#c42975</field>
 		<field name="created">2009-01-06 09:37:59</field>
 		<field name="comments_open">0</field>
 	</row>
@@ -2781,7 +2781,7 @@ to the fulfillment of their goal, or click the Back button on their Web browser.
 		<field name="slug">jqueryrule</field>
 		<field name="quotation">I think you overstate the usefulness of the [jQuery Rules] plugin. Using this plugin, users are now limited by what selectors that can use (they can only use what the browsers provide - and are at the mercy of the cross-browser bugs that are there) which is a huge problem. Not to mention that it encourages the un-separation of markup/css/js.</field>
 		<field name="source">John Resig</field>
-		<field name="source_url">http://simonwillison.net/2009/Feb/22/rule/#comments</field>
+		<field name="source_url">http://dragonsensei.is-a.dev/2009/Feb/22/rule/#comments</field>
 		<field name="created">2009-02-22 23:11:57</field>
 		<field name="comments_open">0</field>
 	</row>
@@ -3031,7 +3031,7 @@ to the fulfillment of their goal, or click the Back button on their Web browser.
 		<field name="slug">alan</field>
 		<field name="quotation">Yes, it'd be nice if everyone kept up to date on the progress of the various W3C working groups. They don't. There are a lot of people who asked what professional markup looked like and were told (right or wrong) that XHTML was the future. So they went ahead and learned XHTML, built their websites and chose watching a DVD or spending time with their kids over watching Mark Pilgrim and Sam Ruby do battle over Postel's Law. Now all of a sudden they're told XHTML is dead. Some wailing and gnashing of teeth is to be expected. What's needed is less &quot;boy aren't I smarter than them&quot; snideness, and more Hey, here's what's up.</field>
 		<field name="source">Alan Storm</field>
-		<field name="source_url">http://simonwillison.net/2009/Jul/4/xhtml/#c47024</field>
+		<field name="source_url">http://dragonsensei.is-a.dev/2009/Jul/4/xhtml/#c47024</field>
 		<field name="created">2009-07-04 12:51:15</field>
 		<field name="comments_open">0</field>
 	</row>
