@@ -106,9 +106,7 @@ class LiteYTEmbed extends HTMLElement {
         // The botguard script is fetched off from google.com
         LiteYTEmbed.addPrefetch('preconnect', 'https://www.google.com');
 
-        // Not certain if these ad related domains are in the critical path. Could verify with domain-specific throttling.
-        LiteYTEmbed.addPrefetch('preconnect', 'https://googleads.g.doubleclick.net');
-        LiteYTEmbed.addPrefetch('preconnect', 'https://static.doubleclick.net');
+
 
         LiteYTEmbed.preconnected = true;
     }
