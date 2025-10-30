@@ -2,4 +2,3 @@
 *.pyc
 staticfiles
 old-import-xml/
-logs_result.csv
