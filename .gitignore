@@ -1,5 +1,5 @@
 .venv
 *.pyc
 staticfiles
-old-import-xml/blog_comment.xml
+old-import-xml/
 logs_result.csv
