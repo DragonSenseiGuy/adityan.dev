@@ -1,0 +1,97 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #DDA080;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+.main-card {
+    display: grid;
+    place-items: center;
+    height: 50vh;
+    width: 40vw;
+    background-color: #EBE3F0;
+    color: #000000;
+}
+
+.card-header {
+    size: 100px;
+}
+
+a {
+    color: #F1915E;
+    font-size: 25px;
+    text-decoration: underline;
+    margin: 5px;
+    padding: 5px;
+}
+
+a:hover {
+    color: #F1915E;
+    text-decoration: underline;
+    text-decoration-style: wavy;
+    border: 2px solid #F1915E;
+    border-radius: 8px;
+}
+
+/* Projects Page */
+.section-title {
+    color: #000;
+    margin-bottom: 2rem;
+}
+
+.project-card {
+    background-color: #EBE3F0;
+    border-radius: 8px;
+    height: 100%;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.project-card .card-content {
+    padding: 1.5rem;
+}
+
+.project-card .title {
+    color: #333;
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.project-card .content {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    color: #F1915E;
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0;
+    border: none;
+}
+
+.project-link:hover {
+    color: #DFAE79;
+    border: none;
+}
+
+.projects-section {
+    padding: 4rem 1.5rem;
+    width: 100%;
+}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DragonSenseiGuy</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div>
+        <div class="card main-card">
+            <h1>DragonSenseiGuy</h1>
+            <div><a href="{{ url_for('blog') }}">Blog</a><a href="{{ url_for('projects') }}">Projects</a></div>
+          <div class="card-content">
+            <div class="content">
+              Hi! I’m DragonSenseiGuy, a developer who loves programming and creating practical applications. I enjoy working with Python, HTML, and CSS, and I contribute to multiple open-source projects. I was inspired to start programming because I wanted to build practical applications that hadn’t been made yet, simple solutions to everyday problems. I’m passionate about turning ideas into useful tools that make life a little easier.
+            </div>
+          </div>
+        </div>
+    </div>
+</body>
+</html>
