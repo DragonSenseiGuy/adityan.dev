@@ -1,1 +1,4 @@
 flask
+markdown
+python-frontmatter
+Pygments

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ post.title }} - DragonSenseiGuy</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+<section class="post-section">
+    <div class="container">
+        <div class="post-header">
+            <a href="{{ url_for('blog') }}" class="back-link">← Back to Blog</a>
+            <h1 class="title is-1 post-title">{{ post.title }}</h1>
+            <p class="post-date">{{ post.pubDate }}</p>
+        </div>
+        
+        <div class="card post-card">
+            <div class="card-content">
+                <div class="content post-content">
+                    {{ post.content | safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>
+    document.querySelectorAll('pre code').forEach((block) => {
+        hljs.highlightElement(block);
+    });
+</script>
+
+</body>
+</html>
