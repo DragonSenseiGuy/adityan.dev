@@ -1,0 +1,72 @@
+baseurl = "http://www.example.com"
+title = "DragonSenseiGuy"
+theme = "coder"
+languagecode = "en"
+defaultcontentlanguage = "en"
+
+ignoreLogs = ['warning-goldmark-raw-html']
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[pagination]
+pagerSize = 20
+
+[services]
+[services.disqus]
+shortname = "dragon"
+
+[markup.highlight]
+style = "github-dark"
+
+[params]
+  author = "DragonSenseiGuy"
+  info = "I code stuff"
+  description = "Website, Blog and home to some cool stuff"
+  keywords = "blog,developer,personal,dragonsenseiguy"
+  avatarurl = "images/dragon.png"
+
+  faviconSVG = "images/favicon.svg"
+
+  since = 2025
+
+  enableTwemoji = true
+
+  colorScheme = "auto"
+  hidecolorschemetoggle = false
+
+  customCSS = ["css/custom.css"]
+  # customSCSS = ["scss/custom.scss"]
+  # customJS = ["js/custom.js"]
+
+[taxonomies]
+  category = "categories"
+  series = "series"
+  tag = "tags"
+  author = "authors"
+
+# Social links
+[[params.social]]
+  name = "Github"
+  icon = "fa-brands fa-github fa-2x"
+  weight = 1
+  url = "https://github.com/DragonSenseiGuy/"
+[[params.social]]
+  name = "Discord"
+  icon = "fa-brands fa-discord fa-2x"
+  weight = 2
+  url = "https://discord.com/users/1374119550467051542"
+
+# Menu links
+[[menu.main]]
+  name = "Blog"
+  weight = 1
+  url  = "posts/"
+[[menu.main]]
+  name = "Projects"
+  weight = 2
+  url = "projects/"
+[[menu.main]]
+  name = "About"
+  weight = 2
+  url = "about/"
