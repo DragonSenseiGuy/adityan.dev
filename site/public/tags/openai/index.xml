@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OpenAI on DragonSenseiGuy</title>
+    <link>http://localhost:1313/tags/openai/</link>
+    <description>Recent content in OpenAI on DragonSenseiGuy</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 28 Oct 2025 10:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/openai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ChatGPT Atlas</title>
+      <link>http://localhost:1313/posts/chatgpt-atlas/</link>
+      <pubDate>Tue, 28 Oct 2025 10:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/chatgpt-atlas/</guid>
+      <description>&lt;h1 id=&#34;chatgpt-atlas&#34;&gt;&#xA;  ChatGPT Atlas&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#chatgpt-atlas&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;ChatGPT Atlas is newest AI Browser by OpenAI. This browser is a rival to Perplexity&amp;rsquo;s &lt;a href=&#34;https://www.perplexity.ai/comet/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Comet&lt;/a&gt; and Browser Company&amp;rsquo;s &lt;a href=&#34;https://www.diabrowser.com/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Dia&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;This Browser unlike Dia can do things for you by having control over your mouse, even Comet is able to do this. Atlas shows OpenAI&amp;rsquo;s investment into other sectors of AI. The Browser is also macOS only. I own a mac so I was able to test this.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

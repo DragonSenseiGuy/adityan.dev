@@ -1,6 +1,6 @@
 +++ 
 draft = true
-date = 2026-01-06T22:29:02-05:00
+date = 2025-10-23T10:00:00.000Z
 title = "Making a Homelab"
 description = "How I made a homelab and you can too!"
 slug = "making-a-homelab"
