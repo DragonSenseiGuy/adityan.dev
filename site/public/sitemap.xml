@@ -8,8 +8,17 @@
     <loc>http://localhost:1313/posts/</loc>
     <lastmod>2025-11-07T08:14:00+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/tags/python/</loc>
+    <lastmod>2025-11-07T08:14:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2025-11-07T08:14:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/posts/uv-is-great/</loc>
     <lastmod>2025-11-07T08:14:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/ai/</loc>
+    <lastmod>2025-11-07T08:07:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/cursor-composer/</loc>
     <lastmod>2025-11-07T08:07:00+00:00</lastmod>
@@ -20,19 +29,19 @@
     <loc>http://localhost:1313/posts/psf-refusing-15m-from-us-government/</loc>
     <lastmod>2025-11-02T11:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/tags/openai/</loc>
+    <lastmod>2025-11-01T10:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/posts/sora-2/</loc>
     <lastmod>2025-11-01T10:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/adding-newsletters-to-my-blog/</loc>
     <lastmod>2025-10-29T22:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/tags/site/</loc>
+    <lastmod>2025-10-29T22:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/posts/chatgpt-atlas/</loc>
-    <lastmod>2025-10-28T10:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/openai/</loc>
-    <lastmod>2025-10-28T10:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/</loc>
     <lastmod>2025-10-28T10:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/homelab/</loc>
