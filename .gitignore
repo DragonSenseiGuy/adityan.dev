@@ -114,3 +114,5 @@ celerybeat.pid
 # MyPy / PyType
 .mypy_cache/
 .pytype/
+
+IDEAS.md
