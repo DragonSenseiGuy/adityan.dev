@@ -1,25 +1,2 @@
-# Hugo
-public/
-resources/_gen/
-.hugo_build.lock
-
-# Node
-node_modules/
-package-lock.json
-
-# Vercel
-.vercel/
-
-# Environments
-.env
-.envrc
-
-# IDE
-.idea/
-.vscode/
-
-# MacOS
-.DS_Store
-
-# Notes
-IDEAS.md
+# OG image generator has its own repo
+og-image-generator/
