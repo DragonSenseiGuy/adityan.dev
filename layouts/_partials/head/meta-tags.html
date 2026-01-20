@@ -10,8 +10,8 @@
 {{- $title := .Title | default .Site.Title -}}
 {{- $description := .Description | default (.Summary | default .Site.Params.description) -}}
 
-{{/* Generate dynamic OG image URL using Vercel OG */}}
-{{- $ogImageURL := printf "https://og-image.vercel.app/**%s**.png?theme=dark&md=1&fontSize=75px" (urlquery $title) -}}
+{{/* Generate dynamic OG image URL using custom OG generator */}}
+{{- $ogImageURL := printf "%s/api/og?title=%s" .Site.Params.ogImageBase (urlquery $title | replaceRE "\\+" "%20") -}}
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">

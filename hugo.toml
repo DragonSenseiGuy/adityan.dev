@@ -22,6 +22,7 @@ style = "github-dark"
   info = "I code stuff"
   description = "Website, Blog and home to some cool stuff"
   keywords = "blog,developer,personal,dragonsenseiguy"
+  ogImageBase = "https://dragonsenseiguydev.vercel.app"
   avatarurl = "images/dragon.png"
 
   faviconSVG = "images/favicon.svg"
