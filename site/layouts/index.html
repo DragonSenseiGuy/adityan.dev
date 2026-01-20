@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta name="generator" content="Hugo 0.154.3"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DragonSenseiGuy</title>
+  <title>{{ .Site.Title }}</title>
   <link rel="stylesheet" href="/css/home.css">
-  <link rel="icon" href="images/favicon.svg">
+  <link rel="icon" href="{{ .Site.Params.faviconSVG }}">
 </head>
 <body>
   <div class="container">
-    
+    <!-- Header with avatar and nav -->
     <header class="header">
       <div class="avatar-container">
         <img src="/images/avatar.png" alt="Avatar" class="avatar" />
@@ -24,7 +23,7 @@
       </nav>
     </header>
 
-    
+    <!-- Intro Box -->
     <section class="intro-box">
       <p>
         <span class="name">dragon</span>: hi! i'm a hack clubber from boston!
@@ -35,12 +34,12 @@
       <div class="arrow-down"></div>
     </section>
 
-    
+    <!-- Hobbies Box -->
     <section class="hobbies-box">
       <p>some hobbies include:</p>
     </section>
 
-    
+    <!-- Hobby Cards -->
     <section class="hobby-cards">
       <div class="hobby-card card-software">
         <div class="card-title">software projects</div>
@@ -58,14 +57,14 @@
       </div>
     </section>
 
-    
+    <!-- Code Box -->
     <section class="code-box">
       <p>
         this site is made with hugo. check out my <a href="https://github.com/DragonSenseiGuy" class="link">github</a>!
       </p>
     </section>
 
-    
+    <!-- Credits -->
     <footer class="credits">
       <p>inspired by <a href="https://aconlin.com/" class="link" target="_blank">aconlin.com</a> ✦</p>
     </footer>

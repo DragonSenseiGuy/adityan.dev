@@ -32,8 +32,8 @@ style = "github-dark"
 
   enableTwemoji = true
 
-  colorScheme = "auto"
-  hidecolorschemetoggle = false
+  colorScheme = "dark"
+  hidecolorschemetoggle = true
 
   customCSS = ["css/custom.css"]
   license = "MIT"
