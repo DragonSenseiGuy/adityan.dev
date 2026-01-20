@@ -1,7 +1,7 @@
 {
 	"version": 3,
 	"file": "coder-dark.css",
-	"sourceRoot": "/Users/ajayn/Projects/Hack Club/dragons-website/site",
+	"sourceRoot": "/Users/ajayn/Projects/Hack Club/dragons-website",
 	"sources": [
 		"themes/coder/assets/scss/coder-dark.scss",
 		"themes/coder/assets/scss/_variables.scss",
