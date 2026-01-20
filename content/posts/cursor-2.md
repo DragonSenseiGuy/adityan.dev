@@ -1,5 +1,5 @@
 +++ 
-draft = true
+draft = false
 date = 2025-11-07T07:59:00.000Z
 title = "Cursor 2.0"
 description = "About the new version of Cursor, 2.0."

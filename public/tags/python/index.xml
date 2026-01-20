@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Python on DragonSenseiGuy</title>
-    <link>//localhost:1313/tags/python/</link>
+    <link>/tags/python/</link>
     <description>Recent content in Python on DragonSenseiGuy</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Fri, 07 Nov 2025 08:14:00 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>UV is great!</title>
-      <link>//localhost:1313/posts/uv-is-great/</link>
+      <link>/posts/uv-is-great/</link>
       <pubDate>Fri, 07 Nov 2025 08:14:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/uv-is-great/</guid>
+      <guid>/posts/uv-is-great/</guid>
       <description>&lt;h2 id=&#34;uv-is-a-python-package-manager-and-project-manager-it-very-fast-almost-98-faster-than-pip-sync&#34;&gt;&#xA;  UV is a python package manager and project manager. It &lt;strong&gt;very&lt;/strong&gt; fast, almost 98% faster than &lt;code&gt;pip-sync&lt;/code&gt;&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#uv-is-a-python-package-manager-and-project-manager-it-very-fast-almost-98-faster-than-pip-sync&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Here are some key features that make UV stand out:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Lightning-fast dependency resolution and installation&lt;/li&gt;&#xA;&lt;li&gt;Built-in project scaffolding and virtual environment management&lt;/li&gt;&#xA;&lt;li&gt;Compatible with existing Python packaging standards while offering significant performance improvements&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;I discovered UV after seeing multiple people use it and from Python Discord projects.&lt;/p&gt;</description>
     </item>
     <item>
       <title>PSF Refusing 1.5M from US Government</title>
-      <link>//localhost:1313/posts/psf-refusing-15m-from-us-government/</link>
+      <link>/posts/psf-refusing-15m-from-us-government/</link>
       <pubDate>Sun, 02 Nov 2025 11:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/psf-refusing-15m-from-us-government/</guid>
+      <guid>/posts/psf-refusing-15m-from-us-government/</guid>
       <description>&lt;p&gt;In January 2025, the PSF (Python Software Foundation) submitted a proposal to the US government National Science Foundation under the &lt;a href=&#34;https://www.nsf.gov/funding/opportunities/safe-ose-safety-security-privacy-open-source-ecosystems&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Safety, Security, and Privacy of Open Source Ecosystems program&lt;/a&gt; to address structural vulnerabilities in Python and PyPI.&lt;/p&gt;&#xA;&lt;p&gt;After a few months the PSF got a response from The NSF (National Science Foundation) for a $1.5M grant. The terms of this grant said “do not, and will not during the term of this financial assistance award, operate any programs that advance or promote DEI, or discriminatory equity ideology in violation of Federal anti-discrimination laws.” which means that PSF cannot promote equality during the period in which the NSF gives them the 1.5M. The Python Software Foundation rejected this because equality is a core value of the Python Software Foundation.&lt;/p&gt;</description>
     </item>
   </channel>

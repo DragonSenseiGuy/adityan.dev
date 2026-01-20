@@ -2,66 +2,66 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>DragonSenseiGuy</title>
-    <link>//localhost:1313/</link>
+    <link>/</link>
     <description>Recent content on DragonSenseiGuy</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Fri, 07 Nov 2025 08:14:00 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>UV is great!</title>
-      <link>//localhost:1313/posts/uv-is-great/</link>
+      <link>/posts/uv-is-great/</link>
       <pubDate>Fri, 07 Nov 2025 08:14:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/uv-is-great/</guid>
+      <guid>/posts/uv-is-great/</guid>
       <description>&lt;h2 id=&#34;uv-is-a-python-package-manager-and-project-manager-it-very-fast-almost-98-faster-than-pip-sync&#34;&gt;&#xA;  UV is a python package manager and project manager. It &lt;strong&gt;very&lt;/strong&gt; fast, almost 98% faster than &lt;code&gt;pip-sync&lt;/code&gt;&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#uv-is-a-python-package-manager-and-project-manager-it-very-fast-almost-98-faster-than-pip-sync&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Here are some key features that make UV stand out:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Lightning-fast dependency resolution and installation&lt;/li&gt;&#xA;&lt;li&gt;Built-in project scaffolding and virtual environment management&lt;/li&gt;&#xA;&lt;li&gt;Compatible with existing Python packaging standards while offering significant performance improvements&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;I discovered UV after seeing multiple people use it and from Python Discord projects.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Cursor Composer</title>
-      <link>//localhost:1313/posts/cursor-composer/</link>
+      <link>/posts/cursor-composer/</link>
       <pubDate>Fri, 07 Nov 2025 08:07:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/cursor-composer/</guid>
+      <guid>/posts/cursor-composer/</guid>
       <description>&lt;h2 id=&#34;about-cursor-composer&#34;&gt;&#xA;  About Cursor Composer&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#about-cursor-composer&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Cursor Composer is an advanced AI-powered coding assistant that helps developers write, edit, and understand code more efficiently. It represents a significant evolution in AI-assisted development tools.&lt;/p&gt;&#xA;&lt;h2 id=&#34;key-features&#34;&gt;&#xA;  Key Features&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#key-features&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Multi-file editing:&lt;/strong&gt; Composer can make coordinated changes across multiple files in your codebase, understanding the relationships between different parts of your project.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Speed:&lt;/strong&gt; It is one of the fastest and most accurate models ever.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;benefits&#34;&gt;&#xA;  Benefits&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#benefits&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Cursor Composer speeds up development by reducing context switching and automating repetitive tasks. It lets developers focus on high-level architecture and problem-solving while the AI handles implementation details. The tool excels at rapidly prototyping ideas, maintaining consistency across large codebases, and helping teams onboard to new projects.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Cursor 2.0</title>
-      <link>//localhost:1313/posts/cursor-2/</link>
+      <link>/posts/cursor-2/</link>
       <pubDate>Fri, 07 Nov 2025 07:59:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/cursor-2/</guid>
+      <guid>/posts/cursor-2/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;&#xA;  Introduction&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#introduction&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;Cursor 2.0 represents a significant leap forward in AI-powered code editing, bringing enhanced capabilities and a refined user experience to developers worldwide.&lt;/p&gt;&#xA;&lt;h1 id=&#34;key-features&#34;&gt;&#xA;  Key Features&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#key-features&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;enhanced-ai-integration&#34;&gt;&#xA;  Enhanced AI Integration&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#enhanced-ai-integration&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Cursor 2.0 introduces more sophisticated AI assistance that understands context better than ever before, providing intelligent code suggestions and completions.&lt;/p&gt;</description>
     </item>
     <item>
       <title>PSF Refusing 1.5M from US Government</title>
-      <link>//localhost:1313/posts/psf-refusing-15m-from-us-government/</link>
+      <link>/posts/psf-refusing-15m-from-us-government/</link>
       <pubDate>Sun, 02 Nov 2025 11:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/psf-refusing-15m-from-us-government/</guid>
+      <guid>/posts/psf-refusing-15m-from-us-government/</guid>
       <description>&lt;p&gt;In January 2025, the PSF (Python Software Foundation) submitted a proposal to the US government National Science Foundation under the &lt;a href=&#34;https://www.nsf.gov/funding/opportunities/safe-ose-safety-security-privacy-open-source-ecosystems&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Safety, Security, and Privacy of Open Source Ecosystems program&lt;/a&gt; to address structural vulnerabilities in Python and PyPI.&lt;/p&gt;&#xA;&lt;p&gt;After a few months the PSF got a response from The NSF (National Science Foundation) for a $1.5M grant. The terms of this grant said “do not, and will not during the term of this financial assistance award, operate any programs that advance or promote DEI, or discriminatory equity ideology in violation of Federal anti-discrimination laws.” which means that PSF cannot promote equality during the period in which the NSF gives them the 1.5M. The Python Software Foundation rejected this because equality is a core value of the Python Software Foundation.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Sora 2</title>
-      <link>//localhost:1313/posts/sora-2/</link>
+      <link>/posts/sora-2/</link>
       <pubDate>Sat, 01 Nov 2025 10:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/sora-2/</guid>
+      <guid>/posts/sora-2/</guid>
       <description>&lt;p&gt;Sora was first released in December 9, 2024, it was a good video generation model. It had lots or room to improve. After almost a year, we now have Sora 2. A state of the art video generation model that is &lt;strong&gt;really&lt;/strong&gt; good, especially at realism.&lt;/p&gt;&#xA;&lt;h2 id=&#34;sora-app&#34;&gt;&#xA;  Sora App&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#sora-app&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Sora is available to use in an iOS only app, and is invite only. Though it isn’t that hard to get an invite. The app features a clean, intuitive interface that makes it easy to create videos with just a few taps. Users can input text prompts, adjust settings like duration and aspect ratio, and watch as Sora generates high-quality videos in minutes.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Adding Newsletters to my Blog</title>
-      <link>//localhost:1313/posts/adding-newsletters-to-my-blog/</link>
+      <link>/posts/adding-newsletters-to-my-blog/</link>
       <pubDate>Wed, 29 Oct 2025 22:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/adding-newsletters-to-my-blog/</guid>
+      <guid>/posts/adding-newsletters-to-my-blog/</guid>
       <description>&lt;p&gt;So a while ago I disabled newsletters in this blog(forked from &lt;a href=&#34;https://github.com/simonw/simonwillisonblog/tree/main&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;simonw/simonwillisonblog&lt;/a&gt;. This is because I did not want to set them up yet, I just wanted the blog up and running.&lt;/p&gt;&#xA;&lt;h2 id=&#34;finally-adding-newsletters&#34;&gt;&#xA;  Finally Adding Newsletters&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#finally-adding-newsletters&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;After giving it much thought I decided to just go for it, so I began looking. I came across the one Simon Willison was using, &lt;a href=&#34;https://substack.com&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Substack&lt;/a&gt;. It&amp;rsquo;s feature for bloggers was free, unless you had a paid blog in which Stripe and Substack would take a cut.&lt;/p&gt;</description>
     </item>
     <item>
       <title>ChatGPT Atlas</title>
-      <link>//localhost:1313/posts/chatgpt-atlas/</link>
+      <link>/posts/chatgpt-atlas/</link>
       <pubDate>Tue, 28 Oct 2025 10:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/chatgpt-atlas/</guid>
+      <guid>/posts/chatgpt-atlas/</guid>
       <description>&lt;h1 id=&#34;chatgpt-atlas&#34;&gt;&#xA;  ChatGPT Atlas&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#chatgpt-atlas&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;ChatGPT Atlas is newest AI Browser by OpenAI. This browser is a rival to Perplexity&amp;rsquo;s &lt;a href=&#34;https://www.perplexity.ai/comet/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Comet&lt;/a&gt; and Browser Company&amp;rsquo;s &lt;a href=&#34;https://www.diabrowser.com/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Dia&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;This Browser unlike Dia can do things for you by having control over your mouse, even Comet is able to do this. Atlas shows OpenAI&amp;rsquo;s investment into other sectors of AI. The Browser is also macOS only. I own a mac so I was able to test this.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Making a Homelab</title>
-      <link>//localhost:1313/posts/making-a-homelab/</link>
+      <link>/posts/making-a-homelab/</link>
       <pubDate>Thu, 23 Oct 2025 10:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/making-a-homelab/</guid>
+      <guid>/posts/making-a-homelab/</guid>
       <description>&lt;h1 id=&#34;making-a-home-lab&#34;&gt;&#xA;  Making a Home Lab!&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#making-a-home-lab&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;Hello everyone in todays blog I will show you how I made my own Home Lab.&lt;/p&gt;&#xA;&lt;p&gt;The main reason for making a home lab for me, was to have my own &lt;a href=&#34;https://en.wikipedia.org/wiki/RSS&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;RSS&lt;/a&gt; reader that I could self host.&lt;/p&gt;&#xA;&lt;p&gt;First I went to &lt;a href=&#34;https://awesome-selfhosted.net/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;awesome-selfhosted&lt;/a&gt; for some inspiration, after a a few hours I decided on &lt;a href=&#34;https://github.com/glanceapp/glance&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Glance&lt;/a&gt;, an open source and self hosting dashboard that puts all my feeds in one place. I went through the &lt;a href=&#34;https://github.com/glanceapp/glance?tab=readme-ov-file#installation&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Installation Guide&lt;/a&gt;. I chose to use Docker as it the most simple and straightforward to setup for my needs, as I won&amp;rsquo;t be changing the source.&lt;/p&gt;</description>
     </item>
   </channel>

@@ -1,5 +1,5 @@
 +++ 
-draft = true
+draft = false
 date = 2025-10-28T10:00:00.000Z
 title = "ChatGPT Atlas"
 description = "About ChatGPT Atlas and my experience with it."

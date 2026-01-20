@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Homelab on DragonSenseiGuy</title>
-    <link>//localhost:1313/tags/homelab/</link>
+    <link>/tags/homelab/</link>
     <description>Recent content in Homelab on DragonSenseiGuy</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Thu, 23 Oct 2025 10:00:00 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/tags/homelab/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/tags/homelab/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Making a Homelab</title>
-      <link>//localhost:1313/posts/making-a-homelab/</link>
+      <link>/posts/making-a-homelab/</link>
       <pubDate>Thu, 23 Oct 2025 10:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/making-a-homelab/</guid>
+      <guid>/posts/making-a-homelab/</guid>
       <description>&lt;h1 id=&#34;making-a-home-lab&#34;&gt;&#xA;  Making a Home Lab!&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#making-a-home-lab&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;Hello everyone in todays blog I will show you how I made my own Home Lab.&lt;/p&gt;&#xA;&lt;p&gt;The main reason for making a home lab for me, was to have my own &lt;a href=&#34;https://en.wikipedia.org/wiki/RSS&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;RSS&lt;/a&gt; reader that I could self host.&lt;/p&gt;&#xA;&lt;p&gt;First I went to &lt;a href=&#34;https://awesome-selfhosted.net/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;awesome-selfhosted&lt;/a&gt; for some inspiration, after a a few hours I decided on &lt;a href=&#34;https://github.com/glanceapp/glance&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Glance&lt;/a&gt;, an open source and self hosting dashboard that puts all my feeds in one place. I went through the &lt;a href=&#34;https://github.com/glanceapp/glance?tab=readme-ov-file#installation&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Installation Guide&lt;/a&gt;. I chose to use Docker as it the most simple and straightforward to setup for my needs, as I won&amp;rsquo;t be changing the source.&lt;/p&gt;</description>
     </item>
   </channel>
