@@ -12,9 +12,7 @@ ignoreLogs = ['warning-goldmark-raw-html']
 [pagination]
 pagerSize = 20
 
-[services]
-[services.disqus]
-shortname = "dragon"
+
 
 [markup.highlight]
 style = "github-dark"
