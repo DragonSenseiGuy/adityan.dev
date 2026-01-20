@@ -1,8 +1,0 @@
-{
-  "framework": "hugo",
-  "functions": {
-    "api/og.tsx": {
-      "runtime": "edge"
-    }
-  }
-}
