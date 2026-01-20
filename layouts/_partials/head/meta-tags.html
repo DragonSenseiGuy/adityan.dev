@@ -10,8 +10,8 @@
 {{- $title := .Title | default .Site.Title -}}
 {{- $description := .Description | default (.Summary | default .Site.Params.description) -}}
 
-{{/* Generate dynamic OG image URL using dynamic-og-image service */}}
-{{- $ogImageURL := printf "https://dynamic-og-image-generator.vercel.app/api/generate?title=%s&author=DragonSenseiGuy&websiteUrl=dragonsenseiguy.dev&avatar=&theme=dark" (urlquery $title) -}}
+{{/* Generate dynamic OG image URL using Vercel OG */}}
+{{- $ogImageURL := printf "https://og-image.vercel.app/**%s**.png?theme=dark&md=1&fontSize=75px" (urlquery $title) -}}
 
 <!-- Open Graph -->
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
