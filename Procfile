@@ -1,2 +1,2 @@
-release: python manage.py migrate --noinput
-web: gunicorn config.wsgi --log-file -
+release: .venv/bin/python manage.py migrate --noinput
+web: .venv/bin/gunicorn config.wsgi:application --log-file -
