@@ -1,5 +1,4 @@
-[providers]
-python = true
+providers = ["python"]
 
 [phases.setup]
 nixPkgs = ["python312", "gcc", "libpq"]
