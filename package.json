@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "vercel-build": "python3 -m pip install -r requirements.txt && python3 manage.py collectstatic --noinput && python3 manage.py migrate && python3 manage.py create_prod_superuser"
+    "vercel-build": "python3 -m venv .venv && .venv/bin/pip install -r requirements.txt && .venv/bin/python manage.py collectstatic --noinput && .venv/bin/python manage.py migrate && .venv/bin/python manage.py create_prod_superuser"
   },
   "author": "",
   "license": "ISC"
