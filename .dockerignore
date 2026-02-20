@@ -1,0 +1,10 @@
+.git
+.idea
+node_modules
+public
+resources/_gen
+.hugo_build.lock
+.DS_Store
+.env
+.envrc
+themes/coder
