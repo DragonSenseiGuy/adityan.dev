@@ -7,4 +7,4 @@ RUN hugo --minify
 FROM caddy:2-alpine
 COPY --from=build /src/public /usr/share/caddy
 COPY Caddyfile /etc/caddy/Caddyfile
-EXPOSE 80
+EXPOSE 8001

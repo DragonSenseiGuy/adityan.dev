@@ -1,4 +1,4 @@
-:80 {
+:8001 {
 	root * /usr/share/caddy
 	file_server
 	encode gzip zstd
