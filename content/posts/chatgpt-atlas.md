@@ -4,10 +4,7 @@ date = 2025-10-28T10:00:00.000Z
 title = "ChatGPT Atlas"
 description = "About ChatGPT Atlas and my experience with it."
 slug = "chatgpt-atlas"
-authors = []
 tags = ["OpenAI", "AI"]
-categories = []
-externalLink = ""
 series = []
 +++
 

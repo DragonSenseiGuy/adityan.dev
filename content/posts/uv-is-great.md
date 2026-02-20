@@ -3,16 +3,10 @@ draft = false
 date = 2025-11-07T08:14:00.000Z
 title = "UV is great!"
 description = "Reasons why UV is really good."
-slug = ""
-authors = []
 tags = ["Python"]
-categories = []
-externalLink = ""
-series = []
 +++
 
-UV is a python package manager and project manager. It **very** fast, almost 98% faster than `pip-sync`
--------------------------------------------------------------------------------------------------------
+UV is a python package manager and project manager. It **very** fast, almost 98% faster than `pip-sync`.
 
 Here are some key features that make UV stand out:
 

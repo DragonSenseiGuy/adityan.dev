@@ -1,5 +1,6 @@
 ---
 title: "Projects"
+description: "Projects by Aditya — Hack Review, Dragon Bot, Smart RSS, Hack Club News, and more."
 ---
 <div class="cards">
   <div class="card">

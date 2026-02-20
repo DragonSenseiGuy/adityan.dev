@@ -4,10 +4,7 @@ date = 2025-10-29T22:00:00.000Z
 title = "Adding Newsletters to my Blog"
 description = "How I added newsletters to my blog using Substack!"
 slug = "adding-newsletters-to-my-blog"
-authors = []
 tags = ["Site"]
-categories = []
-externalLink = ""
 series = []
 +++
 

@@ -3,11 +3,7 @@ draft = false
 date = 2025-11-02T11:00:00.000Z
 title = "PSF Refusing 1.5M from US Government"
 description = "Why the PSF refused 1.5M from the US Government."
-slug = ""
-authors = []
 tags = ["Python"]
-categories = []
-externalLink = ""
 series = []
 +++
 

@@ -4,10 +4,7 @@ date = 2025-10-23T10:00:00.000Z
 title = "Making a Homelab"
 description = "How I made a homelab and you can too!"
 slug = "making-a-homelab"
-authors = []
 tags = ["homelab"]
-categories = []
-externalLink = ""
 series = []
 +++
 

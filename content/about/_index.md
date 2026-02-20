@@ -1,8 +1,9 @@
 ---
 title: "About"
+description: "About Aditya — developer, Hack Clubber, open-source contributor from Boston."
 ---
 
-Hi! I’m DragonSenseiGuy, a developer who loves programming and creating practical applications. I enjoy working with Python, HTML, and CSS, and I contribute to multiple open-source projects. I was inspired to start programming because I wanted to build practical applications that hadn’t been made yet, simple solutions to everyday problems. I’m passionate about turning ideas into useful tools that make life a little easier
+Hi! I’m Aditya, a developer who loves programming and creating practical applications. I enjoy working with Python, HTML, and CSS, and I contribute to multiple open-source projects. I was inspired to start programming because I wanted to build practical applications that hadn’t been made yet, simple solutions to everyday problems. I’m passionate about turning ideas into useful tools that make life a little easier
 
 ## Blog Posts by email!
 Subscribe to my newsletter to get my latest content by email. 

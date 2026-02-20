@@ -3,11 +3,7 @@ draft = false
 date = 2025-11-01T10:00:00.000Z
 title = "Sora 2"
 description = "The new Sora 2 Video generation model by OpenAI"
-slug = ""
-authors = []
 tags = ["OpenAI", "AI"]
-categories = []
-externalLink = ""
 series = []
 +++
 

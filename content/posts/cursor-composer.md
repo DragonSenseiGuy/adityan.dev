@@ -4,10 +4,7 @@ date = 2025-11-07T08:07:00.000Z
 title = "Cursor Composer"
 description = "The new incredibly fast model by cursor."
 slug = "cursor-composer"
-authors = []
 tags = ["AI"]
-categories = []
-externalLink = ""
 series = []
 +++
 
