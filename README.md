@@ -1,4 +1,4 @@
-# DragonSenseiGuy's Website
+# Aditya's Website
 
 My personal website and blog, built with Hugo using a customized version of the Coder theme.
 

@@ -1,88 +1,114 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DragonSenseiGuy</title>
-  <meta name="description" content="{{ .Site.Params.description }}">
-  
-  <!-- Open Graph / Social Embeds -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="{{ .Permalink }}">
-  <meta property="og:title" content="DragonSenseiGuy">
-  <meta property="og:description" content="{{ .Site.Params.description }}">
-  <meta property="og:image" content="{{ .Site.BaseURL }}images/embed.png">
-  
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="DragonSenseiGuy">
-  <meta name="twitter:description" content="{{ .Site.Params.description }}">
-  <meta name="twitter:image" content="{{ .Site.BaseURL }}images/embed.png">
-  
-  <link rel="stylesheet" href="/css/home.css">
-  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
-</head>
-<body>
-  <div class="container">
-    <!-- Header with avatar and nav -->
-    <header class="header">
-      <div class="avatar-container">
-        <img src="/images/avatar.png" alt="Avatar" class="avatar" />
-      </div>
-      <nav class="nav-links">
-        <a href="/posts/" class="nav-link">posts</a>
-        <span class="nav-divider">✦</span>
-        <a href="/projects/" class="nav-link">projects</a>
-        <span class="nav-divider">✦</span>
-        <a href="/about/" class="nav-link">about</a>
-      </nav>
-    </header>
-
-    <!-- Intro Box -->
-    <section class="intro-box">
-      <p>
-        <span class="name">dragon</span>: hi! i'm a hack clubber from boston!
-      </p>
-      <p>
-        i currently run programs @ <a href="https://hackclub.com" class="link">hack club</a>
-      </p>
-      <div class="arrow-down"></div>
-    </section>
-
-    <!-- Hobbies Box -->
-    <section class="hobbies-box">
-      <p>some hobbies include:</p>
-    </section>
-
-    <!-- Hobby Cards -->
-    <section class="hobby-cards">
-      <div class="hobby-card card-software">
-        <div class="card-title">software projects</div>
-        <div class="card-text">building apps, scripts, and tools whenever inspiration strikes</div>
-      </div>
-
-      <div class="hobby-card card-networking">
-        <div class="card-title">networking + linux</div>
-        <div class="card-text">tinkering with servers, homelabs, and all things open source</div>
-      </div>
-
-      <div class="hobby-card card-reading">
-        <div class="card-title">reading</div>
-        <div class="card-text">always have a book or two on the go</div>
-      </div>
-    </section>
-
-    <!-- Code Box -->
-    <section class="code-box">
-      <p>
-        this site is made with hugo. check out my <a href="https://github.com/DragonSenseiGuy" class="link">github</a>!
-      </p>
-    </section>
-
-    <!-- Credits -->
-    <footer class="credits">
-      <p>inspired by <a href="https://aconlin.com/" class="link" target="_blank">aconlin.com</a> ✦</p>
-    </footer>
+{{ define "title" }}Aditya — BRUTALIST{{ end }}
+{{ define "content" }}
+<section class="hero">
+  <div class="hero-main">
+    <h1 class="hero-name heading">Aditya</h1>
+    <p class="hero-tagline">
+      Developer. Hack&nbsp;Clubber. I make stuff, break stuff, and sometimes it actually works.
+    </p>
   </div>
-</body>
-</html>
+
+</section>
+
+<div class="ticker">
+  <span class="ticker-inner">
+    SOFTWARE — NETWORKING — LINUX — READING — HACK CLUB — OPEN SOURCE — SOFTWARE — NETWORKING — LINUX — READING — HACK CLUB — OPEN SOURCE — SOFTWARE — NETWORKING — LINUX — READING — HACK CLUB — OPEN SOURCE — SOFTWARE — NETWORKING — LINUX — READING — HACK CLUB — OPEN SOURCE —&nbsp;
+  </span>
+</div>
+
+<section class="about">
+  <div class="about-sidebar">
+    <h2>About</h2>
+  </div>
+  <div class="about-body">
+    <p>
+      I'm <strong>Aditya</strong> — I'm from Boston and I do stuff at <a href="https://hackclub.com" target="_blank">Hack Club</a>. Mostly I just build things, mess with networking and Linux, and read way too much.
+    </p>
+    <p>
+      I like building in public and figuring out how things work by breaking them. If something looks interesting, I'll probably try to build it.
+    </p>
+    <div class="tags">
+      <span>Software</span>
+      <span>Networking</span>
+      <span>Linux</span>
+      <span>Reading</span>
+      <span>Hack Club</span>
+      <span>Open Source</span>
+      <span>Boston</span>
+    </div>
+  </div>
+</section>
+
+<div class="collision">
+  <span>BUILDER</span>
+  <span>HACKER</span>
+  <span>DEVELOPER</span>
+  <span>READER</span>
+</div>
+
+<section class="projects">
+  <div class="section-bar">
+    <h2>Projects</h2>
+    <span class="num">02</span>
+  </div>
+  <div class="project-grid">
+    <div class="project-card" data-n="01">
+      <div>
+        <div class="project-name">Hack Review</div>
+        <p class="project-desc">GitHub app that reviews your PRs in the Hack Club community. You submit code, it tells you what's wrong.</p>
+      </div>
+      <span class="project-type">GitHub App</span>
+    </div>
+    <div class="project-card" data-n="02">
+      <div>
+        <div class="project-name">Dragon Bot</div>
+        <p class="project-desc">A Discord bot for Hack Club. It does moderation, automation, and sometimes cracks jokes.</p>
+      </div>
+      <span class="project-type">Discord Bot</span>
+    </div>
+    <div class="project-card" data-n="03">
+      <div>
+        <div class="project-name">Smart RSS</div>
+        <p class="project-desc">An RSS feed reader that cuts through the noise so you only see the good stuff.</p>
+      </div>
+      <span class="project-type">RSS Aggregator</span>
+    </div>
+    <div class="project-card" data-n="04">
+      <div>
+        <div class="project-name">Hack Club News</div>
+        <p class="project-desc">Like Hacker News but for Hack Clubbers. See what people in the community are making.</p>
+      </div>
+      <span class="project-type">News Platform</span>
+    </div>
+  </div>
+</section>
+
+<section class="interests">
+  <div class="interest">
+    <span class="interest-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span>
+    <h3>Software</h3>
+    <p>I write code. Sometimes it works on the first try, mostly it doesn't. That's the fun part.</p>
+  </div>
+  <div class="interest">
+    <span class="interest-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></span>
+    <h3>Networking &amp; Linux</h3>
+    <p>I like messing around with servers, networking, and figuring out how the internet actually works.</p>
+  </div>
+  <div class="interest">
+    <span class="interest-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
+    <h3>Reading</h3>
+    <p>Books, articles, docs — if it's interesting, I'm reading it.</p>
+  </div>
+</section>
+
+<section class="connect">
+  <div class="connect-block">
+    <div class="connect-heading">GitHub</div>
+    <a href="https://github.com/DragonSenseiGuy/" target="_blank" class="connect-link">github.com/dragonsenseiguy</a>
+  </div>
+  <div class="connect-block">
+    <div class="connect-heading">Discord</div>
+    <a href="https://discord.com/users/1374119550467051542" target="_blank" class="connect-link">Find me on Discord →</a>
+  </div>
+</section>
+{{ end }}
