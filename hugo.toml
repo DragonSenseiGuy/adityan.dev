@@ -1,10 +1,14 @@
-baseurl = "/"
+baseurl = "https://adityan.dev/"
 title = "Aditya"
 theme = "coder"
 languagecode = "en"
 defaultcontentlanguage = "en"
 
 ignoreLogs = ['warning-goldmark-raw-html']
+
+[sitemap]
+  changefreq = "weekly"
+  priority = 0.5
 
 [markup.goldmark.renderer]
   unsafe = true
