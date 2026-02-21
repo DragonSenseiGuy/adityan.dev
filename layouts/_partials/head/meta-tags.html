@@ -20,6 +20,9 @@
   {{- with .Date -}}
     {{- $ogImageURL = printf "%s&date=%s" $ogImageURL (urlquery (.Format "January 02, 2006")) -}}
   {{- end -}}
+  {{- with $description -}}
+    {{- $ogImageURL = printf "%s&description=%s" $ogImageURL (urlquery .) -}}
+  {{- end -}}
   {{- with .Params.tags -}}
     {{- $ogImageURL = printf "%s&tags=%s" $ogImageURL (urlquery (delimit . ",")) -}}
   {{- end -}}
