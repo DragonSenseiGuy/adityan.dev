@@ -19,7 +19,7 @@ style = "github-dark"
   author = "Aditya"
   description = "Website, Blog and home to some cool stuff"
   keywords = "blog,developer,personal,aditya,portfolio"
-  ogImageBase = "https://og-image-generator-black.vercel.app"
+  ogImageBase = "https://embed.adityan.dev"
 
 [taxonomies]
   category = "categories"
