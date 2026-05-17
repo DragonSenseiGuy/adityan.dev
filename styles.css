@@ -86,6 +86,26 @@ body {
   font-weight: 300;
   font-size: 52px;
   margin: 18px 0 8px;
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+}
+
+.project-card h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.project-card h2:hover::after {
+  transform: scaleX(1);
 }
 
 .project-card p {
@@ -100,5 +120,30 @@ body {
   font-family: 'Elms Sans', serif;
   font-size: 15px;
   color: #000;
-  text-decoration: none
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+}
+
+.project-card a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.project-card a:hover::after {
+  transform: scaleX(1);
+}
+
+.project-card h2 a {
+  color: inherit;
+  text-decoration: none;
+  font: inherit;
 }
