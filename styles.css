@@ -1,0 +1,104 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+@font-face {
+  font-family: 'PPEiko';
+  src: url('PPEiko-Thin.otf') format('opentype');
+  font-weight: 300 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+.pinyon-script {
+  font-family: "Pinyon Script", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+.elms-sans {
+  font-family: "Elms Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+
+.m-plus-rounded-1c {
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+.hero {
+  width: 1980px;
+  height: 470px;
+  position: relative;
+  display: inline-block;
+}
+
+.hero img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border: 0;
+}
+
+.hero p {
+  position: absolute;
+  top: var(--text-top, 24px);
+  left: var(--text-left, 16px);
+  transform: var(--text-transform, none);
+  margin: 0;
+  color: #000;
+  font-family: 'PPEiko', "Pinyon Script", cursive;
+  z-index: 2;
+  pointer-events: none;
+  max-width: calc(100% - var(--text-left, 0px));
+  word-break: break-word;
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: 460px 460px;
+  gap: 60px 200px;
+  justify-content: center;
+  margin: 80px auto;
+  padding: 0 20px;
+  font-family: 'PPEiko', serif;
+}
+
+.project-card img{
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+}
+
+.project-card h2 {
+  font-family: 'PPEiko', serif;
+  font-weight: 300;
+  font-size: 52px;
+  margin: 18px 0 8px;
+}
+
+.project-card p {
+  font-family: 'PPEiko', serif;
+  font-size: 16px;
+  line-height: 1.4;
+  margin: 0 0 14px;
+  max-width: 42ch;
+}
+
+.project-card a{
+  font-family: 'Elms Sans', serif;
+  font-size: 15px;
+  color: #000;
+  text-decoration: none
+}
