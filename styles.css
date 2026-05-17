@@ -48,6 +48,9 @@ body {
   max-width: 100%;
   height: auto;
   border: 0;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
 }
 
 .hero p {
@@ -59,7 +62,6 @@ body {
   color: #000;
   font-family: 'PPEiko', "Pinyon Script", cursive;
   z-index: 2;
-  pointer-events: none;
   max-width: calc(100% - var(--text-left, 0px));
   word-break: break-word;
 }
@@ -193,4 +195,41 @@ body {
   height: 100%;
   object-fit: contain;
   display: block;
+}
+
+.hero-nav {
+  position: absolute;
+  top: 40px;
+  left: 57px;
+  display: flex;
+  gap: 60px;
+  z-index: 3;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+}
+
+.hero-nav a {
+  color: #000;
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  transition: opacity 0.2s ease;
+}
+
+.hero-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.hero-nav a:hover::after {
+  transform: scaleX(1);
 }
