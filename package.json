@@ -1,0 +1,15 @@
+{
+  "name": "adityan-dev",
+  "version": "1.0.0",
+  "description": "Personal website for adityan.dev",
+  "private": true,
+  "scripts": {
+    "dev": "live-server --port=3000 --no-browser",
+    "start": "npm run dev",
+    "build:blog": "node scripts/build-blog.js"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "marked": "^18.0.6"
+  }
+}
