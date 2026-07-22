@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Aditya Gazette</title>
+<meta name="description" content="Aditya N is a student developer at Hack Club in Boston building AI tools, bots, and odd little apps.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23F1EBDD'/><text y='.85em' x='18' font-size='84' font-family='Georgia,serif' font-weight='700' fill='%231A1712'>A</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F1EBDD; --ink:#1A1712; --dim:#57503F; --line:#1A1712; --red:#9B2417;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'Source Serif 4',Georgia,serif;font-size:16.5px;line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(rgba(26,23,18,.025) 1px,transparent 1px);background-size:4px 4px}
+  a{color:inherit}
+  ::selection{background:var(--ink);color:var(--paper)}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  .type{font-family:'Special Elite',monospace}
+  .disp{font-family:'Playfair Display',Georgia,serif}
+
+  /* masthead */
+  .mast{border-bottom:4px double var(--line);padding-top:18px}
+  .mast .kick{display:flex;justify-content:space-between;font-family:'Special Elite',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .mast h1{font-family:'Playfair Display';font-weight:900;font-size:clamp(44px,10vw,120px);text-align:center;margin:14px 0 6px;letter-spacing:-.02em;line-height:.95}
+  .mast .sub{text-align:center;font-family:'Special Elite',monospace;font-size:12.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--dim);padding-bottom:16px}
+
+  /* sticky nav strip */
+  nav{position:sticky;top:0;z-index:50;background:var(--ink);color:var(--paper)}
+  nav .row{max-width:1120px;margin:0 auto;padding:11px 24px;display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+  nav .row .sec{font-family:'Special Elite',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin-right:auto}
+  nav .links{display:flex;gap:22px}
+  nav .links a{text-decoration:none;font-size:14px;color:var(--paper);opacity:.85}
+  nav .links a:hover{opacity:1;text-decoration:underline;text-underline-offset:3px}
+  nav .cta{text-decoration:none;font-family:'Special Elite',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--paper);padding:6px 12px}
+  nav .cta:hover{background:var(--paper);color:var(--ink)}
+
+  /* lead story */
+  .lead{display:grid;grid-template-columns:1.7fr 1fr;gap:0;border-bottom:2px solid var(--line)}
+  .lead .story{padding:40px 40px 40px 0;border-right:1px solid var(--line)}
+  .lead .side{padding:40px 0 40px 36px}
+  .headline{font-family:'Playfair Display';font-weight:900;font-size:clamp(40px,7vw,88px);line-height:.94;letter-spacing:-.02em;margin:6px 0 0}
+  .headline em{font-style:italic;color:var(--red)}
+  .byline{font-family:'Special Elite',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin:20px 0 16px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+  .lead .story p{margin:0 0 16px;font-size:17px}
+  .lead .story p:first-of-type::first-letter{font-family:'Playfair Display';font-weight:900;float:left;font-size:74px;line-height:.72;padding:6px 12px 0 0;color:var(--red)}
+  .lead .story p a{color:var(--red);text-decoration:none;border-bottom:1px solid var(--red)}
+  .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+  .btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-family:'Special Elite',monospace;font-size:13px;letter-spacing:.06em;text-transform:uppercase;padding:12px 20px;border:1.5px solid var(--line);transition:background .2s,color .2s}
+  .btn.solid{background:var(--ink);color:var(--paper)}
+  .btn.solid:hover{background:var(--red);border-color:var(--red)}
+  .btn.out:hover{background:var(--ink);color:var(--paper)}
+
+  .factbox{border:1.5px solid var(--line);padding:20px}
+  .factbox h4{font-family:'Special Elite',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;text-align:center;margin:0 0 14px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .factbox dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:9px 12px;font-size:14px}
+  .factbox dt{color:var(--dim)}
+  .factbox dd{margin:0;text-align:right;font-weight:600}
+  .portrait{margin-top:22px;aspect-ratio:1;border:1.5px solid var(--line);display:grid;place-items:center;
+    font-family:'Playfair Display';font-weight:900;font-size:120px;color:var(--ink);
+    background:
+      repeating-linear-gradient(45deg,rgba(26,23,18,.06) 0 2px,transparent 2px 5px)}
+  .cap{font-family:'Special Elite',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);text-align:center;margin-top:8px}
+
+  /* section rule */
+  .srule{display:flex;align-items:center;gap:16px;margin:52px 0 26px}
+  .srule::before,.srule::after{content:"";height:2px;background:var(--line);flex:1}
+  .srule h2{font-family:'Special Elite',monospace;font-size:14px;letter-spacing:.2em;text-transform:uppercase;margin:0}
+
+  /* projects as newspaper columns */
+  .pcols{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:2px solid var(--line)}
+  .pcol{padding:26px 20px;border-right:1px solid var(--line);border-bottom:2px solid var(--line);text-decoration:none;color:inherit;transition:background .2s}
+  .pcol:last-child{border-right:0}
+  .pcol:hover{background:rgba(26,23,18,.05)}
+  .pcol .no{font-family:'Special Elite',monospace;font-size:12px;letter-spacing:.1em;color:var(--red)}
+  .pcol h3{font-family:'Playfair Display';font-weight:700;font-size:25px;line-height:1.05;margin:8px 0 10px}
+  .pcol .tags{font-family:'Special Elite',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);padding-bottom:10px;margin-bottom:10px;border-bottom:1px solid var(--line)}
+  .pcol p{font-size:14px;margin:0}
+  .pcol .rd{display:inline-block;margin-top:12px;font-family:'Special Elite',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid var(--ink)}
+
+  /* opinion / about */
+  .about{display:grid;grid-template-columns:2fr 1fr;gap:36px;padding:6px 0 0}
+  .about .body{column-count:2;column-gap:34px}
+  .about .body p{margin:0 0 15px;font-size:16px;break-inside:avoid}
+  .about .body p strong{color:var(--red);font-weight:600}
+  .about .body p:first-child::first-letter{font-family:'Playfair Display';font-weight:900;float:left;font-size:58px;line-height:.7;padding:4px 10px 0 0}
+  .about .pull{border-top:2px solid var(--line);border-bottom:2px solid var(--line);padding:20px 0}
+  .about .pull blockquote{font-family:'Playfair Display';font-style:italic;font-size:26px;line-height:1.25;margin:0}
+  .about .pull .who{font-family:'Special Elite',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-top:14px}
+  .about a.more{display:inline-block;margin-top:16px;font-family:'Special Elite',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid var(--red);color:var(--red);text-decoration:none}
+
+  /* classified CTA */
+  .band{border:3px double var(--line);text-align:center;padding:48px 28px;margin-top:56px}
+  .band .tagline{font-family:'Special Elite',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
+  .band h2{font-family:'Playfair Display';font-weight:900;font-size:clamp(32px,6vw,60px);margin:12px 0 12px;line-height:.98}
+  .band h2 em{font-style:italic;color:var(--red)}
+  .band p{max-width:44ch;margin:0 auto 22px;color:var(--dim)}
+
+  footer{border-top:4px double var(--line);margin-top:56px;padding:34px 0 50px}
+  .frow{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;align-items:center}
+  .fname{font-family:'Playfair Display';font-weight:900;font-size:26px}
+  .ftag{color:var(--dim);font-size:14px}
+  .socials{display:flex;gap:0;border:1.5px solid var(--line)}
+  .socials a{width:46px;height:46px;display:grid;place-items:center;border-right:1.5px solid var(--line)}
+  .socials a:last-child{border-right:0}
+  .socials a:hover{background:var(--ink)}
+  .socials svg{width:19px;height:19px;fill:var(--ink)}
+  .socials a:hover svg{fill:var(--paper)}
+  .fbot{margin-top:24px;padding-top:16px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-family:'Special Elite',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
+  .fbot a{color:inherit;text-decoration:none}
+  .fbot a:hover{color:var(--red)}
+
+  @media(max-width:820px){
+    .lead{grid-template-columns:1fr}
+    .lead .story{border-right:0;border-bottom:1px solid var(--line);padding:32px 0}
+    .lead .side{padding:32px 0}
+    .pcols{grid-template-columns:1fr 1fr}
+    .pcol:nth-child(2n){border-right:0}
+    .about{grid-template-columns:1fr}
+    .about .body{column-count:1}
+    nav .links{display:none}
+  }
+  @media(max-width:520px){.pcols{grid-template-columns:1fr}.pcol{border-right:0}}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="wrap mast">
+  <div class="kick"><span>Vol. XVI — No. 7</span><span>Boston · Est. Online</span><span id="date">Priceless</span></div>
+  <h1 class="disp">The Aditya Gazette</h1>
+  <div class="sub">Small · Useful · Occasionally Silly Things Since Forever</div>
+</header>
+
+<nav>
+  <div class="row">
+    <span class="sec">Front Page</span>
+    <div class="links">
+      <a href="../about.html">About</a>
+      <a href="../projects.html">Projects</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../contact.html">Contact</a>
+    </div>
+    <a class="cta" href="mailto:hey@adityan.dev">Say Hi</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <section class="lead">
+    <div class="story">
+      <div class="byline">Developer's Desk · Filed from Boston</div>
+      <h1 class="headline">Student Dev Ships <em>Odd Little Apps</em> — And Won't Stop</h1>
+      <div class="byline">By Aditya N · a.k.a. "Dragon"</div>
+      <p>I'm a student developer at <a href="https://hackclub.com">Hack Club</a>, based in Boston, building AI tools, Slack bots, and odd little apps. Most of them start as a small itch and end up shipped — which, as any reader knows, is the hard part.</p>
+      <p>From automated code reviewers to self-hostable RSS readers, the work spans Python, Vue, and whatever a YSWS program throws my way next. The through-line: make something small and useful, then actually put it in the world.</p>
+      <div class="actions">
+        <a class="btn solid" href="../projects.html">Read the full docket →</a>
+        <a class="btn out" href="../contact.html">Write to the editor</a>
+      </div>
+    </div>
+    <div class="side">
+      <div class="factbox">
+        <h4>The Particulars</h4>
+        <dl>
+          <dt>Dateline</dt><dd>Boston, USA</dd>
+          <dt>Repositories</dt><dd>100+ public</dd>
+          <dt>Beat</dt><dd>AI · Bots · Web</dd>
+          <dt>Bureau</dt><dd>@hackclub</dd>
+        </dl>
+      </div>
+      <div class="portrait disp" aria-hidden="true">A</div>
+      <div class="cap">Fig. 1 — The developer, pictured in halftone.</div>
+    </div>
+  </section>
+
+  <div class="srule"><h2>The Docket — Selected Work</h2></div>
+  <div class="pcols">
+    <a class="pcol" href="https://github.com/DragonSenseiGuy/hack-review" target="_blank" rel="noopener">
+      <div class="no">No. 01</div><h3 class="disp">Hack Review</h3>
+      <div class="tags">Python · AI</div>
+      <p>A GitHub App that automatically reviews pull requests — an AI flags potential bugs and style issues.</p>
+      <span class="rd">Continued ↗</span>
+    </a>
+    <a class="pcol" href="https://github.com/DragonSenseiGuy/kira" target="_blank" rel="noopener">
+      <div class="no">No. 02</div><h3 class="disp">Kira</h3>
+      <div class="tags">Vue · AI</div>
+      <p>An AI chat app built with Vue — a clean, fast interface for talking to language models.</p>
+      <span class="rd">Continued ↗</span>
+    </a>
+    <a class="pcol" href="https://github.com/DragonSenseiGuy/dragon-bot-slack" target="_blank" rel="noopener">
+      <div class="no">No. 03</div><h3 class="disp">Dragon Bot</h3>
+      <div class="tags">Python · Bot</div>
+      <p>A Slack bot for the Hack Club Slack — utilities, fun commands, and community helpers.</p>
+      <span class="rd">Continued ↗</span>
+    </a>
+    <a class="pcol" href="https://github.com/DragonSenseiGuy/smart-RSS" target="_blank" rel="noopener">
+      <div class="no">No. 04</div><h3 class="disp">Smart RSS</h3>
+      <div class="tags">Web · Self-hosted</div>
+      <p>A minimalist, self-hostable RSS aggregator that pulls all your feeds into one place.</p>
+      <span class="rd">Continued ↗</span>
+    </a>
+  </div>
+
+  <div class="srule"><h2>Opinion — A Little Context</h2></div>
+  <section class="about">
+    <div class="body">
+      <p>I go by "Dragon" around the internet. Most of what I make starts as a small itch — a bot that would make a community more fun, a tool that would save me ten minutes a day — and turns into a shipped project.</p>
+      <p>I spend a lot of time in the <strong>Hack Club</strong> community, building things alongside other teenage makers: Slack bots, AI plugins, game jams, and whatever a YSWS program throws at me next. The company is good and the deadlines are self-imposed, which suits me.</p>
+      <p>The habit is simple: notice the itch, build the small thing, ship it, repeat. It compounds faster than you'd expect.</p>
+    </div>
+    <div>
+      <div class="pull">
+        <blockquote>"It starts as a small itch — and turns into a shipped project."</blockquote>
+        <div class="who">— The developer, on method</div>
+      </div>
+      <a class="more" href="../about.html">More about me →</a>
+    </div>
+  </section>
+
+  <div class="band">
+    <div class="tagline">★ Classifieds ★</div>
+    <h2 class="disp">Let's Build <em>Something</em></h2>
+    <p>Have an idea, a project, or just want to talk code? The inbox is open around the clock.</p>
+    <a class="btn solid" href="mailto:hey@adityan.dev">hey@adityan.dev</a>
+  </div>
+
+</main>
+
+<footer class="wrap">
+  <div class="frow">
+    <div>
+      <div class="fname disp">The Aditya Gazette</div>
+      <div class="ftag">Building small, useful, occasionally silly things.</div>
+    </div>
+    <div class="socials">
+      <a href="https://github.com/DragonSenseiGuy/" aria-label="GitHub" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+      <a href="https://www.linkedin.com/in/aditya-n-2a7a42372/" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
+      <a href="https://discord.com/users/1374119550467051542" aria-label="Discord" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/></svg></a>
+    </div>
+  </div>
+  <div class="fbot">
+    <span>© <span data-year>2026</span> Aditya N — Printed on the open web</span>
+    <a href="https://github.com/DragonSenseiGuy/adityan.dev" target="_blank" rel="noopener">Open source on GitHub ↗</a>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('[data-year]').forEach(e=>e.textContent=new Date().getFullYear());
+(function(){var d=document.getElementById('date');if(d)d.textContent=new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});})();
+</script>
+<script src="switcher.js" defer></script>
+</body>
+</html>

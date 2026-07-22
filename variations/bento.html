@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aditya N — Bento</title>
+<meta name="description" content="Aditya N is a student developer at Hack Club in Boston building AI tools, bots, and odd little apps.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23111'/><text y='.82em' x='24' font-size='78' font-family='sans-serif' font-weight='800' fill='%23fff'>A</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ECECE7; --ink:#111114; --dim:#5A5A63; --card:#FFFFFF;
+    --lav:#C7B8FF; --lime:#D6F45A; --coral:#FF7A59; --sky:#9BD7FF; --pink:#FFC2E2; --mint:#B9F2D8; --sun:#FFD84D;
+    --r:26px;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Space Grotesk',system-ui,sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  ::selection{background:var(--coral);color:#fff}
+  .serif{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-weight:400}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+
+  /* nav */
+  nav{position:sticky;top:14px;z-index:50;margin:14px auto 0;max-width:1160px;padding:0 20px}
+  nav .inner{display:flex;align-items:center;gap:8px;background:var(--ink);color:#fff;border-radius:999px;padding:8px 8px 8px 22px;box-shadow:0 10px 30px rgba(0,0,0,.15)}
+  nav .brand{font-weight:700;font-size:19px;text-decoration:none;margin-right:auto}
+  nav .brand span{color:var(--lime)}
+  nav .links{display:flex;gap:2px}
+  nav .links a{text-decoration:none;color:#C9C9CF;font-size:14px;padding:8px 13px;border-radius:999px;transition:color .2s,background .2s}
+  nav .links a:hover{color:#fff;background:rgba(255,255,255,.12)}
+  nav .cta{text-decoration:none;background:var(--lime);color:var(--ink);font-weight:600;font-size:14px;padding:10px 18px;border-radius:999px}
+  nav .cta:hover{background:#fff}
+
+  /* bento grid */
+  main{padding:26px 0 40px}
+  .bento{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;grid-auto-rows:minmax(150px,auto)}
+  .tile{background:var(--card);border-radius:var(--r);padding:26px;position:relative;overflow:hidden;transition:transform .25s cubic-bezier(.2,1,.3,1),box-shadow .25s}
+  .tile:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,0,.1)}
+  a.tile{text-decoration:none;color:inherit;cursor:pointer}
+
+  .t-hero{grid-column:span 4;grid-row:span 2;background:var(--ink);color:#fff;display:flex;flex-direction:column;justify-content:center;padding:44px}
+  .t-hero .k{color:var(--lime);font-size:15px;margin:0 0 8px}
+  .t-hero h1{font-family:'Space Grotesk';font-weight:700;font-size:clamp(44px,8vw,96px);line-height:.98;letter-spacing:-.03em;margin:0}
+  .t-hero h1 .serif{color:var(--lav)}
+  .t-hero p{color:#C9C9CF;font-size:clamp(16px,2vw,20px);max-width:52ch;margin:20px 0 0}
+  .t-hero p a{color:#fff;border-bottom:1px solid var(--lime);text-decoration:none}
+  .t-hero .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+  .btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:600;font-size:15px;padding:12px 22px;border-radius:999px;cursor:pointer;transition:transform .2s,background .2s}
+  .btn.lime{background:var(--lime);color:var(--ink)}
+  .btn.lime:hover{transform:translateY(-2px)}
+  .btn.out{border:1px solid rgba(255,255,255,.3);color:#fff}
+  .btn.out:hover{background:rgba(255,255,255,.1)}
+  .btn.dark{background:var(--ink);color:#fff}
+  .btn.dark:hover{transform:translateY(-2px)}
+  .btn svg{width:16px;height:16px}
+
+  .label{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin:0 0 auto}
+  .big{font-family:'Space Grotesk';font-weight:700;font-size:clamp(30px,4vw,46px);letter-spacing:-.02em;line-height:1;margin:14px 0 0}
+  .sub{font-size:13.5px;color:var(--dim);margin:6px 0 0}
+
+  .t-stat{display:flex;flex-direction:column}
+  .t-loc{background:var(--sky)}
+  .t-repos{background:var(--lime)}
+  .t-comm{background:var(--pink)}
+
+  /* project tiles */
+  .t-proj{display:flex;flex-direction:column;justify-content:space-between}
+  .t-proj .num{font-size:13px;font-weight:600;color:var(--dim)}
+  .t-proj h3{font-size:26px;font-weight:600;margin:10px 0 8px;letter-spacing:-.01em}
+  .t-proj p{font-size:14px;color:var(--dim);margin:0}
+  .t-proj .foot{display:flex;justify-content:space-between;align-items:center;margin-top:18px}
+  .t-proj .tags{font-size:12px;font-weight:600;color:var(--ink);background:rgba(0,0,0,.06);padding:4px 11px;border-radius:999px}
+  .t-proj .arr{width:34px;height:34px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;transition:transform .25s}
+  a.t-proj:hover .arr{transform:rotate(-45deg)}
+  .t-proj .arr svg{width:15px;height:15px}
+  .p1{background:var(--lav)} .p2{background:var(--mint)} .p3{background:var(--sun)} .p4{background:var(--coral);color:#fff}
+  .p4 .sub,.p4 .num,.p4 p{color:rgba(255,255,255,.85)} .p4 .tags{background:rgba(255,255,255,.2);color:#fff}
+
+  /* about tile */
+  .t-about{grid-column:span 2;grid-row:span 2;display:flex;flex-direction:column;justify-content:center}
+  .t-about h2{font-family:'Space Grotesk';font-weight:700;font-size:clamp(28px,3.4vw,40px);letter-spacing:-.02em;margin:14px 0 16px;line-height:1.05}
+  .t-about h2 .serif{color:var(--coral)}
+  .t-about p{font-size:15px;color:var(--dim);margin:0 0 14px}
+  .t-about p strong{color:var(--ink);font-weight:600}
+  .t-about a.more{font-weight:600;text-decoration:none;border-bottom:2px solid var(--lime)}
+
+  /* avatar tile */
+  .t-ava{grid-column:span 2;background:linear-gradient(135deg,var(--lav),var(--sky));display:grid;place-items:center;font-family:'Instrument Serif';font-style:italic;font-size:130px;color:var(--ink);min-height:210px}
+
+  /* toolbox tile */
+  .t-tools{grid-column:span 2}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .chips span{font-size:13px;font-weight:500;background:rgba(0,0,0,.05);padding:6px 13px;border-radius:999px}
+
+  /* cta tile */
+  .t-cta{grid-column:span 4;background:var(--ink);color:#fff;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:52px 28px}
+  .t-cta h2{font-family:'Space Grotesk';font-weight:700;font-size:clamp(32px,5vw,58px);letter-spacing:-.03em;margin:0 0 12px}
+  .t-cta h2 .serif{color:var(--lime)}
+  .t-cta p{color:#C9C9CF;max-width:44ch;margin:0 0 24px}
+
+  footer{padding:40px 0 50px}
+  .frow{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;align-items:center}
+  .frow .fname{font-weight:700;font-size:22px}
+  .frow .ftag{color:var(--dim);font-size:14px;margin-top:2px}
+  .socials{display:flex;gap:8px}
+  .socials a{width:44px;height:44px;border-radius:50%;background:var(--card);display:grid;place-items:center;box-shadow:0 4px 14px rgba(0,0,0,.06)}
+  .socials a:hover{background:var(--ink)}
+  .socials svg{width:20px;height:20px;fill:var(--ink)}
+  .socials a:hover svg{fill:#fff}
+  .fbot{margin-top:26px;padding-top:18px;border-top:1px solid rgba(0,0,0,.1);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:13px;color:var(--dim)}
+  .fbot a{color:inherit;text-decoration:none}
+
+  @media(max-width:900px){
+    .bento{grid-template-columns:repeat(2,1fr)}
+    .t-hero,.t-cta{grid-column:span 2}
+    .t-about,.t-ava,.t-tools{grid-column:span 2}
+  }
+  @media(max-width:560px){
+    .bento{grid-template-columns:1fr}
+    .t-hero,.t-cta,.t-about,.t-ava,.t-tools{grid-column:span 1;grid-row:auto}
+    nav .links{display:none}
+  }
+  @media(prefers-reduced-motion:reduce){.tile{transition:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <a class="brand" href="../index.html">Aditya<span>.</span></a>
+    <div class="links">
+      <a href="../about.html">About</a>
+      <a href="../projects.html">Projects</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../contact.html">Contact</a>
+    </div>
+    <a class="cta" href="mailto:hey@adityan.dev">Say hi</a>
+  </div>
+</nav>
+
+<main class="wrap">
+  <div class="bento">
+
+    <div class="tile t-hero">
+      <p class="k">hello, I'm</p>
+      <h1>Aditya <span class="serif">N.</span></h1>
+      <p>Student developer at <a href="https://hackclub.com">Hack Club</a>, based in Boston. I build AI tools, Slack bots, and odd little apps — and I ship them.</p>
+      <div class="actions">
+        <a class="btn lime" href="../projects.html">See my projects <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a class="btn out" href="../contact.html">Get in touch</a>
+      </div>
+    </div>
+
+    <div class="tile t-stat t-loc"><p class="label">Based in</p><div class="big">Boston</div><p class="sub">USA · EST</p></div>
+    <div class="tile t-stat t-repos"><p class="label">Shipped</p><div class="big">100+</div><p class="sub">public repos</p></div>
+    <div class="tile t-stat t-comm"><p class="label">Community</p><div class="big serif">Hack Club</div><p class="sub">teenage makers</p></div>
+    <div class="tile t-about">
+      <p class="label">About</p>
+      <h2>A little <span class="serif">context</span></h2>
+      <p>I go by <strong>Dragon</strong> around the internet. Most of what I make starts as a small itch and turns into a shipped project.</p>
+      <p>I spend time in the <strong>Hack Club</strong> community, building alongside other teenage makers: Slack bots, AI plugins, game jams.</p>
+      <p style="margin:0"><a class="more" href="../about.html">More about me →</a></p>
+    </div>
+
+    <a class="tile t-proj p1" href="https://github.com/DragonSenseiGuy/hack-review" target="_blank" rel="noopener">
+      <div><span class="num">01</span><h3>Hack Review</h3><p>A GitHub App that auto-reviews pull requests with AI — flagging bugs and style issues.</p></div>
+      <div class="foot"><span class="tags">Python · AI</span><span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
+    </a>
+    <a class="tile t-proj p2" href="https://github.com/DragonSenseiGuy/kira" target="_blank" rel="noopener">
+      <div><span class="num">02</span><h3>Kira</h3><p>An AI chat app built with Vue — a clean, fast interface for LLMs.</p></div>
+      <div class="foot"><span class="tags">Vue · AI</span><span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
+    </a>
+
+    <div class="tile t-ava" aria-hidden="true">A</div>
+
+    <a class="tile t-proj p3" href="https://github.com/DragonSenseiGuy/dragon-bot-slack" target="_blank" rel="noopener">
+      <div><span class="num">03</span><h3>Dragon Bot</h3><p>A Slack bot for the Hack Club Slack — utilities, fun commands, community helpers.</p></div>
+      <div class="foot"><span class="tags">Python · Bot</span><span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
+    </a>
+    <a class="tile t-proj p4" href="https://github.com/DragonSenseiGuy/smart-RSS" target="_blank" rel="noopener">
+      <div><span class="num">04</span><h3>Smart RSS</h3><p>A minimalist, self-hostable RSS aggregator that pulls all your feeds into one place.</p></div>
+      <div class="foot"><span class="tags">Web · Self-hosted</span><span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="var(--coral)" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
+    </a>
+
+    <div class="tile t-tools">
+      <p class="label">Toolbox</p>
+      <div class="chips"><span>Python</span><span>Vue</span><span>JavaScript</span><span>AI / LLMs</span><span>Slack API</span><span>GitHub Apps</span><span>Self-hosting</span></div>
+    </div>
+
+    <div class="tile t-cta">
+      <h2>Let's build <span class="serif">something</span></h2>
+      <p>Have an idea, a project, or just want to talk code? My inbox is open.</p>
+      <a class="btn lime" href="mailto:hey@adityan.dev">hey@adityan.dev</a>
+    </div>
+
+  </div>
+</main>
+
+<footer class="wrap">
+  <div class="frow">
+    <div>
+      <div class="fname">Aditya N</div>
+      <div class="ftag">Building small, useful, occasionally silly things.</div>
+    </div>
+    <div class="socials">
+      <a href="https://github.com/DragonSenseiGuy/" aria-label="GitHub" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+      <a href="https://www.linkedin.com/in/aditya-n-2a7a42372/" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
+      <a href="https://discord.com/users/1374119550467051542" aria-label="Discord" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/></svg></a>
+    </div>
+  </div>
+  <div class="fbot">
+    <span>© <span data-year>2026</span> Aditya N</span>
+    <a href="https://github.com/DragonSenseiGuy/adityan.dev" target="_blank" rel="noopener">Open source on GitHub ↗</a>
+  </div>
+</footer>
+
+<script>document.querySelectorAll('[data-year]').forEach(e=>e.textContent=new Date().getFullYear())</script>
+<script src="switcher.js" defer></script>
+</body>
+</html>

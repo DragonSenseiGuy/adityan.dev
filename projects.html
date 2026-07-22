@@ -32,26 +32,22 @@
     <section class="page-hero" aria-labelledby="page-title">
       <p class="eyebrow">Projects</p>
       <h1 id="page-title">Things I've <span class="script">shipped</span></h1>
-      <p class="lede">Everything here is open source and lives on <a href="https://github.com/DragonSenseiGuy" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:none">my GitHub</a>. Filter by what you're curious about.</p>
-
-      <div class="filter-bar" role="group" aria-label="Filter projects by category">
-        <button class="filter-btn" data-filter="all" aria-pressed="true">All</button>
-        <button class="filter-btn" data-filter="ai" aria-pressed="false">AI</button>
-        <button class="filter-btn" data-filter="tools" aria-pressed="false">Bots &amp; Tools</button>
-        <button class="filter-btn" data-filter="web" aria-pressed="false">Web</button>
-      </div>
+      <p class="lede">A working sample of what I build — AI dev tools, Slack bots, and web apps. Everything here is open source and lives on <a href="https://github.com/DragonSenseiGuy" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:none">my GitHub</a>.</p>
     </section>
 
-    <section aria-label="Project list" style="margin-top:0">
-      <div class="card-grid">
+    <section aria-labelledby="featured-title">
+      <p class="eyebrow reveal">Featured</p>
+      <h2 class="section-title reveal" id="featured-title">The ones worth a <span class="script">closer look</span></h2>
 
-        <article class="project-card reveal" data-category="ai">
-          <div class="card-top">
-            <h3><a href="https://github.com/DragonSenseiGuy/hack-review" target="_blank" rel="noopener">Hack Review</a></h3>
-            <span class="tag">AI</span>
-          </div>
-          <p>A GitHub App that automatically reviews pull requests. An AI analyzes the changes and provides feedback on potential bugs, style issues, and other problems.</p>
-          <div class="card-links">
+      <div class="feature-grid">
+
+        <article class="feature-card reveal">
+          <span class="fc-num">01</span>
+          <h3><a href="https://github.com/DragonSenseiGuy/hack-review" target="_blank" rel="noopener">Hack Review</a></h3>
+          <p class="fc-purpose">Catches bugs before your teammates have to.</p>
+          <p class="fc-desc">A GitHub App that reviews every pull request automatically. An AI reads the diff and leaves feedback on likely bugs, style issues, and other problems — no manual trigger needed.</p>
+          <p class="fc-tech">Python · LLM APIs · GitHub Apps</p>
+          <div class="fc-links">
             <a href="https://github.com/DragonSenseiGuy/hack-review" target="_blank" rel="noopener">
               GitHub
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
@@ -59,13 +55,13 @@
           </div>
         </article>
 
-        <article class="project-card reveal" data-category="ai">
-          <div class="card-top">
-            <h3><a href="https://github.com/DragonSenseiGuy/kira" target="_blank" rel="noopener">Kira</a></h3>
-            <span class="tag">AI</span>
-          </div>
-          <p>An AI chat app built with Vue — a clean, fast interface for conversations with language models.</p>
-          <div class="card-links">
+        <article class="feature-card reveal">
+          <span class="fc-num">02</span>
+          <h3><a href="https://github.com/DragonSenseiGuy/kira" target="_blank" rel="noopener">Kira</a></h3>
+          <p class="fc-purpose">A fast, uncluttered home for your AI chats.</p>
+          <p class="fc-desc">A chat interface for large language models, built in Vue. The focus is a clean, responsive UI that stays out of the way of the conversation.</p>
+          <p class="fc-tech">Vue · LLM APIs</p>
+          <div class="fc-links">
             <a href="https://github.com/DragonSenseiGuy/kira" target="_blank" rel="noopener">
               GitHub
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
@@ -73,13 +69,13 @@
           </div>
         </article>
 
-        <article class="project-card reveal" data-category="tools">
-          <div class="card-top">
-            <h3><a href="https://github.com/DragonSenseiGuy/dragon-bot-slack" target="_blank" rel="noopener">Dragon Bot</a></h3>
-            <span class="tag">Bot</span>
-          </div>
-          <p>A Slack bot that does various things in the Hack Club Slack — utilities, fun commands, and community helpers, written in Python.</p>
-          <div class="card-links">
+        <article class="feature-card reveal">
+          <span class="fc-num">03</span>
+          <h3><a href="https://github.com/DragonSenseiGuy/dragon-bot-slack" target="_blank" rel="noopener">Dragon Bot</a></h3>
+          <p class="fc-purpose">Small utilities that make a big Slack better.</p>
+          <p class="fc-desc">A Slack bot for the Hack Club community, written in Python. It bundles utilities, fun commands, and everyday helpers into one place.</p>
+          <p class="fc-tech">Python · Slack API</p>
+          <div class="fc-links">
             <a href="https://github.com/DragonSenseiGuy/dragon-bot-slack" target="_blank" rel="noopener">
               GitHub
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
@@ -87,12 +83,21 @@
           </div>
         </article>
 
-        <article class="project-card reveal" data-category="web">
+      </div>
+    </section>
+
+    <section aria-labelledby="archive-title">
+      <p class="eyebrow reveal">More work</p>
+      <h2 class="section-title reveal" id="archive-title">The rest of the <span class="script">shelf</span></h2>
+
+      <div class="card-grid" style="margin-top:32px">
+
+        <article class="project-card reveal">
           <div class="card-top">
             <h3><a href="https://github.com/DragonSenseiGuy/smart-RSS" target="_blank" rel="noopener">Smart RSS</a></h3>
             <span class="tag">Web</span>
           </div>
-          <p>A minimalist RSS feed aggregator — a clean, self-hostable reader that pulls all your feeds into one place.</p>
+          <p>A minimalist, self-hostable RSS reader that pulls all your feeds into one clean place — the companion to my homelab.</p>
           <div class="card-links">
             <a href="https://github.com/DragonSenseiGuy/smart-RSS" target="_blank" rel="noopener">
               GitHub
@@ -101,12 +106,12 @@
           </div>
         </article>
 
-        <article class="project-card reveal" data-category="tools">
+        <article class="project-card reveal">
           <div class="card-top">
             <h3><a href="https://github.com/hackclub/welcomer" target="_blank" rel="noopener">Welcomer</a></h3>
             <span class="tag">Bot</span>
           </div>
-          <p>A Slack bot for the Hack Club Slack that assigns new members to welcome channels in rolling batches, then posts and pins a welcome message for each one.</p>
+          <p>A Slack bot that assigns new Hack Club members to welcome channels in rolling batches, then posts and pins a tailored welcome for each one.</p>
           <div class="card-links">
             <a href="https://github.com/hackclub/welcomer" target="_blank" rel="noopener">
               GitHub
@@ -115,12 +120,12 @@
           </div>
         </article>
 
-        <article class="project-card reveal" data-category="tools">
+        <article class="project-card reveal">
           <div class="card-top">
             <h3><a href="https://github.com/DragonSenseiGuy/plausible-to-rybbit" target="_blank" rel="noopener">Plausible → Rybbit</a></h3>
             <span class="tag">Tool</span>
           </div>
-          <p>A converter that turns your Plausible analytics export into a Rybbit import, via the Umami format.</p>
+          <p>A converter that migrates a Plausible analytics export into a Rybbit import, bridging the two via the Umami format.</p>
           <div class="card-links">
             <a href="https://github.com/DragonSenseiGuy/plausible-to-rybbit" target="_blank" rel="noopener">
               GitHub
@@ -129,12 +134,12 @@
           </div>
         </article>
 
-        <article class="project-card reveal" data-category="web">
+        <article class="project-card reveal">
           <div class="card-top">
             <h3><a href="https://github.com/DragonSenseiGuy/untitled-drawing-app" target="_blank" rel="noopener">Untitled Drawing App</a></h3>
             <span class="tag">Web</span>
           </div>
-          <p>A browser-based drawing app in vanilla JavaScript — canvas, brushes, and not much else in the way.</p>
+          <p>A browser-based drawing app in vanilla JavaScript — canvas and brushes, with nothing between you and the page.</p>
           <div class="card-links">
             <a href="https://github.com/DragonSenseiGuy/untitled-drawing-app" target="_blank" rel="noopener">
               GitHub
@@ -143,12 +148,12 @@
           </div>
         </article>
 
-        <article class="project-card reveal" data-category="web">
+        <article class="project-card reveal">
           <div class="card-top">
             <h3><a href="https://solvable-ysws.vercel.app" target="_blank" rel="noopener">Solvable</a></h3>
             <span class="tag">Web</span>
           </div>
-          <p>A YSWS (You Ship, We Ship) project site built for the Hack Club community, deployed on Vercel.</p>
+          <p>A YSWS (You Ship, We Ship) project site built for the Hack Club community and deployed on Vercel.</p>
           <div class="card-links">
             <a href="https://solvable-ysws.vercel.app" target="_blank" rel="noopener">
               Live site
@@ -166,8 +171,8 @@
 
     <section class="cta-band reveal" aria-labelledby="cta-title">
       <h2 id="cta-title">There's always <span class="script">more</span></h2>
-      <p>These are the highlights — there are 100+ public repos where these came from.</p>
-      <a class="btn btn-solid" href="https://github.com/DragonSenseiGuy?tab=repositories" target="_blank" rel="noopener">Browse everything on GitHub</a>
+      <p>These are the ones worth writing up. The rest — experiments, forks, and half-finished ideas — live on GitHub.</p>
+      <a class="btn btn-solid" href="https://github.com/DragonSenseiGuy?tab=repositories" target="_blank" rel="noopener">Browse the repositories</a>
     </section>
 
   </main>
