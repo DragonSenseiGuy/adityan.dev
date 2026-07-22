@@ -99,19 +99,57 @@ function postPage(post) {
   const tags = (post.tags || [])
     .map((t) => `<span class="post-tag">${esc(t)}</span>`)
     .join('');
+  const canonical = `https://adityan.dev/blog/${post.slug}.html`;
+  const desc = esc(post.description || '');
+  const title = esc(post.title);
+  const ld = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.description || '',
+    datePublished: post.date,
+    dateModified: post.date,
+    url: canonical,
+    mainEntityOfPage: canonical,
+    keywords: post.tags || [],
+    author: {
+      '@type': 'Person',
+      name: 'Aditya N',
+      alternateName: ['DragonSenseiGuy', 'Dragon Sensei Guy'],
+      url: 'https://adityan.dev/',
+    },
+    publisher: { '@type': 'Person', name: 'Aditya N', url: 'https://adityan.dev/' },
+  };
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${esc(post.title)} — Aditya N</title>
-  <meta name="description" content="${esc(post.description || '')}">
+  <title>${title} — Aditya N</title>
+  <meta name="description" content="${desc}">
+  <meta name="author" content="Aditya N">
+  <link rel="canonical" href="${canonical}">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Aditya N">
+  <meta property="og:title" content="${title} — Aditya N">
+  <meta property="og:description" content="${desc}">
+  <meta property="og:url" content="${canonical}">
+  <meta property="og:image" content="https://adityan.dev/og-image.png">
+  <meta property="article:published_time" content="${post.date}">
+  <meta property="article:author" content="Aditya N">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="${title} — Aditya N">
+  <meta name="twitter:description" content="${desc}">
+  <meta name="twitter:image" content="https://adityan.dev/og-image.png">
   ${FAVICON}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="${prefix}styles.css">
   <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+  <script type="application/ld+json">
+${JSON.stringify(ld, null, 2)}
+  </script>
 </head>
 <body>
 
