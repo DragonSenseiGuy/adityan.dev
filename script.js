@@ -22,26 +22,6 @@ if (!prefersReducedMotion && 'IntersectionObserver' in window) {
   document.querySelectorAll('.reveal').forEach((el) => el.classList.add('visible'));
 }
 
-// Project filters (projects page)
-const filterBar = document.querySelector('.filter-bar');
-if (filterBar) {
-  const buttons = filterBar.querySelectorAll('.filter-btn');
-  const cards = document.querySelectorAll('.project-card[data-category]');
-
-  filterBar.addEventListener('click', (e) => {
-    const btn = e.target.closest('.filter-btn');
-    if (!btn) return;
-
-    buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
-
-    const filter = btn.dataset.filter;
-    cards.forEach((card) => {
-      const show = filter === 'all' || card.dataset.category === filter;
-      card.style.display = show ? '' : 'none';
-    });
-  });
-}
-
 // Copy email to clipboard (contact page)
 const copyBtn = document.querySelector('[data-copy-email]');
 if (copyBtn) {
