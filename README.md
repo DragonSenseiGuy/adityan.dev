@@ -25,6 +25,9 @@ The blog pages are generated from Markdown by `scripts/build-blog.js`. After con
 npm run build:blog
 ```
 
+## AI use
+A significant portion of the codebase was written by AI, the blogs were written by me. I think AI is a great tool and i believe the output generated here is not *slop*.
+
 ## License
 
 This project is available under the [MIT License](LICENSE).
