@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "staticfiles" }
+    },
+    {
+      "src": "config/wsgi.py",
+      "use": "@vercel/python",
+      "config": {
+        "runtime": "python3.13"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/static/(.*)",
+      "dest": "/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "config/wsgi.py"
+    }
+  ]
+}
