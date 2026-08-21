@@ -1,0 +1,7 @@
+.git
+node_modules
+variations
+scripts
+package.json
+package-lock.json
+README.md
