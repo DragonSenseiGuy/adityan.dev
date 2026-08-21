@@ -1,3 +1,16 @@
+// Theme toggle — stored choice wins, otherwise follow system preference.
+// The initial theme is applied by an inline script in <head> to avoid a flash.
+const themeToggle = document.querySelector('.theme-toggle');
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    const next = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+    document.documentElement.dataset.theme = next;
+    try {
+      localStorage.setItem('theme', next);
+    } catch {}
+  });
+}
+
 // Scroll reveal — skipped entirely when the user prefers reduced motion
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -15,7 +28,7 @@ if (!prefersReducedMotion && 'IntersectionObserver' in window) {
   );
 
   document.querySelectorAll('.reveal').forEach((el, i) => {
-    el.style.transitionDelay = `${Math.min(i % 4, 3) * 0.07}s`;
+    el.style.transitionDelay = `${Math.min(i % 4, 3) * 0.06}s`;
     observer.observe(el);
   });
 } else {

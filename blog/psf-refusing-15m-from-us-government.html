@@ -19,10 +19,21 @@
   <meta name="twitter:title" content="PSF Refusing 1.5M from US Government — Aditya N">
   <meta name="twitter:description" content="Why the PSF refused 1.5M from the US Government.">
   <meta name="twitter:image" content="https://adityan.dev/og-image.png">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.85em' font-size='90' font-family='Georgia,serif' font-style='italic'>A</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.78em' font-size='84' font-family='monospace' fill='%23ededed'>a_</text></svg>">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'light' && t !== 'dark') {
+          t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..600&family=Geist+Mono:wght@400..500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles.css">
   <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
   <script type="application/ld+json">
@@ -59,20 +70,23 @@
 
   <header class="site-nav">
     <div class="nav-inner">
-      <a class="brand" href="../index.html">Aditya N</a>
+      <a class="brand" href="../index.html">adityan<span class="tld">.dev</span></a>
       <nav class="nav-links" aria-label="Main navigation">
         <a href="../about.html">About</a>
         <a href="../projects.html">Projects</a>
         <a href="../blog.html" aria-current="page">Blog</a>
         <a href="../contact.html">Contact</a>
       </nav>
-      <a class="btn btn-solid nav-cta" href="mailto:hey@adityan.dev">Say hi</a>
+      <button class="theme-toggle" type="button" aria-label="Toggle color theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
     </div>
   </header>
 
   <main class="container">
     <article class="article">
-      <p class="eyebrow"><a href="../blog.html" class="back-link">&larr; Blog</a></p>
+      <p><a href="../blog.html" class="back-link">&larr; Blog</a></p>
       <h1 class="article-title">PSF Refusing 1.5M from US Government</h1>
       <div class="article-meta">
         <time datetime="2025-11-02T11:00:00.000Z">Nov 2, 2025</time>

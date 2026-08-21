@@ -17,10 +17,21 @@
   <meta name="twitter:title" content="About Aditya N (DragonSenseiGuy)">
   <meta name="twitter:description" content="Aditya N, also known as DragonSenseiGuy (Dragon Sensei Guy) — student developer at Hack Club.">
   <meta name="twitter:image" content="https://adityan.dev/og-image.png">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.85em' font-size='90' font-family='Georgia,serif' font-style='italic'>A</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.78em' font-size='84' font-family='monospace' fill='%23ededed'>a_</text></svg>">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'light' && t !== 'dark') {
+          t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..600&family=Geist+Mono:wght@400..500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
   <script type="application/ld+json">
@@ -59,50 +70,53 @@
 
   <header class="site-nav">
     <div class="nav-inner">
-      <a class="brand" href="index.html">Aditya N</a>
+      <a class="brand" href="index.html">adityan<span class="tld">.dev</span></a>
       <nav class="nav-links" aria-label="Main navigation">
         <a href="about.html" aria-current="page">About</a>
         <a href="projects.html">Projects</a>
         <a href="blog.html">Blog</a>
         <a href="contact.html">Contact</a>
       </nav>
-      <a class="btn btn-solid nav-cta" href="mailto:hey@adityan.dev">Say hi</a>
+      <button class="theme-toggle" type="button" aria-label="Toggle color theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
     </div>
   </header>
 
   <main class="container">
 
     <section class="page-hero" aria-labelledby="page-title">
-      <p class="eyebrow">About</p>
-      <h1 id="page-title">Hi, I'm <span class="script">Aditya</span></h1>
-      <p class="lede">Also known as <strong>DragonSenseiGuy</strong> — or Dragon Sensei Guy. Student developer, Hack Clubber, and serial shipper of small projects.</p>
+      <h1 id="page-title">Hi, I'm Aditya</h1>
+      <p class="lede">Also known as <strong>DragonSenseiGuy</strong>, or Dragon Sensei Guy. Student developer, Hack Clubber, and serial shipper of small projects.</p>
     </section>
 
     <section aria-label="Biography">
       <div class="split">
         <div class="sticky-col">
           <ul class="fact-list reveal">
-            <li><span class="label">Alias</span><span class="value">DragonSenseiGuy</span></li>
-            <li><span class="label">Based in</span><span class="value">Boston, USA</span></li>
-            <li><span class="label">Community</span><span class="value">Hack Club</span></li>
-            <li><span class="label">Focus</span><span class="value">AI developer tools</span></li>
-            <li><span class="label">Email</span><span class="value"><a href="mailto:hey@adityan.dev" style="color:var(--accent); text-decoration:none">hey@adityan.dev</a></span></li>
+            <li><span class="label">alias</span><span class="value">DragonSenseiGuy</span></li>
+            <li><span class="label">based_in</span><span class="value">Boston, USA</span></li>
+            <li><span class="label">community</span><span class="value">Hack Club</span></li>
+            <li><span class="label">focus</span><span class="value">AI developer tools</span></li>
+            <li><span class="label">email</span><span class="value"><a href="mailto:hey@adityan.dev">hey@adityan.dev</a></span></li>
           </ul>
         </div>
         <div class="prose">
-          <p class="reveal">Most of what I make starts as a small itch — a bot that would make a community more fun, a tool that would save me ten minutes a day — and turns into something shipped. Much of it happens through <strong>Hack Club</strong>, a worldwide community of teenage makers, where I've built a community Slack bot (<a href="https://github.com/DragonSenseiGuy/dragon-bot-slack" target="_blank" rel="noopener">Dragon Bot</a>) and shipped through YSWS programs.</p>
-          <p class="reveal">Lately I've been focused on <strong>AI-assisted developer tools</strong> — like <a href="https://github.com/DragonSenseiGuy/hack-review" target="_blank" rel="noopener">Hack Review</a>, a GitHub App that reviews pull requests automatically, and <a href="https://github.com/DragonSenseiGuy/kira" target="_blank" rel="noopener">Kira</a>, a Vue chat app for language models.</p>
+          <p class="reveal">Most of what I make starts as a small itch, like a bot that would make a community more fun or a tool that saves me ten minutes a day, and turns into something shipped. Much of it happens through <strong>Hack Club</strong>, a worldwide community of teenage makers, where I've built a community Slack bot (<a href="https://github.com/DragonSenseiGuy/dragon-bot-slack" target="_blank" rel="noopener">Dragon Bot</a>) and shipped through YSWS programs.</p>
+          <p class="reveal">Lately I've been focused on <strong>AI-assisted developer tools</strong>, like <a href="https://github.com/DragonSenseiGuy/hack-review" target="_blank" rel="noopener">Hack Review</a>, a GitHub App that reviews pull requests automatically, and <a href="https://github.com/DragonSenseiGuy/kira" target="_blank" rel="noopener">Kira</a>, a Vue chat app for language models.</p>
           <p class="reveal">Away from AI, I tinker with self-hosting and infrastructure. I run a homelab off an old laptop and built <a href="https://github.com/DragonSenseiGuy/smart-RSS" target="_blank" rel="noopener">Smart RSS</a>, a minimalist feed aggregator, to go with it.</p>
         </div>
       </div>
     </section>
 
     <section aria-labelledby="toolbox-title">
-      <p class="eyebrow reveal">Toolbox</p>
-      <h2 class="section-title reveal" id="toolbox-title">What I <span class="script">work with</span></h2>
+      <div class="section-head reveal">
+        <h2 class="section-title" id="toolbox-title">What I work with</h2>
+      </div>
       <div class="toolbox-groups reveal">
         <div class="toolbox-group">
-          <p class="tb-label">Languages</p>
+          <p class="tb-label">languages</p>
           <div class="chip-row">
             <span class="chip">Python</span>
             <span class="chip">JavaScript</span>
@@ -111,7 +125,7 @@
           </div>
         </div>
         <div class="toolbox-group">
-          <p class="tb-label">Frameworks &amp; markup</p>
+          <p class="tb-label">frameworks &amp; markup</p>
           <div class="chip-row">
             <span class="chip">Vue</span>
             <span class="chip">HTML &amp; CSS</span>
@@ -119,7 +133,7 @@
           </div>
         </div>
         <div class="toolbox-group">
-          <p class="tb-label">Platforms &amp; APIs</p>
+          <p class="tb-label">platforms &amp; APIs</p>
           <div class="chip-row">
             <span class="chip">LLM APIs</span>
             <span class="chip">Slack API</span>
@@ -130,8 +144,8 @@
     </section>
 
     <section class="cta-band reveal" aria-labelledby="cta-title">
-      <h2 id="cta-title">Want the <span class="script">details?</span></h2>
-      <p>The projects page has the highlights, and my GitHub has the whole story — commits and all.</p>
+      <h2 id="cta-title">Want the details?</h2>
+      <p>The projects page has the highlights, and my GitHub has the whole story, commits and all.</p>
       <a class="btn btn-solid" href="projects.html">See my projects</a>
     </section>
 

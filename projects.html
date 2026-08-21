@@ -17,10 +17,21 @@
   <meta name="twitter:title" content="Projects — Aditya N (DragonSenseiGuy)">
   <meta name="twitter:description" content="Open-source projects by Aditya N (DragonSenseiGuy) — AI developer tools, Slack bots, and web apps.">
   <meta name="twitter:image" content="https://adityan.dev/og-image.png">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.85em' font-size='90' font-family='Georgia,serif' font-style='italic'>A</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.78em' font-size='84' font-family='monospace' fill='%23ededed'>a_</text></svg>">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'light' && t !== 'dark') {
+          t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..600&family=Geist+Mono:wght@400..500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
 </head>
@@ -28,38 +39,39 @@
 
   <header class="site-nav">
     <div class="nav-inner">
-      <a class="brand" href="index.html">Aditya N</a>
+      <a class="brand" href="index.html">adityan<span class="tld">.dev</span></a>
       <nav class="nav-links" aria-label="Main navigation">
         <a href="about.html">About</a>
         <a href="projects.html" aria-current="page">Projects</a>
         <a href="blog.html">Blog</a>
         <a href="contact.html">Contact</a>
       </nav>
-      <a class="btn btn-solid nav-cta" href="mailto:hey@adityan.dev">Say hi</a>
+      <button class="theme-toggle" type="button" aria-label="Toggle color theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
     </div>
   </header>
 
   <main class="container">
 
     <section class="page-hero" aria-labelledby="page-title">
-      <p class="eyebrow">Projects</p>
-      <h1 id="page-title">Things I've <span class="script">shipped</span></h1>
-      <p class="lede">A working sample of what I build — AI dev tools, Slack bots, and web apps. Everything here is open source and lives on <a href="https://github.com/DragonSenseiGuy" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:none">my GitHub</a>.</p>
+      <h1 id="page-title">Projects</h1>
+      <p class="lede">A working sample of what I build: AI dev tools, Slack bots, and web apps. Everything here is open source and lives on <a href="https://github.com/DragonSenseiGuy" target="_blank" rel="noopener" style="color:inherit; text-decoration:underline; text-decoration-color:var(--border-strong); text-underline-offset:3px">my GitHub</a>.</p>
     </section>
 
     <section aria-labelledby="featured-title">
-      <p class="eyebrow reveal">Featured</p>
-      <h2 class="section-title reveal" id="featured-title">The ones worth a <span class="script">closer look</span></h2>
+      <div class="section-head reveal">
+        <h2 class="section-title" id="featured-title">Featured</h2>
+      </div>
 
       <div class="feature-grid">
 
-        <article class="feature-card reveal">
-          <span class="fc-num">01</span>
+        <article class="card reveal">
           <h3><a href="https://github.com/DragonSenseiGuy/hack-review" target="_blank" rel="noopener">Hack Review</a></h3>
-          <p class="fc-purpose">Catches bugs before your teammates have to.</p>
-          <p class="fc-desc">A GitHub App that reviews every pull request automatically. An AI reads the diff and leaves feedback on likely bugs, style issues, and other problems — no manual trigger needed.</p>
-          <p class="fc-tech">Python · LLM APIs · GitHub Apps</p>
-          <div class="fc-links">
+          <p class="card-desc">A GitHub App that reviews every pull request automatically. An AI reads the diff and leaves feedback on likely bugs, style issues, and other problems. No manual trigger needed.</p>
+          <p class="card-tech">Python · LLM APIs · GitHub Apps</p>
+          <div class="card-links">
             <a href="https://github.com/DragonSenseiGuy/hack-review" target="_blank" rel="noopener">
               GitHub
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
@@ -67,13 +79,11 @@
           </div>
         </article>
 
-        <article class="feature-card reveal">
-          <span class="fc-num">02</span>
+        <article class="card reveal">
           <h3><a href="https://github.com/DragonSenseiGuy/kira" target="_blank" rel="noopener">Kira</a></h3>
-          <p class="fc-purpose">A fast, uncluttered home for your AI chats.</p>
-          <p class="fc-desc">A chat interface for large language models, built in Vue. The focus is a clean, responsive UI that stays out of the way of the conversation.</p>
-          <p class="fc-tech">Vue · LLM APIs</p>
-          <div class="fc-links">
+          <p class="card-desc">A chat interface for large language models, built in Vue. The focus is a clean, responsive UI that stays out of the way of the conversation.</p>
+          <p class="card-tech">Vue · LLM APIs</p>
+          <div class="card-links">
             <a href="https://github.com/DragonSenseiGuy/kira" target="_blank" rel="noopener">
               GitHub
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
@@ -81,13 +91,11 @@
           </div>
         </article>
 
-        <article class="feature-card reveal">
-          <span class="fc-num">03</span>
+        <article class="card reveal">
           <h3><a href="https://github.com/DragonSenseiGuy/dragon-bot-slack" target="_blank" rel="noopener">Dragon Bot</a></h3>
-          <p class="fc-purpose">Small utilities that make a big Slack better.</p>
-          <p class="fc-desc">A Slack bot for the Hack Club community, written in Python. It bundles utilities, fun commands, and everyday helpers into one place.</p>
-          <p class="fc-tech">Python · Slack API</p>
-          <div class="fc-links">
+          <p class="card-desc">A Slack bot for the Hack Club community, written in Python. It bundles utilities, fun commands, and everyday helpers into one place.</p>
+          <p class="card-tech">Python · Slack API</p>
+          <div class="card-links">
             <a href="https://github.com/DragonSenseiGuy/dragon-bot-slack" target="_blank" rel="noopener">
               GitHub
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
@@ -99,17 +107,16 @@
     </section>
 
     <section aria-labelledby="archive-title">
-      <p class="eyebrow reveal">More work</p>
-      <h2 class="section-title reveal" id="archive-title">The rest of the <span class="script">shelf</span></h2>
+      <div class="section-head reveal">
+        <h2 class="section-title" id="archive-title">More work</h2>
+      </div>
 
-      <div class="card-grid" style="margin-top:32px">
+      <div class="card-grid">
 
-        <article class="project-card reveal">
-          <div class="card-top">
-            <h3><a href="https://github.com/DragonSenseiGuy/smart-RSS" target="_blank" rel="noopener">Smart RSS</a></h3>
-            <span class="tag">Web</span>
-          </div>
-          <p>A minimalist, self-hostable RSS reader that pulls all your feeds into one clean place — the companion to my homelab.</p>
+        <article class="card reveal">
+          <h3><a href="https://github.com/DragonSenseiGuy/smart-RSS" target="_blank" rel="noopener">Smart RSS</a></h3>
+          <p class="card-desc">A minimalist, self-hostable RSS reader that pulls all your feeds into one clean place. The companion to my homelab.</p>
+          <p class="card-tech">Web</p>
           <div class="card-links">
             <a href="https://github.com/DragonSenseiGuy/smart-RSS" target="_blank" rel="noopener">
               GitHub
@@ -118,12 +125,10 @@
           </div>
         </article>
 
-        <article class="project-card reveal">
-          <div class="card-top">
-            <h3><a href="https://github.com/hackclub/welcomer" target="_blank" rel="noopener">Welcomer</a></h3>
-            <span class="tag">Bot</span>
-          </div>
-          <p>A Slack bot that assigns new Hack Club members to welcome channels in rolling batches, then posts and pins a tailored welcome for each one.</p>
+        <article class="card reveal">
+          <h3><a href="https://github.com/hackclub/welcomer" target="_blank" rel="noopener">Welcomer</a></h3>
+          <p class="card-desc">A Slack bot that assigns new Hack Club members to welcome channels in rolling batches, then posts and pins a tailored welcome for each one.</p>
+          <p class="card-tech">Bot</p>
           <div class="card-links">
             <a href="https://github.com/hackclub/welcomer" target="_blank" rel="noopener">
               GitHub
@@ -132,12 +137,10 @@
           </div>
         </article>
 
-        <article class="project-card reveal">
-          <div class="card-top">
-            <h3><a href="https://github.com/DragonSenseiGuy/plausible-to-rybbit" target="_blank" rel="noopener">Plausible → Rybbit</a></h3>
-            <span class="tag">Tool</span>
-          </div>
-          <p>A converter that migrates a Plausible analytics export into a Rybbit import, bridging the two via the Umami format.</p>
+        <article class="card reveal">
+          <h3><a href="https://github.com/DragonSenseiGuy/plausible-to-rybbit" target="_blank" rel="noopener">Plausible to Rybbit</a></h3>
+          <p class="card-desc">A converter that migrates a Plausible analytics export into a Rybbit import, bridging the two via the Umami format.</p>
+          <p class="card-tech">Tool</p>
           <div class="card-links">
             <a href="https://github.com/DragonSenseiGuy/plausible-to-rybbit" target="_blank" rel="noopener">
               GitHub
@@ -146,12 +149,10 @@
           </div>
         </article>
 
-        <article class="project-card reveal">
-          <div class="card-top">
-            <h3><a href="https://github.com/DragonSenseiGuy/untitled-drawing-app" target="_blank" rel="noopener">Untitled Drawing App</a></h3>
-            <span class="tag">Web</span>
-          </div>
-          <p>A browser-based drawing app in vanilla JavaScript — canvas and brushes, with nothing between you and the page.</p>
+        <article class="card reveal">
+          <h3><a href="https://github.com/DragonSenseiGuy/untitled-drawing-app" target="_blank" rel="noopener">Untitled Drawing App</a></h3>
+          <p class="card-desc">A browser-based drawing app in vanilla JavaScript. Canvas and brushes, with nothing between you and the page.</p>
+          <p class="card-tech">Web</p>
           <div class="card-links">
             <a href="https://github.com/DragonSenseiGuy/untitled-drawing-app" target="_blank" rel="noopener">
               GitHub
@@ -160,12 +161,10 @@
           </div>
         </article>
 
-        <article class="project-card reveal">
-          <div class="card-top">
-            <h3><a href="https://solvable-ysws.vercel.app" target="_blank" rel="noopener">Solvable</a></h3>
-            <span class="tag">Web</span>
-          </div>
-          <p>A YSWS (You Ship, We Ship) project site built for the Hack Club community and deployed on Vercel.</p>
+        <article class="card reveal">
+          <h3><a href="https://solvable-ysws.vercel.app" target="_blank" rel="noopener">Solvable</a></h3>
+          <p class="card-desc">A YSWS (You Ship, We Ship) project site built for the Hack Club community and deployed on Vercel.</p>
+          <p class="card-tech">Web</p>
           <div class="card-links">
             <a href="https://solvable-ysws.vercel.app" target="_blank" rel="noopener">
               Live site
@@ -182,8 +181,8 @@
     </section>
 
     <section class="cta-band reveal" aria-labelledby="cta-title">
-      <h2 id="cta-title">There's always <span class="script">more</span></h2>
-      <p>These are the ones worth writing up. The rest — experiments, forks, and half-finished ideas — live on GitHub.</p>
+      <h2 id="cta-title">There's always more</h2>
+      <p>These are the ones worth writing up. The rest, experiments, forks, and half-finished ideas, live on GitHub.</p>
       <a class="btn btn-solid" href="https://github.com/DragonSenseiGuy?tab=repositories" target="_blank" rel="noopener">Browse the repositories</a>
     </section>
 

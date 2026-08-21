@@ -4,61 +4,60 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog — Aditya N (DragonSenseiGuy)</title>
-  <meta name="description" content="Notes and writing by Aditya N (DragonSenseiGuy) on building AI tools, dev tooling, self-hosting, and small projects.">
+  <meta name="description" content="Writing by Aditya N (DragonSenseiGuy) — build logs, thoughts on AI and dev tools, and notes from a homelab.">
   <meta name="author" content="Aditya N">
   <link rel="canonical" href="https://adityan.dev/blog.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Aditya N">
   <meta property="og:title" content="Blog — Aditya N (DragonSenseiGuy)">
-  <meta property="og:description" content="Notes and writing by Aditya N (DragonSenseiGuy) on building AI tools, dev tooling, and self-hosting.">
+  <meta property="og:description" content="Build logs, thoughts on AI and dev tools, and the occasional rant on what's happening in the industry.">
   <meta property="og:url" content="https://adityan.dev/blog.html">
   <meta property="og:image" content="https://adityan.dev/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Blog — Aditya N (DragonSenseiGuy)">
-  <meta name="twitter:description" content="Notes and writing by Aditya N (DragonSenseiGuy) on building AI tools, dev tooling, and self-hosting.">
+  <meta name="twitter:description" content="Build logs, thoughts on AI and dev tools, and the occasional rant on what's happening in the industry.">
   <meta name="twitter:image" content="https://adityan.dev/og-image.png">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.85em' font-size='90' font-family='Georgia,serif' font-style='italic'>A</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.78em' font-size='84' font-family='monospace' fill='%23ededed'>a_</text></svg>">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'light' && t !== 'dark') {
+          t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..600&family=Geist+Mono:wght@400..500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Blog",
-    "name": "Aditya N's Blog",
-    "url": "https://adityan.dev/blog.html",
-    "author": {
-      "@type": "Person",
-      "name": "Aditya N",
-      "alternateName": ["DragonSenseiGuy", "Dragon Sensei Guy"],
-      "url": "https://adityan.dev/"
-    }
-  }
-  </script>
 </head>
 <body>
 
   <header class="site-nav">
     <div class="nav-inner">
-      <a class="brand" href="index.html">Aditya N</a>
+      <a class="brand" href="index.html">adityan<span class="tld">.dev</span></a>
       <nav class="nav-links" aria-label="Main navigation">
         <a href="about.html">About</a>
         <a href="projects.html">Projects</a>
         <a href="blog.html" aria-current="page">Blog</a>
         <a href="contact.html">Contact</a>
       </nav>
-      <a class="btn btn-solid nav-cta" href="mailto:hey@adityan.dev">Say hi</a>
+      <button class="theme-toggle" type="button" aria-label="Toggle color theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
     </div>
   </header>
 
   <main class="container">
 
     <section class="page-hero" aria-labelledby="page-title">
-      <p class="eyebrow">Blog</p>
-      <h1 id="page-title">Notes &amp; <span class="script">writing</span></h1>
-      <p class="lede">Build logs, thoughts on AI and dev tools, and the occasional rant on what's happening in the industry.</p>
+      <h1 id="page-title">Blog</h1>
+      <p class="lede">Build logs, thoughts on AI and dev tools, and the occasional rant about what's happening in the industry.</p>
     </section>
 
     <section aria-label="Posts" style="margin-top:0">
@@ -133,8 +132,8 @@
     </section>
 
     <section class="cta-band reveal" aria-labelledby="cta-title">
-      <h2 id="cta-title">Read by <span class="script">email?</span></h2>
-      <p>New posts go out through my newsletter — no spam, just the writing.</p>
+      <h2 id="cta-title">Read by email?</h2>
+      <p>New posts go out through my newsletter. No spam, just the writing.</p>
       <a class="btn btn-solid" href="https://dragonsenseiguy.substack.com" target="_blank" rel="noopener">Subscribe on Substack</a>
     </section>
 

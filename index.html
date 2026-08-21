@@ -17,10 +17,21 @@
   <meta name="twitter:title" content="Aditya N (DragonSenseiGuy) — Student Developer">
   <meta name="twitter:description" content="Aditya N (DragonSenseiGuy / Dragon Sensei Guy) — student developer at Hack Club building AI tools, Slack bots, and self-hosted apps.">
   <meta name="twitter:image" content="https://adityan.dev/og-image.png">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.85em' font-size='90' font-family='Georgia,serif' font-style='italic'>A</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.78em' font-size='84' font-family='monospace' fill='%23ededed'>a_</text></svg>">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'light' && t !== 'dark') {
+          t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..600&family=Geist+Mono:wght@400..500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
   <script type="application/ld+json">
@@ -67,18 +78,19 @@
 </head>
 <body>
 
-  <div class="shader-bg" aria-hidden="true"><canvas></canvas></div>
-
   <header class="site-nav">
     <div class="nav-inner">
-      <a class="brand" href="index.html">Aditya N</a>
+      <a class="brand" href="index.html">adityan<span class="tld">.dev</span></a>
       <nav class="nav-links" aria-label="Main navigation">
         <a href="about.html">About</a>
         <a href="projects.html">Projects</a>
         <a href="blog.html">Blog</a>
         <a href="contact.html">Contact</a>
       </nav>
-      <a class="btn btn-solid nav-cta" href="mailto:hey@adityan.dev">Say hi</a>
+      <button class="theme-toggle" type="button" aria-label="Toggle color theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
     </div>
   </header>
 
@@ -86,9 +98,8 @@
 
     <!-- Hero -->
     <section class="hero" aria-label="Introduction">
-      <p class="kicker">hello, I'm</p>
       <h1>Aditya&nbsp;N</h1>
-      <p class="lede">Student developer in Boston, building with <a href="https://hackclub.com" style="color:inherit">Hack Club</a>. I make AI developer tools, Slack bots, and self-hosted apps — small, useful things that ship and stay open source.</p>
+      <p class="lede">Student developer in Boston, building with <a href="https://hackclub.com" style="color:inherit">Hack Club</a>. I make AI developer tools, Slack bots, and self-hosted apps. Small, useful things that ship and stay open source.</p>
       <div class="hero-actions">
         <a class="btn btn-solid" href="projects.html">
           See my projects
@@ -105,31 +116,26 @@
 
     <!-- Featured projects -->
     <section aria-labelledby="featured-title">
-      <p class="eyebrow reveal">Selected work</p>
-      <h2 class="section-title reveal" id="featured-title">Things I've <span class="script">built</span></h2>
-      <p class="lede reveal">Three I'm proud of — the full archive lives on the <a href="projects.html" style="color:var(--accent); text-decoration:none">projects page</a>.</p>
+      <div class="section-head reveal">
+        <h2 class="section-title" id="featured-title">Selected work</h2>
+        <p>Three I'm proud of. The full archive lives on the <a href="projects.html">projects page</a>.</p>
+      </div>
 
       <div class="feature-grid">
-        <a class="feature-card reveal" href="https://github.com/DragonSenseiGuy/hack-review" target="_blank" rel="noopener">
-          <span class="fc-num">01</span>
+        <a class="card reveal" href="https://github.com/DragonSenseiGuy/hack-review" target="_blank" rel="noopener">
           <h3>Hack Review</h3>
-          <p class="fc-purpose">Catches bugs before your teammates have to.</p>
-          <p class="fc-desc">A GitHub App that reviews every pull request automatically, flagging likely bugs, style issues, and other problems.</p>
-          <p class="fc-tech">Python · LLM APIs · GitHub Apps</p>
+          <p class="card-desc">A GitHub App that reviews every pull request automatically, flagging likely bugs and style issues before your teammates have to.</p>
+          <p class="card-tech">Python · LLM APIs · GitHub Apps</p>
         </a>
-        <a class="feature-card reveal" href="https://github.com/DragonSenseiGuy/kira" target="_blank" rel="noopener">
-          <span class="fc-num">02</span>
+        <a class="card reveal" href="https://github.com/DragonSenseiGuy/kira" target="_blank" rel="noopener">
           <h3>Kira</h3>
-          <p class="fc-purpose">A fast, uncluttered home for your AI chats.</p>
-          <p class="fc-desc">A chat interface for large language models, built in Vue for a clean and responsive feel.</p>
-          <p class="fc-tech">Vue · LLM APIs</p>
+          <p class="card-desc">A chat interface for large language models, built in Vue for a clean and responsive feel.</p>
+          <p class="card-tech">Vue · LLM APIs</p>
         </a>
-        <a class="feature-card reveal" href="https://github.com/DragonSenseiGuy/dragon-bot-slack" target="_blank" rel="noopener">
-          <span class="fc-num">03</span>
+        <a class="card reveal" href="https://github.com/DragonSenseiGuy/dragon-bot-slack" target="_blank" rel="noopener">
           <h3>Dragon Bot</h3>
-          <p class="fc-purpose">Small utilities that make a big Slack better.</p>
-          <p class="fc-desc">A Slack bot for the Hack Club community — utilities, fun commands, and everyday helpers.</p>
-          <p class="fc-tech">Python · Slack API</p>
+          <p class="card-desc">A Slack bot for the Hack Club community. Utilities, fun commands, and everyday helpers.</p>
+          <p class="card-tech">Python · Slack API</p>
         </a>
       </div>
     </section>
@@ -137,21 +143,20 @@
     <!-- About teaser -->
     <section aria-labelledby="about-title">
       <div class="split">
-        <div class="sticky-col">
-          <p class="eyebrow reveal">About</p>
-          <h2 class="section-title reveal" id="about-title">A little <span class="script">context</span></h2>
+        <div class="sticky-col reveal">
+          <h2 class="section-title" id="about-title">About</h2>
         </div>
         <div class="prose reveal">
-          <p>I go by <strong>Dragon</strong> around the internet — <strong>DragonSenseiGuy</strong> (Dragon Sensei Guy) on GitHub, Discord, and just about everywhere else. Most of what I make starts as a small itch — a bot that would make a community more fun, a tool that would save me ten minutes a day — and turns into a shipped project.</p>
+          <p>I go by <strong>Dragon</strong> around the internet. <strong>DragonSenseiGuy</strong> on GitHub, Discord, and just about everywhere else. Most of what I make starts as a small itch, like a bot that would make a community more fun or a tool that saves me ten minutes a day, and turns into something shipped.</p>
           <p>I spend a lot of time in the <strong>Hack Club</strong> community, building things alongside other teenage makers: Slack bots, AI plugins, game jams, and whatever a YSWS program throws at me next.</p>
-          <p><a href="about.html">More about me →</a></p>
+          <p><a href="about.html">More about me</a></p>
         </div>
       </div>
     </section>
 
     <!-- CTA -->
     <section class="cta-band reveal" aria-labelledby="cta-title">
-      <h2 id="cta-title">Let's build <span class="script">something</span></h2>
+      <h2 id="cta-title">Let's build something</h2>
       <p>Have an idea, a project, or just want to talk code? My inbox is open.</p>
       <a class="btn btn-solid" href="mailto:hey@adityan.dev">hey@adityan.dev</a>
     </section>
@@ -184,7 +189,6 @@
     </div>
   </footer>
 
-  <script src="shader-bg.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

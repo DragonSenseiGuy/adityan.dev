@@ -17,10 +17,21 @@
   <meta name="twitter:title" content="Contact — Aditya N (DragonSenseiGuy)">
   <meta name="twitter:description" content="Get in touch with Aditya N (DragonSenseiGuy / Dragon Sensei Guy) — email, GitHub, Discord, or LinkedIn.">
   <meta name="twitter:image" content="https://adityan.dev/og-image.png">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.85em' font-size='90' font-family='Georgia,serif' font-style='italic'>A</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.78em' font-size='84' font-family='monospace' fill='%23ededed'>a_</text></svg>">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'light' && t !== 'dark') {
+          t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..600&family=Geist+Mono:wght@400..500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
 </head>
@@ -28,30 +39,34 @@
 
   <header class="site-nav">
     <div class="nav-inner">
-      <a class="brand" href="index.html">Aditya N</a>
+      <a class="brand" href="index.html">adityan<span class="tld">.dev</span></a>
       <nav class="nav-links" aria-label="Main navigation">
         <a href="about.html">About</a>
         <a href="projects.html">Projects</a>
         <a href="blog.html">Blog</a>
         <a href="contact.html" aria-current="page">Contact</a>
       </nav>
-      <a class="btn btn-solid nav-cta" href="mailto:hey@adityan.dev">Say hi</a>
+      <button class="theme-toggle" type="button" aria-label="Toggle color theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
     </div>
   </header>
 
   <main class="container">
 
     <section class="page-hero contact-hero" aria-labelledby="page-title">
-      <p class="eyebrow">Contact</p>
-      <h1 id="page-title">Say <span class="script">hello</span></h1>
-      <p class="lede" style="margin-bottom:48px">Whether it's a project idea, a question about something I built, or just to talk code — the fastest way to reach me is email.</p>
+      <h1 id="page-title">Say hello</h1>
+      <p class="lede" style="margin-bottom:48px">Whether it's a project idea, a question about something I built, or just to talk code, the fastest way to reach me is email.</p>
       <a class="big-link" href="mailto:hey@adityan.dev">hey@adityan.dev</a>
     </section>
 
     <section aria-label="Other ways to reach me">
-      <p class="eyebrow reveal">Elsewhere</p>
+      <div class="section-head reveal">
+        <h2 class="section-title">Elsewhere</h2>
+      </div>
       <div class="contact-grid">
-        <button class="contact-card reveal" data-copy-email="hey@adityan.dev" type="button" style="font: inherit; text-align: left;">
+        <button class="contact-card reveal" data-copy-email="hey@adityan.dev" type="button">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
           <span>
             <span class="cc-label">Email</span>
