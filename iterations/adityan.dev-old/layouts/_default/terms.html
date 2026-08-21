@@ -1,0 +1,17 @@
+{{ define "title" }}{{ .Title }} · {{ .Site.Title }}{{ end }}
+{{ define "content" }}
+<section class="page-wrap">
+  <div class="page-header">
+    <h1 class="page-title">{{ .Title }}</h1>
+    <div class="page-title-ghost">{{ .Title }}</div>
+  </div>
+  <div class="tags-grid">
+    {{ range .Pages }}
+    <a href="{{ .Permalink }}" class="tag-card">
+      <span class="tag-name">{{ .Title }}</span>
+      <span class="tag-count">{{ len .Pages }}</span>
+    </a>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

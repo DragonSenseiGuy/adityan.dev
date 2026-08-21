@@ -1,0 +1,44 @@
+{{ define "title" }}{{ .Title }} · {{ .Site.Title }}{{ end }}
+{{ define "content" }}
+<section class="page-wrap">
+  <div class="page-header">
+    <h1 class="page-title">{{ .Title }}</h1>
+    <div class="page-title-ghost">{{ .Title }}</div>
+  </div>
+  {{ $paginator := .Paginate .Pages }}
+  <div class="post-list-toolbar">
+    <a href="/tags/" class="tags-browse">Browse by Tags →</a>
+    {{ if gt $paginator.TotalPages 1 }}
+    <nav class="pagination-inline">
+      {{ if $paginator.HasPrev }}<a href="{{ $paginator.Prev.URL }}" class="pagination-link">←</a>{{ end }}
+      <span class="pagination-info">{{ $paginator.PageNumber }}/{{ $paginator.TotalPages }}</span>
+      {{ if $paginator.HasNext }}<a href="{{ $paginator.Next.URL }}" class="pagination-link">→</a>{{ end }}
+    </nav>
+    {{ end }}
+  </div>
+  {{ .Content }}
+  {{ if $paginator.Pages }}
+  <div class="post-list">
+    {{ range $paginator.Pages }}
+    <a href="{{ .Permalink }}" class="post-item">
+      <div class="post-item-inner">
+        <h3 class="post-item-title">{{ .Title }}</h3>
+        <span class="post-item-date">{{ .Date.Format "Jan 02, 2006" }}</span>
+      </div>
+      {{ with .Description }}<p class="post-item-desc">{{ . }}</p>{{ end }}
+    </a>
+    {{ end }}
+  </div>
+  {{ if gt $paginator.TotalPages 1 }}
+  <div class="post-list-toolbar post-list-toolbar-bottom">
+    <div></div>
+    <nav class="pagination-inline">
+      {{ if $paginator.HasPrev }}<a href="{{ $paginator.Prev.URL }}" class="pagination-link">←</a>{{ end }}
+      <span class="pagination-info">{{ $paginator.PageNumber }}/{{ $paginator.TotalPages }}</span>
+      {{ if $paginator.HasNext }}<a href="{{ $paginator.Next.URL }}" class="pagination-link">→</a>{{ end }}
+    </nav>
+  </div>
+  {{ end }}
+  {{ end }}
+</section>
+{{ end }}
