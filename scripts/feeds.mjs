@@ -6,7 +6,7 @@ const esc = (s) =>
 // page would just tell crawlers the whole site changed each deploy.
 export function sitemap({ pages, posts }) {
   const urls = [
-    ...pages.map((page) => ({ loc: page.loc, lastmod: page.lastmod })),
+    ...pages,
     ...posts.map((post) => ({ loc: post.url, lastmod: post.date.slice(0, 10) })),
   ];
   const body = urls

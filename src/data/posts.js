@@ -1,7 +1,8 @@
-// Loads the Markdown posts at build time. POSTS_DIR is set by scripts/build.mjs
-// before the page modules run.
+// Loads the Markdown posts at build time, from the content/ directory next to
+// this module.
 import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { marked } from 'marked';
 import { url } from './site.js';
 
@@ -30,13 +31,16 @@ function parseFrontmatter(raw) {
   return { data, body: raw.slice(match[0].length) };
 }
 
-const dir = process.env.POSTS_DIR;
+const dir = fileURLToPath(new URL('../../content/posts', import.meta.url));
 
 export const posts = readdirSync(dir)
   .filter((file) => file.endsWith('.md'))
   .map((file) => {
     const { data, body } = parseFrontmatter(readFileSync(join(dir, file), 'utf8'));
     const slug = data.slug || file.replace(/\.md$/, '');
+    // Everything else has a sensible default; a date does not. Without one the
+    // sitemap, the feed and the post header all render "Invalid Date".
+    if (!data.date) throw new Error(`content/posts/${file}: missing "date" in the frontmatter`);
     return {
       slug,
       title: data.title || slug,

@@ -31,8 +31,8 @@ document.querySelectorAll('[data-year]').forEach((el) => {
   el.textContent = new Date().getFullYear();
 });
 
-// Hero backdrops. The shader runtime is ~50 kB, so it is only fetched when
-// every guard below passes.
+// Hero backdrops. The shader runtime is ~150 kB minified, so it is only
+// fetched when every guard below passes.
 const heroCanvases = document.querySelectorAll('[data-hero-canvas]');
 if (
   heroCanvases.length &&

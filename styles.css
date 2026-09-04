@@ -768,7 +768,7 @@ a.work-item:focus-visible .work-name {
   min-width: 140px;
 }
 
-.contact-hero .lede {
+[data-hero="contact"] .lede {
   margin-bottom: var(--space-12);
 }
 

@@ -1,7 +1,7 @@
 import { Document } from '../components/layout.jsx';
 import { Hero, SectionHead, WorkList, Closing } from '../components/sections.jsx';
 import { ArrowRightIcon } from '../components/icons.jsx';
-import { site, person, ogImageFor, url } from '../data/site.js';
+import { site, person, url } from '../data/site.js';
 import { featured } from '../data/projects.js';
 
 const jsonLd = {
@@ -19,23 +19,20 @@ const jsonLd = {
   ],
 };
 
-export const file = 'index.html';
+export const path = '/';
 
 export const og = { title: 'Aditya N', meta: 'Student developer · Boston' };
 
 export const element = (
   <Document
+    path={path}
     title="Aditya N (DragonSenseiGuy) — Student Developer"
     description="Aditya N, also known as DragonSenseiGuy or Dragon Sensei Guy, is a student developer at Hack Club in Boston building AI tools, Slack bots, and self-hosted apps."
-    canonical={url('/')}
     ogDescription="Aditya N (DragonSenseiGuy / Dragon Sensei Guy), student developer at Hack Club building AI tools, Slack bots, and self-hosted apps."
-    ogImage={ogImageFor(file)}
-    ogImageAlt="Aditya N (DragonSenseiGuy) — Student Developer"
     jsonLd={jsonLd}
   >
     <main class="container">
-      <Hero variant="hero">
-        <h1>{'Aditya N'}</h1>
+      <Hero variant="hero" title={'Aditya N'}>
         <p class="lede">i am a teenager and student developer in boston, building robots, tools, and websites with <a href="https://hackclub.com">hack club</a>. i work mostly in python and javascript. when i am off the clock i mess around with servers and build fun projects.</p>
         <div class="hero-actions">
           <a class="btn btn-solid" href="/projects">See my projects <ArrowRightIcon /></a>

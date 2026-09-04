@@ -1,5 +1,5 @@
 import { raw } from '../jsx.js';
-import { site, socials, navLinks } from '../data/site.js';
+import { site, socials, navLinks, ogImageFor, url } from '../data/site.js';
 import {
   GitHubIcon, LinkedInIcon, DiscordIcon, MoonIcon, SunIcon,
 } from './icons.jsx';
@@ -68,24 +68,27 @@ function Footer() {
   );
 }
 
+// `path` is the page's route, and the only thing a page has to say about where
+// it lives: the canonical URL, the social card and the nav highlight all come
+// from it. A post overrides `current` because /blog/<slug> highlights Blog.
 export function Document({
+  path,
   title,
   description,
-  canonical,
   ogType = 'website',
   ogTitle = title,
   ogDescription = description,
   twitterTitle = ogTitle,
   twitterDescription = ogDescription,
-  ogImage,
-  ogImageAlt,
+  ogImage = ogImageFor(path),
+  ogImageAlt = ogTitle,
   articleDate,
   jsonLd,
   noindex = false,
-  prefix = '',
-  current,
+  current = path,
   children,
 }) {
+  const canonical = url(path);
   // A page can ask for noindex (the error pages do); a build served from
   // anywhere but the canonical host gets it whether it asked or not.
   const hidden = noindex || !site.indexable;
@@ -130,7 +133,7 @@ export function Document({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..600&family=Geist+Mono:wght@400..500&display=swap" rel="stylesheet" />
-        <link rel="stylesheet" href={`${prefix}styles.css`} />
+        <link rel="stylesheet" href="/styles.css" />
         <link rel="alternate" type="application/rss+xml" title={`${site.name} — Blog`} href={`${site.origin}/feed.xml`} />
         {jsonLd && (
           <script type="application/ld+json">{raw(`\n${JSON.stringify(jsonLd, null, 2)}\n  `)}</script>
@@ -140,7 +143,7 @@ export function Document({
         <Nav current={current} />
         {children}
         <Footer />
-        <script src={`${prefix}script.js`}></script>
+        <script src="/script.js"></script>
       </body>
     </html>
   );

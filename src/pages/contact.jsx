@@ -1,6 +1,6 @@
 import { Document } from '../components/layout.jsx';
 import { Hero, SectionHead } from '../components/sections.jsx';
-import { site, socials, ogImageFor, url } from '../data/site.js';
+import { site, socials, url } from '../data/site.js';
 
 const channels = [
   { label: 'github', value: '@DragonSenseiGuy', href: socials.github },
@@ -23,23 +23,19 @@ const jsonLd = {
   },
 };
 
-export const file = 'contact.html';
+export const path = '/contact';
 
 export const og = { kicker: 'Contact', title: 'Say hello', meta: site.email };
 
 export const element = (
   <Document
+    path={path}
     title="Contact — Aditya N (DragonSenseiGuy)"
     description="Get in touch with Aditya N (DragonSenseiGuy / Dragon Sensei Guy) by email, GitHub, Discord, or LinkedIn."
-    canonical={url('/contact')}
-    ogImage={ogImageFor(file)}
-    ogImageAlt="Contact — Aditya N (DragonSenseiGuy)"
     jsonLd={jsonLd}
-    current="/contact"
   >
     <main class="container">
-      <Hero variant="contact" class="contact-hero">
-        <h1 id="page-title">Say hello</h1>
+      <Hero variant="contact" title="Say hello">
         <p class="lede">Have an idea, a project, or just want to talk? My inbox is open. Email is the fastest way to reach me.</p>
         <a class="big-link" href={`mailto:${site.email}`}>{site.email}</a>
         <div class="hero-actions">

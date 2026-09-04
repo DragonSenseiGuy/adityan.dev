@@ -1,6 +1,6 @@
 import { Document } from '../components/layout.jsx';
 import { Hero, PostList, Closing } from '../components/sections.jsx';
-import { site, ogImageFor, url } from '../data/site.js';
+import { site, url } from '../data/site.js';
 import { posts } from '../data/posts.js';
 
 const jsonLd = {
@@ -22,24 +22,20 @@ const jsonLd = {
   })),
 };
 
-export const file = 'blog.html';
+export const path = '/blog';
 
 export const og = { kicker: 'Blog', title: 'my thoughts on stuff.', meta: site.feedDescription };
 
 export const element = (
   <Document
+    path={path}
     title="Blog — Aditya N (DragonSenseiGuy)"
     description="Writing by Aditya N (DragonSenseiGuy): build logs, thoughts on AI and dev tools, and notes from a homelab."
-    canonical={url('/blog')}
     ogDescription="Build logs, thoughts on AI and dev tools, and the occasional rant on what's happening in the industry."
-    ogImage={ogImageFor(file)}
-    ogImageAlt="Blog — Aditya N (DragonSenseiGuy)"
     jsonLd={jsonLd}
-    current="/blog"
   >
     <main class="container">
-      <Hero>
-        <h1 id="page-title">Blog</h1>
+      <Hero title="Blog">
         <p class="lede">my thoughts on stuff.</p>
       </Hero>
 

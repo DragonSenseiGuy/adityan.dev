@@ -2,6 +2,10 @@
 // the same contour field as the site. This is shaders/hero.wgsl rewritten in
 // JS: the same warped fbm, the same iso-lines, the same edge envelope — only
 // the rasteriser differs, because satori cannot run WebGPU.
+//
+// The numbers the two rasterisers share come from src/field-constants.js, so
+// they cannot be tuned on one side only.
+import { FIELD } from '../field-constants.js';
 
 // Deterministic permutation table, so a given seed always draws the same field.
 function permutation(seed) {
@@ -70,7 +74,7 @@ function simplex3d(perm, x, y, z) {
   return 32 * total;
 }
 
-function fbm(perm, x, y, z, octaves = 3, lacunarity = 2.17, gain = 0.5) {
+function fbm(perm, x, y, z, octaves = FIELD.fbmOctaves, lacunarity = FIELD.fbmLacunarity, gain = FIELD.fbmGain) {
   let sum = 0;
   let amplitude = 0.5;
   let frequency = 1;
@@ -85,9 +89,11 @@ function fbm(perm, x, y, z, octaves = 3, lacunarity = 2.17, gain = 0.5) {
 // Two decorrelated fbm samples displace the domain, so the contours bend
 // instead of marching in straight bands. Mirrors warpedField() in the WGSL.
 function warpedField(perm, x, y, time) {
-  const wx = fbm(perm, x, y, time * 0.05);
-  const wy = fbm(perm, x + 37.2, y - 19.4, time * 0.05 + 11.7);
-  return fbm(perm, x + wx * 0.6, y + wy * 0.6, time * 0.03);
+  const [ox, oy, oz] = FIELD.warpOffset;
+  const wx = fbm(perm, x, y, time * FIELD.warpTimeScale);
+  const wy = fbm(perm, x + ox, y + oy, time * FIELD.warpTimeScale + oz);
+  const warp = FIELD.warpStrength;
+  return fbm(perm, x + wx * warp, y + wy * warp, time * FIELD.fieldTimeScale);
 }
 
 const clamp01 = (v) => (v < 0 ? 0 : v > 1 ? 1 : v);
@@ -123,7 +129,7 @@ export function contourField({
   tint = '#ededed',
   intensity = 0.5,
   fadeX = [0.1, 0.72],
-  fadeRight = [0.92, 1.0],
+  fadeRight = FIELD.fadeRight,
   fadeY = [0.68, 1.0],
   fadeTop = 0.22,
 } = {}) {
@@ -144,10 +150,11 @@ export function contourField({
     }
   }
 
-  // Contours sit where the field crosses a quarter step, matching the WGSL's
-  // `fract(field * 4.0)` bands.
+  // Contours sit where the field crosses a band step, matching the WGSL's
+  // `fract(field * BANDS)`.
+  const bandStep = 1 / FIELD.bands;
   const levels = [];
-  for (let level = -1; level <= 1.0001; level += 0.25) levels.push(Number(level.toFixed(3)));
+  for (let level = -1; level <= 1.0001; level += bandStep) levels.push(Number(level.toFixed(3)));
 
   // Line opacity varies across the card exactly as the shader's alpha does.
   // Quantising it into a few buckets keeps this to a handful of <path>s.
@@ -185,7 +192,7 @@ export function contourField({
           const v = (y1 + y2) / 2 / height;
           const horizontal = smoothstep(fadeX[0], fadeX[1], u) * (1 - smoothstep(fadeRight[0], fadeRight[1], u));
           const vertical = smoothstep(0, fadeTop, v) * (1 - smoothstep(fadeY[0], fadeY[1], v));
-          const glow = 0.35 + 0.65 * smoothstep(-0.5, 0.9, level);
+          const glow = FIELD.glowBase + FIELD.glowRange * smoothstep(FIELD.glowEdges[0], FIELD.glowEdges[1], level);
           const alpha = horizontal * vertical * glow * intensity;
           if (alpha < 0.02) continue;
           const bucket = Math.min(BUCKETS - 1, Math.floor(alpha * BUCKETS));

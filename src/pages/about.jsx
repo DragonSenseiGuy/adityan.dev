@@ -1,6 +1,6 @@
 import { Document } from '../components/layout.jsx';
 import { Hero, Closing } from '../components/sections.jsx';
-import { person, ogImageFor, url } from '../data/site.js';
+import { person } from '../data/site.js';
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -11,26 +11,22 @@ const jsonLd = {
   },
 };
 
-export const file = 'about.html';
+export const path = '/about';
 
 export const og = { kicker: 'About', title: "Hi, I'm Aditya", meta: 'DragonSenseiGuy · dsg · dragon' };
 
 export const element = (
   <Document
+    path={path}
     title="About Aditya N (DragonSenseiGuy)"
     description="About Aditya N, also known as DragonSenseiGuy or Dragon Sensei Guy, a student developer at Hack Club in Boston building AI developer tools and Slack bots."
-    canonical={url('/about')}
     ogType="profile"
     ogDescription="Aditya N, also known as DragonSenseiGuy or Dragon Sensei Guy, student developer at Hack Club building AI developer tools and Slack bots."
     twitterDescription="Aditya N, also known as DragonSenseiGuy or Dragon Sensei Guy, student developer at Hack Club."
-    ogImage={ogImageFor(file)}
-    ogImageAlt="About Aditya N (DragonSenseiGuy)"
     jsonLd={jsonLd}
-    current="/about"
   >
     <main class="container">
-      <Hero>
-        <h1 id="page-title">Hi, I'm Aditya</h1>
+      <Hero title="Hi, I'm Aditya">
         <p class="lede">Also known as <strong>DragonSenseiGuy</strong>, or dsg or dragon. I build websites and apps in my free time, mostly python and web dev.</p>
       </Hero>
 

@@ -14,9 +14,9 @@ export const postOg = (post, image = null) => ({
 });
 
 export function PostPage({ post }) {
-  const file = `blog/${post.slug}.html`;
-  const card = cardFor(post, file);
-  const canonical = url(`/blog/${post.slug}`);
+  const path = `/blog/${post.slug}`;
+  const card = cardFor(post, path);
+  const canonical = url(path);
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -49,15 +49,14 @@ export function PostPage({ post }) {
 
   return (
     <Document
+      path={path}
       title={`${post.title} — Aditya N`}
       description={post.description || ''}
-      canonical={canonical}
       ogType="article"
       ogImage={card}
       ogImageAlt={post.title}
       articleDate={post.date}
       jsonLd={jsonLd}
-      prefix="../"
       current="/blog"
     >
       <main class="container">

@@ -1,15 +1,19 @@
 import { ArrowUpRightIcon } from './icons.jsx';
 
-// `variant` picks the backdrop framing in hero-canvas.js.
-export function Hero({ variant = 'page', class: extra, id = 'page-title', children }) {
+// One `variant` drives all three: the backdrop framing in hero-canvas.js, the
+// per-hero CSS ([data-hero="contact"]), and the aria wiring. The heading is
+// Hero's too, so the id it labels itself with lives in exactly one place.
+export function Hero({ variant = 'page', id = 'page-title', title, children }) {
   const isHome = variant === 'hero';
   return (
     <section
-      class={isHome ? 'hero' : `page-hero${extra ? ` ${extra}` : ''}`}
+      class={isHome ? 'hero' : 'page-hero'}
+      data-hero={variant}
       aria-label={isHome ? 'Introduction' : null}
       aria-labelledby={isHome ? null : id}
     >
       <canvas class="hero-canvas" data-hero-canvas={variant} aria-hidden="true"></canvas>
+      <h1 id={isHome ? null : id}>{title}</h1>
       {children}
     </section>
   );

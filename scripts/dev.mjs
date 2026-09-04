@@ -1,28 +1,16 @@
 // Dev server. live-server on its own answers every unknown path with
 // "Cannot GET /x", which hides the custom error pages and the 301s that nginx
-// serves in production. This wraps it in a middleware that mirrors
-// default.conf + nginx-redirects.conf, so what you see locally is what the
-// deployed site does.
+// serves in production. This wraps it in a middleware that applies
+// default.conf's try_files and the shared redirect table, so what you see
+// locally is what the deployed site does.
 //   node scripts/dev.mjs
 import { existsSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import liveServer from 'live-server';
+import { matchers } from './redirects.mjs';
 
 const dist = fileURLToPath(new URL('../dist/', import.meta.url));
-
-// Same rules as nginx-redirects.conf, in the same order.
-const REDIRECTS = [
-  // Exact matches first, then regexes, then plain prefixes — nginx's order.
-  [/^\/index\.html$/, '/'],
-  [/^\/(about|projects|blog|contact)\.html$/, '/$1'],
-  [/^\/blog\/([a-z0-9-]+)\.html$/, '/blog/$1'],
-  [/^\/(about|projects)\/$/, '/$1'],
-  [/^\/posts\/$/, '/blog'],
-  [/^\/posts\/([a-z0-9-]+)\/?$/, '/blog/$1'],
-  [/^\/(tags|categories|authors|series)\/.*$/, '/blog'],
-  [/^\/posts\/.*$/, '/blog'],
-];
 
 const isFile = (path) => existsSync(path) && statSync(path).isFile();
 
@@ -40,9 +28,9 @@ const routes = (req, res, next) => {
   const url = new URL(req.url, 'http://localhost');
   const path = decodeURIComponent(url.pathname);
 
-  for (const [pattern, target] of REDIRECTS) {
+  for (const { pattern, to } of matchers) {
     if (!pattern.test(path)) continue;
-    res.writeHead(301, { Location: path.replace(pattern, target) + url.search });
+    res.writeHead(301, { Location: path.replace(pattern, to) + url.search });
     return res.end();
   }
 

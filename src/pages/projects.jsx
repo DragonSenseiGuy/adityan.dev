@@ -1,7 +1,7 @@
 import { Document } from '../components/layout.jsx';
 import { Hero, SectionHead, WorkList, Closing } from '../components/sections.jsx';
 import { featured, archive } from '../data/projects.js';
-import { ogImageFor, url } from '../data/site.js';
+import { url } from '../data/site.js';
 
 // The project list, so search engines can read the repos as named items
 // rather than as three anonymous links.
@@ -29,7 +29,7 @@ const jsonLd = {
   },
 };
 
-export const file = 'projects.html';
+export const path = '/projects';
 
 export const og = {
   kicker: 'Projects',
@@ -39,19 +39,15 @@ export const og = {
 
 export const element = (
   <Document
+    path={path}
     title="Projects — Aditya N (DragonSenseiGuy)"
     description="Open-source projects by Aditya N (DragonSenseiGuy): AI developer tools, Slack bots, games, and self-hosted web apps."
-    canonical={url('/projects')}
     ogDescription="Open-source projects by Aditya N (DragonSenseiGuy): AI developer tools, Slack bots, and self-hosted web apps."
     twitterDescription="Open-source projects by Aditya N (DragonSenseiGuy): AI developer tools, Slack bots, and web apps."
-    ogImage={ogImageFor(file)}
-    ogImageAlt="Projects — Aditya N (DragonSenseiGuy)"
     jsonLd={jsonLd}
-    current="/projects"
   >
     <main class="container">
-      <Hero>
-        <h1 id="page-title">Projects</h1>
+      <Hero title="Projects">
         <p class="lede">Things I've built in my free time. Everything here is open source and lives on <a href="https://github.com/DragonSenseiGuy" target="_blank" rel="noopener">my GitHub</a>.</p>
       </Hero>
 

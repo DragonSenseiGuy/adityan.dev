@@ -33,11 +33,29 @@ not committed. `npm run build` produces it:
 | `shaders/hero.wgsl` + `src/hero-canvas.js` | `hero-canvas.js` |
 | the post dates | `sitemap.xml` and `feed.xml` |
 | `src/data/site.js` | `robots.txt` — generated, because the sitemap URL it names has to be absolute |
+| `scripts/redirects.mjs` | `nginx-redirects.conf` — the 301s, so the dev server and nginx cannot disagree |
 
 Pages are written in JSX and share the nav, footer, `<head>` and section
 components in `src/components`. The JSX is rendered to HTML strings at build
 time by `src/jsx.js` — there is no client-side framework, and the deployed site
 is plain static files. `scripts/build.mjs` runs the whole thing.
+
+### Adding a page
+
+A page module says where it lives exactly once:
+
+```jsx
+export const path = '/uses';
+
+export const og = { kicker: 'Uses', title: 'What I use', meta: 'adityan.dev' };
+
+export const element = <Document path={path} title="Uses — Aditya N" ...>...</Document>;
+```
+
+`path` drives the output filename, the canonical URL, the `og:image` URL, the
+nav highlight and the sitemap entry — so there is no list to remember to update.
+A page that should stay out of the sitemap exports `noindex = true` and passes
+it to `Document`, as `404.jsx` and `500.jsx` do.
 
 ## Social cards
 
@@ -151,8 +169,10 @@ image = "https://cdn.example.com/shot.png"
 Body goes here.
 ```
 
-Then `npm run build`. The filename becomes the slug. `image` is optional and
-only affects the social card — see [Social cards](#social-cards).
+Then `npm run build`. The filename becomes the slug. `date` is required — the
+build fails and names the file without one, rather than writing `Invalid Date`
+into the sitemap. `image` is optional and only affects the social card — see
+[Social cards](#social-cards).
 
 ## Hero backdrop
 
@@ -161,17 +181,24 @@ noise field, written in WGSL and rendered with [vgpu](https://vgpu.sh). The
 feature size is derived from each hero's height, so a contour is the same size
 on the tall homepage hero and on the short band above an interior page title.
 
-A hero opts in with `data-hero-canvas="hero"`, `"page"` or `"contact"` on a
-`canvas.hero-canvas` — the variant picks the feature size and how far back it
-sits. It is decoration and it is optional: `script.js` only loads it on wide
-screens, with WebGPU present, and when the visitor has not asked for reduced
-motion.
+A hero picks its framing with one prop — `<Hero variant="hero" | "page" |
+"contact">` — which drives the canvas attribute `script.js` looks for, the
+`[data-hero]` CSS, and the aria wiring. It is decoration and it is optional:
+`script.js` only loads it on wide screens, with WebGPU present, and when the
+visitor has not asked for reduced motion.
+
+The same field is drawn twice — live in `shaders/hero.wgsl`, and as a still
+frame in `src/og/field.js` for the social cards, because satori cannot run
+WebGPU. The constants they share live in `src/field-constants.js`;
+`scripts/build-shaders.mjs` injects them into the WGSL's `// @inject` lines, so
+tuning the field is a one-file change.
 
 ## Deploying
 
 The `Dockerfile` builds the site and serves `dist/` with nginx, including the
-301 redirects in `nginx-redirects.conf` that map the old Hugo URLs onto the
-current ones.
+301 redirects that map the old Hugo URLs onto the current ones. Those are
+generated into `nginx-redirects.conf` from `scripts/redirects.mjs` during the
+build — edit the table there, not the `.conf`.
 
 ```bash
 docker build -t adityan-dev .

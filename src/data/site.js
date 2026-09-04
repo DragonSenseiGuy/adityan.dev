@@ -24,9 +24,13 @@ export const site = {
   substack: 'https://dragonsenseiguy.substack.com',
 };
 
+// A route's file in dist/: '/' is index.html, '/blog/x' is blog/x.html. One
+// `path` per page drives the filename, the canonical URL and the card.
+export const fileFor = (path) => (path === '/' ? 'index.html' : `${path.slice(1)}.html`);
+
 // Each page's social card is generated from its own copy; the path mirrors
-// the page's, so about.html gets /og/about.png.
-export const ogImageFor = (file) => `${origin}/og/${file.replace(/\.html$/, '.png')}`;
+// the page's, so /about gets /og/about.png.
+export const ogImageFor = (path) => `${origin}/og/${fileFor(path).replace(/\.html$/, '.png')}`;
 
 // Every absolute URL the site emits — canonicals, JSON-LD ids, feeds — goes
 // through here, so there is one place that knows the host.
@@ -36,7 +40,7 @@ export const url = (path = '/') => `${origin}${path}`;
 export const absoluteUrl = (href) => (/^https?:\/\//.test(href) ? href : url(href.startsWith('/') ? href : `/${href}`));
 
 // A post's card: its own `ogImage` if it set one, otherwise the generated card.
-export const cardFor = (post, file) => (post.ogImage ? absoluteUrl(post.ogImage) : ogImageFor(file));
+export const cardFor = (post, path) => (post.ogImage ? absoluteUrl(post.ogImage) : ogImageFor(path));
 
 export const socials = {
   github: 'https://github.com/DragonSenseiGuy/',

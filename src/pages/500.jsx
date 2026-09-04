@@ -1,24 +1,21 @@
 import { Document } from '../components/layout.jsx';
 import { Hero } from '../components/sections.jsx';
-import { site, ogImageFor, url } from '../data/site.js';
+import { site } from '../data/site.js';
 
-export const file = '500.html';
+export const path = '/500';
+export const noindex = true;
 
 export const og = { kicker: '500', title: 'Something went wrong', meta: 'adityan.dev' };
 
 export const element = (
   <Document
+    path={path}
     title="Something went wrong — Aditya N"
     description="The server hit an error serving this page."
-    canonical={url('/500')}
-    ogImage={ogImageFor(file)}
-    ogImageAlt="Something went wrong — Aditya N"
-    noindex
-    prefix="/"
+    noindex={noindex}
   >
     <main class="container">
-      <Hero>
-        <h1 id="page-title">Something went wrong</h1>
+      <Hero title="Something went wrong">
         <p class="lede">The server hit an error serving this page. Try again in a moment, and if it keeps happening, please contact me via email.</p>
         <div class="hero-actions">
           <a class="btn btn-solid" href="/">Go home</a>
