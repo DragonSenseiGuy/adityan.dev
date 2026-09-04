@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { buildShaders } from './build-shaders.mjs';
 import { loadModules, render, OG_SHIM } from './render.mjs';
 import { renderCard } from './og.mjs';
+import { loadCardImage } from './image.mjs';
 import { rss, sitemap } from './feeds.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
@@ -48,10 +49,24 @@ for (const { file, element } of pages) write(file, render(element));
 for (const post of posts) write(`blog/${post.slug}.html`, render(PostPage({ post })));
 
 // Social cards: one per page and per post, named after the page they belong to.
-const cards = [
-  ...pages.map(({ file, og }) => ({ file, og })),
-  ...posts.map((post) => ({ file: `blog/${post.slug}.html`, og: postOg(post) })),
-];
+// A post that points `ogImage` at its own artwork is skipped — it is telling us
+// it does not want a generated card.
+const postCards = await Promise.all(
+  posts
+    .filter((post) => !post.ogImage)
+    .map(async (post) => ({
+      file: `blog/${post.slug}.html`,
+      og: postOg(post, await loadCardImage(post.image, { root })),
+    }))
+);
+// A page can name an image in its own `og` export; it is loaded the same way.
+const pageCards = await Promise.all(
+  pages.map(async ({ file, og }) => ({
+    file,
+    og: { ...og, image: await loadCardImage(og.image, { root }) },
+  }))
+);
+const cards = [...pageCards, ...postCards];
 for (const { file, og } of cards) {
   write(`og/${file.replace(/\.html$/, '.png')}`, await renderCard(OgCard(og)));
 }

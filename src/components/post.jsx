@@ -1,16 +1,21 @@
 import { raw } from '../jsx.js';
-import { ogImageFor } from '../data/site.js';
+import { cardFor } from '../data/site.js';
 import { Document } from './layout.jsx';
 import { formatDate } from './sections.jsx';
 
-export const postOg = (post) => ({
+// The card's copy. `image` is filled in by the build, which loads the file
+// the frontmatter names; without one the card falls back to the monogram.
+export const postOg = (post, image = null) => ({
   kicker: 'Blog',
   title: post.title,
+  description: post.description || '',
   meta: [formatDate(post.date), ...(post.tags || [])].join(' · '),
+  image,
 });
 
 export function PostPage({ post }) {
   const file = `blog/${post.slug}.html`;
+  const card = cardFor(post, file);
   const canonical = `https://adityan.dev/blog/${post.slug}`;
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -22,7 +27,7 @@ export function PostPage({ post }) {
     url: canonical,
     mainEntityOfPage: canonical,
     keywords: post.tags || [],
-    image: ogImageFor(file),
+    image: card,
     inLanguage: 'en',
     isPartOf: { '@type': 'Blog', '@id': 'https://adityan.dev/blog' },
     author: {
@@ -48,7 +53,7 @@ export function PostPage({ post }) {
       description={post.description || ''}
       canonical={canonical}
       ogType="article"
-      ogImage={ogImageFor(file)}
+      ogImage={card}
       ogImageAlt={post.title}
       articleDate={post.date}
       jsonLd={jsonLd}

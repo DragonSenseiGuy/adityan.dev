@@ -42,6 +42,10 @@ export const posts = readdirSync(dir)
       description: data.description || '',
       date: data.date,
       tags: data.tags || [],
+      // `image` rides along inside the generated card; `ogImage` replaces the
+      // generated card entirely. Both are optional. See the README.
+      image: data.image || null,
+      ogImage: data.ogImage || null,
       url: `https://adityan.dev/blog/${slug}`,
       html: marked.parse(body),
     };

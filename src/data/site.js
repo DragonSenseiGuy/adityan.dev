@@ -11,6 +11,12 @@ export const site = {
 // the page's, so about.html gets /og/about.png.
 export const ogImageFor = (file) => `${site.origin}/og/${file.replace(/\.html$/, '.png')}`;
 
+// og:image has to be absolute, so a site-relative override gets the origin.
+export const absoluteUrl = (url) => (/^https?:\/\//.test(url) ? url : `${site.origin}${url.startsWith('/') ? '' : '/'}${url}`);
+
+// A post's card: its own `ogImage` if it set one, otherwise the generated card.
+export const cardFor = (post, file) => (post.ogImage ? absoluteUrl(post.ogImage) : ogImageFor(file));
+
 export const socials = {
   github: 'https://github.com/DragonSenseiGuy/',
   linkedin: 'https://www.linkedin.com/in/adityaneni/',
