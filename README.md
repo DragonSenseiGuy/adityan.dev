@@ -202,7 +202,7 @@ build — edit the table there, not the `.conf`.
 
 ```bash
 docker build -t adityan-dev .
-docker run -p 8080:80 adityan-dev
+docker run -p 8080:8001 adityan-dev
 ```
 
 ## AI use

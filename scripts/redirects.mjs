@@ -38,6 +38,7 @@ export const redirects = [
 
   { kind: 'exact', from: '/about/', to: '/about', section: 'old Hugo site -> new site' },
   { kind: 'exact', from: '/projects/', to: '/projects' },
+  { kind: 'exact', from: '/blog/', to: '/blog' },
   { kind: 'exact', from: '/posts/', to: '/blog' },
   {
     kind: 'regex',
