@@ -3,13 +3,13 @@ export const featured = [
   {
     name: 'Hack Review',
     href: 'https://github.com/DragonSenseiGuy/hack-review',
-    desc: 'CodeRabbit wanted me to pay, so I built my own. Reviews every pull request automatically. Currently down for a redesign; it will be back.',
+    desc: "CodeRabbit wanted me to pay for a simple review bot, so I built my own one. It's currently down for a redesign. It'll be back soon .",
     stack: 'Python · LLM APIs · GitHub Apps',
   },
   {
     name: 'Kira',
     href: 'https://github.com/DragonSenseiGuy/kira',
-    desc: 'A chat interface for LLMs, built in Vue. ChatGPT does exist but, i wanted the interface my way.',
+    desc: 'A chat interface for LLMs, built in Vue. ChatGPT does exist, but i wanted the interface my way.',
     stack: 'Vue · LLM APIs',
   },
   {

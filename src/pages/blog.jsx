@@ -30,8 +30,8 @@ export const element = (
   <Document
     path={path}
     title="Blog — Aditya N (DragonSenseiGuy)"
-    description="Writing by Aditya N (DragonSenseiGuy): build logs, thoughts on AI and dev tools, and notes from a homelab."
-    ogDescription="Build logs, thoughts on AI and dev tools, and the occasional rant on what's happening in the industry."
+    description="Writing by Aditya N (DragonSenseiGuy)."
+    ogDescription="my thoughts on stuff."
     jsonLd={jsonLd}
   >
     <main class="container">

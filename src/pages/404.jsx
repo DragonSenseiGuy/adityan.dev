@@ -10,7 +10,7 @@ export const og = { kicker: '404', title: 'Page not found', meta: 'adityan.dev' 
 export const element = (
   <Document
     path={path}
-    title="Page not found — Aditya N"
+    title="Page not found 404"
     description="That page does not exist on adityan.dev."
     noindex={noindex}
   >
