@@ -31,7 +31,7 @@ export const element = (
   <Document
     path={path}
     title="Contact — Aditya N (DragonSenseiGuy)"
-    description="Get in touch with Aditya N (DragonSenseiGuy / Dragon Sensei Guy) by email, GitHub, Discord, or LinkedIn."
+    description="Get in touch with Aditya N (DragonSenseiGuy / dsg) by email, GitHub, Discord, or LinkedIn."
     jsonLd={jsonLd}
   >
     <main class="container">

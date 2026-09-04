@@ -41,9 +41,9 @@ export const element = (
   <Document
     path={path}
     title="Projects — Aditya N (DragonSenseiGuy)"
-    description="Open-source projects by Aditya N (DragonSenseiGuy): AI developer tools, Slack bots, games, and self-hosted web apps."
-    ogDescription="Open-source projects by Aditya N (DragonSenseiGuy): AI developer tools, Slack bots, and self-hosted web apps."
-    twitterDescription="Open-source projects by Aditya N (DragonSenseiGuy): AI developer tools, Slack bots, and web apps."
+    description="Open-source projects by Aditya N (DragonSenseiGuy)"
+    ogDescription="Open-source projects by Aditya N (DragonSenseiGuy)"
+    twitterDescription="Open-source projects by Aditya N (DragonSenseiGuy)"
     jsonLd={jsonLd}
   >
     <main class="container">

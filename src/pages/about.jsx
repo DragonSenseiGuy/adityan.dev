@@ -18,11 +18,11 @@ export const og = { kicker: 'About', title: "Hi, I'm Aditya", meta: 'DragonSense
 export const element = (
   <Document
     path={path}
-    title="About Aditya N (DragonSenseiGuy)"
-    description="About Aditya N, also known as DragonSenseiGuy or Dragon Sensei Guy, a student developer at Hack Club in Boston building AI developer tools and Slack bots."
+    title="About Aditya"
+    description="About Aditya, also known as DragonSenseiGuy or dsg, a developer in Boston building AI developer tools and Slack bots."
     ogType="profile"
-    ogDescription="Aditya N, also known as DragonSenseiGuy or Dragon Sensei Guy, student developer at Hack Club building AI developer tools and Slack bots."
-    twitterDescription="Aditya N, also known as DragonSenseiGuy or Dragon Sensei Guy, student developer at Hack Club."
+    ogDescription="Aditya , also known as DragonSenseiGuy or dsg, developer building AI developer tools and Slack bots."
+    twitterDescription="Aditya , also known as DragonSenseiGuy or dsg, developer."
     jsonLd={jsonLd}
   >
     <main class="container">

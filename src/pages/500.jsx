@@ -10,7 +10,7 @@ export const og = { kicker: '500', title: 'Something went wrong', meta: 'adityan
 export const element = (
   <Document
     path={path}
-    title="Something went wrong — Aditya N"
+    title="Something went wrong 500"
     description="The server hit an error serving this page."
     noindex={noindex}
   >

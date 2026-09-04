@@ -21,18 +21,18 @@ const jsonLd = {
 
 export const path = '/';
 
-export const og = { title: 'Aditya N', meta: 'Student developer · Boston' };
+export const og = { title: 'Aditya N', meta: 'Developer · Boston' };
 
 export const element = (
   <Document
     path={path}
-    title="Aditya N (DragonSenseiGuy) — Student Developer"
-    description="Aditya N, also known as DragonSenseiGuy or Dragon Sensei Guy, is a student developer at Hack Club in Boston building AI tools, Slack bots, and self-hosted apps."
-    ogDescription="Aditya N (DragonSenseiGuy / Dragon Sensei Guy), student developer at Hack Club building AI tools, Slack bots, and self-hosted apps."
+    title="Aditya N (DragonSenseiGuy)"
+    description="Aditya N, also known as DragonSenseiGuy or dsg, is a  developer in Boston building AI tools, Slack bots, and self-hosted apps."
+    ogDescription="Aditya N , developer building AI tools, Slack bots, and self-hosted apps."
     jsonLd={jsonLd}
   >
     <main class="container">
-      <Hero variant="hero" title={'Aditya N'}>
+      <Hero variant="hero" title={'Aditya N'}>
         <p class="lede">i am a teenager and student developer in boston, building robots, tools, and websites with <a href="https://hackclub.com">hack club</a>. i work mostly in python and javascript. when i am off the clock i mess around with servers and build fun projects.</p>
         <div class="hero-actions">
           <a class="btn btn-solid" href="/projects">See my projects <ArrowRightIcon /></a>
