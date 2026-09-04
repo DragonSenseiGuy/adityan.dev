@@ -31,3 +31,23 @@ if (copyBtn) {
 document.querySelectorAll('[data-year]').forEach((el) => {
   el.textContent = new Date().getFullYear();
 });
+
+// Hero backdrops: a WebGPU contour field behind the page title, loaded only
+// where it is welcome. Every guard below is a reason not to download the
+// ~50 kB of shader runtime.
+const heroCanvases = document.querySelectorAll('[data-hero-canvas]');
+if (
+  heroCanvases.length &&
+  navigator.gpu &&
+  window.matchMedia('(min-width: 768px)').matches &&
+  !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+) {
+  import('/hero-canvas.js')
+    .then(({ startHeroCanvas }) => {
+      heroCanvases.forEach((canvas) => {
+        // No adapter, no backdrop, no noise about it.
+        startHeroCanvas(canvas).catch(() => canvas.remove());
+      });
+    })
+    .catch(() => heroCanvases.forEach((canvas) => canvas.remove()));
+}

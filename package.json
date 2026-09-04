@@ -6,10 +6,15 @@
   "scripts": {
     "dev": "live-server --port=3000 --no-browser",
     "start": "npm run dev",
-    "build:blog": "node scripts/build-blog.js"
+    "build:blog": "node scripts/build-blog.js",
+    "build:shaders": "node scripts/build-shaders.mjs"
   },
   "devDependencies": {
+    "@vgpu/wgsl": "^0.3.1",
+    "@vgpu/wgsl-std": "^0.3.1",
+    "esbuild": "^0.28.2",
     "live-server": "^1.2.2",
-    "marked": "^18.0.6"
+    "marked": "^18.0.6",
+    "vgpu": "^0.3.1"
   }
 }
