@@ -19,10 +19,10 @@ const ASSETS = ['styles.css', 'script.js', 'robots.txt'];
 // Static pages, in the order they belong in the sitemap.
 const PAGE_URLS = [
   'https://adityan.dev/',
-  'https://adityan.dev/about.html',
-  'https://adityan.dev/projects.html',
-  'https://adityan.dev/blog.html',
-  'https://adityan.dev/contact.html',
+  'https://adityan.dev/about',
+  'https://adityan.dev/projects',
+  'https://adityan.dev/blog',
+  'https://adityan.dev/contact',
 ];
 
 const write = (file, contents) => {
@@ -60,7 +60,7 @@ const blogLastmod = posts[0]?.date.slice(0, 10);
 write(
   'sitemap.xml',
   sitemap({
-    pages: PAGE_URLS.map((loc) => ({ loc, lastmod: loc.endsWith('/blog.html') ? blogLastmod : null })),
+    pages: PAGE_URLS.map((loc) => ({ loc, lastmod: loc.endsWith('/blog') ? blogLastmod : null })),
     posts,
   })
 );

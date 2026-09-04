@@ -8,9 +8,9 @@ import { ogImageFor } from '../data/site.js';
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
-  '@id': 'https://adityan.dev/projects.html',
+  '@id': 'https://adityan.dev/projects',
   name: 'Projects — Aditya N (DragonSenseiGuy)',
-  url: 'https://adityan.dev/projects.html',
+  url: 'https://adityan.dev/projects',
   author: { '@type': 'Person', name: 'Aditya N', url: 'https://adityan.dev/' },
   mainEntity: {
     '@type': 'ItemList',
@@ -41,13 +41,13 @@ export const element = (
   <Document
     title="Projects — Aditya N (DragonSenseiGuy)"
     description="Open-source projects by Aditya N (DragonSenseiGuy): AI developer tools, Slack bots, games, and self-hosted web apps."
-    canonical="https://adityan.dev/projects.html"
+    canonical="https://adityan.dev/projects"
     ogDescription="Open-source projects by Aditya N (DragonSenseiGuy): AI developer tools, Slack bots, and self-hosted web apps."
     twitterDescription="Open-source projects by Aditya N (DragonSenseiGuy): AI developer tools, Slack bots, and web apps."
     ogImage={ogImageFor(file)}
     ogImageAlt="Projects — Aditya N (DragonSenseiGuy)"
     jsonLd={jsonLd}
-    current="projects.html"
+    current="/projects"
   >
     <main class="container">
       <Hero>

@@ -19,14 +19,14 @@ export const element = (
   <Document
     title="About Aditya N (DragonSenseiGuy)"
     description="About Aditya N, also known as DragonSenseiGuy or Dragon Sensei Guy, a student developer at Hack Club in Boston building AI developer tools and Slack bots."
-    canonical="https://adityan.dev/about.html"
+    canonical="https://adityan.dev/about"
     ogType="profile"
     ogDescription="Aditya N, also known as DragonSenseiGuy or Dragon Sensei Guy, student developer at Hack Club building AI developer tools and Slack bots."
     twitterDescription="Aditya N, also known as DragonSenseiGuy or Dragon Sensei Guy, student developer at Hack Club."
     ogImage={ogImageFor(file)}
     ogImageAlt="About Aditya N (DragonSenseiGuy)"
     jsonLd={jsonLd}
-    current="about.html"
+    current="/about"
   >
     <main class="container">
       <Hero>
@@ -49,7 +49,7 @@ export const element = (
 
       <Closing title="Want the details?">
         <p>The projects page has more projects, and my GitHub has all of them.</p>
-        <a class="btn btn-solid" href="projects.html">See my projects</a>
+        <a class="btn btn-solid" href="/projects">See my projects</a>
       </Closing>
     </main>
   </Document>

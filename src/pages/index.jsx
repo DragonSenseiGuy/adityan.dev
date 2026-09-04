@@ -38,14 +38,14 @@ export const element = (
         <h1>{'Aditya N'}</h1>
         <p class="lede">i am a teenager and student developer in boston, building robots, tools, and websites with <a href="https://hackclub.com">hack club</a>. i work mostly in python and javascript. when i am off the clock i mess around with servers and build fun projects.</p>
         <div class="hero-actions">
-          <a class="btn btn-solid" href="projects.html">See my projects <ArrowRightIcon /></a>
-          <a class="btn btn-ghost" href="contact.html">Get in touch</a>
+          <a class="btn btn-solid" href="/projects">See my projects <ArrowRightIcon /></a>
+          <a class="btn btn-ghost" href="/contact">Get in touch</a>
         </div>
       </Hero>
 
       <section aria-labelledby="featured-title">
         <SectionHead id="featured-title" title="Projects i've made">
-          <p>Three projects i'm most proud of. The full list is on the <a href="projects.html">projects page</a>.</p>
+          <p>Three projects i'm most proud of. The full list is on the <a href="/projects">projects page</a>.</p>
         </SectionHead>
         <WorkList items={featured} />
       </section>
@@ -58,7 +58,7 @@ export const element = (
           <div class="prose">
             <p>i go by dragon or dsg around the internet. most of what i make exists because something annoyed me enough that i figured it would be cheaper for me to build it myself.</p>
             <p>i spend a lot of time in the hack club community, building things alongside other teenage makers. away from all that, i run a homelabs and agent servers off old laptops i have.</p>
-            <p><a href="about.html">More about me</a></p>
+            <p><a href="/about">More about me</a></p>
           </div>
         </div>
       </section>

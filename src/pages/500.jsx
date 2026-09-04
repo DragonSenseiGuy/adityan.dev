@@ -10,7 +10,7 @@ export const element = (
   <Document
     title="Something went wrong — Aditya N"
     description="The server hit an error serving this page."
-    canonical="https://adityan.dev/500.html"
+    canonical="https://adityan.dev/500"
     ogImage={ogImageFor(file)}
     ogImageAlt="Something went wrong — Aditya N"
     noindex

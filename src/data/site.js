@@ -18,10 +18,10 @@ export const socials = {
 };
 
 export const navLinks = [
-  { href: 'about.html', label: 'About' },
-  { href: 'projects.html', label: 'Projects' },
-  { href: 'blog.html', label: 'Blog' },
-  { href: 'contact.html', label: 'Contact' },
+  { href: '/about', label: 'About' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/contact', label: 'Contact' },
 ];
 
 export const person = {

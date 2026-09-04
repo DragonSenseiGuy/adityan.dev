@@ -25,8 +25,8 @@ not committed. `npm run build` produces it:
 
 | Source | Output |
 | --- | --- |
-| `src/pages/*.jsx` | `index.html`, `about.html`, `projects.html`, `blog.html`, `contact.html` |
-| `content/posts/*.md` | `blog/<slug>.html` and the post list on `blog.html` |
+| `src/pages/*.jsx` | `index.html`, `about.html`, `projects.html`, `blog.html`, `contact.html` — served as `/`, `/about`, `/projects`, `/blog`, `/contact` |
+| `content/posts/*.md` | `blog/<slug>.html`, served as `/blog/<slug>`, and the post list on `/blog` |
 | `src/data/*` | shared content: nav links, projects, site metadata |
 | `src/pages/404.jsx`, `500.jsx` | the error pages nginx serves |
 | `src/og/card.jsx` | `og/<page>.png` — one social card per page and post |

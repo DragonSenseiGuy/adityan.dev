@@ -15,13 +15,13 @@ const dist = fileURLToPath(new URL('../dist/', import.meta.url));
 const REDIRECTS = [
   // Exact matches first, then regexes, then plain prefixes — nginx's order.
   [/^\/index\.html$/, '/'],
-  [/^\/(about|projects|blog|contact)$/, '/$1.html'],
-  [/^\/(about|projects)\/$/, '/$1.html'],
-  [/^\/posts\/$/, '/blog.html'],
-  [/^\/blog\/([a-z0-9-]+)$/, '/blog/$1.html'],
-  [/^\/posts\/([a-z0-9-]+)\/?$/, '/blog/$1.html'],
-  [/^\/(tags|categories|authors|series)\/.*$/, '/blog.html'],
-  [/^\/posts\/.*$/, '/blog.html'],
+  [/^\/(about|projects|blog|contact)\.html$/, '/$1'],
+  [/^\/blog\/([a-z0-9-]+)\.html$/, '/blog/$1'],
+  [/^\/(about|projects)\/$/, '/$1'],
+  [/^\/posts\/$/, '/blog'],
+  [/^\/posts\/([a-z0-9-]+)\/?$/, '/blog/$1'],
+  [/^\/(tags|categories|authors|series)\/.*$/, '/blog'],
+  [/^\/posts\/.*$/, '/blog'],
 ];
 
 const isFile = (path) => existsSync(path) && statSync(path).isFile();
@@ -57,6 +57,14 @@ const routes = (req, res, next) => {
   }
 
   const target = path === '/' ? '/index.html' : path;
+
+  // Mirrors default.conf's `try_files $uri.html $uri`: prefer the .html file
+  // on disk so a directory of the same name (dist/blog/) never shadows
+  // dist/blog.html.
+  if (isFile(join(dist, `${target}.html`))) {
+    req.url = `${target}.html`;
+    return next();
+  }
   if (isFile(join(dist, target))) return next();
 
   req.url = '/404.html';

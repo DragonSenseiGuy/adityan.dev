@@ -42,7 +42,7 @@ export const posts = readdirSync(dir)
       description: data.description || '',
       date: data.date,
       tags: data.tags || [],
-      url: `https://adityan.dev/blog/${slug}.html`,
+      url: `https://adityan.dev/blog/${slug}`,
       html: marked.parse(body),
     };
   })

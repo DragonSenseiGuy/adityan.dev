@@ -35,7 +35,7 @@ export function rss({ site, posts }) {
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>${esc(site.name)}</title>
-    <link>${site.origin}/blog.html</link>
+    <link>${site.origin}/blog</link>
     <atom:link href="${site.origin}/feed.xml" rel="self" type="application/rss+xml"/>
     <description>${esc(site.feedDescription)}</description>
     <language>en</language>

@@ -64,11 +64,11 @@ export function formatDate(iso) {
   return `${MONTHS[d.getUTCMonth()]} ${d.getUTCDate()}, ${d.getUTCFullYear()}`;
 }
 
-export function PostList({ posts, prefix = '' }) {
+export function PostList({ posts }) {
   return (
     <div class="post-list">
       {posts.map((post) => (
-        <a class="post-row" href={`${prefix}blog/${post.slug}.html`}>
+        <a class="post-row" href={`/blog/${post.slug}`}>
           <time datetime={post.date}>{formatDate(post.date)}</time>
           <div>
             <h3>{post.title}</h3>

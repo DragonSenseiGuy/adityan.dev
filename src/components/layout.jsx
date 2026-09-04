@@ -20,17 +20,14 @@ const THEME_SCRIPT = `
     })();
   `;
 
-function Nav({ prefix = '', current }) {
-  // The error pages are served from whatever URL 404'd, so they set prefix to
-  // an absolute '/' — where the home link is the root itself.
-  const home = prefix === '/' ? '/' : `${prefix}index.html`;
+function Nav({ current }) {
   return (
     <header class="site-nav">
       <div class="nav-inner">
-        <a class="brand" href={home}>adityan<span class="tld">.dev</span></a>
+        <a class="brand" href="/">adityan<span class="tld">.dev</span></a>
         <nav class="nav-links" aria-label="Main navigation">
           {navLinks.map(({ href, label }) => (
-            <a href={`${prefix}${href}`} aria-current={href === current ? 'page' : null}>{label}</a>
+            <a href={href} aria-current={href === current ? 'page' : null}>{label}</a>
           ))}
         </nav>
         <button class="theme-toggle" type="button" aria-label="Toggle color theme">
@@ -136,7 +133,7 @@ export function Document({
         )}
       </head>
       <body>
-        <Nav prefix={prefix} current={current} />
+        <Nav current={current} />
         {children}
         <Footer />
         <script src={`${prefix}script.js`}></script>

@@ -11,9 +11,9 @@ const channels = [
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ContactPage',
-  '@id': 'https://adityan.dev/contact.html',
+  '@id': 'https://adityan.dev/contact',
   name: 'Contact — Aditya N (DragonSenseiGuy)',
-  url: 'https://adityan.dev/contact.html',
+  url: 'https://adityan.dev/contact',
   mainEntity: {
     '@type': 'Person',
     name: site.name,
@@ -31,11 +31,11 @@ export const element = (
   <Document
     title="Contact — Aditya N (DragonSenseiGuy)"
     description="Get in touch with Aditya N (DragonSenseiGuy / Dragon Sensei Guy) by email, GitHub, Discord, or LinkedIn."
-    canonical="https://adityan.dev/contact.html"
+    canonical="https://adityan.dev/contact"
     ogImage={ogImageFor(file)}
     ogImageAlt="Contact — Aditya N (DragonSenseiGuy)"
     jsonLd={jsonLd}
-    current="contact.html"
+    current="/contact"
   >
     <main class="container">
       <Hero variant="contact" class="contact-hero">

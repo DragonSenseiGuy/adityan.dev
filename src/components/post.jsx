@@ -11,7 +11,7 @@ export const postOg = (post) => ({
 
 export function PostPage({ post }) {
   const file = `blog/${post.slug}.html`;
-  const canonical = `https://adityan.dev/${file}`;
+  const canonical = `https://adityan.dev/blog/${post.slug}`;
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -24,7 +24,7 @@ export function PostPage({ post }) {
     keywords: post.tags || [],
     image: ogImageFor(file),
     inLanguage: 'en',
-    isPartOf: { '@type': 'Blog', '@id': 'https://adityan.dev/blog.html' },
+    isPartOf: { '@type': 'Blog', '@id': 'https://adityan.dev/blog' },
     author: {
       '@type': 'Person',
       name: 'Aditya N',
@@ -36,7 +36,7 @@ export function PostPage({ post }) {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://adityan.dev/' },
-        { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://adityan.dev/blog.html' },
+        { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://adityan.dev/blog' },
         { '@type': 'ListItem', position: 3, name: post.title, item: canonical },
       ],
     },
@@ -53,11 +53,11 @@ export function PostPage({ post }) {
       articleDate={post.date}
       jsonLd={jsonLd}
       prefix="../"
-      current="blog.html"
+      current="/blog"
     >
       <main class="container">
         <article class="article">
-          <p><a href="../blog.html" class="back-link">← Blog</a></p>
+          <p><a href="/blog" class="back-link">← Blog</a></p>
           <h1 class="article-title">{post.title}</h1>
           <div class="article-meta">
             <time datetime={post.date}>{formatDate(post.date)}</time>
@@ -66,7 +66,7 @@ export function PostPage({ post }) {
             )}
           </div>
           <div class="prose article-body">{raw(`\n${post.html}\n      `)}</div>
-          <p class="article-foot"><a href="../blog.html" class="back-link">← Back to all posts</a></p>
+          <p class="article-foot"><a href="/blog" class="back-link">← Back to all posts</a></p>
         </article>
       </main>
     </Document>

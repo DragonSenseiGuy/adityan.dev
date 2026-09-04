@@ -11,7 +11,7 @@ export const element = (
   <Document
     title="Page not found — Aditya N"
     description="That page does not exist on adityan.dev."
-    canonical="https://adityan.dev/404.html"
+    canonical="https://adityan.dev/404"
     ogImage={ogImageFor(file)}
     ogImageAlt="Page not found — Aditya N"
     noindex
@@ -23,7 +23,7 @@ export const element = (
         <p class="lede">That page doesn't exist, or it moved. While you're here, read my blog!</p>
         <div class="hero-actions">
           <a class="btn btn-solid" href="/">Go home</a>
-          <a class="btn btn-ghost" href="/blog.html">Read the blog</a>
+          <a class="btn btn-ghost" href="/blog">Read the blog</a>
         </div>
       </Hero>
     </main>
