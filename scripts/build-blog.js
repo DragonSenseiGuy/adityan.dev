@@ -114,7 +114,7 @@ const FAVICON = `<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://ww
 function postPage(post) {
   const prefix = '../';
   const tags = (post.tags || [])
-    .map((t) => `<span class="post-tag">${esc(t)}</span>`)
+    .map((t) => `<span>${esc(t)}</span>`)
     .join('');
   const canonical = `https://adityan.dev/blog/${post.slug}.html`;
   const desc = esc(post.description || '');
@@ -164,7 +164,6 @@ function postPage(post) {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..600&family=Geist+Mono:wght@400..500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="${prefix}styles.css">
-  <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
   <script type="application/ld+json">
 ${JSON.stringify(ld, null, 2)}
   </script>
@@ -199,13 +198,12 @@ ${footer(prefix)}
 function indexRows(posts) {
   return posts
     .map(
-      (p) => `        <a class="post-row reveal" href="blog/${p.slug}.html">
+      (p) => `        <a class="post-row" href="blog/${p.slug}.html">
           <time datetime="${p.date}">${fmtDate(p.date)}</time>
           <div>
             <h3>${esc(p.title)}</h3>
             <p>${esc(p.description || '')}</p>
           </div>
-          <svg class="row-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>`
     )
     .join('\n');
