@@ -24,6 +24,10 @@ const write = (file, contents) => {
 rmSync(dist, { recursive: true, force: true });
 mkdirSync(dist, { recursive: true });
 
+// Independent of every page/post/card build below, so it runs alongside them
+// instead of after them.
+const shaders = buildShaders({ outfile: join(dist, 'hero-canvas.js') });
+
 const pageEntries = readdirSync(join(root, 'src/pages'))
   .filter((file) => file.endsWith('.jsx'))
   .map((file) => join(root, 'src/pages', file));
@@ -85,6 +89,6 @@ for (const asset of ASSETS) cpSync(join(root, asset), join(dist, asset));
 // it out of the build stage into /etc/nginx/snippets/.
 writeFileSync(join(root, 'nginx-redirects.conf'), nginxConf());
 
-await buildShaders({ outfile: join(dist, 'hero-canvas.js') });
+await shaders;
 
 console.log(`Built ${pages.length} pages, ${posts.length} posts, ${cards.length} social cards -> dist/`);
