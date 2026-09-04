@@ -1,6 +1,6 @@
 import { Document } from '../components/layout.jsx';
 import { Hero } from '../components/sections.jsx';
-import { site, ogImageFor } from '../data/site.js';
+import { site, ogImageFor, url } from '../data/site.js';
 
 export const file = '500.html';
 
@@ -10,7 +10,7 @@ export const element = (
   <Document
     title="Something went wrong — Aditya N"
     description="The server hit an error serving this page."
-    canonical="https://adityan.dev/500"
+    canonical={url('/500')}
     ogImage={ogImageFor(file)}
     ogImageAlt="Something went wrong — Aditya N"
     noindex

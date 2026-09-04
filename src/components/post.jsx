@@ -1,5 +1,5 @@
 import { raw } from '../jsx.js';
-import { cardFor } from '../data/site.js';
+import { cardFor, url } from '../data/site.js';
 import { Document } from './layout.jsx';
 import { formatDate } from './sections.jsx';
 
@@ -16,7 +16,7 @@ export const postOg = (post, image = null) => ({
 export function PostPage({ post }) {
   const file = `blog/${post.slug}.html`;
   const card = cardFor(post, file);
-  const canonical = `https://adityan.dev/blog/${post.slug}`;
+  const canonical = url(`/blog/${post.slug}`);
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -29,19 +29,19 @@ export function PostPage({ post }) {
     keywords: post.tags || [],
     image: card,
     inLanguage: 'en',
-    isPartOf: { '@type': 'Blog', '@id': 'https://adityan.dev/blog' },
+    isPartOf: { '@type': 'Blog', '@id': url('/blog') },
     author: {
       '@type': 'Person',
       name: 'Aditya N',
       alternateName: ['DragonSenseiGuy', 'Dragon Sensei Guy'],
-      url: 'https://adityan.dev/',
+      url: url('/'),
     },
-    publisher: { '@type': 'Person', name: 'Aditya N', url: 'https://adityan.dev/' },
+    publisher: { '@type': 'Person', name: 'Aditya N', url: url('/') },
     breadcrumb: {
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://adityan.dev/' },
-        { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://adityan.dev/blog' },
+        { '@type': 'ListItem', position: 1, name: 'Home', item: url('/') },
+        { '@type': 'ListItem', position: 2, name: 'Blog', item: url('/blog') },
         { '@type': 'ListItem', position: 3, name: post.title, item: canonical },
       ],
     },

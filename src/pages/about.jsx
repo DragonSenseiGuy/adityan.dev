@@ -1,6 +1,6 @@
 import { Document } from '../components/layout.jsx';
 import { Hero, Closing } from '../components/sections.jsx';
-import { person, ogImageFor } from '../data/site.js';
+import { person, ogImageFor, url } from '../data/site.js';
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -19,7 +19,7 @@ export const element = (
   <Document
     title="About Aditya N (DragonSenseiGuy)"
     description="About Aditya N, also known as DragonSenseiGuy or Dragon Sensei Guy, a student developer at Hack Club in Boston building AI developer tools and Slack bots."
-    canonical="https://adityan.dev/about"
+    canonical={url('/about')}
     ogType="profile"
     ogDescription="Aditya N, also known as DragonSenseiGuy or Dragon Sensei Guy, student developer at Hack Club building AI developer tools and Slack bots."
     twitterDescription="Aditya N, also known as DragonSenseiGuy or Dragon Sensei Guy, student developer at Hack Club."

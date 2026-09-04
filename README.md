@@ -32,6 +32,7 @@ not committed. `npm run build` produces it:
 | `src/og/card.jsx`, `src/og/field.js` | `og/<page>.png` — one social card per page and post |
 | `shaders/hero.wgsl` + `src/hero-canvas.js` | `hero-canvas.js` |
 | the post dates | `sitemap.xml` and `feed.xml` |
+| `src/data/site.js` | `robots.txt` — generated, because the sitemap URL it names has to be absolute |
 
 Pages are written in JSX and share the nav, footer, `<head>` and section
 components in `src/components`. The JSX is rendered to HTML strings at build
@@ -107,6 +108,26 @@ Neither is required. Omit both and the post gets the monogram card.
 at them — `og:image`, `twitter:image` and their `alt` text — are written by
 `Document` in `src/components/layout.jsx`; the URL itself is resolved by
 `cardFor` in `src/data/site.js`.
+
+## The site origin
+
+`og:image` has to be an absolute URL, so the build has to know which host it is
+being served from. `src/data/site.js` works it out once and everything else —
+canonicals, JSON-LD ids, the sitemap, the feed, `robots.txt` — goes through it:
+
+| Where | Origin |
+| --- | --- |
+| `SITE_ORIGIN` is set | that value |
+| Vercel production | `VERCEL_PROJECT_PRODUCTION_URL` |
+| Vercel preview | `VERCEL_URL`, so a preview links to itself |
+| anywhere else | `https://adityan.dev` |
+
+Get this wrong and the cards render fine but every client shows a broken image,
+because the URL in the tag points at a host that does not have the file:
+
+```bash
+SITE_ORIGIN=https://staging.example.com npm run build
+```
 
 ## Writing a post
 

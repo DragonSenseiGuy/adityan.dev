@@ -1,6 +1,6 @@
 import { Document } from '../components/layout.jsx';
 import { Hero, SectionHead } from '../components/sections.jsx';
-import { site, socials, ogImageFor } from '../data/site.js';
+import { site, socials, ogImageFor, url } from '../data/site.js';
 
 const channels = [
   { label: 'github', value: '@DragonSenseiGuy', href: socials.github },
@@ -11,9 +11,9 @@ const channels = [
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ContactPage',
-  '@id': 'https://adityan.dev/contact',
+  '@id': url('/contact'),
   name: 'Contact — Aditya N (DragonSenseiGuy)',
-  url: 'https://adityan.dev/contact',
+  url: url('/contact'),
   mainEntity: {
     '@type': 'Person',
     name: site.name,
@@ -31,7 +31,7 @@ export const element = (
   <Document
     title="Contact — Aditya N (DragonSenseiGuy)"
     description="Get in touch with Aditya N (DragonSenseiGuy / Dragon Sensei Guy) by email, GitHub, Discord, or LinkedIn."
-    canonical="https://adityan.dev/contact"
+    canonical={url('/contact')}
     ogImage={ogImageFor(file)}
     ogImageAlt="Contact — Aditya N (DragonSenseiGuy)"
     jsonLd={jsonLd}

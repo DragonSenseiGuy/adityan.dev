@@ -1,15 +1,15 @@
 import { Document } from '../components/layout.jsx';
 import { Hero, PostList, Closing } from '../components/sections.jsx';
-import { site, ogImageFor } from '../data/site.js';
+import { site, ogImageFor, url } from '../data/site.js';
 import { posts } from '../data/posts.js';
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Blog',
-  '@id': 'https://adityan.dev/blog',
+  '@id': url('/blog'),
   name: `Blog — ${site.name}`,
   description: site.feedDescription,
-  url: 'https://adityan.dev/blog',
+  url: url('/blog'),
   author: { '@type': 'Person', name: site.name, url: `${site.origin}/` },
   blogPost: posts.map((post) => ({
     '@type': 'BlogPosting',
@@ -30,7 +30,7 @@ export const element = (
   <Document
     title="Blog — Aditya N (DragonSenseiGuy)"
     description="Writing by Aditya N (DragonSenseiGuy): build logs, thoughts on AI and dev tools, and notes from a homelab."
-    canonical="https://adityan.dev/blog"
+    canonical={url('/blog')}
     ogDescription="Build logs, thoughts on AI and dev tools, and the occasional rant on what's happening in the industry."
     ogImage={ogImageFor(file)}
     ogImageAlt="Blog — Aditya N (DragonSenseiGuy)"

@@ -3,6 +3,7 @@
 import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { marked } from 'marked';
+import { url } from './site.js';
 
 // Images in post bodies are below the fold by definition.
 marked.use({
@@ -46,7 +47,7 @@ export const posts = readdirSync(dir)
       // generated card entirely. Both are optional. See the README.
       image: data.image || null,
       ogImage: data.ogImage || null,
-      url: `https://adityan.dev/blog/${slug}`,
+      url: url(`/blog/${slug}`),
       html: marked.parse(body),
     };
   })

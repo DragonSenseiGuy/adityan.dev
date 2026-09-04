@@ -1,7 +1,7 @@
 import { Document } from '../components/layout.jsx';
 import { Hero, SectionHead, WorkList, Closing } from '../components/sections.jsx';
 import { ArrowRightIcon } from '../components/icons.jsx';
-import { site, person, ogImageFor } from '../data/site.js';
+import { site, person, ogImageFor, url } from '../data/site.js';
 import { featured } from '../data/projects.js';
 
 const jsonLd = {
@@ -9,13 +9,13 @@ const jsonLd = {
   '@graph': [
     {
       '@type': 'WebSite',
-      '@id': 'https://adityan.dev/#website',
+      '@id': url('/#website'),
       name: site.name,
       alternateName: ['DragonSenseiGuy', 'Dragon Sensei Guy'],
-      url: 'https://adityan.dev/',
-      publisher: { '@id': 'https://adityan.dev/#person' },
+      url: url('/'),
+      publisher: { '@id': url('/#person') },
     },
-    { ...person, '@id': 'https://adityan.dev/#person' },
+    { ...person, '@id': url('/#person') },
   ],
 };
 
@@ -27,7 +27,7 @@ export const element = (
   <Document
     title="Aditya N (DragonSenseiGuy) — Student Developer"
     description="Aditya N, also known as DragonSenseiGuy or Dragon Sensei Guy, is a student developer at Hack Club in Boston building AI tools, Slack bots, and self-hosted apps."
-    canonical="https://adityan.dev/"
+    canonical={url('/')}
     ogDescription="Aditya N (DragonSenseiGuy / Dragon Sensei Guy), student developer at Hack Club building AI tools, Slack bots, and self-hosted apps."
     ogImage={ogImageFor(file)}
     ogImageAlt="Aditya N (DragonSenseiGuy) — Student Developer"

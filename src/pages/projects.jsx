@@ -1,17 +1,17 @@
 import { Document } from '../components/layout.jsx';
 import { Hero, SectionHead, WorkList, Closing } from '../components/sections.jsx';
 import { featured, archive } from '../data/projects.js';
-import { ogImageFor } from '../data/site.js';
+import { ogImageFor, url } from '../data/site.js';
 
 // The project list, so search engines can read the repos as named items
 // rather than as three anonymous links.
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
-  '@id': 'https://adityan.dev/projects',
+  '@id': url('/projects'),
   name: 'Projects — Aditya N (DragonSenseiGuy)',
-  url: 'https://adityan.dev/projects',
-  author: { '@type': 'Person', name: 'Aditya N', url: 'https://adityan.dev/' },
+  url: url('/projects'),
+  author: { '@type': 'Person', name: 'Aditya N', url: url('/') },
   mainEntity: {
     '@type': 'ItemList',
     itemListElement: [...featured, ...archive].map((item, index) => ({
@@ -41,7 +41,7 @@ export const element = (
   <Document
     title="Projects — Aditya N (DragonSenseiGuy)"
     description="Open-source projects by Aditya N (DragonSenseiGuy): AI developer tools, Slack bots, games, and self-hosted web apps."
-    canonical="https://adityan.dev/projects"
+    canonical={url('/projects')}
     ogDescription="Open-source projects by Aditya N (DragonSenseiGuy): AI developer tools, Slack bots, and self-hosted web apps."
     twitterDescription="Open-source projects by Aditya N (DragonSenseiGuy): AI developer tools, Slack bots, and web apps."
     ogImage={ogImageFor(file)}

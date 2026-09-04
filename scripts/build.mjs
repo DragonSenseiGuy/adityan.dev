@@ -8,23 +8,17 @@ import { buildShaders } from './build-shaders.mjs';
 import { loadModules, render, OG_SHIM } from './render.mjs';
 import { renderCard } from './og.mjs';
 import { loadCardImage } from './image.mjs';
-import { rss, sitemap } from './feeds.mjs';
+import { robots, rss, sitemap } from './feeds.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const dist = join(root, 'dist');
 
 process.env.POSTS_DIR ||= join(root, 'content', 'posts');
 
-const ASSETS = ['styles.css', 'script.js', 'robots.txt'];
+const ASSETS = ['styles.css', 'script.js'];
 
 // Static pages, in the order they belong in the sitemap.
-const PAGE_URLS = [
-  'https://adityan.dev/',
-  'https://adityan.dev/about',
-  'https://adityan.dev/projects',
-  'https://adityan.dev/blog',
-  'https://adityan.dev/contact',
-];
+const PAGE_PATHS = ['/', '/about', '/projects', '/blog', '/contact'];
 
 const write = (file, contents) => {
   mkdirSync(dirname(join(dist, file)), { recursive: true });
@@ -42,7 +36,7 @@ const modules = await loadModules([...pageEntries, join(root, 'src/components/po
 const { PostPage, postOg } = modules.at(-1);
 const [{ OgCard }] = await loadModules([join(root, 'src/og/card.jsx')], { shim: OG_SHIM });
 const { posts } = await import('../src/data/posts.js');
-const { site } = await import('../src/data/site.js');
+const { site, url } = await import('../src/data/site.js');
 
 const pages = modules.slice(0, -1);
 for (const { file, element } of pages) write(file, render(element));
@@ -75,11 +69,12 @@ const blogLastmod = posts[0]?.date.slice(0, 10);
 write(
   'sitemap.xml',
   sitemap({
-    pages: PAGE_URLS.map((loc) => ({ loc, lastmod: loc.endsWith('/blog') ? blogLastmod : null })),
+    pages: PAGE_PATHS.map((path) => ({ loc: url(path), lastmod: path === '/blog' ? blogLastmod : null })),
     posts,
   })
 );
 write('feed.xml', rss({ site, posts }));
+write('robots.txt', robots({ site }));
 
 for (const asset of ASSETS) cpSync(join(root, asset), join(dist, asset));
 

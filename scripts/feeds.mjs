@@ -45,3 +45,11 @@ ${items}
 </rss>
 `;
 }
+
+// robots.txt is here rather than in the repo root because the sitemap it points
+// at has to be an absolute URL, and only the build knows the origin.
+export const robots = ({ site }) => `User-agent: *
+Allow: /
+
+Sitemap: ${site.origin}/sitemap.xml
+`;
