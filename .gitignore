@@ -1,3 +1,4 @@
 node_modules/
 src/hero.generated.wgsl
 dist/
+DEPLOY.md

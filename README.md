@@ -129,6 +129,12 @@ because the URL in the tag points at a host that does not have the file:
 SITE_ORIGIN=https://staging.example.com npm run build
 ```
 
+Production is the nginx image on a VPS, which has none of these set and so
+lands on `https://adityan.dev`. Anything on another origin is a test build: it
+still points its cards at itself so previews resolve in a social-card
+inspector, but every page carries `noindex` and `robots.txt` disallows
+everything, so a preview cannot be indexed as a second copy of the site.
+
 ## Writing a post
 
 Add a Markdown file to `content/posts` with TOML frontmatter:

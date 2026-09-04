@@ -47,9 +47,16 @@ ${items}
 }
 
 // robots.txt is here rather than in the repo root because the sitemap it points
-// at has to be an absolute URL, and only the build knows the origin.
-export const robots = ({ site }) => `User-agent: *
+// at has to be an absolute URL, and only the build knows the origin. A build
+// that is not on the canonical host turns crawlers away entirely.
+export const robots = ({ site }) =>
+  site.indexable
+    ? `User-agent: *
 Allow: /
 
 Sitemap: ${site.origin}/sitemap.xml
+`
+    : `# Not the canonical host — this is a test build.
+User-agent: *
+Disallow: /
 `;

@@ -86,6 +86,10 @@ export function Document({
   current,
   children,
 }) {
+  // A page can ask for noindex (the error pages do); a build served from
+  // anywhere but the canonical host gets it whether it asked or not.
+  const hidden = noindex || !site.indexable;
+
   return (
     <html lang="en">
       <head>
@@ -97,9 +101,9 @@ export function Document({
         {/* Let Google use full-size image previews and untruncated snippets. */}
         <meta
           name="robots"
-          content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'}
+          content={hidden ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'}
         />
-        {!noindex && <link rel="canonical" href={canonical} />}
+        {!hidden && <link rel="canonical" href={canonical} />}
         <meta property="og:type" content={ogType} />
         <meta property="og:site_name" content={site.name} />
         <meta property="og:locale" content="en_US" />

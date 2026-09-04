@@ -1,3 +1,7 @@
+// The one host this site is meant to be indexed on. Production is a Dokploy
+// VPS serving the nginx image; Vercel is only ever a test target.
+const CANONICAL_ORIGIN = 'https://adityan.dev';
+
 // Where this build will actually be served from. Vercel exports the deployment
 // host, so preview builds link to themselves instead of to a domain that does
 // not have their files; SITE_ORIGIN overrides it, and anything else (local,
@@ -5,12 +9,16 @@
 const deployHost =
   (process.env.VERCEL_ENV === 'production' && process.env.VERCEL_PROJECT_PRODUCTION_URL) ||
   process.env.VERCEL_URL;
-const origin = process.env.SITE_ORIGIN || (deployHost ? `https://${deployHost}` : 'https://adityan.dev');
+const origin = process.env.SITE_ORIGIN || (deployHost ? `https://${deployHost}` : CANONICAL_ORIGIN);
 
 export const site = {
   name: 'Aditya N',
   email: 'hey@adityan.dev',
   origin,
+  // Anything served from another host is a test build: it says noindex on every
+  // page and disallows everything in robots.txt, so a preview can never turn up
+  // in search as a second copy of the site.
+  indexable: origin === CANONICAL_ORIGIN,
   repo: 'https://github.com/DragonSenseiGuy/adityan.dev',
   feedDescription: 'Build logs, thoughts on AI and dev tools, and notes from a homelab.',
   substack: 'https://dragonsenseiguy.substack.com',
