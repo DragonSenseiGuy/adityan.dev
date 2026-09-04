@@ -3,7 +3,7 @@ export const featured = [
   {
     name: 'Hack Review',
     href: 'https://github.com/DragonSenseiGuy/hack-review',
-    desc: 'CodeRabbit wanted me to pay, so I built my own. Reviews every pull request automatically. Currently unavailable now for a re-design right now, revival coming soon.',
+    desc: 'CodeRabbit wanted me to pay, so I built my own. Reviews every pull request automatically. Currently down for a redesign; it will be back.',
     stack: 'Python · LLM APIs · GitHub Apps',
   },
   {

@@ -54,7 +54,7 @@ export const element = (
           </div>
           <div class="prose">
             <p>i go by dragon or dsg around the internet. most of what i make exists because something annoyed me enough that i figured it would be cheaper for me to build it myself.</p>
-            <p>i spend a lot of time in the hack club community, building things alongside other teenage makers. away from all that, i run a homelabs and agent servers off old laptops i have.</p>
+            <p>i spend a lot of time in the hack club community, building things alongside other teenage makers. away from all that, i run a homelab and agent servers off old laptops i have.</p>
             <p><a href="/about">More about me</a></p>
           </div>
         </div>
