@@ -32,7 +32,7 @@
   --type-heading: 17px;
   --type-lede: 18px;
   --type-body: 16px;
-  --type-compact: 14px;
+  --type-compact: 18px;
   --type-label: 13px;
   --type-metadata: 12px;
 
@@ -371,7 +371,7 @@ html[data-theme='light'] .theme-toggle .icon-moon {
 
 .hero {
   position: relative;
-  padding: var(--space-16) 0 var(--space-12);
+  padding: var(--space-16) 0 var(--space-1);
 }
 
 /* WebGPU contour backdrop — decoration only, and absent unless script.js
