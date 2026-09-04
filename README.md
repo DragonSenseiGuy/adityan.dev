@@ -15,15 +15,59 @@ npm install
 npm run dev
 ```
 
-The site will be available at [http://localhost:3000](http://localhost:3000).
+That builds the site and serves it at [http://localhost:3000](http://localhost:3000).
+Re-run it after editing anything.
 
-## Blog
+## How it is built
 
-The blog pages are generated from Markdown by `scripts/build-blog.js`. After configuring the post source directory in that script, rebuild them with:
+Everything under `dist/` is generated and nothing else is served, so `dist/` is
+not committed. `npm run build` produces it:
 
-```bash
-npm run build:blog
+| Source | Output |
+| --- | --- |
+| `src/pages/*.jsx` | `index.html`, `about.html`, `projects.html`, `blog.html`, `contact.html` |
+| `content/posts/*.md` | `blog/<slug>.html` and the post list on `blog.html` |
+| `src/data/*` | shared content: nav links, projects, site metadata |
+| `src/pages/404.jsx`, `500.jsx` | the error pages nginx serves |
+| `src/og/card.jsx` | `og/<page>.png` — one social card per page and post |
+| `shaders/hero.wgsl` + `src/hero-canvas.js` | `hero-canvas.js` |
+| the post dates | `sitemap.xml` and `feed.xml` |
+
+Pages are written in JSX and share the nav, footer, `<head>` and section
+components in `src/components`. The JSX is rendered to HTML strings at build
+time by `src/jsx.js` — there is no client-side framework, and the deployed site
+is plain static files. `scripts/build.mjs` runs the whole thing.
+
+## Social cards
+
+Every page and post gets its own Open Graph image, generated at build time:
+[satori](https://github.com/vercel/satori) lays out `src/og/card.jsx` and
+resvg rasterises it to a 1200x630 PNG. A page picks up its card automatically
+by exporting an `og` object next to its `element`:
+
+```js
+export const og = { kicker: 'About', title: "Hi, I'm Aditya", meta: 'DragonSenseiGuy · dsg · dragon' };
 ```
+
+Posts build theirs from the title, date and tags. There is no image service —
+the cards are static files like everything else.
+
+## Writing a post
+
+Add a Markdown file to `content/posts` with TOML frontmatter:
+
+```
++++
+title = "Post title"
+description = "One line, used for the index, meta description and RSS."
+date = 2025-11-07T08:14:00.000Z
+tags = ["Python"]
++++
+
+Body goes here.
+```
+
+Then `npm run build`. The filename becomes the slug.
 
 ## Hero backdrop
 
@@ -31,19 +75,23 @@ Every page hero has a WebGPU backdrop: drifting contour lines from a warped
 noise field, written in WGSL and rendered with [vgpu](https://vgpu.sh). The
 feature size is derived from each hero's height, so a contour is the same size
 on the tall homepage hero and on the short band above an interior page title.
-The
-shader lives in `shaders/hero.wgsl` and the browser entry in `src/hero-canvas.js`;
-`npm run build:shaders` flattens the WGSL imports and bundles both into the
-committed `hero-canvas.js`, so the deployed site stays plain static files.
+
+A hero opts in with `data-hero-canvas="hero"`, `"page"` or `"contact"` on a
+`canvas.hero-canvas` — the variant picks the feature size and how far back it
+sits. It is decoration and it is optional: `script.js` only loads it on wide
+screens, with WebGPU present, and when the visitor has not asked for reduced
+motion.
+
+## Deploying
+
+The `Dockerfile` builds the site and serves `dist/` with nginx, including the
+301 redirects in `nginx-redirects.conf` that map the old Hugo URLs onto the
+current ones.
 
 ```bash
-npm run build:shaders
+docker build -t adityan-dev .
+docker run -p 8080:80 adityan-dev
 ```
-
-A hero opts in with `data-hero-canvas="hero"` or `data-hero-canvas="page"` on a
-`canvas.hero-canvas` — the variant picks the feature size and how far back it
-sits. It is decoration and it is optional: `script.js` only loads it on wide screens,
-with WebGPU present, and when the visitor has not asked for reduced motion.
 
 ## AI use
 A significant portion of the codebase was written by AI, the blogs were written by me. I think AI is a great tool and i believe the output generated here is not *slop*.

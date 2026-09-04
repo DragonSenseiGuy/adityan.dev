@@ -1,5 +1,4 @@
-// Theme toggle — stored choice wins, otherwise follow system preference.
-// The initial theme is applied by an inline script in <head> to avoid a flash.
+// Theme toggle. The initial theme is applied by an inline script in <head>.
 const themeToggle = document.querySelector('.theme-toggle');
 if (themeToggle) {
   themeToggle.addEventListener('click', () => {
@@ -32,9 +31,8 @@ document.querySelectorAll('[data-year]').forEach((el) => {
   el.textContent = new Date().getFullYear();
 });
 
-// Hero backdrops: a WebGPU contour field behind the page title, loaded only
-// where it is welcome. Every guard below is a reason not to download the
-// ~50 kB of shader runtime.
+// Hero backdrops. The shader runtime is ~50 kB, so it is only fetched when
+// every guard below passes.
 const heroCanvases = document.querySelectorAll('[data-hero-canvas]');
 if (
   heroCanvases.length &&
@@ -45,7 +43,6 @@ if (
   import('/hero-canvas.js')
     .then(({ startHeroCanvas }) => {
       heroCanvases.forEach((canvas) => {
-        // No adapter, no backdrop, no noise about it.
         startHeroCanvas(canvas).catch(() => canvas.remove());
       });
     })

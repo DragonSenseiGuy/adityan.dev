@@ -1,21 +1,14 @@
-// WebGPU hero backdrop. Loaded lazily by script.js, and only when the browser
-// has WebGPU and the visitor has not asked for reduced motion — the page is
-// designed to look finished without it.
+// WebGPU hero backdrop, loaded lazily by script.js. Decoration only.
 import { clock, effect, frameLoop, init, surface } from "vgpu";
 import source from "./hero.generated.wgsl";
 
 const INK = { dark: [0.93, 0.93, 0.93], light: [0.04, 0.04, 0.04] };
 
-// Field units per CSS pixel of hero height. Feature size is derived from the
-// canvas height rather than fixed, so a contour is the same size on the tall
-// homepage hero and on the short band above an interior page's title —
-// sampling those two shapes with one constant gives the short one a thin
-// horizontal slice of the field, which reads as a smudge rather than contours.
+// Field units per CSS pixel of hero height, so a contour is the same size on
+// the tall homepage hero and on the short interior band.
 const UNITS_PER_PX = 0.0024;
 
-// The two framings. The homepage hero is tall enough to hold the pattern
-// beside the headline; the interior heroes are a short band, so the field sits
-// further right and feathers on all four sides.
+// Per-hero framing: where the field sits and where it feathers out.
 const VARIANTS = {
   hero: {
     intensity: { dark: 0.75, light: 0.5 },
@@ -29,11 +22,8 @@ const VARIANTS = {
     fadeY: [0.6, 0.95],
     fadeTop: 0.12,
   },
-  // The contact hero carries a mailto link and a copy button below the lede,
-  // so it runs well past the ~200px other interior heroes stop at. fadeY is a
-  // fraction of this taller canvas, tuned so the field still fades out over
-  // the same absolute band (roughly where the lede ends) instead of bleeding
-  // down through the email address and button.
+  // Taller than the other interior heroes (mailto link and copy button below
+  // the lede), so fadeY is pulled up to fade over the same absolute band.
   contact: {
     intensity: { dark: 0.62, light: 0.42 },
     fadeX: [0.12, 0.55],
@@ -73,7 +63,7 @@ export async function startHeroCanvas(canvas) {
     });
   });
 
-  // The theme toggle flips a data attribute; follow it without re-creating anything.
+  // The theme toggle flips a data attribute; follow it without rebuilding.
   const themeObserver = new MutationObserver(() => {
     const mode = theme();
     backdrop.set({ params: { tint: INK[mode], intensity: variant.intensity[mode] } });
@@ -83,13 +73,12 @@ export async function startHeroCanvas(canvas) {
     attributeFilter: ["data-theme"],
   });
 
-  // Pre-warm the pipeline so the first frame doesn't hitch. A surface's own
-  // texture is only reachable inside a frame, so compile the signature instead.
+  // Pre-warm the pipeline so the first frame doesn't hitch. A surface texture
+  // is only reachable inside a frame, so compile the signature instead.
   await backdrop.compile({ colors: [navigator.gpu.getPreferredCanvasFormat()] });
 
-  // A frame-loop handle only stops; restarting means starting a new loop.
-  // Time is accumulated from clamped deltas rather than read from the clock, so
-  // pausing while offscreen resumes where it left off instead of jumping.
+  // Time accumulates from clamped deltas rather than the clock, so pausing
+  // offscreen resumes where it left off instead of jumping.
   const time = clock(gpu);
   let elapsed = 0;
   let loop = null;
@@ -103,7 +92,7 @@ export async function startHeroCanvas(canvas) {
         backdrop.set({ params: { time: elapsed } });
         frame.pass(view, backdrop);
       },
-      { fps: 30 }, // it is a backdrop; 30 is plenty and halves the GPU cost
+      { fps: 30 }, // a backdrop; 30 halves the GPU cost
     );
   };
 

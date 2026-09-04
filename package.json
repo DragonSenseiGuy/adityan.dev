@@ -3,18 +3,22 @@
   "version": "1.0.0",
   "description": "Personal website for adityan.dev",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "live-server --port=3000 --no-browser",
+    "dev": "npm run build && node scripts/dev.mjs",
     "start": "npm run dev",
-    "build:blog": "node scripts/build-blog.js",
-    "build:shaders": "node scripts/build-shaders.mjs"
+    "build": "node scripts/build.mjs"
   },
   "devDependencies": {
+    "@fontsource/geist-mono": "^5.3.0",
+    "@fontsource/geist-sans": "^5.3.0",
+    "@resvg/resvg-js": "^2.6.2",
     "@vgpu/wgsl": "^0.3.1",
     "@vgpu/wgsl-std": "^0.3.1",
     "esbuild": "^0.28.2",
     "live-server": "^1.2.2",
     "marked": "^18.0.6",
+    "satori": "^0.33.4",
     "vgpu": "^0.3.1"
   }
 }

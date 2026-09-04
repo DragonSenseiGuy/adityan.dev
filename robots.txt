@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /variations/
 
 Sitemap: https://adityan.dev/sitemap.xml

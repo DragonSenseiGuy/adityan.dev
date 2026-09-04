@@ -1,9 +1,4 @@
 .git
 node_modules
-variations
-scripts
-package.json
-package-lock.json
+dist
 README.md
-src
-shaders

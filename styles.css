@@ -1,9 +1,5 @@
-/* ============================================================
-   adityan.dev — design system
-   One continuous canvas, monochrome, Geist type, hairline rules.
-   Hierarchy comes from typography and spacing before surfaces.
-   Light theme via html[data-theme="light"].
-   ============================================================ */
+/* adityan.dev — design tokens and site styles. Light theme via
+   html[data-theme="light"]. */
 
 :root {
   /* surfaces and text */
@@ -23,7 +19,7 @@
   --font-sans: 'Geist', -apple-system, 'Segoe UI', 'Helvetica Neue', sans-serif;
   --font-mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
 
-  /* type roles — every size on the page comes from one of these */
+  /* type roles */
   --type-display: clamp(44px, 7vw, 76px);
   --type-page-title: clamp(34px, 5vw, 52px);
   --type-title: clamp(26px, 4vw, 38px);
@@ -57,8 +53,6 @@
   --space-16: 64px;
   --space-chapter: 88px;
 
-  /* Image edges get a translucent hairline, never a tinted neutral: a tinted
-     outline picks up the surface under it and reads as dirt on the edge. */
   --image-outline: oklch(1 0 0 / 0.1);
 
   --radius-sm: 6px;
@@ -131,8 +125,6 @@ main.container {
   padding-top: var(--space-16);
 }
 
-/* Section turns are the largest gap on the page; each section owns its own
-   internal rhythm and its children never add competing top margins. */
 section {
   margin: var(--space-chapter) 0;
 }
@@ -169,11 +161,9 @@ p {
   margin: var(--space-4) 0 0;
 }
 
-/* One underline treatment for every inline link in reading copy. */
 .lede a,
 .section-head p a,
-.prose a,
-.fact-list .value a {
+.prose a {
   color: var(--text-1);
   text-decoration: underline;
   text-decoration-color: var(--border-strong);
@@ -183,8 +173,7 @@ p {
 
 .lede a:hover,
 .section-head p a:hover,
-.prose a:hover,
-.fact-list .value a:hover {
+.prose a:hover {
   text-decoration-color: var(--text-1);
 }
 
@@ -240,8 +229,7 @@ p {
   transition: color 0.15s ease;
 }
 
-/* The visible link is ~25px tall; the target is grown vertically only, so
-   neighbouring links never claim each other's horizontal space. */
+/* Taller hit target, without widening into the neighbouring link. */
 .nav-links a::after {
   content: '';
   position: absolute;
@@ -284,17 +272,14 @@ p {
   inset: -4px;
 }
 
-/* Both icons stay in the DOM and cross-fade in place: swapping display
-   snaps, and the toggle is the one control whose state change is the
-   whole point of pressing it. */
+/* Both icons stay in the DOM and cross-fade in place. */
 .theme-toggle svg {
   position: absolute;
   inset: 0;
   margin: auto;
   width: 16px;
   height: 16px;
-  /* 2 on a 24 viewBox renders 1.33px at 16px; 2.25 lands on 1.5px, which
-     is the weight the 400-weight nav text beside it carries. */
+  /* 2.25 on a 24 viewBox renders 1.5px at 16px, matching the nav text. */
   stroke-width: 2.25;
   transition-property: opacity, scale, filter;
   transition-duration: 0.3s;
@@ -343,8 +328,7 @@ html[data-theme='light'] .theme-toggle .icon-moon {
   width: 14px;
   height: 14px;
   flex-shrink: 0;
-  /* Scaled to 14px, the authored stroke of 2 renders at 1.17px and goes
-     hairline next to 500-weight label text. 2.5 renders at ~1.46px. */
+  /* 2.5 on a 24 viewBox renders ~1.5px at 14px, matching the label. */
   stroke-width: 2.5;
 }
 
@@ -374,8 +358,7 @@ html[data-theme='light'] .theme-toggle .icon-moon {
   padding: var(--space-16) 0 var(--space-1);
 }
 
-/* WebGPU contour backdrop — decoration only, and absent unless script.js
-   decides the browser and the visitor's motion preference allow it. */
+/* WebGPU contour backdrop, added by script.js when the browser allows it. */
 .hero-canvas {
   position: absolute;
   inset: 0;
@@ -391,10 +374,8 @@ html[data-theme='light'] .theme-toggle .icon-moon {
   opacity: 1;
 }
 
-/* Interior heroes are a short band, so their canvas overhangs the section by
-   exactly the chapter gap that follows it — otherwise the field has nowhere to
-   go and reads as a strip. It stops where the next section starts, and sits
-   behind every layer (z-index: -1) so text is never drawn over. */
+/* Interior heroes are a short band, so their canvas overhangs into the
+   chapter gap that follows and sits behind every layer. */
 .page-hero .hero-canvas {
   inset: 0 0 auto;
   height: calc(100% + var(--space-chapter));
@@ -425,18 +406,6 @@ html[data-theme='light'] .theme-toggle .icon-moon {
   margin-top: var(--space-8);
 }
 
-.hero-meta {
-  margin-top: var(--space-12);
-  padding-top: var(--space-4);
-  border-top: 1px solid var(--border);
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2) var(--space-8);
-  font-family: var(--font-mono);
-  font-size: var(--type-metadata);
-  color: var(--text-3);
-}
-
 /* ---------- page hero (interior pages) ---------- */
 
 .page-hero {
@@ -463,8 +432,6 @@ html[data-theme='light'] .theme-toggle .icon-moon {
 }
 
 /* ---------- work list ---------- */
-/* Projects are peers on one grid: name and stack in a fixed label lane,
-   description in the reading lane, links in a shared action lane. */
 
 .work-list {
   border-top: 1px solid var(--border);
@@ -510,7 +477,6 @@ html[data-theme='light'] .theme-toggle .icon-moon {
   margin: 0;
 }
 
-/* Stack and links share one right-hand lane so every row lines up on it. */
 .work-aside {
   display: flex;
   flex-direction: column;
@@ -548,11 +514,11 @@ html[data-theme='light'] .theme-toggle .icon-moon {
 .work-links svg {
   width: 12px;
   height: 12px;
-  /* 3 on a 24 viewBox renders 1.5px at 12px, matching the label beside it. */
+  /* 3 on a 24 viewBox renders 1.5px at 12px, matching the label. */
   stroke-width: 3;
 }
 
-/* Whole-row link (home page) */
+/* Whole-row link */
 a.work-item:hover .work-name,
 a.work-item:focus-visible .work-name {
   text-decoration: underline;
@@ -582,36 +548,6 @@ a.work-item:focus-visible .work-name {
 .prose strong {
   color: var(--text-1);
   font-weight: var(--weight-medium);
-}
-
-/* ---------- fact list ---------- */
-
-.fact-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  border-top: 1px solid var(--border);
-}
-
-.fact-list li {
-  display: grid;
-  grid-template-columns: 140px minmax(0, 1fr);
-  align-items: baseline;
-  gap: var(--space-2) var(--space-6);
-  padding: var(--space-3) 0;
-  border-bottom: 1px solid var(--border);
-  font-size: var(--type-compact);
-}
-
-.fact-list .label {
-  font-family: var(--font-mono);
-  font-size: var(--type-metadata);
-  color: var(--text-3);
-}
-
-.fact-list .value {
-  color: var(--text-1);
-  min-width: 0;
 }
 
 /* ---------- blog list ---------- */
@@ -708,7 +644,6 @@ a.work-item:focus-visible .work-name {
   gap: var(--space-3);
 }
 
-/* Long-form reading copy carries the page, so it uses primary text. */
 .article-body p,
 .article-body li {
   color: var(--text-1);
@@ -827,9 +762,7 @@ a.work-item:focus-visible .work-name {
   transform: scaleX(1);
 }
 
-/* "Copy address" -> "Copied!" is a third narrower; the width is reserved up
-   front so the confirmation does not shrink the control out from under the
-   cursor. */
+/* Width reserved up front so "Copied!" does not shrink the control. */
 [data-copy-email] {
   justify-content: center;
   min-width: 140px;
@@ -879,7 +812,6 @@ a.work-item:focus-visible .work-name {
 }
 
 /* ---------- closing block ---------- */
-/* The page resolves in the reading lane, not in a centered box. */
 
 .closing {
   padding-top: var(--space-8);
@@ -919,12 +851,6 @@ a.work-item:focus-visible .work-name {
   margin: 0 0 var(--space-1);
 }
 
-.footer-tagline {
-  font-size: var(--type-compact);
-  color: var(--text-3);
-  margin: 0;
-}
-
 .socials {
   display: flex;
   gap: var(--space-2);
@@ -946,8 +872,7 @@ a.work-item:focus-visible .work-name {
   color: var(--text-1);
 }
 
-/* 32px control, 40px target; the 8px gap is spent exactly, so adjacent
-   targets abut without overlapping. */
+/* 32px control, 40px target. */
 .socials a::after {
   content: '';
   position: absolute;
@@ -1004,11 +929,6 @@ a.work-item:focus-visible .work-name {
 
   .post-row,
   .channel {
-    grid-template-columns: minmax(0, 1fr);
-    gap: var(--space-1);
-  }
-
-  .fact-list li {
     grid-template-columns: minmax(0, 1fr);
     gap: var(--space-1);
   }
