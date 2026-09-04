@@ -1,25 +1,13 @@
-// Scroll reveal — skipped entirely when the user prefers reduced motion
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-if (!prefersReducedMotion && 'IntersectionObserver' in window) {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
-  );
-
-  document.querySelectorAll('.reveal').forEach((el, i) => {
-    el.style.transitionDelay = `${Math.min(i % 4, 3) * 0.07}s`;
-    observer.observe(el);
+// Theme toggle. The initial theme is applied by an inline script in <head>.
+const themeToggle = document.querySelector('.theme-toggle');
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    const next = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+    document.documentElement.dataset.theme = next;
+    try {
+      localStorage.setItem('theme', next);
+    } catch {}
   });
-} else {
-  document.querySelectorAll('.reveal').forEach((el) => el.classList.add('visible'));
 }
 
 // Copy email to clipboard (contact page)
@@ -28,7 +16,7 @@ if (copyBtn) {
   copyBtn.addEventListener('click', async () => {
     try {
       await navigator.clipboard.writeText(copyBtn.dataset.copyEmail);
-      const label = copyBtn.querySelector('.cc-value');
+      const label = copyBtn.querySelector('[data-copy-label]') || copyBtn;
       const original = label.textContent;
       label.textContent = 'Copied!';
       setTimeout(() => { label.textContent = original; }, 1600);
@@ -42,3 +30,21 @@ if (copyBtn) {
 document.querySelectorAll('[data-year]').forEach((el) => {
   el.textContent = new Date().getFullYear();
 });
+
+// Hero backdrops. The shader runtime is ~150 kB minified, so it is only
+// fetched when every guard below passes.
+const heroCanvases = document.querySelectorAll('[data-hero-canvas]');
+if (
+  heroCanvases.length &&
+  navigator.gpu &&
+  window.matchMedia('(min-width: 768px)').matches &&
+  !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+) {
+  import('/hero-canvas.js')
+    .then(({ startHeroCanvas }) => {
+      heroCanvases.forEach((canvas) => {
+        startHeroCanvas(canvas).catch(() => canvas.remove());
+      });
+    })
+    .catch(() => heroCanvases.forEach((canvas) => canvas.remove()));
+}
