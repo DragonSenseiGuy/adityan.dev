@@ -27,13 +27,13 @@ export const element = (
   <Document
     path={path}
     title="Aditya N (DragonSenseiGuy)"
-    description="Aditya N, also known as DragonSenseiGuy or dsg, is a  developer in Boston building AI tools, Slack bots, and self-hosted apps."
+    description="Aditya N, also known as DragonSenseiGuy or dsg, is a developer in Boston building AI tools, Slack bots, and self-hosted apps."
     ogDescription="Aditya N , developer building AI tools, Slack bots, and self-hosted apps."
     jsonLd={jsonLd}
   >
     <main class="container">
       <Hero variant="hero" title={'Aditya N'}>
-        <p class="lede">i am a teenager and student developer in boston, building robots, tools, and websites with <a href="https://hackclub.com">hack club</a>. i work mostly in python and javascript. when i am off the clock i mess around with servers and build fun projects.</p>
+        <p class="lede">i am a developer in boston, building robots, tools, and websites with <a href="https://hackclub.com">hack club</a>. i work mostly in python and javascript. when i am off the clock i mess around with servers and build fun projects.</p>
         <div class="hero-actions">
           <a class="btn btn-solid" href="/projects">See my projects <ArrowRightIcon /></a>
           <a class="btn btn-ghost" href="/contact">Get in touch</a>
@@ -54,7 +54,7 @@ export const element = (
           </div>
           <div class="prose">
             <p>i go by dragon or dsg around the internet. most of what i make exists because something annoyed me enough that i figured it would be cheaper for me to build it myself.</p>
-            <p>i spend a lot of time in the hack club community, building things alongside other teenage makers. away from all that, i run a homelab and agent servers off old laptops i have.</p>
+            <p>i spend a lot of time in the hack club community, building things alongside other makers. away from all that, i run a homelab and agent servers off old laptops i have.</p>
             <p><a href="/about">More about me</a></p>
           </div>
         </div>

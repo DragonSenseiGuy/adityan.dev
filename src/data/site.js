@@ -61,9 +61,9 @@ export const person = {
   alternateName: ['DragonSenseiGuy', 'Dragon Sensei Guy', 'Dragon', 'Aditya'],
   url: url('/'),
   email: 'hey@adityan.dev',
-  jobTitle: 'Student Developer',
+  jobTitle: 'Developer',
   description:
-    'Aditya N (DragonSenseiGuy) is a student developer at Hack Club building AI developer tools, Slack bots, and self-hosted apps.',
+    'Aditya N (DragonSenseiGuy) is a developer building AI developer tools, Slack bots, and self-hosted apps.',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Boston',

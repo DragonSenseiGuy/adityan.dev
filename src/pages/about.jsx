@@ -36,7 +36,7 @@ export const element = (
             <h2 class="section-title">Background</h2>
           </div>
           <div class="prose">
-            <p>Most of what I make exists because something else annoyed me, and I figured I could make it myself and make it better suited for myself. Much of it happens through <strong>Hack Club</strong>, a worldwide community of teenage makers</p>
+            <p>Most of what I make exists because something else annoyed me, and I figured I could make it myself and make it better suited for myself. Much of it happens through <strong>Hack Club</strong>, a worldwide community of makers</p>
             <p>Latest example: <a href="https://github.com/DragonSenseiGuy/hack-review" target="_blank" rel="noopener">Hack Review</a>. CodeRabbit charges for code review, so I built my own GitHub App that does it automatically. And <a href="https://github.com/DragonSenseiGuy/kira" target="_blank" rel="noopener">Kira</a>, a Vue chat app for language models, because I wanted the interface to look like how i wanted it to look.</p>
             <p>Away from AI, I just like messing around with servers. I run a homelab off an old laptop and built <a href="https://github.com/DragonSenseiGuy/smart-RSS" target="_blank" rel="noopener">Smart RSS</a>, a minimalist feed aggregator, to go with it (this project has now been sunset).</p>
           </div>

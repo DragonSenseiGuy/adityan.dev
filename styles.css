@@ -973,6 +973,26 @@ a.work-item:focus-visible .work-name {
   }
 }
 
+@media (max-width: 360px) {
+  .nav-inner {
+    padding: 0 var(--space-2);
+    gap: var(--space-1);
+  }
+
+  .brand {
+    font-size: 16px;
+  }
+
+  .nav-links {
+    gap: 0;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+    padding: var(--space-1) var(--space-1);
+  }
+}
+
 /* ---------- reduced motion ---------- */
 
 @media (prefers-reduced-motion: reduce) {
