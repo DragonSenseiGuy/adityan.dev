@@ -4,15 +4,26 @@
 // default.conf's try_files and the shared redirect table, so what you see
 // locally is what the deployed site does.
 //   node scripts/dev.mjs
-import { existsSync, statSync } from 'node:fs';
+import { existsSync, readFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import liveServer from 'live-server';
+import { acceptsMarkdown } from './negotiate.mjs';
 import { matchers } from './redirects.mjs';
 
 const dist = fileURLToPath(new URL('../dist/', import.meta.url));
 
 const isFile = (path) => existsSync(path) && statSync(path).isFile();
+
+// live-server would serve a .md file through its own static module; setting
+// the Markdown content type ourselves keeps local negotiation honest (nginx
+// gets it from mime.types).
+const sendMarkdown = (res, status, file) => {
+  res.writeHead(status, { 'Content-Type': 'text/markdown; charset=utf-8' });
+  res.end(readFileSync(file));
+};
+
+const wantsMarkdown = (req) => acceptsMarkdown(req.headers.accept);
 
 // nginx serves an error page as the *body of the error*, so it keeps the error
 // status. serve-static would send our 404.html with a 200; force the status
@@ -37,14 +48,28 @@ const routes = (req, res, next) => {
   // /404 and /500 aren't real routes in production — they're what nginx
   // returns for a missing page or a backend failure. Serve them here so the
   // pages can actually be previewed, with the status they'd really carry.
+  // Markdown negotiators get the Markdown 404 body, like production does.
   const preview = path.match(/^\/(404|500)$/);
   if (preview) {
+    if (Number(preview[1]) === 404 && wantsMarkdown(req) && isFile(join(dist, '404.md'))) {
+      return sendMarkdown(res, 404, join(dist, '404.md'));
+    }
     req.url = `/${preview[1]}.html`;
     withStatus(res, Number(preview[1]));
     return next();
   }
 
   const target = path === '/' ? '/index.html' : path;
+
+  // Mirror default.conf's try_files $uri.$layout ...: an agent that asked for
+  // text/markdown gets the page's .md twin when one exists, everyone else
+  // gets HTML.
+  if (wantsMarkdown(req)) {
+    if (isFile(join(dist, `${target}.md`))) return sendMarkdown(res, 200, join(dist, `${target}.md`));
+    if (target === '/index.html' && isFile(join(dist, 'index.md'))) {
+      return sendMarkdown(res, 200, join(dist, 'index.md'));
+    }
+  }
 
   // Mirrors default.conf's `try_files $uri.html $uri`: prefer the .html file
   // on disk so a directory of the same name (dist/blog/) never shadows
@@ -55,6 +80,15 @@ const routes = (req, res, next) => {
   }
   if (isFile(join(dist, target))) return next();
 
+  // A miss follows the 404 in the format the client asked for. Markdown
+  // responses are sent by hand (live-server's static handler can't set the
+  // status we preview); HTML keeps flowing through live-server so the page
+  // still gets its livereload script.
+  if (wantsMarkdown(req)) {
+    if (isFile(join(dist, '404.md'))) return sendMarkdown(res, 404, join(dist, '404.md'));
+    res.writeHead(404, { 'Content-Type': 'text/markdown; charset=utf-8' });
+    return res.end('# 404 — Page not found\n\nThis page does not exist on adityan.dev. Try https://adityan.dev/ or https://adityan.dev/llms.txt.\n');
+  }
   req.url = '/404.html';
   withStatus(res, 404);
   next();

@@ -907,6 +907,13 @@ a.work-item:focus-visible .work-name {
   color: var(--text-1);
 }
 
+/* The copyright row holds two links now (Privacy + GitHub); they run as one
+   group, visually indistinguishable from the old single link. */
+.footer-links {
+  display: flex;
+  gap: var(--space-4);
+}
+
 /* ---------- responsive ---------- */
 
 @media (max-width: 860px) {

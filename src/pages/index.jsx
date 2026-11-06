@@ -1,7 +1,7 @@
 import { Document } from '../components/layout.jsx';
 import { Hero, SectionHead, WorkList, Closing } from '../components/sections.jsx';
 import { ArrowRightIcon } from '../components/icons.jsx';
-import { site, person, url } from '../data/site.js';
+import { site, person, organization, keywords, url } from '../data/site.js';
 import { featured } from '../data/projects.js';
 
 const jsonLd = {
@@ -13,9 +13,15 @@ const jsonLd = {
       name: site.name,
       alternateName: ['DragonSenseiGuy', 'Dragon Sensei Guy'],
       url: url('/'),
+      // The product terms brand searches are tested against; the visible copy
+      // below uses the same words.
+      keywords,
       publisher: { '@id': url('/#person') },
     },
     { ...person, '@id': url('/#person') },
+    // Contact point + address are what agents look for to verify this is a
+    // real person/site and to answer contact queries.
+    { ...organization, '@id': url('/#organization') },
   ],
 };
 
@@ -26,14 +32,14 @@ export const og = { title: 'Aditya N', meta: 'Developer · Boston' };
 export const element = (
   <Document
     path={path}
-    title="Aditya N (DragonSenseiGuy)"
-    description="Aditya N, also known as DragonSenseiGuy or dsg, is a developer in Boston building AI tools, Slack bots, and self-hosted apps."
+    title="Aditya N (DragonSenseiGuy) — Slack bots, Python, and AI tools"
+    description="Aditya N, also known as DragonSenseiGuy or dsg, is a developer in Boston building Slack bots, AI developer tools, and self-hosted apps in Python and JavaScript."
     ogDescription="Aditya N , developer building AI tools, Slack bots, and self-hosted apps."
     jsonLd={jsonLd}
   >
     <main class="container">
       <Hero variant="hero" title={'Aditya N'}>
-        <p class="lede">i am a developer in boston, building robots, tools, and websites with <a href="https://hackclub.com">hack club</a>. i work mostly in python and javascript. when i am off the clock i mess around with servers and build fun projects.</p>
+        <p class="lede">i am a developer in boston, building robots, slack bots, and websites with <a href="https://hackclub.com">hack club</a>. i work mostly in python and javascript. when i am off the clock i mess around with servers and build fun projects.</p>
         <div class="hero-actions">
           <a class="btn btn-solid" href="/projects">See my projects <ArrowRightIcon /></a>
           <a class="btn btn-ghost" href="/contact">Get in touch</a>

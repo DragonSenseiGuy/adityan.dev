@@ -42,10 +42,47 @@ export const absoluteUrl = (href) => (/^https?:\/\//.test(href) ? href : url(hre
 // A post's card: its own `ogImage` if it set one, otherwise the generated card.
 export const cardFor = (post, path) => (post.ogImage ? absoluteUrl(post.ogImage) : ogImageFor(path));
 
+// The words to be found next to the brand: search engines and agent-audit
+// tools take product terms from the homepage's JSON-LD keywords/knowsAbout
+// and the meta keywords tag, so they are listed in both, and the homepage
+// copy uses the same words. Keep this list and the homepage in sync.
+export const keywords = [
+  'Slack bots', 'Python', 'AI developer tools', 'GitHub Apps',
+  'LLM APIs', 'Vue', 'self-hosted apps', 'homelab', 'Boston',
+];
+
 export const socials = {
   github: 'https://github.com/DragonSenseiGuy/',
   linkedin: 'https://www.linkedin.com/in/adityaneni/',
   discord: 'https://discord.com/users/1374119550467051542',
+};
+
+// The Organization node the homepage graph carries. Verified entities have a
+// real address and a way to be contacted, so an agent can answer "who runs
+// this" and "how do I reach them" without leaving the page.
+export const organization = {
+  '@type': 'Organization',
+  name: 'Aditya N (DragonSenseiGuy)',
+  url: url('/'),
+  email: site.email,
+  description:
+    'Aditya N (DragonSenseiGuy) builds AI developer tools, Slack bots, GitHub Apps, and self-hosted apps in Python and JavaScript.',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Boston',
+    addressRegion: 'MA',
+    addressCountry: 'US',
+  },
+  contactPoint: [
+    {
+      '@type': 'ContactPoint',
+      contactType: 'customer support',
+      email: site.email,
+      availableLanguage: 'English',
+    },
+  ],
+  knowsAbout: keywords,
+  sameAs: Object.values(socials),
 };
 
 export const navLinks = [

@@ -8,7 +8,8 @@ import { buildShaders } from './build-shaders.mjs';
 import { loadModules, render, OG_SHIM } from './render.mjs';
 import { renderCard } from './og.mjs';
 import { loadCardImage } from './image.mjs';
-import { robots, rss, sitemap } from './feeds.mjs';
+import { robots, rss, sitemap, llms } from './feeds.mjs';
+import { mdFileFor, pageMarkdown, postMarkdown, notFoundMarkdown } from './markdown.mjs';
 import { nginxConf } from './redirects.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
@@ -82,6 +83,15 @@ write(
 );
 write('feed.xml', rss({ site, posts }));
 write('robots.txt', robots({ site }));
+write('llms.txt', llms({ site, posts }));
+
+// Agent-facing Markdown copies: every indexable page, every post, and the
+// 404's own error body. nginx serves these when a client asks for
+// Accept: text/markdown (see default.conf).
+const indexablePages = pages.filter((page) => !page.noindex);
+for (const page of indexablePages) write(mdFileFor(page.path), pageMarkdown(page));
+for (const post of posts) write(mdFileFor(`/blog/${post.slug}`), postMarkdown(post));
+write('404.md', notFoundMarkdown(site));
 
 for (const asset of ASSETS) cpSync(join(root, asset), join(dist, asset));
 
@@ -91,4 +101,6 @@ writeFileSync(join(root, 'nginx-redirects.conf'), nginxConf());
 
 await shaders;
 
-console.log(`Built ${pages.length} pages, ${posts.length} posts, ${cards.length} social cards -> dist/`);
+console.log(
+  `Built ${pages.length} pages, ${posts.length} posts, ${cards.length} social cards, ${indexablePages.length} Markdown pages, llms.txt -> dist/`
+);
