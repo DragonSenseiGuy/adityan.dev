@@ -50,7 +50,6 @@ const routes = (req, res, next) => {
   // /404 and /500 aren't real routes in production — they're what nginx
   // returns for a missing page or a backend failure. Serve them here so the
   // pages can actually be previewed, with the status they'd really carry.
-  // Markdown negotiators get the Markdown 404 body, like production does.
   const preview = path.match(/^\/(404|500)$/);
   if (preview) {
     if (preview[1] === '404' && wantsMarkdown(req)) return serveMarkdown(res, 404, notFoundMarkdown(site));

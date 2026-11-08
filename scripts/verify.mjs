@@ -1,11 +1,10 @@
-// Verification for the agent-readiness features: Markdown negotiation, the
+// Verification for the agent-readiness behaviour: Markdown negotiation, the
 // agent-friendly 404, llms.txt, brand keywords, Organization schema, and the
-// privacy page. Runs with node --test scripts/verify.mjs after a build.
+// privacy page. These tests pin the files and data the deployed HTTP
+// behaviour is made of; the nginx half itself is checked against the built
+// Docker image by hand (no automated e2e exists in this repo).
 //
 //   npm run build && npm run verify
-//
-// The end-to-end HTTP behaviour (the nginx half) is checked against the built
-// Docker image; these tests pin the files and data that behaviour is made of.
 import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { test } from 'node:test';
@@ -18,8 +17,7 @@ const dist = join(root, 'dist');
 const read = (file) => readFileSync(join(dist, file), 'utf8');
 
 test('Accept negotiation agrees with the nginx map', () => {
-  // MarkDown now exported, '~*' makes nginx case-insensitive, and the JS side
-  // matches so the site behaves the same locally vs deployed.
+  // nginx's ~* is case-insensitive; the JS matcher matches.
   assert.equal(acceptsMarkdown('text/markdown'), true);
   assert.equal(acceptsMarkdown('text/markdown, text/html'), true);
   assert.equal(acceptsMarkdown('Text/Markdown'), true);
@@ -27,7 +25,6 @@ test('Accept negotiation agrees with the nginx map', () => {
   assert.equal(acceptsMarkdown('text/html'), false);
   assert.equal(acceptsMarkdown(''), false);
   assert.equal(acceptsMarkdown(undefined), false);
-  // A close-but-not-it type must not leak into the Markdown branch.
   assert.equal(acceptsMarkdown('text/markdown-x'), false);
 });
 
@@ -38,7 +35,6 @@ test('mdFileFor mirrors fileFor()', () => {
   assert.equal(mdFileFor('/privacy'), 'privacy.md');
 });
 
-// -- 1. agent-friendly 404 ----------------------------------------------------
 test('404 has a Markdown body with recovery links', () => {
   const md = read('404.md');
   assert.ok(md.startsWith('# 404'), 'starts with a title');
@@ -47,12 +43,10 @@ test('404 has a Markdown body with recovery links', () => {
   assert.match(md, /llms\.txt/, 'links llms.txt');
 });
 
-// -- 2. Markdown content negotiation ------------------------------------------
 test('the homepage ships a Markdown twin', () => {
   const md = read('index.md');
   assert.ok(md.length > 200, 'nonempty, real content');
   assert.ok(md.startsWith('# Aditya N'), 'starts with the page title');
-  // The brand words the audit searches for must be on the page itself.
   assert.match(md, /[Ss]lack bots/);
   assert.match(md, /[Pp]ython/);
 });
@@ -71,8 +65,6 @@ test('every indexable page and post has an .md twin', async () => {
     const file = mdFileFor(`/blog/${post.slug}`);
     const md = read(file);
     assert.ok(md.includes(`# ${post.title} —`), `${file} carries the post title`);
-    // The body survives; a post that restates its own title as an H1 must not
-    // appear twice in the copy.
     const first = post.markdown.trim().split('\n').find((l) => l.trim() && !l.startsWith('#'));
     assert.ok(first && md.includes(first), `${file} round-trips the source Markdown`);
     const escaped = post.title.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -136,7 +128,6 @@ test('Vary: Accept is a server-level header', () => {
   assert.match(headers, /add_header Vary "Accept" always;/);
 });
 
-// -- 3. brand discoverability --------------------------------------------------
 test('homepage JSON-LD and meta keywords carry the product terms', async () => {
   const site = await import(`${import.meta.dirname}/../src/data/site.js`);
   assert.ok(Array.isArray(site.keywords) && site.keywords.includes('Slack bots'));
@@ -144,12 +135,10 @@ test('homepage JSON-LD and meta keywords carry the product terms', async () => {
   const home = read('index.html');
   assert.match(home, /<meta name="keywords" content="[^"]*Slack bots[^"]*"/);
   assert.match(home, /<title>[^<]*Slack bots[^<]*<\/title>/, 'the title names the product');
-  // ..and the visible copy uses the same words.
   assert.match(home, /slack bots/i);
   assert.match(home, /python/i);
 });
 
-// -- 5. Organization schema -----------------------------------------------------
 test('Organization schema has contactPoint and address', async () => {
   const { organization } = await import(`${import.meta.dirname}/../src/data/site.js`);
   const contact = organization.contactPoint?.[0];
@@ -166,7 +155,6 @@ test('Organization schema has contactPoint and address', async () => {
   assert.equal(org.address?.['@type'], 'PostalAddress', 'published address');
 });
 
-// -- 4. llms.txt ----------------------------------------------------------------
 test('llms.txt tells agents when to use the site', () => {
   const llms = read('llms.txt');
   assert.ok(llms.startsWith(`# ${'Aditya N'} — adityan.dev`), 'starts with the H1 title');
@@ -179,7 +167,6 @@ test('llms.txt tells agents when to use the site', () => {
   assert.ok(llms.split('\n').filter((line) => /^\s*- \[/.test(line)).length >= 10, 'link lists present');
 });
 
-// -- 6. trust anchor page --------------------------------------------------------
 test('privacy page is real content, not a stub', async () => {
   const html = read('privacy.html');
   const text = html
@@ -191,7 +178,6 @@ test('privacy page is real content, not a stub', async () => {
   assert.match(text, /cookies/i);
   assert.match(text, /localStorage/);
   assert.ok(existsSync(join(dist, 'og', 'privacy.png')), 'privacy page gets a social card');
-  // The build's sitemap includes it.
   const sitemap = read('sitemap.xml');
   assert.match(sitemap, /<loc>https:\/\/[^/]+\/privacy<\/loc>/);
 });

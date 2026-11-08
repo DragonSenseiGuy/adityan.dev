@@ -86,9 +86,6 @@ write('feed.xml', rss({ site, posts }));
 write('robots.txt', robots({ site }));
 write('llms.txt', llms({ site, posts }));
 
-// Agent-facing Markdown copies: every indexable page, every post, and the
-// 404's own error body. nginx serves these when a client asks for
-// Accept: text/markdown (see default.conf).
 const indexablePages = pages.filter((page) => !page.noindex);
 for (const page of indexablePages) write(mdFileFor(page.path), pageMarkdown(page));
 for (const post of posts) write(mdFileFor(`/blog/${post.slug}`), postMarkdown(post));

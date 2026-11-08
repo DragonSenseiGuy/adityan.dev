@@ -53,7 +53,6 @@ export const keywords = [
   'LLM APIs', 'Vue', 'self-hosted apps', 'homelab', 'Boston',
 ];
 
-// ['a', 'b', 'c'] -> 'a, b, and c'
 export const oxford = (items) => `${items.slice(0, -1).join(', ')}, and ${items.at(-1)}`;
 
 export const specialties = ['AI developer tools', 'Slack bots', 'GitHub Apps', 'self-hosted apps'];

@@ -13,14 +13,10 @@ const jsonLd = {
       name: site.name,
       alternateName: ['DragonSenseiGuy', 'Dragon Sensei Guy'],
       url: url('/'),
-      // The product terms brand searches are tested against; the visible copy
-      // below uses the same words.
       keywords,
       publisher: { '@id': url('/#person') },
     },
     { ...person, '@id': url('/#person') },
-    // Contact point + address are what agents look for to verify this is a
-    // real person/site and to answer contact queries.
     { ...organization, '@id': url('/#organization') },
   ],
 };
@@ -35,8 +31,6 @@ export const element = (
     title="Aditya N (DragonSenseiGuy) — Slack bots, Python, and AI tools"
     description="Aditya N, also known as DragonSenseiGuy or dsg, is a developer in Boston building Slack bots, AI developer tools, and self-hosted apps in Python and JavaScript."
     og={og}
-    title="Aditya N (DragonSenseiGuy) — Slack bots, Python, and AI tools"
-    description="Aditya N, also known as DragonSenseiGuy or dsg, is a developer in Boston building Slack bots, AI developer tools, and self-hosted apps in Python and JavaScript."
     ogDescription={`Aditya N, developer in Boston building ${oxford(specialties)} in ${stack.join(' and ')}.`}
     jsonLd={jsonLd}
   >
