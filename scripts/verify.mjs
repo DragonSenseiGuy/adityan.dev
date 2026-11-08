@@ -10,7 +10,7 @@ import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { acceptsMarkdown } from './negotiate.mjs';
+import { acceptsMarkdown, MARKDOWN } from './negotiate.mjs';
 import { mdFileFor } from './markdown.mjs';
 
 const root = join(import.meta.dirname, '..');
@@ -18,11 +18,11 @@ const dist = join(root, 'dist');
 const read = (file) => readFileSync(join(dist, file), 'utf8');
 
 test('Accept negotiation agrees with the nginx map', () => {
-  // The `map $http_accept` blocks in default.conf must answer the same way
-  // this function does, or the site behaves differently locally vs deployed.
+  // MarkDown now exported, '~*' makes nginx case-insensitive, and the JS side
+  // matches so the site behaves the same locally vs deployed.
   assert.equal(acceptsMarkdown('text/markdown'), true);
   assert.equal(acceptsMarkdown('text/markdown, text/html'), true);
-  assert.equal(acceptsMarkdown('Text/Markdown'.toLowerCase()), true);
+  assert.equal(acceptsMarkdown('Text/Markdown'), true);
   assert.equal(acceptsMarkdown('*/*'), false);
   assert.equal(acceptsMarkdown('text/html'), false);
   assert.equal(acceptsMarkdown(''), false);
@@ -73,17 +73,24 @@ test('every indexable page and post has an .md twin', async () => {
 });
 
 test('nginx negotiates markdown and keeps HTML untouched', () => {
+  // The maps are generated from scripts/negotiate.mjs (the same rule the dev
+  // middleware and these tests call); this pins the generated artifact and
+  // how default.conf consumes it.
+  const negotiate = readFileSync(join(root, 'nginx-negotiate.conf'), 'utf8');
   const conf = readFileSync(join(root, 'default.conf'), 'utf8');
-  assert.match(conf, /map \$http_accept \$layout/, 'Accept → extension map');
-  assert.match(conf, /"~\*\\btext\/markdown\(\?!\[\\w\/-\]\)"  md;/, 'text/markdown triggers md');
+  const docker = readFileSync(join(root, 'Dockerfile'), 'utf8');
+  assert.match(negotiate, /map \$http_accept \$layout/, 'Accept → extension map');
+  assert.match(negotiate, /map \$http_accept \$notfound/, 'Accept → 404-body map');
+  assert.ok(negotiate.includes(`"~*${MARKDOWN}" md;`), 'the map carries the exported rule');
+  assert.ok(negotiate.includes(`"~*${MARKDOWN}" /404.md;`), 'Markdown errors use 404.md');
   assert.match(conf, /try_files \/index\.\$layout =404;/, 'homepage tries the negotiated copy');
   assert.match(conf, /try_files \$uri\.\$layout \$uri\.html \$uri =404;/, 'extensionless routes fall through md → html');
   assert.match(conf, /error_page 404 \$notfound;/, 'the 404 body follows Accept');
-  assert.match(conf, /"~\*\\btext\/markdown\(\?!\[\\w\/-\]\)"  \/404\.md;/, 'Markdown errors use 404.md');
   assert.match(conf, /location = \/404\.md \{ internal; \}/, '404.md is an error body only');
+  assert.match(docker, /nginx-negotiate\.conf.*conf\.d/, 'the image installs the generated maps');
   // The Dockerfile maps .md -> text/markdown in the image's mime.types; nginx
   // ships no such entry by default.
-  assert.match(readFileSync(join(root, 'Dockerfile'), 'utf8'), /text\/markdown md;/);
+  assert.match(docker, /text\/markdown md;/);
   assert.ok(conf.includes('text/markdown'), 'gzip_types includes text/markdown');
 });
 
