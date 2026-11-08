@@ -1,7 +1,7 @@
 import { Document } from '../components/layout.jsx';
 import { Hero, SectionHead, WorkList, Closing } from '../components/sections.jsx';
 import { ArrowRightIcon } from '../components/icons.jsx';
-import { site, person, organization, keywords, url } from '../data/site.js';
+import { site, person, organization, keywords, oxford, specialties, stack, url } from '../data/site.js';
 import { featured } from '../data/projects.js';
 
 const jsonLd = {
@@ -34,7 +34,10 @@ export const element = (
     path={path}
     title="Aditya N (DragonSenseiGuy) — Slack bots, Python, and AI tools"
     description="Aditya N, also known as DragonSenseiGuy or dsg, is a developer in Boston building Slack bots, AI developer tools, and self-hosted apps in Python and JavaScript."
-    ogDescription="Aditya N , developer building AI tools, Slack bots, and self-hosted apps."
+    og={og}
+    title="Aditya N (DragonSenseiGuy) — Slack bots, Python, and AI tools"
+    description="Aditya N, also known as DragonSenseiGuy or dsg, is a developer in Boston building Slack bots, AI developer tools, and self-hosted apps in Python and JavaScript."
+    ogDescription={`Aditya N, developer in Boston building ${oxford(specialties)} in ${stack.join(' and ')}.`}
     jsonLd={jsonLd}
   >
     <main class="container">
