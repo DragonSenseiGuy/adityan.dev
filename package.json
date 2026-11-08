@@ -7,7 +7,9 @@
   "scripts": {
     "dev": "npm run build && node scripts/dev.mjs",
     "start": "npm run dev",
-    "build": "node scripts/build.mjs"
+    "build": "node scripts/build.mjs",
+    "verify": "node --test scripts/verify.mjs",
+    "test": "npm run build && npm run verify"
   },
   "devDependencies": {
     "@fontsource/geist-mono": "^5.3.0",

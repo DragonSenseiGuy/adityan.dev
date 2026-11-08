@@ -8,8 +8,10 @@ import { buildShaders } from './build-shaders.mjs';
 import { loadModules, render, OG_SHIM } from './render.mjs';
 import { renderCard } from './og.mjs';
 import { loadCardImage } from './image.mjs';
-import { robots, rss, sitemap } from './feeds.mjs';
+import { robots, rss, sitemap, llms } from './feeds.mjs';
+import { mdFileFor, pageMarkdown, postMarkdown, notFoundMarkdown } from './markdown.mjs';
 import { nginxConf } from './redirects.mjs';
+import { ngConf } from './negotiate.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const dist = join(root, 'dist');
@@ -82,13 +84,24 @@ write(
 );
 write('feed.xml', rss({ site, posts }));
 write('robots.txt', robots({ site }));
+write('llms.txt', llms({ site, posts }));
+
+const indexablePages = pages.filter((page) => !page.noindex);
+for (const page of indexablePages) write(mdFileFor(page.path), pageMarkdown(page));
+for (const post of posts) write(mdFileFor(`/blog/${post.slug}`), postMarkdown(post));
+write('404.md', notFoundMarkdown(site));
 
 for (const asset of ASSETS) cpSync(join(root, asset), join(dist, asset));
 
-// Outside dist/, so it is never served as a static file. The Dockerfile copies
-// it out of the build stage into /etc/nginx/snippets/.
+// Outside dist/, so they are never served as static files. The Dockerfile
+// copies the redirects out of the build stage into /etc/nginx/snippets/, and
+// the negotiation maps into conf.d/ (map is an http{} directive, and the 00-
+// prefix sorts it before default.conf, which reads its variables).
 writeFileSync(join(root, 'nginx-redirects.conf'), nginxConf());
+writeFileSync(join(root, 'nginx-negotiate.conf'), ngConf());
 
 await shaders;
 
-console.log(`Built ${pages.length} pages, ${posts.length} posts, ${cards.length} social cards -> dist/`);
+console.log(
+  `Built ${pages.length} pages, ${posts.length} posts, ${cards.length} social cards, ${indexablePages.length} Markdown pages, llms.txt -> dist/`
+);

@@ -1,5 +1,6 @@
 node_modules/
 src/hero.generated.wgsl
 nginx-redirects.conf
+nginx-negotiate.conf
 dist/
 DEPLOY.md

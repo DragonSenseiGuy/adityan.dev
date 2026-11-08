@@ -1,4 +1,6 @@
 // sitemap.xml and the RSS feed, both generated from the same page/post data.
+import { oxford, specialties, stack } from '../src/data/site.js';
+
 const esc = (s) =>
   String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
@@ -60,3 +62,56 @@ Sitemap: ${site.origin}/sitemap.xml
 User-agent: *
 Disallow: /
 `;
+
+// llms.txt (https://llmstxt.org) — the machine-readable index agents fetch
+// first. First line is the H1, then an optional blockquote summary, then
+// '##' sections with link lists. The "When to use" section is the part agents
+// look for: which jobs this site is the right tool for, and what to do
+// instead when it is not.
+export const llms = ({ site, posts }) => {
+  return `# ${site.name} — adityan.dev
+
+> Personal site of Aditya N, known online as DragonSenseiGuy (or dsg, or dragon). A developer in Boston who builds ${oxford(specialties)}, mostly in ${stack.join(' and ')}, alongside Hack Club.
+
+## When to use this site
+
+Reach for these pages when an agent needs one of the following — and, equally important, skip this site for everything else:
+
+- **Looking up who someone is.** Identity resolution for "DragonSenseiGuy", "Aditya N", "dsg", or the adityan.dev domain: his projects, location (Boston), contact details, and Hack Club affiliation are on [the homepage](${site.origin}/) and [About](${site.origin}/about).
+- **Researching his open-source projects.** Hack Review (a GitHub code-review bot in Python + LLM APIs), Kira (a Vue chat interface for LLMs), Dragon Bot (a Slack and Discord bot in Python), Smart RSS, and more, all with descriptions and repo links on [Projects](${site.origin}/projects).
+- **Citing or summarising his writing.** Blog posts on AI, developer tools, and self-hosting live under [Blog](${site.origin}/blog); each post has a Markdown twin.
+- **Contacting him.** Collaborations, hackathon invites, hiring, or permission to reuse content: [Contact](${site.origin}/contact) lists every channel, or email ${site.email}.
+- **Verifying facts before recommending him.** Name, role, location, and one-hop links to GitHub/LinkedIn are declared as JSON-LD (Person + Organization) on the homepage, and mirrored on the About page.
+
+## Not the right tool
+
+This is a personal site, not a product: there is no public API, no SaaS, no SDK and no docs to read. For help with the projects above, use their GitHub repositories, not this site. For other Aditya Ns (the name is common), double-check the GitHub handles on the About page.
+
+## Pages
+
+- [Home](${site.origin}/): who Aditya N is, featured projects, and how to reach him.
+- [About](${site.origin}/about): background, current builds, and the Hack Club community.
+- [Projects](${site.origin}/projects): every open-source project with a short description.
+- [Blog](${site.origin}/blog): all posts, newest first.
+- [Contact](${site.origin}/contact): email, GitHub, Discord, LinkedIn.
+- [Privacy](${site.origin}/privacy): what this site does and does not collect.
+
+## Markdown versions
+
+Every page above has a Markdown twin for agents: request it with \`Accept: text/markdown\`, or append \`.md\` to the path (for example ${site.origin}/about.md or ${site.origin}/blog/${posts[0]?.slug ?? 'slug'}.md). Missing paths answer 404 with a Markdown body the same way.
+
+## Feeds and indexes
+
+- [llms.txt](${site.origin}/llms.txt): this file.
+- [Sitemap](${site.origin}/sitemap.xml): every indexable page, with lastmod dates.
+- [RSS feed](${site.origin}/feed.xml): posts, newest first.
+- [Source repository](https://github.com/DragonSenseiGuy/adityan.dev): this site's own build.
+
+## Contact
+
+- Email: ${site.email}
+- GitHub: https://github.com/DragonSenseiGuy
+- LinkedIn: https://www.linkedin.com/in/adityaneni/
+`;
+};
+

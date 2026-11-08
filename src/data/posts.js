@@ -53,6 +53,9 @@ export const posts = readdirSync(dir)
       ogImage: data.ogImage || null,
       url: url(`/blog/${slug}`),
       html: marked.parse(body),
+      // The source the HTML was rendered from; the .md twin served to agents
+      // is generated from this, so both copies are provably in sync.
+      markdown: body,
     };
   })
   .sort((a, b) => new Date(b.date) - new Date(a.date));

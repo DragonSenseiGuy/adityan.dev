@@ -24,6 +24,13 @@ export const redirects = [
     note: '/index.html is the same resource as /',
   },
   {
+    kind: 'exact',
+    from: '/index.md',
+    to: '/',
+    section: 'canonical URL form enforcement',
+    note: '/index.md is the Markdown copy of / (fetched via Accept: text/markdown)',
+  },
+  {
     kind: 'regex',
     from: '^/(about|projects|blog|contact)\\.html$',
     to: '/$1',

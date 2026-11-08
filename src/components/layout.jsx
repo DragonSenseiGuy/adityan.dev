@@ -1,5 +1,5 @@
 import { raw } from '../jsx.js';
-import { site, socials, navLinks, ogImageFor, url } from '../data/site.js';
+import { site, keywords, socials, navLinks, ogImageFor, url } from '../data/site.js';
 import {
   GitHubIcon, LinkedInIcon, DiscordIcon, MoonIcon, SunIcon,
 } from './icons.jsx';
@@ -61,7 +61,10 @@ function Footer() {
         </div>
         <div class="footer-bottom">
           <span>{'© '}<span data-year>2026</span>{` ${site.name}`}</span>
-          <a href={site.repo} target="_blank" rel="noopener">Open source on GitHub</a>
+          <span class="footer-links">
+            <a href="/privacy">Privacy</a>
+            <a href={site.repo} target="_blank" rel="noopener">Open source on GitHub</a>
+          </span>
         </div>
       </div>
     </footer>
@@ -100,6 +103,9 @@ export function Document({
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>{title}</title>
         <meta name="description" content={description} />
+        {/* Product terms the homepage JSON-LD also lists; agent brand-checks
+            read either or both. */}
+        <meta name="keywords" content={keywords.join(', ')} />
         <meta name="author" content={site.name} />
         {/* Let Google use full-size image previews and untruncated snippets. */}
         <meta
