@@ -59,17 +59,49 @@ test('the homepage ships a Markdown twin', () => {
 
 test('every indexable page and post has an .md twin', async () => {
   const { posts } = await import(`${import.meta.dirname}/../src/data/posts.js`);
-  for (const page of ['/', '/about', '/projects', '/blog', '/contact']) {
-    assert.ok(existsSync(join(dist, mdFileFor(page))), `dist${mdFileFor(page)} exists`);
-    assert.ok(read(mdFileFor(page)).trim().length > 100);
+  const locs = [...read('sitemap.xml').matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, u]) => u.replace(/^https?:\/\/[^/]+/, ''));
+  // The sitemap is the canonical page list: adding a page adds a twin with no
+  // edit here.
+  for (const path of locs) {
+    const file = mdFileFor(path);
+    assert.ok(existsSync(join(dist, file)), `dist/${file} exists for ${path}`);
+    assert.ok(read(file).trim().length > 100, `${file} is real content`);
   }
   for (const post of posts) {
     const file = mdFileFor(`/blog/${post.slug}`);
-    assert.ok(existsSync(join(dist, file)), `dist/${file} exists`);
     const md = read(file);
-    assert.ok(md.includes(post.title), `${file} carries the post title`);
-    assert.ok(post.markdown.split('\n')[0] && md.includes(post.markdown.trim().split('\n')[0]), `${file} round-trips the source Markdown`);
+    assert.ok(md.includes(`# ${post.title} —`), `${file} carries the post title`);
+    // The body survives; a post that restates its own title as an H1 must not
+    // appear twice in the copy.
+    const first = post.markdown.trim().split('\n').find((l) => l.trim() && !l.startsWith('#'));
+    assert.ok(first && md.includes(first), `${file} round-trips the source Markdown`);
+    const escaped = post.title.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    assert.doesNotMatch(md, new RegExp(`^# ${escaped}\\s*$`, 'm'), `no duplicated H1 in ${file}`);
   }
+});
+
+test('nested lists keep their structure in the Markdown copy', async () => {
+  const { blocks } = await import('./markdown.mjs');
+  const tree = {
+    type: 'ul',
+    children: [
+      { type: 'li', children: ['Top item'] },
+      {
+        type: 'li',
+        children: [
+          'Outer',
+          {
+            type: 'ul',
+            children: [
+              { type: 'li', children: [{ type: 'a', attrs: { href: '/x' }, children: ['Inner'] }] },
+              { type: 'li', children: ['Last', { type: 'ol', children: [{ type: 'li', children: ['One'] }] }] },
+            ],
+          },
+        ],
+      },
+    ],
+  };
+  assert.deepEqual(blocks(tree), ['- Top item', '- Outer', '  - [Inner](/x)', '  - Last', '    1. One']);
 });
 
 test('nginx negotiates markdown and keeps HTML untouched', () => {

@@ -52,8 +52,9 @@ function anchors(node, out = []) {
 
 // Block nodes -> an array of Markdown blocks (paragraphs, headings, lists).
 // Inline elements met at block level become their inline text, which keeps
-// button links and card titles readable.
-function blocks(node) {
+// button links and card titles readable. Exported so the tests can pin the
+// tree → Markdown contract directly.
+export function blocks(node) {
   if (node == null || typeof node !== 'object') return typeof node === 'string' ? [node] : [];
   if (node.raw !== undefined) return [htmlToText(node.raw)]; // markdown already? pragmatic strip
   if (node.type === Symbol.for('jsx.Fragment')) return node.children.flatMap(blocks);
@@ -67,17 +68,7 @@ function blocks(node) {
   }
   if (type === 'p') return [inline(node)].filter((text) => text.trim());
   if (type === 'blockquote') return inline(node).trim() ? [`> ${inline(node)}`] : [];
-  if (type === 'ul') {
-    return children
-      .map((li) => (typeof li === 'object' && !li.raw && li.type === 'li' ? `- ${inline(li)}` : inline(li)))
-      .filter((text) => text?.trim());
-  }
-  if (type === 'ol') {
-    return children
-      .map((li, index) =>
-        typeof li === 'object' && !li.raw && li.type === 'li' ? `${index + 1}. ${inline(li)}` : inline(li))
-      .filter((text) => text?.trim());
-  }
+  if (type === 'ul' || type === 'ol') return listBlock(children, type === 'ol');
   // The site chrome: navigation becomes one link line, the footer (social
   // icons, copyright) contributes nothing an agent cannot get elsewhere.
   if (type === 'header') {
@@ -111,6 +102,32 @@ function blocks(node) {
   return children.flatMap(blocks);
 }
 
+// A list -> one Markdown line per item. Nested lists indent under the parent
+// marker's width, so the structure survives the copy instead of flattening
+// into run-on text.
+function listBlock(items, ordered, depth = 0) {
+  const lines = [];
+  for (const [index, li] of items.entries()) {
+    if (typeof li !== 'object' || li.raw !== undefined || li.type !== 'li') continue;
+    const marker = ordered ? `${index + 1}. ` : '- ';
+    const parts = [];
+    for (const child of li.children) {
+      const nested =
+        typeof child === 'object' && child && (child.type === 'ul' || child.type === 'ol');
+      parts.push(
+        nested
+          ? listBlock(child.children, child.type === 'ol', depth + marker.length)
+          : typeof child === 'string' ? child : inline(child)
+      );
+    }
+    // Inline children lead the line; nested lists follow in document order.
+    const text = parts.filter((part) => typeof part === 'string' || typeof part === 'number').map(String).join('').trim();
+    if (text) lines.push(' '.repeat(depth) + marker + text);
+    for (const part of parts) if (Array.isArray(part)) lines.push(...part);
+  }
+  return lines;
+}
+
 const htmlToText = (html) =>
   html
     .replace(/<script[\s\S]*?<\/script>/gi, '')
@@ -140,14 +157,20 @@ export function pageMarkdown(page) {
 const textOf = (node) => (typeof node === 'object' && node ? (node.children ?? []).map(textOf).join('') : String(node ?? ''));
 
 // One post -> its Markdown copy, straight from the Markdown source the HTML
-// was rendered from. Round-trips perfectly.
+// was rendered from. Round-trips perfectly. A body that opens by restating
+// its own title as an H1 (`# ChatGPT Atlas` under title = "ChatGPT Atlas")
+// loses that line: the twin's document title already carries it.
 export function postMarkdown(post) {
+  const source = post.markdown.trim();
+  const [first, ...rest] = source.split('\n');
+  const restatedTitle = first.match(/^# (.+)$/)?.[1]?.trim() === post.title.trim();
+  const body = restatedTitle ? rest.join('\n').trim() : source;
   const meta = [new Date(post.date).toISOString().slice(0, 10), ...(post.tags || [])].filter(Boolean).join(' · ');
   return [
     `# ${post.title} — ${site.name}`,
     `*${meta}*`,
     post.description,
-    post.markdown.trim(),
+    body,
     '',
     `— [Back to all posts](${url('/blog')})`,
   ]
