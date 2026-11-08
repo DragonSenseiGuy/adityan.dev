@@ -4,7 +4,7 @@
 // Accept: text/markdown.
 //
 // Pages and posts are built once below; nothing here ships to the browser.
-import { site, url } from '../src/data/site.js';
+import { site, url, oxford, specialties, stack } from '../src/data/site.js';
 
 // A route's Markdown file in dist/, mirroring fileFor() in src/data/site.js.
 export const mdFileFor = (path) => {
@@ -186,7 +186,7 @@ export function notFoundMarkdown(site) {
     '# 404 — Page not found',
     '',
     'There is no page at this URL on adityan.dev.',
-    `adityan.dev is the personal site of ${site.name} (DragonSenseiGuy), a developer in Boston building Slack bots, AI developer tools, and self-hosted apps in Python and JavaScript.`,
+    `adityan.dev is the personal site of ${site.name} (DragonSenseiGuy), a developer in Boston building ${oxford(specialties)} in ${stack.join(' and ')}.`,
     'You are seeing this instead of an HTML error page because the request asked for text/markdown.',
     '',
     'Where to go next:',

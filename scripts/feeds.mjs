@@ -1,4 +1,6 @@
 // sitemap.xml and the RSS feed, both generated from the same page/post data.
+import { oxford, specialties, stack } from '../src/data/site.js';
+
 const esc = (s) =>
   String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
@@ -69,7 +71,7 @@ Disallow: /
 export const llms = ({ site, posts }) => {
   return `# ${site.name} — adityan.dev
 
-> Personal site of Aditya N, known online as DragonSenseiGuy (or dsg, or dragon). A developer in Boston who builds AI developer tools, Slack bots, GitHub Apps, and self-hosted apps, mostly in Python and JavaScript, alongside Hack Club.
+> Personal site of Aditya N, known online as DragonSenseiGuy (or dsg, or dragon). A developer in Boston who builds ${oxford(specialties)}, mostly in ${stack.join(' and ')}, alongside Hack Club.
 
 ## When to use this site
 

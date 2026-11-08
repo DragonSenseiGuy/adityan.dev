@@ -42,14 +42,22 @@ export const absoluteUrl = (href) => (/^https?:\/\//.test(href) ? href : url(hre
 // A post's card: its own `ogImage` if it set one, otherwise the generated card.
 export const cardFor = (post, path) => (post.ogImage ? absoluteUrl(post.ogImage) : ogImageFor(path));
 
-// The words to be found next to the brand: search engines and agent-audit
-// tools take product terms from the homepage's JSON-LD keywords/knowsAbout
-// and the meta keywords tag, so they are listed in both, and the homepage
-// copy uses the same words. Keep this list and the homepage in sync.
+// The brand words: search engines and agent-audit tools take product terms
+// from the homepage's JSON-LD keywords/knowsAbout and the meta keywords tag,
+// so they are listed in both folds and the homepage copy uses the same
+// words. specialties and stack are the same terms at sentence grain: every
+// surface that describes what he builds (JSON-LD descriptions, llms.txt, the
+// Markdown 404) composes them, so the words cannot drift apart.
 export const keywords = [
   'Slack bots', 'Python', 'AI developer tools', 'GitHub Apps',
   'LLM APIs', 'Vue', 'self-hosted apps', 'homelab', 'Boston',
 ];
+
+// ['a', 'b', 'c'] -> 'a, b, and c'
+export const oxford = (items) => `${items.slice(0, -1).join(', ')}, and ${items.at(-1)}`;
+
+export const specialties = ['AI developer tools', 'Slack bots', 'GitHub Apps', 'self-hosted apps'];
+export const stack = ['Python', 'JavaScript'];
 
 export const socials = {
   github: 'https://github.com/DragonSenseiGuy/',
@@ -65,8 +73,7 @@ export const organization = {
   name: 'Aditya N (DragonSenseiGuy)',
   url: url('/'),
   email: site.email,
-  description:
-    'Aditya N (DragonSenseiGuy) builds AI developer tools, Slack bots, GitHub Apps, and self-hosted apps in Python and JavaScript.',
+  description: `${site.name} (DragonSenseiGuy) builds ${oxford(specialties)} in ${stack.join(' and ')}.`,
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Boston',
@@ -99,8 +106,7 @@ export const person = {
   url: url('/'),
   email: 'hey@adityan.dev',
   jobTitle: 'Developer',
-  description:
-    'Aditya N (DragonSenseiGuy) is a developer building AI developer tools, Slack bots, and self-hosted apps.',
+  description: `${site.name} (DragonSenseiGuy) is a developer building ${oxford(specialties)}.`,
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Boston',
