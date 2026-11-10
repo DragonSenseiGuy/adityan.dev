@@ -1,0 +1,17 @@
+:8001 {
+	root * /usr/share/caddy
+	file_server
+	encode gzip zstd
+
+	handle_errors {
+		@404 expression {err.status_code} == 404
+		rewrite @404 /404/index.html
+		file_server
+	}
+
+	header {
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "DENY"
+		Referrer-Policy "strict-origin-when-cross-origin"
+	}
+}

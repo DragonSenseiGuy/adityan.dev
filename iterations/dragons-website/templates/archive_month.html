@@ -1,0 +1,38 @@
+{% extends "smallhead.html" %}{% load humanize %}
+
+{% block title %}Archive for {{ date|date:"F Y" }}{% endblock %}
+
+{% block primary %}
+
+<h2 class="archive-h2">{{ date|date:"F Y"}}</h2>
+
+{% if total > 2 %}
+<form action="/search/" method="GET">
+    <input type="search" class="search-input" name="q" value="" placeholder="Search posts from {{ date|date:'F Y' }}" style="width: 80%">
+    <input type="hidden" name="year" value="{{ date|date:'Y' }}">
+    <input type="hidden" name="month" value="{{ date|date:'n' }}">
+    <input type="submit" class="search-submit" value="Search">
+</form>
+
+<p style="font-size: 0.8em; margin-top: 0.2em;">{{ total|intcomma }} post{{ total|pluralize }}:
+    {% for t in type_counts %}
+        <a href="/search/?type={{ t.type }}&year={{ date|date:'Y' }}&month={{ date|date:'n' }}">{{ t.count }} {% if t.count == 1 %}{{ t.singular }}{% else %}{{ t.plural }}{% endif %}</a>{% if not forloop.last %}, {% endif %}
+    {% endfor %}
+</p>
+{% endif %}
+
+{% load blog_tags %}
+
+{% blog_mixed_list_with_dates items day_headers=1 day_links=1 %}
+
+{% include "_pagination.html" %}
+
+{% endblock %}
+
+{% block secondary %}
+<div class="metabox">
+<p><a href="/{{ date|date:"Y" }}/">{{ date|date:"Y" }}</a> &raquo; {{ date|date:"F" }}</p>
+{% load blog_calendar %}
+{% render_calendar_month_only date %}
+</div>
+{% endblock %}

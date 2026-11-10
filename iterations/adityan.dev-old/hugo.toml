@@ -1,0 +1,46 @@
+baseurl = "https://adityan.dev/"
+title = "Aditya"
+theme = "coder"
+languagecode = "en"
+defaultcontentlanguage = "en"
+
+ignoreLogs = ['warning-goldmark-raw-html']
+
+[sitemap]
+  changefreq = "weekly"
+  priority = 0.5
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[pagination]
+pagerSize = 5
+
+[markup.highlight]
+style = "github-dark"
+
+[params]
+  author = "Aditya"
+  description = "Website, Blog and home to some cool stuff"
+  keywords = "blog,developer,personal,aditya,portfolio"
+  ogImageBase = "https://embed.adityan.dev"
+
+[taxonomies]
+  category = "categories"
+  series = "series"
+  tag = "tags"
+  author = "authors"
+
+# Menu links
+[[menu.main]]
+  name = "Blog"
+  weight = 1
+  url  = "posts/"
+[[menu.main]]
+  name = "Projects"
+  weight = 2
+  url = "projects/"
+[[menu.main]]
+  name = "About"
+  weight = 2
+  url = "about/"

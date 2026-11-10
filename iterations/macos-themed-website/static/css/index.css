@@ -1,0 +1,312 @@
+#DragonImage {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    padding: 10px;
+}
+
+.roboto {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+}
+
+.suse-mono {
+    font-family: "SUSE Mono", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    background-image: url(../../static/images/wallpaper.png);
+    background-size: cover;
+    height: 100vh;
+}
+
+.top-bar {
+    /* local change only: use left/right offsets so the rounded corners do not get clipped */
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    right: 16px;
+    display: flex;
+    backdrop-filter: blur(10px);
+    color: #000;
+    justify-content: space-between;
+    border-radius: 100px;
+    padding: 8px 16px;
+    box-sizing: border-box;
+    z-index: 100;
+    background: #0e6ba8;
+    background: linear-gradient(
+        90deg,
+        rgba(14, 107, 168, 1) 9%,
+        rgba(14, 107, 168, 1) 49%,
+        rgba(154, 213, 202, 1) 100%
+    );
+}
+/* Unified window header styles for all apps */
+#welcomeheader, #blogheader, #tutorialheader, #aboutheader {
+    border-radius: 25px;
+    background-color: white;
+    padding: 12px 12px;
+    user-select: none;
+    cursor: grab;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+/* Removed per-window close button styles; using generic .win-btn styling */
+
+#timeElement {
+    border-radius: 25px;
+    background-color: white;
+    padding: 15px;
+}
+
+#welcomeopen {
+    border-radius: 25px;
+    background-color: white;
+    padding: 15px;
+}
+
+/* Removed duplicate #welcomeclose styling; unified by .win-btn classes */
+
+/* Duplicate #welcomeheader block removed; unified header styles are defined above */
+
+/* Duplicate #welcomeheader block removed; unified header styles are defined above */
+
+.selected {
+    border-style: dashed;
+}
+
+/* Window layout and overflow handling */
+html, body {
+    height: 100%;
+    overflow: hidden; /* prevent page/body scroll; windows will scroll internally */
+}
+.intro-div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* keep content inside window; internal panes will scroll */
+    box-sizing: border-box;
+    min-height: 0; /* allow children to shrink and scroll */
+    background: #fff; /* window panel background */
+    border-radius: 16px; /* consistent rounded panel */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12); /* subtle elevation */
+    z-index: 900; /* start above desktop icons, below top-bar */
+}
+
+/* Blog window layout and default size */
+#blog {
+    display: flex;
+    flex-direction: column;
+    width: var(--blog-default-width);
+    height: var(--blog-default-height);
+}
+#tutorial {
+    display: flex;
+    flex-direction: column;
+    width: var(--tutorial-default-width);
+    height: var(--tutorial-default-height);
+}
+
+/* Space between header and content, and robust flex sizing */
+#blogApp {
+    display: flex;
+    gap: 12px;
+    min-width: 0; /* prevent overflow from flex children */
+    flex: 1 1 auto; /* fill remaining space */
+    min-height: 0;  /* allow internal scroll */
+}
+
+/* Sidebar and content scrolling */
+#blogList {
+    overflow: auto;
+    overscroll-behavior: contain; /* keep scroll from propagating to page */
+}
+
+#blogContent,
+#tutorialContent {
+    overflow: auto;
+    min-width: 0; /* allow content area to shrink with the window */
+    overscroll-behavior: contain; /* keep scroll from propagating to page */
+    flex: 1 1 auto;  /* fill column space */
+    min-height: 0;   /* enable scrolling inside flex container */
+}
+
+/* Markdown content wrapping and code block handling */
+#blogArticle {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+#blogArticle pre {
+    overflow: auto; /* horizontal scroll for wide code */
+}
+
+#blogArticle code {
+    white-space: pre-wrap; /* wrap inline code when needed */
+}
+
+/* Ensure images and tables fit in the content area */
+#blogArticle img,
+#blogArticle table {
+    max-width: 100%;
+}
+
+/* Add spacing immediately after any window header */
+/* Uniform spacing after any window header */
+#welcomeheader + *,
+#blogheader + *,
+#tutorialheader + *,
+#aboutheader + * {
+    margin-top: 8px;
+}
+
+/* Window header controls (minimize, fullscreen, close) */
+.win-controls {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 8px;
+}
+.win-btn {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.4);
+}
+.win-btn.minimize { background-color: #f4bf4f; }   /* yellow */
+.win-btn.fullscreen { background-color: #61c554; } /* green */
+.win-btn.close { background-color: #ec6b5e; }      /* red */
+
+:root {
+    /* Adjustable window metrics */
+    --window-top-offset: 100px;            /* distance from top (under menu bar) */
+    --window-side-margin: 16px;            /* left/right margin in fullscreen */
+    --window-bottom-margin: 16px;          /* bottom margin in fullscreen */
+
+    /* Blog-specific fullscreen offsets (override as needed) */
+    --blog-window-top-offset: var(--window-top-offset);
+    --blog-window-side-margin: var(--window-side-margin);
+    --blog-window-bottom-margin: var(--window-bottom-margin);
+
+    /* Tutorial-specific fullscreen offsets (override as needed) */
+    --tutorial-window-top-offset: var(--window-top-offset);
+    --tutorial-window-side-margin: var(--window-side-margin);
+    --tutorial-window-bottom-margin: var(--window-bottom-margin);
+
+    /* Default Blog window size (when not fullscreen) */
+    --blog-default-width: min(960px, 90vw);
+    --blog-default-height: min(600px, calc(100vh - 120px));
+
+    /* Default Tutorial window size (when not fullscreen) */
+    --tutorial-default-width: min(960px, 90vw);
+    --tutorial-default-height: min(600px, calc(100vh - 120px));
+
+    /* Tutorial app icon position (adjustable) */
+    --tutorial-app-top: 130px;
+    --tutorial-app-left: 6px;
+
+    /* About app icon position (adjustable) */
+    --about-app-top: 240px;
+    --about-app-left: 10px;
+
+    /* Default About window size (when not fullscreen) */
+    --about-default-width: min(720px, 80vw);
+    --about-default-height: min(520px, calc(100vh - 160px));
+
+    /* About-specific fullscreen offsets (override as needed) */
+    --about-window-top-offset: var(--window-top-offset);
+    --about-window-side-margin: var(--window-side-margin);
+    --about-window-bottom-margin: var(--window-bottom-margin);
+
+    /* Email app icon position (adjustable) */
+    --email-app-top: 360px;
+    --email-app-left: 8px;
+
+    /* Default Email window size (when not fullscreen) */
+    --email-default-width: min(580px, 90vw);
+    --email-default-height: min(580px, calc(100vh - 120px));
+
+    /* Email-specific fullscreen offsets (override as needed) */
+    --email-window-top-offset: var(--window-top-offset);
+    --email-window-side-margin: var(--window-side-margin);
+    --email-window-bottom-margin: var(--window-bottom-margin);
+}
+
+/* Fullscreen and minimized window states */
+.window-fullscreen {
+    position: fixed !important;
+    top: var(--window-top-offset);
+    left: var(--window-side-margin);
+    transform: none !important;
+    margin: 0 !important;
+    max-width: none !important;
+    max-height: none !important;
+}
+/* Show resize handle in fullscreen so users can exit and then resize */
+.window-fullscreen .resize-handle {
+    display: block;
+}
+
+/* Blog-specific fullscreen bounds using blog variables */
+#blog.window-fullscreen {
+    top: var(--blog-window-top-offset);
+    left: var(--blog-window-side-margin);
+}
+#tutorial.window-fullscreen {
+    top: var(--tutorial-window-top-offset);
+    left: var(--tutorial-window-side-margin);
+}
+#about.window-fullscreen {
+    top: var(--about-window-top-offset);
+    left: var(--about-window-side-margin);
+}
+#email.window-fullscreen {
+    top: var(--email-window-top-offset);
+    left: var(--email-window-side-margin);
+}
+.window-minimized {
+    display: none !important;
+}
+
+.window-main {
+    flex: 1 1 auto;
+    overflow: auto;
+    background: #fff;
+    border-radius: 12px;
+    padding: 16px;
+    min-width: 0;
+}
+
+/* Tutorial content wrapping to avoid horizontal scroll */
+#tutorialContent {
+    overflow-x: hidden;
+}
+
+#tutorialArticle {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+#tutorialArticle pre,
+#tutorialArticle code {
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    overflow: visible;
+}

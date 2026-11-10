@@ -1,0 +1,10 @@
+.DS_Store
+.git
+.gitignore
+.venv
+__pycache__
+*.pyc
+node_modules
+npm-debug.log
+README.md
+jupyter-notebooks
