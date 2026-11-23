@@ -13,6 +13,7 @@ const origin = process.env.SITE_ORIGIN || (deployHost ? `https://${deployHost}` 
 
 export const site = {
   name: 'Aditya N',
+  brand: 'adityan.dev',
   email: 'hey@adityan.dev',
   origin,
   // Anything served from another host is a test build: it says noindex on every
@@ -99,13 +100,14 @@ export const navLinks = [
 ];
 
 export const person = {
+  '@id': url('/#person'),
   '@type': 'Person',
-  name: 'Aditya N',
-  alternateName: ['DragonSenseiGuy', 'Dragon Sensei Guy', 'Dragon', 'Aditya'],
+  name: site.name,
+  alternateName: ['Aditya', 'adityan', 'DragonSenseiGuy', 'Dragon Sensei Guy', 'Dragon'],
   url: url('/'),
   email: 'hey@adityan.dev',
   jobTitle: 'Developer',
-  description: `${site.name} (DragonSenseiGuy) is a developer building ${oxford(specialties)}.`,
+  description: `${site.name}, also known as DragonSenseiGuy, is the developer behind ${site.brand}.`,
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Boston',

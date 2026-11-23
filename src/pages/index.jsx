@@ -1,7 +1,7 @@
 import { Document } from '../components/layout.jsx';
 import { Hero, SectionHead, WorkList, Closing } from '../components/sections.jsx';
 import { ArrowRightIcon } from '../components/icons.jsx';
-import { site, person, organization, keywords, oxford, specialties, stack, url } from '../data/site.js';
+import { site, person, organization, keywords, url } from '../data/site.js';
 import { featured } from '../data/projects.js';
 
 const jsonLd = {
@@ -10,32 +10,31 @@ const jsonLd = {
     {
       '@type': 'WebSite',
       '@id': url('/#website'),
-      name: site.name,
-      alternateName: ['DragonSenseiGuy', 'Dragon Sensei Guy'],
+      name: site.brand,
+      alternateName: ['adityan', site.name, 'DragonSenseiGuy', 'Dragon Sensei Guy'],
       url: url('/'),
       keywords,
-      publisher: { '@id': url('/#person') },
+      publisher: { '@id': person['@id'] },
     },
-    { ...person, '@id': url('/#person') },
+    person,
     { ...organization, '@id': url('/#organization') },
   ],
 };
 
 export const path = '/';
 
-export const og = { title: 'Aditya N', meta: 'Developer · Boston' };
+export const og = { title: site.name, meta: 'Developer · Boston' };
 
 export const element = (
   <Document
     path={path}
-    title="Aditya N (DragonSenseiGuy) — Slack bots, Python, and AI tools"
-    description="Aditya N, also known as DragonSenseiGuy or dsg, is a developer in Boston building Slack bots, AI developer tools, and self-hosted apps in Python and JavaScript."
-    og={og}
-    ogDescription={`Aditya N, developer in Boston building ${oxford(specialties)} in ${stack.join(' and ')}.`}
+    title={`${site.name} — Developer Portfolio | ${site.brand}`}
+    description={`${person.description} Explore Aditya's open-source projects and writing.`}
+    ogImageAlt={`${site.brand} card for ${site.name}, developer`}
     jsonLd={jsonLd}
   >
     <main class="container">
-      <Hero variant="hero" title={'Aditya N'}>
+      <Hero variant="hero" title={site.name}>
         <p class="lede">i am a developer in boston, building robots, slack bots, and websites with <a href="https://hackclub.com">hack club</a>. i work mostly in python and javascript. when i am off the clock i mess around with servers and build fun projects.</p>
         <div class="hero-actions">
           <a class="btn btn-solid" href="/projects">See my projects <ArrowRightIcon /></a>
@@ -56,9 +55,9 @@ export const element = (
             <h2 class="section-title" id="about-title">About</h2>
           </div>
           <div class="prose">
-            <p>i go by dragon or dsg around the internet. most of what i make exists because something annoyed me enough that i figured it would be cheaper for me to build it myself.</p>
+            <p>i'm aditya, and i go by <strong>DragonSenseiGuy</strong> (or dragon or dsg) around the internet. most of what i make exists because something annoyed me enough that i figured it would be cheaper for me to build it myself.</p>
             <p>i spend a lot of time in the hack club community, building things alongside other makers. away from all that, i run a homelab and agent servers off old laptops i have.</p>
-            <p><a href="/about">More about me</a></p>
+            <p><a href="/about">More about {site.name}</a></p>
           </div>
         </div>
       </section>

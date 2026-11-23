@@ -1,6 +1,6 @@
 import { Document } from '../components/layout.jsx';
 import { Hero, SectionHead } from '../components/sections.jsx';
-import { site, socials, url } from '../data/site.js';
+import { person, site, socials, url } from '../data/site.js';
 
 const channels = [
   { label: 'github', value: '@DragonSenseiGuy', href: socials.github },
@@ -15,6 +15,7 @@ const jsonLd = {
   name: 'Contact — Aditya N (DragonSenseiGuy)',
   url: url('/contact'),
   mainEntity: {
+    '@id': person['@id'],
     '@type': 'Person',
     name: site.name,
     email: site.email,

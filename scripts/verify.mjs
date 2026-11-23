@@ -134,9 +134,62 @@ test('homepage JSON-LD and meta keywords carry the product terms', async () => {
   assert.ok(site.keywords.includes('Python'));
   const home = read('index.html');
   assert.match(home, /<meta name="keywords" content="[^"]*Slack bots[^"]*"/);
-  assert.match(home, /<title>[^<]*Slack bots[^<]*<\/title>/, 'the title names the product');
   assert.match(home, /slack bots/i);
   assert.match(home, /python/i);
+});
+
+test('homepage title, social previews and crawl metadata identify Aditya N', async () => {
+  const { site, url } = await import('../src/data/site.js');
+  const home = read('index.html');
+  const title = 'Aditya N — Developer Portfolio | adityan.dev';
+  const description = "Aditya N, also known as DragonSenseiGuy, is the developer behind adityan.dev. Explore Aditya's open-source projects and writing.";
+  assert.ok(home.includes(`<title>${title}</title>`));
+  assert.match(home, /<h1>Aditya N<\/h1>/);
+  assert.ok(home.includes(`<meta name="description" content="${description}">`));
+  assert.ok(home.includes(`<meta property="og:title" content="${title}">`));
+  assert.ok(home.includes(`<meta name="twitter:title" content="${title}">`));
+  assert.ok(home.includes(`<meta property="og:description" content="${description}">`));
+  assert.ok(home.includes(`<meta name="twitter:description" content="${description}">`));
+  assert.match(home, /<meta property="og:site_name" content="adityan\.dev">/);
+  assert.match(home, /<meta property="og:image:alt" content="adityan\.dev card for Aditya N, developer">/);
+  assert.match(home, /<meta name="twitter:image:alt" content="adityan\.dev card for Aditya N, developer">/);
+  assert.match(home, /<link rel="icon" href="\/favicon\.svg"/);
+  assert.match(read('favicon.svg'), /viewBox="0 0 96 96"/);
+  if (site.indexable) {
+    assert.ok(home.includes(`<link rel="canonical" href="${url('/')}">`));
+    assert.ok(read('robots.txt').includes(`Sitemap: ${url('/sitemap.xml')}`));
+    assert.ok(read('sitemap.xml').includes(`<loc>${url('/')}</loc>`));
+  }
+});
+
+test('About, Contact and blog posts share the homepage person identity', async () => {
+  const { socials, site, url } = await import('../src/data/site.js');
+  const { posts } = await import('../src/data/posts.js');
+  const ld = (file) => JSON.parse(read(file).match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
+  const graph = ld('index.html')['@graph'];
+  const website = graph.find((node) => node['@type'] === 'WebSite');
+  const person = graph.find((node) => node['@type'] === 'Person');
+  assert.equal(website.name, 'adityan.dev');
+  assert.ok(website.alternateName.includes('adityan'));
+  assert.equal(person['@id'], url('/#person'));
+  assert.equal(website.publisher['@id'], person['@id']);
+  assert.equal(person.name, 'Aditya N');
+  assert.equal(person.url, url('/'));
+  assert.deepEqual(person.alternateName, ['Aditya', 'adityan', 'DragonSenseiGuy', 'Dragon Sensei Guy', 'Dragon']);
+  assert.ok(person.sameAs.includes(socials.github.replace(/\/$/, '')));
+  assert.ok(person.sameAs.includes(socials.linkedin));
+  assert.ok(person.sameAs.includes(site.substack));
+
+  const about = ld('about.html');
+  assert.match(read('about.html'), /<title>About Aditya N \(DragonSenseiGuy\) \| adityan\.dev<\/title>/);
+  assert.equal(about['@type'], 'ProfilePage');
+  assert.equal(about.url, url('/about'));
+  assert.equal(about.mainEntity['@id'], person['@id']);
+  assert.deepEqual(about.mainEntity.alternateName, person.alternateName);
+  assert.equal(ld('contact.html').mainEntity['@id'], person['@id']);
+  for (const post of posts) {
+    assert.equal(ld(`blog/${post.slug}.html`).author['@id'], person['@id']);
+  }
 });
 
 test('Organization schema has contactPoint and address', async () => {

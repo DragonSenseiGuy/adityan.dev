@@ -16,7 +16,7 @@ import { ngConf } from './negotiate.mjs';
 const root = fileURLToPath(new URL('../', import.meta.url));
 const dist = join(root, 'dist');
 
-const ASSETS = ['styles.css', 'script.js'];
+const ASSETS = ['styles.css', 'script.js', 'favicon.svg'];
 
 const write = (file, contents) => {
   mkdirSync(dirname(join(dist, file)), { recursive: true });
