@@ -4,6 +4,9 @@ import {
   GitHubIcon, LinkedInIcon, DiscordIcon, MoonIcon, SunIcon,
 } from './icons.jsx';
 
+const FAVICON =
+  "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.78em' font-size='84' font-family='monospace' fill='%23ededed'>a_</text></svg>";
+
 // Runs before first paint so a stored theme never flashes the other one.
 const THEME_SCRIPT = `
     (function () {
@@ -131,7 +134,7 @@ export function Document({
         <meta name="twitter:description" content={twitterDescription} />
         <meta name="twitter:image" content={ogImage} />
         <meta name="twitter:image:alt" content={ogImageAlt} />
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any" />
+        <link rel="icon" href={FAVICON} />
         <script>{raw(THEME_SCRIPT)}</script>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

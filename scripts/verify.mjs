@@ -153,8 +153,6 @@ test('homepage title, social previews and crawl metadata identify Aditya N', asy
   assert.match(home, /<meta property="og:site_name" content="adityan\.dev">/);
   assert.match(home, /<meta property="og:image:alt" content="adityan\.dev card for Aditya N, developer">/);
   assert.match(home, /<meta name="twitter:image:alt" content="adityan\.dev card for Aditya N, developer">/);
-  assert.match(home, /<link rel="icon" href="\/favicon\.svg"/);
-  assert.match(read('favicon.svg'), /viewBox="0 0 96 96"/);
   if (site.indexable) {
     assert.ok(home.includes(`<link rel="canonical" href="${url('/')}">`));
     assert.ok(read('robots.txt').includes(`Sitemap: ${url('/sitemap.xml')}`));
