@@ -25,8 +25,7 @@ The site negotiates representations instead of shipping one copy for everyone:
 - `/llms.txt` is the machine-readable index, with a "When to use" section.
 
 Production is the Docker image (`default.conf`); `npm run dev` replays the same
-rules locally (`scripts/negotiate.mjs`). Vercel previews cannot negotiate
-(static output) but the `.md` twins are there.
+rules locally (`scripts/negotiate.mjs`).
 
 ## License
 MIT Licensed

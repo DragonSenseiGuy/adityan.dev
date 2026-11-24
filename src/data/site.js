@@ -1,15 +1,8 @@
 // The one host this site is meant to be indexed on. Production is a Dokploy
-// VPS serving the nginx image; Vercel is only ever a test target.
+// VPS serving the nginx image.
 const CANONICAL_ORIGIN = 'https://adityan.dev';
 
-// Where this build will actually be served from. Vercel exports the deployment
-// host, so preview builds link to themselves instead of to a domain that does
-// not have their files; SITE_ORIGIN overrides it, and anything else (local,
-// Docker) falls back to the canonical domain.
-const deployHost =
-  (process.env.VERCEL_ENV === 'production' && process.env.VERCEL_PROJECT_PRODUCTION_URL) ||
-  process.env.VERCEL_URL;
-const origin = process.env.SITE_ORIGIN || (deployHost ? `https://${deployHost}` : CANONICAL_ORIGIN);
+const origin = process.env.SITE_ORIGIN || CANONICAL_ORIGIN;
 
 export const site = {
   name: 'Aditya N',
