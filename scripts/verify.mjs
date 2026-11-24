@@ -138,9 +138,9 @@ test('homepage JSON-LD and meta keywords carry the product terms', async () => {
   assert.match(home, /python/i);
 });
 
-test('homepage title, social previews and crawl metadata identify Aditya N', async () => {
-  const { site, url } = await import('../src/data/site.js');
+test('homepage title, social previews and crawl metadata identify Aditya N', () => {
   const home = read('index.html');
+  const origin = process.env.SITE_ORIGIN || 'https://adityan.dev';
   const title = 'Aditya N — Developer Portfolio | adityan.dev';
   const description = "Aditya N, also known as DragonSenseiGuy, is the developer behind adityan.dev. Explore Aditya's open-source projects and writing.";
   assert.ok(home.includes(`<title>${title}</title>`));
@@ -153,10 +153,16 @@ test('homepage title, social previews and crawl metadata identify Aditya N', asy
   assert.match(home, /<meta property="og:site_name" content="adityan\.dev">/);
   assert.match(home, /<meta property="og:image:alt" content="adityan\.dev card for Aditya N, developer">/);
   assert.match(home, /<meta name="twitter:image:alt" content="adityan\.dev card for Aditya N, developer">/);
-  if (site.indexable) {
-    assert.ok(home.includes(`<link rel="canonical" href="${url('/')}">`));
-    assert.ok(read('robots.txt').includes(`Sitemap: ${url('/sitemap.xml')}`));
-    assert.ok(read('sitemap.xml').includes(`<loc>${url('/')}</loc>`));
+  assert.ok(home.includes(`<meta property="og:url" content="${origin}/">`));
+  assert.ok(home.includes(`<meta property="og:image" content="${origin}/og/index.png">`));
+  assert.ok(read('sitemap.xml').includes(`<loc>${origin}/</loc>`));
+  if (origin === 'https://adityan.dev') {
+    assert.ok(home.includes(`<link rel="canonical" href="${origin}/">`));
+    assert.ok(read('robots.txt').includes(`Sitemap: ${origin}/sitemap.xml`));
+  } else {
+    assert.match(home, /<meta name="robots" content="noindex, follow">/);
+    assert.doesNotMatch(home, /<link rel="canonical"/);
+    assert.match(read('robots.txt'), /Disallow: \//);
   }
 });
 
@@ -168,6 +174,7 @@ test('About, Contact and blog posts share the homepage person identity', async (
   const website = graph.find((node) => node['@type'] === 'WebSite');
   const person = graph.find((node) => node['@type'] === 'Person');
   assert.equal(website.name, 'adityan.dev');
+  assert.equal(website.url, `${process.env.SITE_ORIGIN || 'https://adityan.dev'}/`);
   assert.ok(website.alternateName.includes('adityan'));
   assert.equal(person['@id'], url('/#person'));
   assert.equal(website.publisher['@id'], person['@id']);

@@ -25,8 +25,11 @@ The site negotiates representations instead of shipping one copy for everyone:
 - `/llms.txt` is the machine-readable index, with a "When to use" section.
 
 Production is the Docker image (`default.conf`); `npm run dev` replays the same
-rules locally (`scripts/negotiate.mjs`). Vercel previews cannot negotiate
-(static output) but the `.md` twins are there.
+rules locally (`scripts/negotiate.mjs`).
+
+Builds default to `https://adityan.dev`. When building for a preview host, set
+`SITE_ORIGIN` to its full origin (for example, `SITE_ORIGIN=https://preview.example npm run build`).
+Preview links use that host, pages include `noindex`, and `robots.txt` disallows crawling.
 
 ## License
 MIT Licensed
