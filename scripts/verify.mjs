@@ -174,9 +174,7 @@ test('About, Contact and blog posts share the homepage person identity', async (
   assert.equal(person.name, 'Aditya N');
   assert.equal(person.url, url('/'));
   assert.deepEqual(person.alternateName, ['Aditya', 'adityan', 'DragonSenseiGuy', 'Dragon Sensei Guy', 'Dragon']);
-  assert.ok(person.sameAs.includes(socials.github.replace(/\/$/, '')));
-  assert.ok(person.sameAs.includes(socials.linkedin));
-  assert.ok(person.sameAs.includes(site.substack));
+  assert.deepEqual(person.sameAs, [socials.github, socials.linkedin, socials.discord, site.substack]);
 
   const about = ld('about.html');
   assert.match(read('about.html'), /<title>About Aditya N \(DragonSenseiGuy\) \| adityan\.dev<\/title>/);
@@ -184,7 +182,9 @@ test('About, Contact and blog posts share the homepage person identity', async (
   assert.equal(about.url, url('/about'));
   assert.equal(about.mainEntity['@id'], person['@id']);
   assert.deepEqual(about.mainEntity.alternateName, person.alternateName);
+  assert.deepEqual(about.mainEntity.sameAs, person.sameAs);
   assert.equal(ld('contact.html').mainEntity['@id'], person['@id']);
+  assert.deepEqual(ld('contact.html').mainEntity.sameAs, person.sameAs);
   for (const post of posts) {
     assert.equal(ld(`blog/${post.slug}.html`).author['@id'], person['@id']);
   }

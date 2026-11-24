@@ -20,7 +20,7 @@ const jsonLd = {
     name: site.name,
     email: site.email,
     url: `${site.origin}/`,
-    sameAs: [socials.github, socials.linkedin, socials.discord],
+    sameAs: person.sameAs,
   },
 };
 

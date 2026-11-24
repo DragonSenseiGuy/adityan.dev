@@ -119,9 +119,5 @@ export const person = {
     url: 'https://hackclub.com',
   },
   knowsAbout: ['AI developer tools', 'Slack bots', 'Self-hosting', 'Python', 'Vue', 'LLM APIs'],
-  sameAs: [
-    'https://github.com/DragonSenseiGuy',
-    'https://www.linkedin.com/in/adityaneni/',
-    'https://dragonsenseiguy.substack.com',
-  ],
+  sameAs: [socials.github, socials.linkedin, socials.discord, site.substack],
 };
