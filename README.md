@@ -27,5 +27,9 @@ The site negotiates representations instead of shipping one copy for everyone:
 Production is the Docker image (`default.conf`); `npm run dev` replays the same
 rules locally (`scripts/negotiate.mjs`).
 
+Builds default to `https://adityan.dev`. When building for a preview host, set
+`SITE_ORIGIN` to its full origin (for example, `SITE_ORIGIN=https://preview.example npm run build`).
+Preview links use that host, pages include `noindex`, and `robots.txt` disallows crawling.
+
 ## License
 MIT Licensed
