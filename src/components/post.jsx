@@ -1,5 +1,5 @@
 import { raw } from '../jsx.js';
-import { cardFor, url } from '../data/site.js';
+import { cardFor, person, url } from '../data/site.js';
 import { Document } from './layout.jsx';
 import { formatDate } from './sections.jsx';
 
@@ -17,6 +17,12 @@ export function PostPage({ post }) {
   const path = `/blog/${post.slug}`;
   const card = cardFor(post, path);
   const canonical = url(path);
+  const author = {
+    '@id': person['@id'],
+    '@type': person['@type'],
+    name: person.name,
+    url: person.url,
+  };
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -30,13 +36,8 @@ export function PostPage({ post }) {
     image: card,
     inLanguage: 'en',
     isPartOf: { '@type': 'Blog', '@id': url('/blog') },
-    author: {
-      '@type': 'Person',
-      name: 'Aditya N',
-      alternateName: ['DragonSenseiGuy', 'Dragon Sensei Guy'],
-      url: url('/'),
-    },
-    publisher: { '@type': 'Person', name: 'Aditya N', url: url('/') },
+    author: { ...author, alternateName: person.alternateName },
+    publisher: author,
     breadcrumb: {
       '@type': 'BreadcrumbList',
       itemListElement: [

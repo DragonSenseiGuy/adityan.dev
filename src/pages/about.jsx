@@ -1,32 +1,33 @@
 import { Document } from '../components/layout.jsx';
 import { Hero, Closing } from '../components/sections.jsx';
-import { person } from '../data/site.js';
+import { person, site, url } from '../data/site.js';
+
+export const path = '/about';
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ProfilePage',
+  '@id': url(path),
+  url: url(path),
   mainEntity: {
     ...person,
     knowsAbout: ['AI developer tools', 'Slack bots', 'Self-hosting', 'Python', 'Vue', 'TypeScript', 'LLM APIs'],
   },
 };
 
-export const path = '/about';
-
-export const og = { kicker: 'About', title: "Hi, I'm Aditya", meta: 'DragonSenseiGuy · dsg · dragon' };
+export const og = { kicker: 'About', title: site.name, meta: 'DragonSenseiGuy · dsg · dragon' };
 
 export const element = (
   <Document
     path={path}
-    title="About Aditya"
-    description="About Aditya, also known as DragonSenseiGuy or dsg, a developer in Boston building AI developer tools and Slack bots."
+    title={`About ${site.name} (DragonSenseiGuy) | ${site.brand}`}
+    description={`Meet ${site.name}, the developer behind ${site.brand}, also known online as DragonSenseiGuy. Read about Aditya's background and what he's built.`}
     ogType="profile"
-    ogDescription="Aditya , also known as DragonSenseiGuy or dsg, developer building AI developer tools and Slack bots."
-    twitterDescription="Aditya , also known as DragonSenseiGuy or dsg, developer."
+    ogImageAlt={`${site.brand} About card for ${site.name}, also known as DragonSenseiGuy`}
     jsonLd={jsonLd}
   >
     <main class="container">
-      <Hero title="Hi, I'm Aditya">
+      <Hero title={`Hi, I'm ${site.name}`}>
         <p class="lede">Also known as <strong>DragonSenseiGuy</strong>, or dsg or dragon. I build websites and apps in my free time, mostly python and web dev.</p>
       </Hero>
 

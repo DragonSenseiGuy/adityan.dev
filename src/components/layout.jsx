@@ -114,7 +114,7 @@ export function Document({
         />
         {!hidden && <link rel="canonical" href={canonical} />}
         <meta property="og:type" content={ogType} />
-        <meta property="og:site_name" content={site.name} />
+        <meta property="og:site_name" content={site.brand} />
         <meta property="og:locale" content="en_US" />
         <meta property="og:title" content={ogTitle} />
         <meta property="og:description" content={ogDescription} />
