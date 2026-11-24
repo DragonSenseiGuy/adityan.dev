@@ -1,0 +1,5 @@
+{% for update in updates %}
+<div id="live-update-{{ update.id }}" data-update-id="{{ update.id }}">
+  <p><strong>{{ update.created_str }}</strong> {{ update.content|safe }}</p>
+</div>
+{% endfor %}

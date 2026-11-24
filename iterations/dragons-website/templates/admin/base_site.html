@@ -1,0 +1,17 @@
+{% extends "admin/base.html" %}
+
+{% block extrastyle %}
+{{ block.super }}
+<style>
+form .form-row input[type=text],
+form .form-row input[type=password],
+form .form-row input[type=email],
+form .form-row input[type=url],
+form .form-row input[type=tel],
+form .form-row input[type=number],
+form .form-row textarea,
+form .form-row select {
+    font-size: 1rem;
+}
+</style>
+{% endblock %}

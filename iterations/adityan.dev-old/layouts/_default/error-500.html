@@ -1,0 +1,12 @@
+{{ define "title" }}500 · {{ .Site.Title }}{{ end }}
+{{ define "content" }}
+<section class="error-page">
+  <div class="error-code">500</div>
+  <div class="error-message">
+    <h1 class="heading">Something Broke</h1>
+    <p>This one's on me. The server messed up. Try again in a bit.</p>
+    <a href="/" class="error-link">← Go Home</a>
+  </div>
+</section>
+{{ end }}
+

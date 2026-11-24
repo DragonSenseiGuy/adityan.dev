@@ -1,0 +1,68 @@
+{% extends "item_base.html" %}
+{% load entry_tags %}
+{% block title %}{{ entry.title|typography }}{% endblock %}
+
+{% block extrahead %}
+{{ block.super }}
+{{ entry.extra_head_html|default:""|safe }}
+{% endblock %}
+
+{% block card_title %}{{ entry.title|typography }}{% endblock %}
+{% block card_description %}{{ entry.body|xhtml|remove_context_paragraph|typography|xhtml2html|striptags|truncatewords:30|force_escape }}{% endblock %}
+
+{% block item_content %}
+<div data-permalink-context="{{ entry.get_absolute_url }}">
+<h2>{{ entry.title|typography }}</h2>
+<p class="mobile-date">{{ entry.created|date:"jS F Y" }}</p>
+
+{% include "_draft_warning.html" %}
+
+{{ entry.body|xhtml|resize_images_to_fit_width:"450"|typography|xhtml2html }}
+
+{% if updates %}
+<div id="live-updates">
+{% include "entry_updates.html" %}
+</div>
+{% endif %}
+</div>
+<div class="entryFooter">Posted <a href="/{{ entry.created|date:"Y/M/j/" }}">{{ entry.created|date:"jS F Y" }}</a> at {{ entry.created|date:"f A"|lower }} &middot; Socials: <a href="https://github.com/DragonSenseiGuy">GitHub</a>, <a href="https://discord.com/users/1374119550467051542">Discord</a> or <a href="https://dragonsensei.is-a.dev/about/#subscribe">subscribe to my newsletter</a></div>
+<p class="edit-page-link" data-admin-url="{{ entry.edit_url }}" style="display: none;"></p>
+{% endblock %}
+
+{% block recent_articles_header %}More recent articles{% endblock %}
+
+{% block secondary %}
+<div class="metabox">
+<p class="this-is">This is <strong>{{ entry.title|typography }}</strong> by DragonSenseiGuy, posted on <a href="/{{ entry.created|date:"Y/M/j/" }}">{{ entry.created|date:"jS F Y" }}</a>.</p>
+{% if entry.series %}{% with entry.series_info as series_info %}
+<div class="series-info">
+  <p>Part of series <strong><a href="/series/{{ entry.series.slug }}/">{{ entry.series.title }}</a></strong></p>
+  <ol start="{{ series_info.start }}">
+    {% for other in series_info.entries %}
+      {% if other.pk == entry.pk %}
+        <li><strong>{{ other }}</strong></a> - {{ other.created }} </li>
+      {% else %}
+        <li><a href="{{ other.get_absolute_url }}">{{ other }}</a> - {{ other.created }} </li>
+      {% endif %}
+    {% endfor %}
+    {% if series_info.has_next %}<li style="list-style-type: none;"><a href="/series/{{ entry.series.slug }}/">&#8230; more</a></li>{% endif %}
+  </ol>
+</div>
+{% endwith %}{% endif %}
+{% include "_tags.html" with obj=entry %}
+{% with entry.next_by_created as next_entry %}{% if next_entry %}
+<p><strong>Next:</strong> <a href="{{ next_entry.get_absolute_url }}">{{ next_entry.title }}</a></p>
+{% endif %}{% endwith %}
+{% with entry.previous_by_created as previous_entry %}{% if previous_entry %}
+<p><strong>Previous:</strong> <a href="{{ previous_entry.get_absolute_url }}">{{ previous_entry.title }}</a></p>
+{% endif %}{% endwith %}
+</div>
+
+{% if entry.tweet_html %}{{ entry.tweet_html|safe }}{% endif %}
+{% endblock %}
+
+{% block footer %}
+{% if previously_hosted %}<p id="previouslyhosted">Previously hosted at {{ previously_hosted }}</p>{% endif %}
+{{ block.super }}
+{% if entry.tweet_html %}<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>{% endif %}
+{% endblock %}

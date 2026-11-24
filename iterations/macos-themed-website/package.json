@@ -1,0 +1,27 @@
+{
+  "name": "personal-website",
+  "version": "1.0.0",
+  "description": "Test",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+     "cors": "^2.8.5",
+     "dotenv": "^16.4.5",
+     "express": "^4.19.2",
+     "nodemailer": "^6.9.13"
+   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DragonSenseiGuy/personal-website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/DragonSenseiGuy/personal-website/issues"
+  },
+  "homepage": "https://github.com/DragonSenseiGuy/personal-website#readme"
+}

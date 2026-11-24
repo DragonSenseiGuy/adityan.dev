@@ -1,0 +1,11 @@
+{{ define "title" }}404 · {{ .Site.Title }}{{ end }}
+{{ define "content" }}
+<section class="error-page">
+  <div class="error-code">404</div>
+  <div class="error-message">
+    <h1 class="heading">Page Not Found</h1>
+    <p>Whatever you were looking for isn't here. Maybe it never was.</p>
+    <a href="/" class="error-link">← Go Home</a>
+  </div>
+</section>
+{{ end }}
